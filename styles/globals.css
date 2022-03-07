@@ -1,0 +1,282 @@
+/* 
+|| Global styles & custom css can be written here.
+*/
+
+/* Import tailwind base styles */
+@tailwind base;
+
+/* Import tailwind component styles */
+@tailwind components;
+
+/* Import tailwind utility styles */
+@tailwind utilities;
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6,
+.prose blockquote {
+  color: #243e63;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@600&display=swap');
+
+@layer base {
+  ul {
+    @apply list-disc;
+  }
+}
+
+.two-column-text{
+  column-count: 2;
+  column-width: auto;
+}
+
+.custom-search {
+  position: relative;
+  width: 400px;
+}
+.custom-search-input {
+  width: 100%;
+  border: 0;
+  background-color: white;
+  border-radius: 100px;
+  padding: 10px 100px 10px 20px;
+  line-height: 1;
+  box-sizing: border-box;
+  outline: none;
+}
+.custom-search-botton {
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  bottom: 3px;
+  border: 2px;
+  border-style: solid;
+  border-color: white;
+  background: #1C58F8;
+  color: #fff;
+  outline: none;
+  margin: 0;
+  padding: 0 10px;
+  border-radius: 100px;
+  z-index: 2;
+}
+
+.left-border{
+  border-left: 2px;
+  border-style: solid;
+  border-color: #1C58F8;
+}
+.bttn1{
+  font-family: Outfit;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: 0em;
+
+}.bttn2{
+   font-family: Outfit;
+   font-size: 14px;
+   font-style: normal;
+   font-weight: 600;
+   line-height: 24px;
+   letter-spacing: 0em;
+
+ }
+.b1{
+  font-family: Outfit;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 32px;
+  letter-spacing: 0em;
+}
+.b3{
+  font-family: Outfit;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+
+}
+
+h1 {
+  font-size: 72px;
+  line-height: 88px;
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+}
+h2 {
+  font-size: 64px;
+  line-height: 72px;
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+}
+h3 {
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+}
+.c1{
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 500;
+  font-family: 'Outfit', sans-serif;
+}
+.c2{
+   font-size: 18px;
+   line-height: 32px;
+  font-weight: 600;
+   font-family: 'Outfit', sans-serif;
+ }
+
+.c3{
+  font-size: 16px;
+  line-height: 34px;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-family: 'Outfit', sans-serif;
+}
+.card{
+  border-color: #EDF2F4;
+}
+
+iframe{
+  border-radius: inherit;
+}
+
+a.bttn1:active {
+  transform: scale(0.9);
+}
+a.bttn1:hover{
+  background-color: #243e63;
+  border: none;
+  color: white;
+}
+
+
+.contactForm{
+  height: 35px !important;
+  width: 416px !important;
+  border-width: 0px 0px 1px 0px !important;
+  background-color: #F0F9FF;
+  border-color: #C9D5FD !important;
+  font-family: Outfit !important;
+  font-size: 16px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 24px !important;
+  letter-spacing: 0em !important;
+  text-align: left !important;
+  border-radius: 0px !important;
+}
+.contactForm::placeholder{
+  opacity: 0;
+}
+.selected-flag{
+  background: #F0F9FF;
+}
+
+.select.contactForm{
+  height: 35px !important;
+  width: 864px !important;
+  border-width: 0px 0px 1px 0px !important;
+  background-color: #F0F9FF;
+  border-color: #C9D5FD !important;
+  font-family: Outfit !important;
+  font-size: 16px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 24px !important;
+  letter-spacing: 0em !important;
+  text-align: left !important;
+  border-radius: 0px !important;
+}
+.contactFormFlag{
+  border-width: 0px 0px 1px 0px !important;
+  border-color: #C9D5FD !important;
+  font-family: Outfit !important;
+  font-size: 16px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 24px !important;
+  letter-spacing: 0em !important;
+  text-align: left !important;
+  border-radius: 0px !important;
+  background-color: #ffffff !important;
+}
+
+.contactForm:focus+.contactFormFlag, .contactForm:focus{
+  border-color: #000000 !important;
+  outline: none !important;
+}
+.react-select__control{
+  border-width: 0px 0px 1px 0px !important;
+  border-radius: 0px !important;
+  border-color: #C9D5FD !important;
+  background-color: #F0F9FF !important;
+
+}
+.react-select__value-container{
+  padding: 0px !important;
+
+
+}.react-select__placeholder{
+   color: #6B7395 !important;
+   font-family: Outfit !important;
+   font-size: 14px !important;
+   font-style: normal !important;
+   font-weight: 400 !important;
+   line-height: 24px !important;
+   letter-spacing: 0em !important;
+   text-align: left !important;
+ }
+.react-select__control--is-focused{
+  border-width: 0px 0px 1px 0px !important;
+  border-radius: 0px !important;
+  border-color: black !important;
+  box-shadow: 0px 0px white !important;
+}
+
+.contactForm:not(:focus):not(:placeholder-shown):invalid{
+  border-color: red !important;
+}
+
+ label{
+   position: relative;
+   height: 80px;
+ }
+label>span{
+  position:absolute;
+  top:0;
+  left:0;
+  color: #6B7395;
+  width: auto;
+  transform:translateY(30px);
+  transition-duration:300ms;
+}
+
+label:focus-within > span,
+input:not(:placeholder-shown) + span{
+  color:#0F1847;
+  transform:translateY(0px);
+}
+label:focus-within > span.message,
+input:not(:placeholder-shown) + span.message{
+  opacity: 100% !important;
+  color:#0F1847;
+  transform:translateY(0px);
+}
+label.message:focus-within > span,
+input:not(:placeholder-shown) + span{
+  opacity: 0;
+}
+span.message{
+  opacity: 0;
+}
