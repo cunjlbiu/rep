@@ -30,6 +30,8 @@ import Investors from "./Investors";
 import FormSuccess from "./FormSuccess";
 import CompanyHero from "./CompanyHero";
 import Offerings from "./Offerings";
+import CardsWithImage from "./CardsWithImage";
+import AORNHero from "./AORNHero";
 
 // All of the Agility Page Module Components that are in use in this site need to be imported into this index file.
 // Place Page Modules in allModules array below, passing in a name and the component.
@@ -67,6 +69,8 @@ const allModules = [
   { name: "FormSuccess", module: FormSuccess},
   { name: "CompanyHero", module: CompanyHero},
   { name: "Offerings", module: Offerings},
+  { name: "CardsWithImage", module: CardsWithImage},
+  { name: "AORNHero", module: AORNHero},
 
 ];
 
