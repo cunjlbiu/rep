@@ -18,7 +18,7 @@ const SiteHeader = ({ globalData, sitemapNode, page }) => {
   }
 
   return (
-    <header className="relative w-full mx-auto px-8 bg-gray-500 h-24 bg-primary-white mb-8">
+    <header className="relative w-full mx-auto px-8 h-24 bg-primary-white mb-8">
       <div className="max-w-screen-xl mx-auto">
         <div className="flex justify-between items-center md:justify-start md:space-x-10">
           <div className="lg:w-0 lg:flex-1">
