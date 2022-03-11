@@ -60,7 +60,7 @@ const FindCourseOfferings = ({module})=>{
 
 
             </div>
-                     <div className={"bg-primary-white py-16 my-8 "}>
+                     <div className={"bg-primary-white py-14 my-8 "}>
 <div className={"mx-auto max-w-screen-xl "}>
 
             <CourseBlock blockData={fields.courses}/>
