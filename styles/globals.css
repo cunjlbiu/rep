@@ -161,6 +161,22 @@ a.bttn1:hover{
 }
 
 
+.datePicker{
+  height: 35px !important;
+  width: 416px !important;
+  border-width: 0px 0px 1px 0px !important;
+  background-color: #FFFFFF;
+  border-color: #C9D5FD !important;
+  font-family: Outfit !important;
+  font-size: 16px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 24px !important;
+  letter-spacing: 0em !important;
+  text-align: left !important;
+  border-radius: 0px !important;
+}
+
 .contactForm{
   height: 35px !important;
   width: 416px !important;
@@ -244,6 +260,43 @@ a.bttn1:hover{
   box-shadow: 0px 0px white !important;
 }
 
+
+
+.react-select-create__control{
+  border-width: 0px 0px 1px 0px !important;
+  border-radius: 0px !important;
+  border-color: #C9D5FD !important;
+  background-color: #FFFFFF !important;
+
+}
+.react-select-create__value-container{
+  padding: 0px !important;
+
+
+}.react-select-create__placeholder{
+   color: #6B7395 !important;
+   font-family: Outfit !important;
+   font-size: 14px !important;
+   font-style: normal !important;
+   font-weight: 400 !important;
+   line-height: 24px !important;
+   letter-spacing: 0em !important;
+   text-align: left !important;
+ }
+.react-select-create__control--is-focused{
+  border-width: 0px 0px 1px 0px !important;
+  border-radius: 0px !important;
+  border-color: black !important;
+  box-shadow: 0px 0px white !important;
+}
+
+
+
+
+
+
+
+
 .contactForm:not(:focus):not(:placeholder-shown):invalid{
   border-color: red !important;
 }
@@ -279,4 +332,8 @@ input:not(:placeholder-shown) + span{
 }
 span.message{
   opacity: 0;
+}
+
+.datePickerMonth{
+  width: 484px;
 }
