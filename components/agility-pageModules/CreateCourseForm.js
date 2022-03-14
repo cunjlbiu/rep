@@ -144,7 +144,7 @@ const CreateCourseForm =({module}) =>{
 
                     <label className={"bg-primary-white"}><br/>
                         <input id={"firstName"} name={"firstName"} placeholder={"First name"} className={"contactForm"} style={{background:"white"}} required={true}/>
-                        <span className={"b3"}>Llocations</span>
+                        <span className={"b3"}>Locations</span>
                     </label>
 
                     <label className={"b3 pt-5"}>
