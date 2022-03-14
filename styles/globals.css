@@ -196,7 +196,7 @@ a.bttn1:hover{
   opacity: 0;
 }
 .selected-flag{
-  background: #F0F9FF;
+  background: rgba(255, 255, 255, 0);
 }
 
 .select.contactForm{
@@ -331,7 +331,7 @@ input:not(:placeholder-shown) + span{
   opacity: 0;
 }
 span.message{
-  opacity: 0;
+  opacity: 0%;
 }
 
 .datePickerMonth{

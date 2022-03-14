@@ -51,6 +51,7 @@ const ContactForm =({module}) =>{
                                 country={"us"}
                                 inputStyle={{backgroundColor:"#F0F9FF"}}
                                 containerStyle={{backgroundColor:"#F0F9FF"}}
+                                buttonStyle={{backgroundColor:"#F0F9FF !important;"}}
                                 isValid={(value, country) => {
                                     if (value.match(/12345/)) {
                                         return 'Invalid value: '+value+', '+country.name;

@@ -34,8 +34,15 @@ const CreateCourseForm =({module}) =>{
     return(
         <div className={""}>
             <div className={"max-w-screen-xl mx-auto grid grid-cols-2"}>
-                <div>234234234234</div>
-                <form className={"grid grid-flow-row  justify-center gap-4 bg-primary-white"} action="" method="post">
+                <div>
+                    <div className={""}>
+                        <caption className={"c3 text-primary-blue w-max"}>Create a course</caption>
+                        <h1>CineMed is the industry leader
+                            in healthcare.</h1>
+                        <p className={"b1 w-8/12 pl-12 border-primary-blue left-border my-6"}>From inception to execution and delivery, CineMed is the industry leader in healthcare education. Specify your learning objectives and delivery style, and let us do the rest!</p>
+                    </div>
+                </div>
+                <form className={"grid grid-flow-row  justify-center gap-4 bg-primary-white py-12"} action="" method="post">
 
 
                     <label className={"bg-primary-white"}><br/>
@@ -55,7 +62,6 @@ const CreateCourseForm =({module}) =>{
                                     country={"us"}
                                     inputStyle={{backgroundColor:"white"}}
                                     containerStyle={{backgroundColor:"white"}}
-                                    buttonStyle={{backgroundColor:"white"}}
                                     isValid={(value, country) => {
                                         if (value.match(/12345/)) {
                                             return 'Invalid value: '+value+', '+country.name;
@@ -80,7 +86,7 @@ const CreateCourseForm =({module}) =>{
                             isOptionDisabled={(option) => option.subDisabled}
                             name={"speciality"}
                             onChange ={(v)=> onSelect(v)}
-                            placeholder="Primary Specialty"
+                            placeholder="Course type"
                             classNamePrefix="react-select-create"
                             styles ={{
                                 indicatorSeparator: (styles) => ({display:'none'})
@@ -94,7 +100,7 @@ const CreateCourseForm =({module}) =>{
                             isOptionDisabled={(option) => option.subDisabled}
                             name={"speciality"}
                             onChange ={(v)=> onSelect(v)}
-                            placeholder="Primary Specialty"
+                            placeholder="Format"
                             classNamePrefix="react-select-create"
                             styles ={{
                                 indicatorSeparator: (styles) => ({display:'none'})
@@ -104,12 +110,12 @@ const CreateCourseForm =({module}) =>{
 
                     <label className={"bg-primary-white col-span-2"}><br/>
                         <input id={"firstName"} name={"firstName"} placeholder={"First name"} className={"contactForm select"} style={{background:"white"}} required={true}/>
-                        <span className={"b3"}>First name</span>
+                        <span className={"b3"}>Speakers</span>
                     </label>
 
                     <label className={"bg-primary-white col-span-2"}><br/>
                         <input id={"firstName"} name={"firstName"} placeholder={"First name"} className={"contactForm select"} style={{background:"white"}} required={true}/>
-                        <span className={"b3"}>First name</span>
+                        <span className={"b3"}>Topics</span>
                     </label>
 
                     <label className={"b3"}><br/>
@@ -130,14 +136,15 @@ const CreateCourseForm =({module}) =>{
                     </label>
 
 
-                    <label className={"bg-primary-white"}><br/>
-                        <input id={"firstName"} name={"firstName"} placeholder={"radio group will be there"} className={"contactForm"} style={{background:"white"}} required={true}/>
-                        <span className={"b3"}>radio group will be there</span>
-                    </label>
+                    <div className={"bg-primary-white -translate-y-4 space-x-2 b3 space-y-2 "}><br/>
+                        Are these dates flexible <br/>
+                        <input id={"firstName"} name={"firstName"} type={"radio"}  style={{background:"white"}}/> Yes
+                        <input id={"firstName"} name={"firstName"} type={"radio"}  style={{background:"white"}}/> No
+                    </div>
 
                     <label className={"bg-primary-white"}><br/>
                         <input id={"firstName"} name={"firstName"} placeholder={"First name"} className={"contactForm"} style={{background:"white"}} required={true}/>
-                        <span className={"b3"}>First name</span>
+                        <span className={"b3"}>Llocations</span>
                     </label>
 
                     <label className={"b3 pt-5"}>
@@ -146,7 +153,7 @@ const CreateCourseForm =({module}) =>{
                             isOptionDisabled={(option) => option.subDisabled}
                             name={"speciality"}
                             onChange ={(v)=> onSelect(v)}
-                            placeholder="Primary Specialty"
+                            placeholder="Budget"
                             classNamePrefix="react-select-create"
                             styles ={{
                                 indicatorSeparator: (styles) => ({display:'none'})
