@@ -109,7 +109,7 @@ const ContactForm =({module}) =>{
                            name={"message"}
                            id={"message"}
                     />
-                        <span className={"b3"}>If you need support for a specific event, please include the name and URL of that event.</span>
+                        <span className={"b3 placeholder"}>If you need support for a specific event, please include the name and URL of that event.</span>
                         <span className={"b3 message"}>Message</span>
                     </label>
                     <div className={" flex justify-end w-full  py-5"}>

@@ -321,13 +321,13 @@ input:not(:placeholder-shown) + span{
   transform:translateY(0px);
 }
 label:focus-within > span.message,
-input:not(:placeholder-shown) + span.message{
+input:not(:placeholder-shown) ~ span.message{
   opacity: 100% !important;
   color:#0F1847;
   transform:translateY(0px);
 }
 label.message:focus-within > span,
-input:not(:placeholder-shown) + span{
+input:not(:placeholder-shown) + span.placeholder{
   opacity: 0;
 }
 span.message{

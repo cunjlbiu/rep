@@ -30,6 +30,8 @@ const CreateCourseForm =({module}) =>{
         setStartDate(start);
         setEndDate(end);}
 
+    const options = [{value: 'option 1', label: 'option 1'},{value: 'option 2', label: 'option 2'},{value: 'option 3', label: 'option 3'}]
+
 
     return(
         <div className={""}>
@@ -42,7 +44,7 @@ const CreateCourseForm =({module}) =>{
                         <p className={"b1 w-8/12 pl-12 border-primary-blue left-border my-6"}>From inception to execution and delivery, CineMed is the industry leader in healthcare education. Specify your learning objectives and delivery style, and let us do the rest!</p>
                     </div>
                 </div>
-                <form className={"grid grid-flow-row  justify-center gap-4 bg-primary-white py-12"} action="" method="post">
+                <form className={"grid grid-flow-row  justify-center gap-4 bg-primary-white py-12"} action="https://info.cine-med.com/l/930733/2022-03-15/3kcqh" method="post">
 
 
                     <label className={"bg-primary-white"}><br/>
@@ -83,9 +85,10 @@ const CreateCourseForm =({module}) =>{
                     <label className={"b3 pt-4"}>
 
                         <Select
+                            options={options}
                             isOptionDisabled={(option) => option.subDisabled}
-                            name={"speciality"}
-                            onChange ={(v)=> onSelect(v)}
+                            name={"courseType"}
+
                             placeholder="Course type"
                             classNamePrefix="react-select-create"
                             styles ={{
@@ -97,9 +100,10 @@ const CreateCourseForm =({module}) =>{
                     <label className={"b3 pt-4"}>
 
                         <Select
+                            options={options}
                             isOptionDisabled={(option) => option.subDisabled}
-                            name={"speciality"}
-                            onChange ={(v)=> onSelect(v)}
+                            name={"courseFormat"}
+
                             placeholder="Format"
                             classNamePrefix="react-select-create"
                             styles ={{
@@ -109,17 +113,18 @@ const CreateCourseForm =({module}) =>{
                     </label>
 
                     <label className={"bg-primary-white col-span-2"}><br/>
-                        <input id={"firstName"} name={"firstName"} placeholder={"First name"} className={"contactForm select"} style={{background:"white"}} required={true}/>
+                        <input id={"speakers"} name={"courseSpeakers"} placeholder={"Speakers"} className={"contactForm select"} style={{background:"white"}} required={true}/>
                         <span className={"b3"}>Speakers</span>
                     </label>
 
                     <label className={"bg-primary-white col-span-2"}><br/>
-                        <input id={"firstName"} name={"firstName"} placeholder={"First name"} className={"contactForm select"} style={{background:"white"}} required={true}/>
+                        <input id={"topics"} name={"courseTopics"} placeholder={"Topics"} className={"contactForm select"} style={{background:"white"}} required={true}/>
                         <span className={"b3"}>Topics</span>
                     </label>
 
                     <label className={"b3"}><br/>
                         <DatePicker
+                            name={"porposedDates"}
                             selected={startDate}
                             onChange={onChange}
                             startDate={startDate}
@@ -132,27 +137,27 @@ const CreateCourseForm =({module}) =>{
                             calendarClassName={"datePickerMonth"}
                         />
                         <input className={"hidden "}/>
-                        <span className={"b3"}>Position</span>
+                        <span className={"b3"}>Proposed dates</span>
                     </label>
 
 
                     <div className={"bg-primary-white -translate-y-4 space-x-2 b3 space-y-2 "}><br/>
                         Are these dates flexible <br/>
-                        <input id={"firstName"} name={"firstName"} type={"radio"}  style={{background:"white"}}/> Yes
-                        <input id={"firstName"} name={"firstName"} type={"radio"}  style={{background:"white"}}/> No
+                        <input id={"firstName"} name={"flexible"} type={"radio"}  style={{background:"white"}} value={"Yes"}/> Yes
+                        <input id={"firstName"} name={"flexible"} type={"radio"}  style={{background:"white"}} value={"No"}/> No
                     </div>
 
                     <label className={"bg-primary-white"}><br/>
-                        <input id={"firstName"} name={"firstName"} placeholder={"First name"} className={"contactForm"} style={{background:"white"}} required={true}/>
+                        <input id={"locations"} name={"location"} placeholder={"Locations"} className={"contactForm"} style={{background:"white"}} required={true}/>
                         <span className={"b3"}>Locations</span>
                     </label>
 
                     <label className={"b3 pt-5"}>
 
                         <Select
+                            options={options}
                             isOptionDisabled={(option) => option.subDisabled}
-                            name={"speciality"}
-                            onChange ={(v)=> onSelect(v)}
+                            name={"budget"}
                             placeholder="Budget"
                             classNamePrefix="react-select-create"
                             styles ={{
@@ -162,9 +167,10 @@ const CreateCourseForm =({module}) =>{
                     </label>
 
                     <label className={"bg-primary-white col-span-2"}><br/>
-                        <input id={"firstName"} name={"firstName"} placeholder={"First name"} className={"contactForm select"} style={{background:"white"}} required={true}/>
+                        <input id={"description"} name={"description"} placeholder={"description"} className={"contactForm select"} style={{background:"white"}} required={true}/>
                         <span className={"b3"}>Course description</span>
                     </label>
+                    <input type={"submit"} value={"Send message"} required={true} className={'flex bttn1 w-36 h-12 bg-primary-blue rounded-full justify-center text-primary-white active:scale-90'}/>
 
 
 
