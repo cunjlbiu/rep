@@ -25,12 +25,34 @@ const CreateCourseForm =({module}) =>{
 
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(null);
+    const [t, setT] = useState(null)
     const onChange = (dates) => {
         const [start, end] = dates;
         setStartDate(start);
         setEndDate(end);}
 
-    const options = [{value: 'option 1', label: 'option 1'},{value: 'option 2', label: 'option 2'},{value: 'option 3', label: 'option 3'}]
+    const courseTypes = [{value: 'Online', label: 'online', online:true},
+        {value: 'In person', label: 'in person', online:false}]
+
+
+    const formats = [
+        {value: 'Virtual Event', label: 'Virtual Event', online: true},
+        {value: 'Webinar', label: 'Webinar', online: true},
+        {value: 'eLearning', label: 'eLearning', online: true},
+        {value: 'Clinical Video', label: 'Clinical Video', online: true},
+        {value: 'Product Short', label: 'Product Short', online: true},
+        {value: 'Podcast', label: 'Podcast', online: true},
+        {value: 'Conference', label: 'Conference', online: false},
+        {value: 'Master Class', label: 'Master Class', online: false},
+        {value: 'Symposia', label: 'Symposia', online: false},
+        {value: 'Ground Rounds', label: 'Ground Rounds', online: false},
+
+    ]
+
+    const budgets = [
+        {value: 'Up tp $499', label: 'Up tp $499'},
+        {value: '$500 - $999$', label: '$500 - $999$'},
+        {value: '1,000+', label: '1,000+'}]
 
 
     return(
@@ -85,10 +107,9 @@ const CreateCourseForm =({module}) =>{
                     <label className={"b3 pt-4"}>
 
                         <Select
-                            options={options}
-                            isOptionDisabled={(option) => option.subDisabled}
+                            options={courseTypes}
                             name={"courseType"}
-
+                            onChange={(option)=>setT(option.online)}
                             placeholder="Course type"
                             classNamePrefix="react-select-create"
                             styles ={{
@@ -100,10 +121,9 @@ const CreateCourseForm =({module}) =>{
                     <label className={"b3 pt-4"}>
 
                         <Select
-                            options={options}
-                            isOptionDisabled={(option) => option.subDisabled}
+                            options={formats}
+                            isOptionDisabled={(option) => option.online != t}
                             name={"courseFormat"}
-
                             placeholder="Format"
                             classNamePrefix="react-select-create"
                             styles ={{
@@ -155,8 +175,7 @@ const CreateCourseForm =({module}) =>{
                     <label className={"b3 pt-5"}>
 
                         <Select
-                            options={options}
-                            isOptionDisabled={(option) => option.subDisabled}
+                            options={budgets}
                             name={"budget"}
                             placeholder="Budget"
                             classNamePrefix="react-select-create"
