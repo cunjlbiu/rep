@@ -31,8 +31,8 @@ const CreateCourseForm =({module}) =>{
         setStartDate(start);
         setEndDate(end);}
 
-    const courseTypes = [{value: 'Online', label: 'online', online:true},
-        {value: 'In person', label: 'in person', online:false}]
+    const courseTypes = [{value: 'Online', label: 'Online', online:true},
+        {value: 'In person', label: 'In person', online:false}]
 
 
     const formats = [
