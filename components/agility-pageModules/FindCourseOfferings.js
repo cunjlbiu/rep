@@ -33,7 +33,7 @@ const CourseBlock = ({blockData})=>{
     )
 }
 
-const Filtering = (filters, courses,ondemand)=>{
+const Filtering = (filters, courses,ondemand, loc,type, spec)=>{
     let filteredcourse = []
     if (ondemand) {
         for (let k of courses) {
@@ -44,7 +44,12 @@ const Filtering = (filters, courses,ondemand)=>{
     else
         for (let k of courses) {
             if (!k.fields.place) k.fields.place = ""
-            if (k.fields.filter.includes(filters) || k.fields.name.includes(filters) || k.fields.place.includes(filters))
+            if (!k.fields.type) k.fields.type = ""
+            if (!k.fields.specialty) k.fields.specialty = ""
+            if ((k.fields.filter.includes(filters) || k.fields.name.includes(filters) || k.fields.place.includes(filters))
+                && k.fields.place.includes(loc) && k.fields.type.includes(type) && k.fields.specialty.includes(spec)
+            )
+
                 filteredcourse.push(k)
         }
     return filteredcourse;
@@ -140,6 +145,7 @@ const courseType =[
 
 const FindCourseOfferings = ({module})=>{
 
+    const {fields} = module
     const customStyle={
         control: (base, state) => ({
             ...base,
@@ -157,17 +163,20 @@ const FindCourseOfferings = ({module})=>{
         })
     }
     const [checked, setChecked] = useState(false)
-    const {fields} = module
     const [courses,setCourses] = useState(fields.courses)
+    const [locFilter, setLocFilter] = useState('')
+    const [typeFilter, setTypeFilter]=useState('')
+    const [specialtyFilter, setSpecialtyFilter]=useState('')
     const [filter, setFilter] = useState("")
     const course = {}
     fields.courses.map((e)=>{course[e.fields.filter] ? course[e.fields.filter].push(e) : course[e.fields.filter] = [e] })
     const courseArr = Object.entries(course)
     const ApplyFilters = ()=>{
-        setCourses(Filtering(filter, fields.courses,checked))
+        setCourses(Filtering(filter, fields.courses,checked,locFilter,typeFilter,specialtyFilter))
         console.log("filtering")
         //setFilter("")
     }
+
     return(
         <div className={"bg-secondary-blue "}>
             <div className={"max-w-screen-xl mx-auto py-16"}>
@@ -204,17 +213,34 @@ const FindCourseOfferings = ({module})=>{
                                 placeholder="Specialty"
                                 options={specialty}
                                 isClearable={true}
-
+                                onChange={(option)=>{
+                                    if(option == null) setSpecialtyFilter('')
+                                    else
+                                        setSpecialtyFilter(option.value)
+                                }}
+                                onBlur={()=>setCourses(Filtering(filter, fields.courses,checked,locFilter,typeFilter,specialtyFilter))}
 
                         />
                         <Select styles ={ customStyle}
                                 placeholder="Course Type"
                                 options={courseType}
                                 isClearable={true}
+                                onChange={(option)=>{
+                                    if(option == null) setTypeFilter('')
+                                    else
+                                        setTypeFilter(option.value)
+                                }}
+                                onBlur={()=>setCourses(Filtering(filter, fields.courses,checked,locFilter,typeFilter,specialtyFilter))}
 
                         />
                         <Select styles ={ customStyle}
                                 placeholder="Location"
+                                onChange={(option)=>{
+                                    if(option == null) setLocFilter('')
+                                    else
+                                    setLocFilter(option.value)
+                                    }}
+                                onBlur={()=>setCourses(Filtering(filter, fields.courses,checked,locFilter,typeFilter,specialtyFilter))}
                                 options={locations}
                                 isClearable={true}
                         />
