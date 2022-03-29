@@ -5,8 +5,10 @@ import Select from "react-select";
 
 
 const CourseItem = ({data})=> {
-    const startDate = new Date(data.startDate)
-    const endDate = new Date(data.endDate)
+    const startDate = new Date(data.startDate);
+    const mm = ('0'+ (startDate.getMonth()+1)).slice(-2);
+    const dd = ('0'+ startDate.getDate()).slice(-2);
+    const endDate = new Date(data.endDate);
     if(!data.place) data.place = ''
     return(
         <div className={"py-10"}>
@@ -19,7 +21,7 @@ const CourseItem = ({data})=> {
                 <div className={"flex justify-between"}>
                     <div className={"b3"}>{(data.place.length > 15)? "International" : data.place}</div>
                     <div className={`text-secondary-blue px-1 ${(!!startDate.valueOf() && !!data.place)? "" : "hidden"}`}>|</div>
-                    <div className={"b3"}>{startDate.valueOf() ? `${startDate.getMonth()+1}.${startDate.getDate()}.${startDate.getFullYear()}`: '' } </div>
+                    <div className={"b3"}>{startDate.valueOf() ? `${mm}.${dd}.${startDate.getFullYear()}`: '' } </div>
                 </div>
             </div>
             <div className={"c1"}>{data.name}</div>
@@ -38,7 +40,9 @@ const CourseBlock = ({blockData, filters})=>{
                     {filters.map((e,i)=>{
                         if (!!e)
                             return (
-                                <div className={"border-secondary-blue rounded-full border-[1px] py-1 px-2 b3"}>{e}  {'✕'}</div>
+                                <div className={"border-secondary-blue rounded-full space-x-2 border-[1px] py-1 px-2 b3"}>{e}
+                                    <div className={"text-[10px] font-extrabold px-1 inline-block cursor-pointer"}>✕</div>
+                                </div>
                             )
 
                     })}
