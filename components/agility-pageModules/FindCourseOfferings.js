@@ -2,27 +2,52 @@ import React, {useState} from 'react'
 import Switch from 'react-switch'
 import Select from "react-select";
 
+
+
 const CourseItem = ({data})=> {
-    console.log(new Date(data.date) < Date.now())
+    const startDate = new Date(data.startDate)
+    const endDate = new Date(data.endDate)
+    if(!data.place) data.place = ''
     return(
         <div className={"py-10"}>
-            <div className={"w-11/12 h-80 rounded-xl text-white text-center"}>
+            <div className={"w-[640px] h-[320px] rounded-xl text-white text-center relative"}>
+                <div className={`absolute b3 rounded-full px-[12px] py-1 top-4 left-4 ${data.onDemand ? "bg-primary-blue" : "bg-primary-white text-black" }`}>{data.onDemand ? "On-Demand" : "Live"}</div>
                 {!data.image ? "image should be here" : <img className={"rounded-xl"} src={data.image.url}/>}
             </div>
-            <div className={"b3 py-4"}>({new Date(data.date).getFullYear()}) (ITEM # {data.id})</div>
+            <div className={"flex justify-between w-[640px] my-4"}>
+                <div className={"b3"}>{startDate.valueOf() ? `(${startDate.getFullYear()})` : ''} (ITEM # {data.id})</div>
+                <div className={"flex justify-between"}>
+                    <div className={"b3"}>{(data.place.length > 15)? "International" : data.place}</div>
+                    <div className={`text-secondary-blue px-1 ${(!!startDate.valueOf() && !!data.place)? "" : "hidden"}`}>|</div>
+                    <div className={"b3"}>{startDate.valueOf() ? `${startDate.getMonth()+1}.${startDate.getDate()}.${startDate.getFullYear()}`: '' } </div>
+                </div>
+            </div>
             <div className={"c1"}>{data.name}</div>
         </div>
     )
 }
-
-const CourseBlock = ({blockData})=>{
+const CourseBlock = ({blockData, filters})=>{
     return(
         <div>
             <h3>
                 Offerings
             </h3>
             <div className={"b1 pt-3"}>View our current curriculum.</div>
-            <div className={"grid grid-cols-2 py-1 mb-5 "}>
+            <div className={"flex justify-between"}>
+                <div className={"flex space-x-2"}>
+                    {filters.map((e,i)=>{
+                        if (!!e)
+                            return (
+                                <div className={"border-secondary-blue rounded-full border-[1px] py-1 px-2 b3"}>{e}  {'✕'}</div>
+                            )
+
+                    })}
+                </div>
+
+                <div className={`bttn2 invisible`}>Clear all filter</div>
+
+            </div>
+            <div className={"grid grid-cols-2 py-1 mb-5"}>
                 {blockData.map((e,i)=>{
                     return(
                         <CourseItem data={e.fields}/>
@@ -32,27 +57,21 @@ const CourseBlock = ({blockData})=>{
         </div>
     )
 }
-
 const Filtering = (filters, courses,ondemand, loc,type, spec)=>{
-    let filteredcourse = []
-    if (ondemand) {
-        for (let k of courses) {
-            if (k.fields.filter.includes(filters) && new Date(k.fields.date) < Date.now())
-                filteredcourse.push(k)
-        }
-    }
-    else
+    let filteredCourse = []
         for (let k of courses) {
             if (!k.fields.place) k.fields.place = ""
+            if (!k.fields.filter) k.fields.filter= ""
             if (!k.fields.type) k.fields.type = ""
             if (!k.fields.specialty) k.fields.specialty = ""
             if ((k.fields.filter.includes(filters) || k.fields.name.includes(filters) || k.fields.place.includes(filters))
                 && k.fields.place.includes(loc) && k.fields.type.includes(type) && k.fields.specialty.includes(spec)
+                && ( !ondemand || !!k.fields.onDemand)
             )
 
-                filteredcourse.push(k)
+                filteredCourse.push(k)
         }
-    return filteredcourse;
+    return filteredCourse;
 }
 
 
@@ -93,6 +112,21 @@ const locations =[
     {value:"North Dakota", label:"North Dakota"},
     {value:"Ohio", label:"Ohio"},
     {value:"Oklahoma", label:"Oklahoma"},
+    {value:"Oregon", label:"Oregon"},
+    {value:"Pennsylvania", label:"Pennsylvania"},
+    {value:"Rhode Island", label:"Rhode Island"},
+    {value:"South Carolina", label:"South Carolina"},
+    {value:"South Dakota", label:"South Dakota"},
+    {value:"Tennessee", label:"Tennessee"},
+    {value:"Texas", label:"Texas"},
+    {value:"Utah", label:"Utah"},
+    {value:"Vermont", label:"Vermont"},
+    {value:"Virginia", label:"Virginia"},
+    {value:"Washington", label:"Washington"},
+    {value:"West Virginia", label:"West Virginia"},
+    {value:"Wisconsin", label:"Wisconsin"},
+    {value:"Wyoming", label:"Wyoming"},
+    {value:"International", label:"International"},
 ]
 const specialty =[
     {value:"Anesthesiology / Pain Management", label:"Anesthesiology / Pain Management"},
@@ -118,6 +152,17 @@ const specialty =[
     {value:"Oncology - Surgical", label:"Oncology - Surgical"},
     {value:"Ophthalmology", label:"Ophthalmology"},
     {value:"Orthopedics", label:"Orthopedics"},
+    {value:"Otolaryngology", label:"Otolaryngology"},
+    {value:"Pathology", label:"Pathology"},
+    {value:"Pediatrics", label:"Pediatrics"},
+    {value:"Pharmacology", label:"Pharmacology"},
+    {value:"Physical Medicine and Rehabilitation", label:"Physical Medicine and Rehabilitation"},
+    {value:"Plastic Surgery", label:"Plastic Surgery"},
+    {value:"Podiatry", label:"Podiatry"},
+    {value:"Thoracic Surgery / Pulmonology", label:"Thoracic Surgery / Pulmonology"},
+    {value:"Transplantation", label:"Transplantation"},
+    {value:"Vascular Medicine", label:"Vascular Medicine"},
+    {value:"Wound Healing", label:"Wound Healing"},
 ]
 const courseType =[
     {value:"Conference", label:"Conference"},
@@ -133,19 +178,10 @@ const courseType =[
 ]
 
 
-
-
-
-
-
-
-
-
-
-
 const FindCourseOfferings = ({module})=>{
 
     const {fields} = module
+
     const customStyle={
         control: (base, state) => ({
             ...base,
@@ -162,17 +198,27 @@ const FindCourseOfferings = ({module})=>{
             visible: 'none',
         })
     }
+
     const [checked, setChecked] = useState(false)
     const [courses,setCourses] = useState(fields.courses)
     const [locFilter, setLocFilter] = useState('')
     const [typeFilter, setTypeFilter]=useState('')
     const [specialtyFilter, setSpecialtyFilter]=useState('')
     const [filter, setFilter] = useState("")
-    const course = {}
-    fields.courses.map((e)=>{course[e.fields.filter] ? course[e.fields.filter].push(e) : course[e.fields.filter] = [e] })
-    const courseArr = Object.entries(course)
-    const ApplyFilters = ()=>{
-        setCourses(Filtering(filter, fields.courses,checked,locFilter,typeFilter,specialtyFilter))
+    const [filters, setFilters] = useState([])
+
+
+    // const course = {}
+    // fields.courses.map((e)=>{course[e.fields.filter] ? course[e.fields.filter].push(e) : course[e.fields.filter] = [e] })
+    // const courseArr = Object.entries(course)
+
+    const ApplyFilters = (sw) => {
+        if (typeof(sw)=="boolean") {
+            setCourses(Filtering(filter, fields.courses, sw, locFilter, typeFilter, specialtyFilter))
+        }
+        else
+            setCourses(Filtering(filter, fields.courses,checked,locFilter,typeFilter,specialtyFilter))
+        setFilters([filter,locFilter,typeFilter,specialtyFilter])
         console.log("filtering")
         //setFilter("")
     }
@@ -186,6 +232,7 @@ const FindCourseOfferings = ({module})=>{
                         of curated content.
                     </h1>
                     <div className={"b1 text-center py-2 "}>With over thousands of courses to choose from, our curriculum will advance your skills and help you and your<br/> team reduce medical errors.</div>
+
                     <div className="relative w-[860px] h-16 mx-auto bg-primary-white rounded-full content-center object-center ">
                             <input type="text"
                                    className=" absolute top-[21px] left-14 w-3/5 border-none outline-none"
@@ -196,7 +243,9 @@ const FindCourseOfferings = ({module})=>{
                                 <Switch
                                     className={"mr-1"}
                                     checked={checked}
-                                    onChange={(ck)=>{setChecked(ck)}}
+                                    onChange={(ck)=>{
+                                        setChecked(ck)
+                                        ApplyFilters(ck)}}
                                     height={24}
                                     width={40}
                                     offColor={"#D6D7D9"}
@@ -206,9 +255,11 @@ const FindCourseOfferings = ({module})=>{
                                 />
                                 <p>On-Demand</p>
                             </div>
-                            <button className="custom-search-botton" type="submit" onClick={ApplyFilters}>Find a course</button>
+                            <button className="custom-search-botton bttn2 w-[130px] active:bg-primary-blue hover:bg-primary-darkblue" type="submit" onClick={ApplyFilters}>Find a course</button>
                     </div>
+
                     <div className={"w-[860px] flex justify-evenly bg-primary-white rounded-full mx-auto py-6 mt-6"}>
+
                         <Select styles ={ customStyle}
                                 placeholder="Specialty"
                                 options={specialty}
@@ -218,9 +269,10 @@ const FindCourseOfferings = ({module})=>{
                                     else
                                         setSpecialtyFilter(option.value)
                                 }}
-                                onBlur={()=>setCourses(Filtering(filter, fields.courses,checked,locFilter,typeFilter,specialtyFilter))}
+                                onBlur={()=>ApplyFilters()}
 
                         />
+
                         <Select styles ={ customStyle}
                                 placeholder="Course Type"
                                 options={courseType}
@@ -230,9 +282,10 @@ const FindCourseOfferings = ({module})=>{
                                     else
                                         setTypeFilter(option.value)
                                 }}
-                                onBlur={()=>setCourses(Filtering(filter, fields.courses,checked,locFilter,typeFilter,specialtyFilter))}
+                                onBlur={()=>ApplyFilters()}
 
                         />
+
                         <Select styles ={ customStyle}
                                 placeholder="Location"
                                 onChange={(option)=>{
@@ -240,7 +293,7 @@ const FindCourseOfferings = ({module})=>{
                                     else
                                     setLocFilter(option.value)
                                     }}
-                                onBlur={()=>setCourses(Filtering(filter, fields.courses,checked,locFilter,typeFilter,specialtyFilter))}
+                                onBlur={()=>ApplyFilters()}
                                 options={locations}
                                 isClearable={true}
                         />
@@ -252,7 +305,7 @@ const FindCourseOfferings = ({module})=>{
 
              <div className={"bg-primary-white py-14 my-8 "}>
                 <div className={"mx-auto max-w-screen-xl "}>
-                    <CourseBlock blockData={courses}/>
+                    <CourseBlock blockData={courses} filters={filters}/>
                 </div>
              </div>
 
