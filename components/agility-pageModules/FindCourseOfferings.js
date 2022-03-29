@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import Switch from 'react-switch'
 import Select from "react-select";
 
@@ -28,7 +28,7 @@ const CourseItem = ({data})=> {
         </div>
     )
 }
-const CourseBlock = ({blockData, filters})=>{
+const CourseBlock = ({blockData, filters, cl})=>{
     return(
         <div>
             <h3>
@@ -41,14 +41,14 @@ const CourseBlock = ({blockData, filters})=>{
                         if (!!e)
                             return (
                                 <div className={"border-secondary-blue rounded-full space-x-2 border-[1px] py-1 px-2 b3"}>{e}
-                                    <div className={"text-[10px] font-extrabold px-1 inline-block cursor-pointer"}>✕</div>
+                                    <div className={"text-[10px] font-extrabold px-1 inline-block cursor-pointer"} onClick={()=>{cl(i)}}>✕</div>
                                 </div>
                             )
 
                     })}
                 </div>
 
-                <div className={`bttn2 invisible`}>Clear all filter</div>
+                <div className={`bttn2 invisible cursor-pointer`}>Clear all filter</div>
 
             </div>
             <div className={"grid grid-cols-2 py-1 mb-5"}>
@@ -184,7 +184,7 @@ const courseType =[
 
 const FindCourseOfferings = ({module})=>{
 
-    const {fields} = module
+    const {fields} = module;
 
     const customStyle={
         control: (base, state) => ({
@@ -203,18 +203,49 @@ const FindCourseOfferings = ({module})=>{
         })
     }
 
-    const [checked, setChecked] = useState(false)
-    const [courses,setCourses] = useState(fields.courses)
-    const [locFilter, setLocFilter] = useState('')
-    const [typeFilter, setTypeFilter]=useState('')
-    const [specialtyFilter, setSpecialtyFilter]=useState('')
-    const [filter, setFilter] = useState("")
-    const [filters, setFilters] = useState([])
-
+    const [checked, setChecked] = useState(false);
+    const [courses,setCourses] = useState(fields.courses);
+    const [locFilter, setLocFilter] = useState('');
+    const [typeFilter, setTypeFilter]=useState('');
+    const [specialtyFilter, setSpecialtyFilter]=useState('');
+    const [filter, setFilter] = useState("");
+    const [filters, setFilters] = useState([]);
+    const selectLocRef = useRef();
+    const selectTypeRef = useRef();
+    const selectSpecialtyRef = useRef();
 
     // const course = {}
     // fields.courses.map((e)=>{course[e.fields.filter] ? course[e.fields.filter].push(e) : course[e.fields.filter] = [e] })
     // const courseArr = Object.entries(course)
+
+
+    function DeleteFilter(i) {
+        let newFilters = filters.map((_,e)=>{
+            if (e != i)return _
+            else {
+                if (locFilter == _) {
+                    selectLocRef.current.clearValue()
+                    setLocFilter('')
+                }
+                if (typeFilter == _) {
+                    selectTypeRef.current.clearValue()
+                    setTypeFilter('')
+                }
+                if (specialtyFilter == _) {
+                    selectSpecialtyRef.current.clearValue();
+                    setSpecialtyFilter('')
+                }
+                if (filter == _) setFilter('')
+            }
+        })
+        console.log(filters)
+        console.log(newFilters)
+        setFilters(newFilters)
+        console.log(filters)
+        ApplyFilters()
+        console.log("filters")
+
+    }
 
     const ApplyFilters = (sw) => {
         if (typeof(sw)=="boolean") {
@@ -247,9 +278,9 @@ const FindCourseOfferings = ({module})=>{
                                 <Switch
                                     className={"mr-1"}
                                     checked={checked}
-                                    onChange={(ck)=>{
-                                        setChecked(ck)
-                                        ApplyFilters(ck)}}
+                                    onChange={(sw)=>{
+                                        setChecked(sw)
+                                        ApplyFilters(sw)}}
                                     height={24}
                                     width={40}
                                     offColor={"#D6D7D9"}
@@ -265,6 +296,7 @@ const FindCourseOfferings = ({module})=>{
                     <div className={"w-[860px] flex justify-evenly bg-primary-white rounded-full mx-auto py-6 mt-6"}>
 
                         <Select styles ={ customStyle}
+                                ref={selectSpecialtyRef}
                                 placeholder="Specialty"
                                 options={specialty}
                                 isClearable={true}
@@ -278,6 +310,7 @@ const FindCourseOfferings = ({module})=>{
                         />
 
                         <Select styles ={ customStyle}
+                                ref={selectTypeRef}
                                 placeholder="Course Type"
                                 options={courseType}
                                 isClearable={true}
@@ -291,6 +324,7 @@ const FindCourseOfferings = ({module})=>{
                         />
 
                         <Select styles ={ customStyle}
+                                ref={selectLocRef}
                                 placeholder="Location"
                                 onChange={(option)=>{
                                     if(option == null) setLocFilter('')
@@ -309,7 +343,7 @@ const FindCourseOfferings = ({module})=>{
 
              <div className={"bg-primary-white py-14 my-8 "}>
                 <div className={"mx-auto max-w-screen-xl "}>
-                    <CourseBlock blockData={courses} filters={filters}/>
+                    <CourseBlock blockData={courses} filters={filters} cl={(e)=>{DeleteFilter(e)}}/>
                 </div>
              </div>
 
