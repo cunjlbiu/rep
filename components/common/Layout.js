@@ -54,7 +54,7 @@ function Layout(props) {
           <div id="site">
 
             <div className="flex flex-col min-h-screen">
-              <SiteHeader {...props} />
+              {/*<SiteHeader {...props} />*/}
               <main className="flex-grow">
                   <AgilityPageTemplate {...props} />
               </main>
