@@ -1,5 +1,5 @@
 import React from "react";
-import { FaTwitter, FaInstagram, FaSlack, FaYoutube } from "react-icons/fa";
+import {FaTwitter, FaInstagram, FaSlack, FaYoutube, FaFacebook, FaLinkedin} from "react-icons/fa";
 
 /**
  * This footer is not part of the content in the CMS, feel free to remove this for production use.
@@ -39,7 +39,67 @@ const SiteFooter = () => {
     },
   ];
 
-  return (null/*
+  return (
+
+      <div>
+        <div className={"flex max-w-screen-xl justify-between mx-auto h-[320px] pt-[70px]"}>
+
+
+          <div className={"space-y-7"}>
+            <img src={"/assets/CineMedLogo.svg"}/>
+            <p className={"text-primary-grey b3 w-[337px]"}>CineMed is a global healthcare solutions company committed to improving
+              patient outcomes through innovative training and customer engagement.</p>
+            <div className={"text-primary-grey flex space-x-[22px]"}>
+              <FaYoutube className={"w-6 h-6"}/>
+              <FaTwitter className={"w-6 h-6"}/>
+              <FaFacebook className={"w-6 h-6"}/>
+              <FaLinkedin className={"w-6 h-6"}/>
+            </div>
+            <p className={" b3 text-[11px] text-primary-grey "}>Copyright © CineMed. All Rights Reserved.</p>
+          </div>
+
+          <div className={"text-primary-darkblue space-y-3"}>
+            <p className={"bttn1 hover:bg-white"}>Company</p>
+            <p className={"b3 hover:bg-white"}>Healthcare Providers</p>
+            <p className={"b3 hover:bg-white"}>Healthcare Facilities</p>
+            <p className={"b3 hover:bg-white"}>Healthcare Industry</p>
+          </div>
+
+          <div className={"text-primary-darkblue space-y-3"}>
+            <p className={"bttn1 hover:bg-white"}>Education</p>
+            <p className={"b3 hover:bg-white"}>AORN Library</p>
+            <p className={"b3 hover:bg-white"}>ACS Library</p>
+            <p className={"b3 hover:bg-white"}>Vein Global</p>
+          </div>
+
+          <div className={"text-primary-darkblue space-y-3"}>
+            <p className={"bttn1 hover:bg-white"}>About us</p>
+            <p className={"b3 hover:bg-white"}>Printable order form</p>
+            <p className={"b3 hover:bg-white"}>Privacy policy</p>
+          </div>
+
+          <div className={"text-primary-darkblue space-y-3"}>
+            <p className={"bttn1 hover:bg-white"}>Contact us</p>
+            <p className={"b3 hover:bg-white"}>
+              CineMed, Inc. 127 Main Street<br/>
+              North Woodbury, CT 06798<br/>
+              <span className={"text-primary-blue"}>Free:</span> 1-800-253-7657<br/>
+              <span className={"text-primary-blue"}>Intl:</span> 1-203-263-0006<br/>
+              <span className={"text-primary-blue"}>Fax:</span> 1-203-263-4839</p>
+
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+      /*
     <footer className="relative px-8 py-6 md:py-4 mt-8 bg-gray-100">
       <div className="max-w-screen-xl mx-auto md:flex md:items-center">
         <div className="text-center mb-4 md:mb-0 md:text-left flex-shrink-0 relative">

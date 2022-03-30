@@ -72,7 +72,7 @@ module.exports = {
           capri:"#1CB7F8",
           blue: "#1C58F8",
           darkblue: "#0F1847",
-          grey: "#04182e",
+          grey: "#6B7395",
           white: "#FFFFFF",
           100: "#a273ff",
           200: "#935bff",
