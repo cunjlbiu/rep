@@ -35,6 +35,7 @@ import AORNHero from "./AORNHero";
 import FindCourseOfferings from "./FindCourseOfferings";
 import CreateCourseForm from "./CreateCourseForm";
 import Subscriptions from "./Subscriptions";
+import ButtonWithText from "./ButtonWithText";
 
 // All of the Agility Page Module Components that are in use in this site need to be imported into this index file.
 // Place Page Modules in allModules array below, passing in a name and the component.
@@ -77,6 +78,7 @@ const allModules = [
   { name: "CreateCourseForm", module: CreateCourseForm},
   { name: "FindCourseOfferings", module: FindCourseOfferings},
   { name: "Subscriptions", module: Subscriptions},
+  { name: "ButtonWithText", module: ButtonWithText},
 
 ];
 
