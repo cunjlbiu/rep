@@ -162,14 +162,14 @@ const CreateCourseForm =({module}) =>{
 
 
                     <div className={"bg-primary-white -translate-y-4 space-x-2 b3 space-y-2 "}><br/>
-                        Are these dates flexible <br/>
+                        Are these dates flexible? <br/>
                         <input id={"firstName"} name={"flexible"} type={"radio"}  style={{background:"white"}} value={"Yes"}/> Yes
                         <input id={"firstName"} name={"flexible"} type={"radio"}  style={{background:"white"}} value={"No"}/> No
                     </div>
 
                     <label className={"bg-primary-white w-[304px]"}><br/>
                         <input id={"locations"} name={"location"} placeholder={"Locations"} className={"contactForm w-[304px]"} style={{background:"white"}} required={true}/>
-                        <span className={"b3"}>Locations</span>
+                        <span className={"b3"}>Location</span>
                     </label>
 
                     <label className={"b3 pt-5 w-[304px]"}>
