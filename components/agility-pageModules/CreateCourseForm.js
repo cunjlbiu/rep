@@ -149,7 +149,7 @@ const CreateCourseForm =({module}) =>{
                             onChange={onChange}
                             startDate={startDate}
                             endDate={endDate}
-                            dateFormat="dd.MM.yyyy"
+                            dateFormat="MM.dd.yyyy"
                             selectsRange
                             monthsShown={2}
                             showDisabledMonthNavigation
