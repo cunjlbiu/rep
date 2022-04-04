@@ -37,29 +37,29 @@ const TextBlockWithImage = ({ module }) => {
     };
 
     return (
-        <div className="relative px-8" style={{backgroundColor: fields.bgColor}}>
+        <div className="relative lg:px-8 md:px-5" style={{backgroundColor: fields.bgColor}}>
 
-            <div className="flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center">
-                <div className="md:w-6/12 flex-shrink-0 relative">
+            <div className="flex flex-col lg:flex-row md:flex-columns justify-between max-w-screen-xl mx-auto py-20 md:py-5 items-center">
+                <div className="lg:w-6/12 md:w-full flex-shrink-0 relative">
                     <img src={fields.image.url}/>
                 </div>
                 <div
-                    className={`md:w-6/12 mt-16 md:mt-0 ${
+                    className={`lg:w-6/12 md:w-full mt-16 md:mt-0 ${
                         fields.imagePosition != "right"
-                            ? `md:ml-12 lg:ml-16 md:order-last`
-                            : `md:mr-12 lg:mr-16 md:order-first`
+                            ? `lg:ml-16 md:ml-{0px} lg:order-last md:lg:order-last`
+                            : `lg:mr-16 md:mr-{0px} lg:order-first md:lg:order-last`
                     }`}
                 >
-                    <div className="g:py-8 text-center justify-center md:text-left space-y-5">
+                    <div className="g:py-8 text-center justify-center lg:text-left  space-y-5">
                         <div className={"c3 text-primary-blue"}>{fields.caption}</div>
                         <h3 className={`${
                             fields.imagePosition != "right"
-                                ? `pr-8`
-                                : `pr-8`
+                                ? `lg:pr-8 md:pr-0 md:text-primary-darkblue md:text-[35px] md:text-left`
+                                : `lg:pr-8 md:pr-0 md:text-primary-darkblue md:text-[35px] md:text-left`
                         }`}>
                             {fields.title}
                         </h3>
-                        <div className="b1 space-y-5" dangerouslySetInnerHTML={renderHTML(fields.content)} >
+                        <div className="b1 space-y-5 md:text-left md:text-base" dangerouslySetInnerHTML={renderHTML(fields.content)} >
 
                         </div>
                         {fields.primaryButton &&

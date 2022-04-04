@@ -336,3 +336,40 @@ span.message{
 .datePickerMonth{
   width: 484px;
 }
+
+
+/*Carousel css*/
+.carousel-main {
+  min-height: 150px;
+  min-width: 315px;
+  display: flex;
+  align-items: center;
+}
+.carousel-window {
+  height:100%;
+  width:100%;
+  overflow: hidden;
+}
+.all-items-container {
+  height:100%;
+  display: flex;
+  transition: translate;
+  transition-property: transform;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+}
+.arrow {
+  cursor: pointer;
+}
+/* APP JS CSS */
+
+.item {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+.p-darkblue p {
+ color:#0F1847
+
+}

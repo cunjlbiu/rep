@@ -2,6 +2,8 @@ import React from "react";
 import {AgilityImage} from "@agility/nextjs";
 import { renderHTML } from "@agility/nextjs";
 import {FaCheck, FaEye, FaAward, FaBookmark, FaCertificate, FaHeart, FaUserAlt} from "react-icons/fa";
+import {Carousel} from '../common/Slider/Carousel'
+
 
 
 
@@ -14,7 +16,7 @@ const Cards = ({module}) =>{
 
     const Card = ({iconUrl, title, text, iconBg, cardBg, textClr}) => {
         return(
-            <div className={"border-2 border-agility w-80 card p-4 space-y-3 rounded-xl"} style={{backgroundColor: cardBg, color: textClr}}>
+            <div className={"border-2 border-agility w-80 card p-4 space-y-3 rounded-xl md:w-full md:h-full"} style={{backgroundColor: cardBg, color: textClr}}>
                 {iconUrl ?
                     <img className={"rounded"} src={iconUrl} height={"48"} width={"48"} style={{backgroundColor: iconBg}} />
                     : <div className={"w-12 h-12"}/>}
@@ -26,9 +28,9 @@ const Cards = ({module}) =>{
 
     return(
         <div className={"max-w-full justify-between py-6 "} style={{backgroundColor: fields.bgColor}}>
-            <div className="max-w-screen-xl my-8 mx-auto grid grid-cols-2 justify-center space-y-5">
-                <div className={"grid grid-cols-2 justify-center"}>
-                    <div className={"space-y-8"}>
+            <div className="max-w-screen-xl my-8 mx-auto grid grid-cols-2 md:md:grid-cols-1 justify-center space-y-5">
+                <div className={"grid grid-cols-2 md:grid-cols-1 justify-center"}>
+                    <div className={"space-y-8 md:hidden"}>
                         {fields.cards.slice(0).reverse().map((card, index) => {
                             if (index % 2 === 0)
                             return(
@@ -44,7 +46,26 @@ const Cards = ({module}) =>{
                         })
                         }
                     </div>
-                    <div className={"transform translate-y-12 space-y-8"}>
+                    <div className={"hidden md:flex md:justify-center"}>
+                        <Carousel>
+                                {fields.cards.slice(0).reverse().map((card, index) => {
+                                    return(
+                                        <div className={"w-[315px]"}>
+                                            <Card key={card.contentID.toString()}
+                                                  title={card.fields.title}
+                                                  text={card.fields.text}
+                                                  textClr={card.fields.textColor}
+                                                  iconUrl={card.fields.icon ? card.fields.icon.url : ''}
+                                                  iconBg={card.fields.iconBackground}
+                                                  cardBg={card.fields.cardBackground}
+                                            />
+                                        </div>
+                                    )
+                                })
+                                }
+                        </Carousel>
+                    </div>
+                    <div className={"transform translate-y-12 space-y-8 md:hidden"}>
                         {fields.cards.slice(0).reverse().map((card, index) => {
                             if (index % 2 !== 0)
                                 return(
@@ -61,16 +82,15 @@ const Cards = ({module}) =>{
                         }
                     </div>
                 </div>
-                <div className={"space-y-7 mx-auto py-28"}>
-                    <h3 dangerouslySetInnerHTML={renderHTML(fields.title)}></h3>
-                    <div className={"b1"} dangerouslySetInnerHTML={renderHTML(fields.text)}></div>
-
+                <div className={"space-y-7 mx-auto py-28 md:py-10 md:grid-cols-1 md:mx-5"}>
+                    <h3 className={"md:text-primary-darkblue md:text-[40px]"} dangerouslySetInnerHTML={renderHTML(fields.title)}></h3>
+                    <div className={" md:text-[16px] b1"} dangerouslySetInnerHTML={renderHTML(fields.text)}></div>
                     {listItems.map( (e,i) =>{
                         if (e.length > 0)
                         return(
                             <div key={i} className={"flex flex-auto space-x-6"}>
-                                <div><FaCheck className={"text-primary-blue"}></FaCheck></div>
-                                <div><p className={"b2"}>{e}</p></div>
+                                <div className={" md:flex md:items-center md:content-center"}><FaCheck className={"text-primary-blue md:items-center"}></FaCheck></div>
+                                <div><p className={"b2 md:b1 md:text-[16px]"}>{e}</p></div>
                             </div>
                         )}
                      )}

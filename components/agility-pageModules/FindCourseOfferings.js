@@ -257,7 +257,8 @@ const FindCourseOfferings = ({module})=>{
         console.log("filtering")
         //setFilter("")
     }
-
+    console.log(courses)
+    console.log("courses")
     return(
         <div className={"bg-secondary-blue "}>
             <div className={"max-w-screen-xl mx-auto py-16"}>
