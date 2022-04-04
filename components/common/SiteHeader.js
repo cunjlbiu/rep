@@ -34,7 +34,7 @@ const SiteHeader = ({ globalData, sitemapNode, page }) => {
               </a>
             </Link>
           </div>
-          <div className="-mr-2 -my-2 md:hidden">
+          <div className="-mr-2 -my-2 hidden md:block">
             <button
               onClick={() => setOpen(!open)}
               aria-label="Toggle Menu"
@@ -58,7 +58,7 @@ const SiteHeader = ({ globalData, sitemapNode, page }) => {
               </svg>
             </button>
           </div>
-          <nav className="hidden md:flex space-x-10">
+          <nav className="md:hidden flex space-x-10">
             {header.links.map((navitem, index) => {
               return (
                 <Link href={navitem.path} key={`mobile-${index}`}>
