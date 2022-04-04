@@ -32,7 +32,7 @@ const Advantages = ({module}) =>{
 
         return(
 
-            <div className={"flex flex-row text-secondary-green opacity-30 num-element"} onClick={(e)=>handleClick(position)}>
+            <div className={"flex flex-row text-secondary-green opacity-30 num-element cursor-pointer "} onClick={(e)=>handleClick(position)}>
                 <h3 className={"translate-y-2"}>#</h3>
                 <h2>{position + 1}</h2>
             </div>
@@ -43,7 +43,7 @@ const Advantages = ({module}) =>{
         <div className={"bg-soft-green"}>
             <div className={"max-w-screen-xl mx-auto flex flex-row py-16"}>
                 <div className={"w-6/12"}>
-                    <h2>What makes us different from others.</h2>
+                    <h2>What makes us different.</h2>
                     <div className={"grid grid-cols-8 py-5"}>
                         <div className={"w-3/12 text-primary-darkblue space-y-5"}>
                             { numbers.map((e, index)=>
@@ -53,20 +53,22 @@ const Advantages = ({module}) =>{
                                     position={index}/>
                             )}
                         </div>
-                        <div className={"col-span-7 w-11/12 pt-16 pl-5 b1"} dangerouslySetInnerHTML={renderHTML(numbers[numId].fields.text)}/>
-                        <div className={"col-start-2 -translate-y-8 space-x-2 bttn2 flex flex-row"} onClick={clickNext}>
+                        <div className={`col-span-7 w-11/12 pl-5 b1 transition-transform delay-100`}>
+                            <div dangerouslySetInnerHTML={renderHTML(numbers[numId].fields.text)} style={{translate:(`0px ${numId*92}px`)}}/>
+                        </div>
+                        <div className={"col-start-2 -translate-y-8 space-x-2 bttn2 flex flex-row hidden"} onClick={clickNext}>
                             <FaArrowDown className={"h-6"}></FaArrowDown>
                             <span>Next</span>
 
                         </div>
-                        <div className={"col-start-3 -translate-y-8 space-x-2 bttn2 flex flex-row"} onClick={clickPrev}>
+                        <div className={"col-start-3 -translate-y-8 space-x-2 bttn2 flex flex-row hidden"} onClick={clickPrev}>
                             <FaArrowUp className={"h-6"}></FaArrowUp>
                             <span>Previous</span>
                         </div>
                     </div>
                 </div>
                 <div className={"w-6/12 b1 max-h-80"} >
-                    {numbers[numId].fields.image ? <img src={numbers[numId].fields.image.url}/> : ''}
+                    {numbers[1].fields.image ? <img src={numbers[1].fields.image.url}/> : ''}
                 </div>
             </div>
         </div>
