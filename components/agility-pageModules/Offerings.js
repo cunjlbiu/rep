@@ -6,7 +6,7 @@ const CourseItem = ({data})=> {
     return(
         <div className={"py-10"}>
             <div className={"bg-agility w-11/12 h-80 rounded-xl text-white text-center"}>
-                {!data.image ? "image should be here" : <img src={data.image.url}/>}
+                {!data.image ? "image should be here" : <img className={"rounded-xl"} src={data.image.url}/>}
             </div>
             <div className={"b3 py-4"}>({new Date(data.date).getFullYear()}) (ITEM # {data.id})</div>
             <div className={"c1"}>{data.name}</div>

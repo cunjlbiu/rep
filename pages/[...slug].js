@@ -25,9 +25,16 @@ export async function getStaticProps({
     globalComponents,
   });
 
-  if (!agilityProps) {
+  // if (!agilityProps) {
+  //   // We throw to make sure this fails at build time as this is never expected to happen
+  //   throw new Error(`Page not found`);
+  // }
+
+  if (!agilityProps || agilityProps.notFound) {
     // We throw to make sure this fails at build time as this is never expected to happen
-    throw new Error(`Page not found`);
+    return {
+      notFound: true,
+    };
   }
 
   return {
@@ -49,8 +56,10 @@ export async function getStaticPaths({ locales, defaultLocale }) {
     defaultLocale,
   });
 
+  const filteredPaths = agilityPaths.filter(p => p !== "/404" && p !== "/500")
+
   return {
-    paths: agilityPaths,
+    paths: filteredPaths,
     fallback: true,
   };
 }

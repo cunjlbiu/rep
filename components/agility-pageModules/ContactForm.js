@@ -29,17 +29,17 @@ const ContactForm =({module}) =>{
 
 
                 <label className={""}><br/>
-                <input id={"firstName"} name={"firstName"} placeholder={"First name"} className={"contactForm"} required={true}/>
+                <input id={"firstName"} name={"firstName"} placeholder={"First name"} className={"contactForm w-[416px]"} required={true}/>
                     <span className={"b3"}>First name</span>
                 </label>
 
                 <label className={"b3"}><br/>
-                    <input id={"lastName"}  name={"lastName"} placeholder={"Last Name"} className={"contactForm"} required={true}/>
+                    <input id={"lastName"}  name={"lastName"} placeholder={"Last Name"} className={"contactForm w-[416px]"} required={true}/>
                     <span className={"b3"}>Last name</span>
                 </label>
 
                 <label className={""}><br/>
-                <input id={"email"} name={"email"} placeholder={"Email"} className={"contactForm"} type={"email"} required={true}/>
+                <input id={"email"} name={"email"} placeholder={"Email"} className={"contactForm w-[416px]"} type={"email"} required={true}/>
                     <span className={"b3"}>Email</span>
                 </label>
 
@@ -49,8 +49,8 @@ const ContactForm =({module}) =>{
                                 required={true}
                                 inputProps={{name : "phone"}}
                                 country={"us"}
-                                inputStyle={{backgroundColor:"#F0F9FF"}}
-                                containerStyle={{backgroundColor:"#F0F9FF"}}
+                                inputStyle={{backgroundColor:"#F0F9FF", width:"416px"}}
+                                containerStyle={{backgroundColor:"#F0F9FF", width:"416px"}}
                                 buttonStyle={{backgroundColor:"#F0F9FF !important;"}}
                                 isValid={(value, country) => {
                                     if (value.match(/12345/)) {
@@ -66,13 +66,13 @@ const ContactForm =({module}) =>{
 
 
                 <label className={""}><br/>
-                    <input id={"companyName"} name={"companyName"} placeholder={"Company name"} className={"contactForm"} required={true}/>
+                    <input id={"companyName"} name={"companyName"} placeholder={"Company name"} className={"contactForm w-[416px]"} required={true}/>
                     <span className={"b3"}>Company Name</span>
                 </label>
 
 
                 <label className={"b3"}><br/>
-                <input id={"position"} name={"position"} placeholder={"Position"} className={"contactForm"} required={true}/>
+                <input id={"position"} name={"position"} placeholder={"Position"} className={"contactForm w-[416px]"} required={true}/>
                     <span className={"b3"}>Position</span>
                 </label>
 
@@ -104,7 +104,7 @@ const ContactForm =({module}) =>{
 
                     <label className={"b3 message"}><br/>
                     <input type="text"
-                           className={"contactForm select"}
+                           className={"contactForm w-[864px]"}
                            placeholder={"If you need support for a specific event, please include the name and URL of that event."}
                            name={"message"}
                            id={"message"}

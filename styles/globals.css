@@ -163,7 +163,7 @@ a.bttn1:hover{
 
 .datePicker{
   height: 35px !important;
-  width: 416px !important;
+  width: 304px !important;
   border-width: 0px 0px 1px 0px !important;
   background-color: #FFFFFF;
   border-color: #C9D5FD !important;
@@ -179,7 +179,6 @@ a.bttn1:hover{
 
 .contactForm{
   height: 35px !important;
-  width: 416px !important;
   border-width: 0px 0px 1px 0px !important;
   background-color: #F0F9FF;
   border-color: #C9D5FD !important;
@@ -201,7 +200,7 @@ a.bttn1:hover{
 
 .select.contactForm{
   height: 35px !important;
-  width: 864px !important;
+  width: 864px;
   border-width: 0px 0px 1px 0px !important;
   background-color: #F0F9FF;
   border-color: #C9D5FD !important;

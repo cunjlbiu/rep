@@ -1,5 +1,6 @@
 import React from "react";
 import { renderHTML } from "@agility/nextjs";
+import ButtonWithText from "./ButtonWithText";
 
 const RichTextArea = ({ module }) => {
   // get module fields

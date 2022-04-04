@@ -23,7 +23,7 @@
     "react-icons": "^4.3.1",
     "react-phone-input-2": "^2.14.0",
     "react-select": "^5.2.2",
-    "react-slick": "^0.28.1",
+    "react-switch": "^6.0.0",
     "timers": "^0.1.1"
   },
   "devDependencies": {

@@ -33,33 +33,33 @@ const AORNHero = ({module}) => {
         }
     };
     return(
-        <div style={{backgroundColor: fields.bgColor}} className={"mb-60 "}>
+        <div style={{backgroundColor: fields.bgColor}} className={"h-[1600px]"}>
             <div className={"max-w-screen-xl mx-auto flex flex-row my-8"}>
                 <div className={"w-7/12"}>
                     <img src={fields.logo.url}/>
-                    <h1 className={"pr-6"}>{fields.title}</h1>
+                    <h1 className={"pr-6 w-[751px]"}>{fields.title}</h1>
                     <p className={"b1 w-8/12 pl-12 border-secondary-green border-l-2 my-6"}>{fields.text}</p>
                 </div>
-                <div className={"w-5/12"}>
-                    <img className={""} src={fields.image.url}/>
+                <div className={"translate-y-12"}>
+                    <img className={"scale-[1.3]"} src={fields.image.url}/>
                 </div>
             </div>
 
             <div className={"bg-soft-green"}>
                 <div className={"max-w-screen-xl mx-auto"}>
-                    <div className={"max-w-screen-lg mx-auto bg-primary-white -translate-y-1/2 py-16 px-32 text-center "}>
+                    <div className={" mx-auto bg-primary-white rounded-xl border-2 border-soft-green -translate-y-1/2 py-16 px-32 text-center mt-28 "}>
                         <p className={"b1"}>Our continued education offerings are perfect for training new perioperative nurses as well as experienced
                             registered nurses who are looking to transition into the perioperative suite from another specialty.</p><br/>
                         <p className={"b1"}>Pay per course, assigning only the videos suitable for your students, or purchase an Annual subscription
-                            to unlock complete access to our entire library of AORN online curriculum.</p>
+                            <br/>to unlock complete access to our entire library of AORN online curriculum.</p>
                     </div>
                     <div className={"grid grid-cols-2 "}>
-                        <h3>
+                        <h3 className={"w-[640px] h-[200px]"}>
                             We deliver consistent evidence-based perioperative training for…
                         </h3>
 
 
-                        <div className={"space-y-6 "}>
+                        <div className={"space-y-6 pl-32 "}>
                             <div className={"flex flex-auto space-x-6"}>
                                 <div><FaCheck className={"text-primary-blue"}></FaCheck></div>
                                 <div><p className={"b2"}>Registered Nurses currently enrolled in Periop 101</p></div>
@@ -86,12 +86,13 @@ const AORNHero = ({module}) => {
                             </div>
                         </div>
 
-                        <div className={"translate-y-1/2 rounded-xl "} dangerouslySetInnerHTML={renderHTML(fields.video)}></div>
+                        <div className={" rounded-xl z-50 -translate-y-32 "} dangerouslySetInnerHTML={renderHTML(fields.video)}></div>
 
                     </div>
 
                 </div>
             </div>
+            <div className={"bg-white h-60 w-full -translate-y-60"}></div>
         </div>
     )
 };

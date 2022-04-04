@@ -70,8 +70,8 @@ const SiteHeader = ({ globalData, sitemapNode, page }) => {
             })}
           </nav>
           <div className={"flex flex-row items-center space-x-4 my-6"}>
-            <a className={"flex bttn1 w-36 h-12 items-center bg-primary-blue rounded-full"}><p className={"mx-auto text-primary-white"}>Create course</p></a>
-            <a className={"flex bttn1 w-36 h-12 items-center border-primary-blue rounded-full border-primary-blue border-2 text-primary-blue"}><p className={"mx-auto"}>Find a Course</p></a>
+            <a className={"flex bttn1 w-36 h-12 items-center bg-primary-blue rounded-full"}><p className={"mx-auto text-primary-white"}>Create a Course</p></a>
+            <a className={"flex bttn1 w-36 h-12 items-center border-primary-blue rounded-full border-primary-blue border-2 text-primary-blue"} href={"https://cinemed-agility.vercel.app/find-a-course"}><p className={"mx-auto"}>Find a Course</p></a>
           </div>
         </div>
       </div>
