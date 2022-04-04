@@ -94,7 +94,7 @@ const Cards = ({module}) =>{
                             </div>
                         )}
                      )}
-                    <a className={"flex bttn1 w-36 h-12 items-center bg-primary-blue rounded-full"}><p className={"mx-auto text-primary-white"}>Create course</p></a>
+                    <a className={"flex bttn1 w-36 h-12 items-center bg-primary-blue rounded-full"} href={"/create-course"}><p className={"mx-auto text-primary-white"}>Create course</p></a>
 
                 </div>
             </div>

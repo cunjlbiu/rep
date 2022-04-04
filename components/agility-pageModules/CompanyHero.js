@@ -5,7 +5,7 @@ const CompanyHero = ({module}) =>{
     const {fields} = module;
 
     return(
-        <div className={"bg-soft-purple"}>
+        <div className={"bg-soft-purple pt-10"}>
             <div className={"max-w-screen-xl mx-auto"}>
                 <div className={"flex my-8 items-center justify-between"}>
                     <h1 className={"w-10/12"}>{fields.title}</h1>
