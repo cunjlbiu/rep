@@ -1,5 +1,4 @@
 import React from "react";
-import Slider from "react-slick";
 import {AgilityImage} from "@agility/nextjs";
 import { renderHTML } from "@agility/nextjs";
 import {FaCheck, FaEye, FaAward, FaBookmark, FaCertificate, FaHeart, FaUserAlt} from "react-icons/fa";
