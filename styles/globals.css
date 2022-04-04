@@ -341,8 +341,8 @@ span.message{
 
 /*Carousel css*/
 .carousel-main {
-  height: 150px;
-  width: 315px;
+  min-height: 150px;
+  min-width: 315px;
   display: flex;
   align-items: center;
 }
@@ -370,12 +370,7 @@ span.message{
   justify-content: center;
   user-select: none;
 }
-.item-1 {
-  background-color:blueviolet;
-}
-.item-2 {
-  background-color:violet;
-}
-.item-3 {
-  background-color: palevioletred;
+.p-darkblue p {
+ color:#0F1847
+
 }

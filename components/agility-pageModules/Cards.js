@@ -83,7 +83,7 @@ const Cards = ({module}) =>{
                         }
                     </div>
                 </div>
-                <div className={"space-y-7 mx-auto py-28 md:grid-cols-1 md:mx-5"}>
+                <div className={"space-y-7 mx-auto py-28 md:py-10 md:grid-cols-1 md:mx-5"}>
                     <h3 className={"md:text-primary-darkblue md:text-[40px]"} dangerouslySetInnerHTML={renderHTML(fields.title)}></h3>
                     <div className={" md:text-[16px] b1"} dangerouslySetInnerHTML={renderHTML(fields.text)}></div>
                     {listItems.map( (e,i) =>{
