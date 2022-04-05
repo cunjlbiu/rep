@@ -7,6 +7,7 @@ import SEO from "./SEO";
 import SiteHeader from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
 import LoadingWidget from "./LoadingWidget";
+import SiteTempHeader from "./SiteTempHeader";
 
 // set up handle preview
 const isPreview = handlePreview();
@@ -54,7 +55,7 @@ function Layout(props) {
           <div id="site">
 
             <div className="flex flex-col min-h-screen">
-              <SiteHeader {...props} />
+              <SiteTempHeader {...props} />
               <main className="flex-grow">
                   <AgilityPageTemplate {...props} />
               </main>

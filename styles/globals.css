@@ -386,3 +386,38 @@ span.message{
  color:#0F1847
 
 }
+
+
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 120px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+.shape {
+  position: absolute;
+  width: 8px;
+  height: 4px;
+  left: calc(50% - 8px/2);
+  top: calc(50% - 4px/2 + 1px);
+
+  /* Primary/Dark Blue */
+  background: #0F1847;
+  border-radius: 0.5px;
+}
