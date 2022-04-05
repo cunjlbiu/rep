@@ -42,7 +42,7 @@ const SiteFooter = () => {
   return (
 
       <div>
-        <div className={"flex max-w-screen-xl justify-between mx-auto h-[320px] pt-[70px]"}>
+        <div className={"flex max-w-screen-xl justify-between mx-auto h-[320px] pt-[70px] md:hidden"}>
 
 
           <div className={"space-y-7"}>
@@ -86,17 +86,57 @@ const SiteFooter = () => {
               <span className={"text-primary-blue"}>Free:</span> 1-800-253-7657<br/>
               <span className={"text-primary-blue"}>Intl:</span> 1-203-263-0006<br/>
               <span className={"text-primary-blue"}>Fax:</span> 1-203-263-4839</p>
-
           </div>
+        </div>
 
+        {/*Mobile Footer 1/3*/}
+
+        <div className = {"lg:hidden md:flex md:w-full md:min-w-[335px] md:px-5"}>
+          <div className = {"md:flex md:flex-col"}>
+            <div className = {"md:flex md:flex-col md:mt-10"}>
+                <img className={"md:w-[134px]"} src={"/assets/CineMedLogo.svg"}/>
+                <p className = {"text-[12px] md:b3 md:text-primary-grey md:mt-3.5"}>
+                    CineMed is a global healthcare solutions company committed to improving patient outcomes through innovative training and customer engagement.
+                </p>
+            </div>
+
+            {/*2/3*/}
+            <div className = {"md:flex md:flex-row  md:mt-10"}>
+              <div className={"md:flex md:flex-col md:w-6/12"}>
+                <a className={"bttn2 text-primary-darkblue"} href="#">The Cinemed</a>
+                <a className={"b2 pt-2 text-primary-darkblue"} href="#">Company</a>
+                <a className={"b2 pt-2 text-primary-darkblue"} href="#">About us</a>
+                <a className={"b2 pt-2 text-primary-darkblue"} href="#">Contact us</a>
+                <a className={"b2 pt-2 text-primary-darkblue"} href="#">Create a course</a>
+                <a className={"b2 pt-2 text-primary-darkblue"} href="#">Find a course</a>
+              </div>
+              <div className={"md:flex md:flex-col md:w-6/12 justify-start"}>
+                <a className={"bttn2 md:text-primary-darkblue"} href="">Education</a>
+                <a className={"b2 pt-2 text-primary-darkblue"} href="">AORN Library</a>
+                <a className={"b2 pt-2 text-primary-darkblue"} href="">ACS Library</a>
+                <a className={"b2 pt-2 text-primary-darkblue"} href="">Vein Global</a>
+              </div>
+            </div>
+
+
+
+
+            <div className = {"flex flex-col mt-11"}>
+              <div className={"flex text-primary-grey"}>
+                <a href=""><FaYoutube className={"w-[23px] h-[17px]"}/></a>
+                <a className={"pl-5"} href="#"><FaTwitter className={"w-[23px] h-[17px]"}/></a>
+                <a className={"pl-5"} href="#"><FaFacebook className={"w-[23px] h-[17px]"}/></a>
+                <a className={"pl-5"} href="#"><FaLinkedin className={"w-[23px] h-[17px]"}/></a>
+              </div>
+              <div className={"flex flex-col mt-5"}>
+                <p className={"b4"}>
+                    Copyright © CineMed. All Rights Reserved.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-
-
-
-
-
 
 
       /*
@@ -164,8 +204,8 @@ const SiteFooter = () => {
           </ul>
         </div>
       </div>
-    </footer>*/
+    </footer>
+       */
   );
 };
-
 export default SiteFooter;
