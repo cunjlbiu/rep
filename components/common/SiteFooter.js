@@ -104,17 +104,17 @@ const SiteFooter = () => {
             <div className = {"md:flex md:flex-row  md:mt-10"}>
               <div className={"md:flex md:flex-col md:w-6/12"}>
                 <a className={"bttn2 text-primary-darkblue"} href="#">The Cinemed</a>
-                <a className={"b2 pt-2 text-primary-darkblue"} href="#">Company</a>
-                <a className={"b2 pt-2 text-primary-darkblue"} href="#">About us</a>
-                <a className={"b2 pt-2 text-primary-darkblue"} href="#">Contact us</a>
-                <a className={"b2 pt-2 text-primary-darkblue"} href="#">Create a course</a>
-                <a className={"b2 pt-2 text-primary-darkblue"} href="#">Find a course</a>
+                <a className={"b2 pt-2 text-primary-darkblue"} href="/company">Company</a>
+                <a className={"b2 pt-2 text-primary-darkblue"} href="/aboutus">About us</a>
+                <a className={"b2 pt-2 text-primary-darkblue"} href="/contact">Contact us</a>
+                <a className={"b2 pt-2 text-primary-darkblue"} href="/create-course">Create a course</a>
+                <a className={"b2 pt-2 text-primary-darkblue"} href="/find-a-course">Find a course</a>
               </div>
               <div className={"md:flex md:flex-col md:w-6/12 justify-start"}>
                 <a className={"bttn2 md:text-primary-darkblue"} href="">Education</a>
-                <a className={"b2 pt-2 text-primary-darkblue"} href="">AORN Library</a>
-                <a className={"b2 pt-2 text-primary-darkblue"} href="">ACS Library</a>
-                <a className={"b2 pt-2 text-primary-darkblue"} href="">Vein Global</a>
+                <a className={"b2 pt-2 text-primary-darkblue"} href="/aorn">AORN Library</a>
+                <a className={"b2 pt-2 text-primary-darkblue"} href="/ACS">ACS Library</a>
+                <a className={"b2 pt-2 text-primary-darkblue"} href="/VeinGlobal">Vein Global</a>
               </div>
             </div>
 
