@@ -7,7 +7,7 @@ const Advantages = ({module}) =>{
     const [numId, setNumId] = useState(0);
     const numbers = fields.list.slice(0).reverse()
     const length = numbers.length
-    useEffect(()=>{handleClick(1)},[])
+    //useEffect(()=>{handleClick(1)},[])
 
     function clickNext(){
         if (numId < length-1) handleClick(numId+1);
@@ -32,7 +32,7 @@ const Advantages = ({module}) =>{
 
         return(
 
-            <div className={"flex flex-row text-secondary-green opacity-30 num-element cursor-pointer "} onClick={(e)=>handleClick(position)}>
+            <div className={"flex flex-row num-element cursor-default "}>
                 <h3 className={"translate-y-2"}>#</h3>
                 <h2>{position + 1}</h2>
             </div>
@@ -53,8 +53,11 @@ const Advantages = ({module}) =>{
                                     position={index}/>
                             )}
                         </div>
-                        <div className={`col-span-7 w-11/12 pl-5 b1 transition-transform delay-100`}>
-                            <div dangerouslySetInnerHTML={renderHTML(numbers[numId].fields.text)} style={{translate:(`0px ${numId*92}px`)}}/>
+                        <div className={`col-span-7 w-11/12 pl-5 b1 space-y-5`}>
+                            {numbers.map((e,i)=>{
+                                return <div dangerouslySetInnerHTML={renderHTML(e.fields.text)} className={"h-[72px] py-1"}/>
+
+                            })}
                         </div>
                         <div className={"col-start-2 -translate-y-8 space-x-2 bttn2 flex flex-row hidden"} onClick={clickNext}>
                             <FaArrowDown className={"h-6"}></FaArrowDown>
