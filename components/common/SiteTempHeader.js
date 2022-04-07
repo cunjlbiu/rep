@@ -19,9 +19,9 @@ const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
     }
 
     return (
-        <header className="relative w-full mx-auto px-8 h-24 bg-primary-white py-4 my-2">
+        <header className="lg:relative lg:w-full lg:mx-auto lg:px-8 lg:h-24 lg:bg-primary-white lg:py-4 lg:my-2">
 
-           <div className={"flex flex-row max-w-screen-xl justify-between mx-auto"}>
+           <div className={"lg:flex lg:flex-row lg:max-w-screen-xl lg:justify-between lg:mx-auto md:hidden"}>
                <div>
                    <a href={"/"}><img src={header.logo.url}/></a>
                </div>
@@ -43,6 +43,34 @@ const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
                    <a className={"flex bttn1 w-36 h-12 items-center border-primary-blue rounded-full border-primary-blue border-2 text-primary-blue"} href={"/find-a-course"}><p className={"mx-auto"}>Find a Course</p></a>
                </div>
            </div>
+
+           {/* Burger Menu */}
+            
+            <div class="top-nav lg:hidden">
+                <div className={"mobile-logo"}>
+                        <a href={"/"}><img src={header.logo.url}/></a>
+                 </div>
+                    <input id="menu-toggle" type="checkbox" />
+                    <label class='menu-button-container' for="menu-toggle">
+                        <div class='menu-button'></div>
+                    </label>
+                        <ul class="menu">
+                            <li><a className={"b3 text-primary-darkblue"} href={"/company"}>Company</a></li>
+                            <li className={"dropdown"}><a className={"b3 text-primary-darkblue"} href={"#"}>Education</a>
+                                <div className={"dropdown-content"}>
+                                    asdbadbadbadajsd
+                                </div>
+                            </li>
+                            <li><a className={"b3 text-primary-darkblue"} href={"/aboutus"}>About</a></li>
+                            <li><a className={"b3 text-primary-darkblue"} href={"/contact"}>Contact us</a></li>
+                            <li className={"mt-[250px]"}>
+                                <div className={"mobile-menu-buttons flex flex-row items-center space-x-4 md:justify-center bg-white w-full "}>
+                                    <a className={"flex bttn1 w-36 h-12 items-center bg-primary-blue rounded-full"} href={"/create-course"}><p className={"mx-auto text-primary-white md:text-[14px]"}>Create course</p></a>
+                                    <a className={"flex bttn1 w-36 h-12 items-center border-primary-blue rounded-full border-primary-blue border-2 text-primary-blue"} href={"/find-a-course"}><p className={"mx-auto md:text-[14px]"}>Find a Course</p></a>
+                                </div>
+                            </li>
+                        </ul>
+            </div>
 
         </header>
     );

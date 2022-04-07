@@ -3,6 +3,10 @@ import {renderHTML} from "@agility/nextjs";
 
 const FormSuccess = ({module}) =>{
     const {fields} = module;
+    
+    
+    console.log(fields.formLink)
+
 
     return(
         <div className={"contents"}>
@@ -15,7 +19,7 @@ const FormSuccess = ({module}) =>{
                     <a className={"flex bttn1 w-36 h-12 items-center border-primary-blue rounded-full border-primary-blue border-2 text-primary-blue"}
                        href={"https://cinemed-agility.vercel.app/home"}><p className={"mx-auto"}>Back Home</p></a>
                     <a className={"flex bttn1 w-36 h-12 items-center bg-primary-blue rounded-full"}
-                       href={"https://cinemed-agility.vercel.app/contact"}><p className={"mx-auto text-primary-white"}>Reapply Form</p></a>
+                       href={fields.formLink.href}><p className={"mx-auto text-primary-white"}>{fields.formLink.text}</p></a>
                 </div>
             </div>
         </div>
