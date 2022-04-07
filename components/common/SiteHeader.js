@@ -76,7 +76,7 @@ const SiteHeader = ({ globalData, sitemapNode, page }) => {
         </div>
       </div>
 
-      <div
+      <divz
         className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden z-20"
         style={{ display: open ? "block" : "none" }}
       >
@@ -146,7 +146,7 @@ const SiteHeader = ({ globalData, sitemapNode, page }) => {
             </div>
           </div>
         </div>
-      </div>
+      </divz>
     </header>
   );
 };

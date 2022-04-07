@@ -57,9 +57,6 @@ const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
                         <ul class="menu">
                             <li><a className={"b3 text-primary-darkblue"} href={"/company"}>Company</a></li>
                             <li className={"dropdown"}><a className={"b3 text-primary-darkblue"} href={"#"}>Education</a>
-                                <div className={"dropdown-content"}>
-                                    asdbadbadbadajsd
-                                </div>
                             </li>
                             <li><a className={"b3 text-primary-darkblue"} href={"/aboutus"}>About</a></li>
                             <li><a className={"b3 text-primary-darkblue"} href={"/contact"}>Contact us</a></li>

@@ -427,6 +427,7 @@ span.message{
 
 .mobile-menu-buttons {
   height: 100vh;
+  pointer-events: none
 }
 
 .menu-button,
@@ -478,6 +479,7 @@ span.message{
     width: 100%;
     justify-content: center;
     align-items: center;
+    background-color: #fff;
   }
   #menu-toggle ~ .menu li {
     height: 0;
