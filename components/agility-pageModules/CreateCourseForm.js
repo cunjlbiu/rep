@@ -25,6 +25,9 @@ const CreateCourseForm =({module}) =>{
 
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(null);
+    const [reqSelectOne, setReqSelectOne] = useState('')
+    const [reqSelectTwo, setReqSelectTwo] = useState('')
+    const [reqSelectBudget, setReqSelectBudget] = useState('')
     const [t, setT] = useState(null)
     const onChange = (dates) => {
         const [start, end] = dates;
@@ -109,19 +112,24 @@ const CreateCourseForm =({module}) =>{
                         <Select
                             options={courseTypes}
                             name={"courseType"}
-                            onChange={(option)=>setT(option.online)}
+                            onChange={(option)=>{
+                                setT(option.online)
+                                setReqSelectOne(option.value)
+                            }}
                             placeholder="Course type"
                             classNamePrefix="react-select-create"
                             styles ={{
                                 indicatorSeparator: (styles) => ({display:'none'})
                             }}
                         />
+                        <input className={"absolute w-0 h-0 top-12 left-4 opacity-0"} tabIndex={-1} required={true} value={reqSelectOne} autoComplete={"off"}/>
                     </label>
 
                     <label className={"b3 pt-4 w-[304px]"}>
 
                         <Select
                             options={formats}
+                            onChange={option=>setReqSelectTwo(option.value)}
                             isOptionDisabled={(option) => option.online != t}
                             name={"courseFormat"}
                             placeholder="Format"
@@ -130,6 +138,8 @@ const CreateCourseForm =({module}) =>{
                                 indicatorSeparator: (styles) => ({display:'none'})
                             }}
                         />
+                        <input className={"absolute w-0 h-0 top-12 left-4 opacity-0"} tabIndex={-1} required={true} value={reqSelectTwo} autoComplete={"off"}/>
+
                     </label>
 
                     <label className={"bg-primary-white col-span-2 w-[640px]"}><br/>
@@ -163,7 +173,7 @@ const CreateCourseForm =({module}) =>{
 
                     <div className={"bg-primary-white -translate-y-4 space-x-2 b3 space-y-2 "}><br/>
                         Are these dates flexible? <br/>
-                        <input id={"firstName"} name={"flexible"} type={"radio"}  style={{background:"white"}} value={"Yes"}/> Yes
+                        <input id={"firstName"} name={"flexible"} type={"radio"}  style={{background:"white"}} value={"Yes"} required={true}/> Yes
                         <input id={"firstName"} name={"flexible"} type={"radio"}  style={{background:"white"}} value={"No"}/> No
                     </div>
 
@@ -176,6 +186,7 @@ const CreateCourseForm =({module}) =>{
 
                         <Select
                             options={budgets}
+                            onChange={options => setReqSelectBudget(options.value)}
                             name={"budget"}
                             placeholder="Budget"
                             classNamePrefix="react-select-create"
@@ -183,6 +194,8 @@ const CreateCourseForm =({module}) =>{
                                 indicatorSeparator: (styles) => ({display:'none'})
                             }}
                         />
+                        <input className={"absolute w-0 h-0 top-12 left-4 opacity-0"} tabIndex={-1} required={true} value={reqSelectBudget} autoComplete={"off"}/>
+
                     </label>
 
                     <label className={"bg-primary-white col-span-2 w-[640px] "}><br/>

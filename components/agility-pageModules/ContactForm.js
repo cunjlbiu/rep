@@ -4,7 +4,7 @@ import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css'
 const ContactForm =({module}) =>{
     const {fields} = module;
-    const [subSpec, setSubSpec] = useState(true)
+    const [subSpec, setSubSpec] = useState('')
     const Specialities = fields.specialities.split('</p>').map((e) =>{
         let elem = e.slice(e.indexOf('<p>')+3)
         return {value: elem, label: elem, disabled: false, subDisabled: false}
@@ -14,6 +14,7 @@ const ContactForm =({module}) =>{
         for ( let k of Specialities)
             k.disabled = false;
         value.disabled = true;
+        setSubSpec(value.label);
     }
     const onSubSelect =(value) =>{
         for ( let k of Specialities)
@@ -88,7 +89,9 @@ const ContactForm =({module}) =>{
                                 indicatorSeparator: (styles) => ({display:'none'})
                             }}
                     />
+                        <input className={"absolute w-0 h-0 top-12 left-4 opacity-0"} tabIndex={-1} required={true} value={subSpec} autoComplete={"off"}/>
                         </label>
+
                     <label className={"b3 pt-4"}>
                         <Select options={Specialities}
                                 isOptionDisabled={(option) => option.disabled}

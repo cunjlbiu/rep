@@ -45,8 +45,8 @@ const HomeHeading  = ({module}) => {
                         </div>
                     </div>
                     <div className={"flex flex-row items-center space-x-4 my-6 md:ml-5 md:justify-center"}>
-                        <a className={"flex bttn1 w-36 h-12 items-center bg-primary-blue rounded-full"} href={"/create-course"}><p className={"mx-auto text-primary-white md:text-[14px]"}>Create course</p></a>
-                        <a className={"flex bttn1 w-36 h-12 items-center border-primary-blue rounded-full border-primary-blue border-2 text-primary-blue"} href={"/find-a-course"}><p className={"mx-auto md:text-[14px]"}>Find a Course</p></a>
+                        <a className={"flex bttn1 w-36 h-12 items-center bg-primary-blue rounded-full"} href={fields.leftButton.href}><p className={"mx-auto text-primary-white md:text-[14px]"}>{fields.leftButton.text}</p></a>
+                        <a className={"flex bttn1 w-36 h-12 items-center border-primary-blue rounded-full border-primary-blue border-2 text-primary-blue"} href={fields.rightButton.href}><p className={"mx-auto md:text-[14px]"}>{fields.rightButton.text}</p></a>
                     </div>
                 </div>
                 <div className={"lg:w-6/12 md:w-full md:justify-center md:items-center"}>
