@@ -13,7 +13,7 @@ const FindCourse = ({module}) =>{
 
                 <div className="custom-search mx-auto">
                     <input type="text" className="custom-search-input" placeholder="Search"/>
-                        <button className="custom-search-botton" type="submit">Find a course</button>
+                        <a className="absolute right-[6px] top-[6px] bg-primary-blue text-primary-white rounded-full w-[140px] px-5 py-3 h-[56px] bttn1" href >Find a course</a>
                 </div>
 
             </div>
