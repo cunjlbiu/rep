@@ -291,7 +291,7 @@ const FindCourseOfferings = ({module})=>{
                                 />
                                 <p>On-Demand</p>
                             </div>
-                            <button className="custom-search-botton bttn2 w-[130px] active:bg-primary-blue hover:bg-primary-darkblue" type="submit" onClick={ApplyFilters}>Find a course</button>
+                        <a href={"#fil"}><button className="custom-search-botton bttn2 w-[130px] active:bg-primary-blue hover:bg-primary-darkblue" type="submit" onClick={ApplyFilters}>Find a course</button></a>
                     </div>
 
                     <div className={"w-[860px] flex justify-evenly bg-primary-white rounded-full mx-auto py-6 mt-6"}>
@@ -343,7 +343,7 @@ const FindCourseOfferings = ({module})=>{
 
 
              <div className={"bg-primary-white py-14 my-8 "}>
-                <div className={"mx-auto max-w-screen-xl "}>
+                <div className={"mx-auto max-w-screen-xl "} id={"fil"}>
                     <CourseBlock blockData={courses} filters={filters} cl={(e)=>{DeleteFilter(e)}}/>
                 </div>
              </div>
