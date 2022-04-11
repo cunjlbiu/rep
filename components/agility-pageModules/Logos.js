@@ -13,7 +13,7 @@ const Logos = ({module}) =>{
                     additionalTransfrom={100}
                     arrows = {false}
                     autoPlay ={true}
-                    autoPlaySpeed={3000}
+                    autoPlaySpeed={1500}
                     centerMode={false}
                     className=""
                     containerClass=""
