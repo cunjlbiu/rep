@@ -7,7 +7,9 @@ const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
     const { header } = globalData;
     // open / close mobile nav
     const [open, setOpen] = useState(false);
-    console.log(page)
+    
+    const [dropDownOpen, setDropdownOpen] = useState(false);
+    console.log(dropDownOpen)
 
 
     if (!header) {
@@ -17,6 +19,32 @@ const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
             </header>
         );
     }
+
+    const dropDownClick = () => {
+        setDropdownOpen(!dropDownOpen)
+        console.log('click')
+    }
+
+    console.log(dropDownOpen)
+    console.log(`${!dropDownOpen && 'hidden'}`)
+
+
+            {/* Burger Menu REMAKE */}
+
+
+            const [isOpenMenu, setIsOpenMenu] = useState(false)
+            const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+            const onDropdownClick = () => {
+                setIsDropdownOpen(!isDropdownOpen)
+            }
+
+            const onButtonClick = () => setIsOpenMenu(!isOpenMenu)
+
+
+
+            {/* Burger Menu REMAKE */}
+
+
 
     return (
         <header className="lg:relative lg:w-full lg:mx-auto lg:px-8 lg:h-24 lg:bg-primary-white lg:py-4 lg:my-2">
@@ -45,29 +73,96 @@ const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
            </div>
 
            {/* Burger Menu */}
-            
-            <div class="top-nav lg:hidden">
-                <div className={"mobile-logo"}>
-                        <a href={"/"}><img src={header.logo.url}/></a>
-                 </div>
-                    <input id="menu-toggle" type="checkbox" />
-                    <label class='menu-button-container' for="menu-toggle">
-                        <div class='menu-button'></div>
+
+
+
+
+            {/* Burger Menu REMAKE */}
+
+
+            <div className={"lg:hidden md:block  w-full"}>
+                <div className={"flex top-nav flex-center items-center p-5  justify-between w-full"}>
+                    <a href={"/"}><img className={"min-w-[144px] w-[133px]"} src={header.logo.url}/></a>
+                    <label className='menu-button-container' onClick={onButtonClick} htmlFor="menu-toggle">
+                        <div className='menu-button'></div>
                     </label>
-                        <ul class="menu">
-                            <li><a className={"b3 text-primary-darkblue"} href={"/company"}>Company</a></li>
-                            <li className={"dropdown"}><a className={"b3 text-primary-darkblue"} href={"#"}>Education</a>
+                </div>
+                <div className={`burger-menu ${isOpenMenu && 'open'}`}>
+                    <div className={"flex  flex-center items-center p-5  justify-between w-full"}>
+                    </div>
+                    <div className={"flex flex-col w-full mb-[80px]"}>
+                        <ul className={'list-none list-padding'}>
+                            <li>
+                                <a className={"linkForMenu text-primary-darkblue"} href={"/company"}>Company</a>
                             </li>
-                            <li><a className={"b3 text-primary-darkblue"} href={"/aboutus"}>About</a></li>
-                            <li><a className={"b3 text-primary-darkblue"} href={"/contact"}>Contact us</a></li>
-                            <li className={"mt-[250px]"}>
-                                <div className={"mobile-menu-buttons flex flex-row items-center space-x-4 md:justify-center bg-white w-full "}>
-                                    <a className={"flex bttn1 w-36 h-12 items-center bg-primary-blue rounded-full"} href={"/create-course"}><p className={"mx-auto text-primary-white md:text-[14px]"}>Create course</p></a>
-                                    <a className={"flex bttn1 w-36 h-12 items-center border-primary-blue rounded-full border-primary-blue border-2 text-primary-blue"} href={"/find-a-course"}><p className={"mx-auto md:text-[14px]"}>Find a Course</p></a>
+                            <li className={"flex flex-col dropdown-menu"}>
+                                <div onClick={onDropdownClick} className={"flex flex-row"}>
+                                    <a className={"linkForMenu text-primary-darkblue"} href={"#"}>Education</a>
+                                    <span className={"menu_arrow self-center ml-3"}></span>
+                                </div>
+                                <div className={`${!isDropdownOpen ? "max-h-0" : "max-h-[100px]"} overflow-hidden dropdown-menu-content`}>
+                                    <div className={"linkForMenu text-primary-darkblue"}><a href={"/aorn"} className={"h-[50px]"}>AORN</a></div>
+                                    <div className={"linkForMenu text-primary-darkblue"}><a href={"/ACS"}>ACS</a></div>
+                                    <div className={"linkForMenu text-primary-darkblue"}><a href={"/VeinGlobal"}>Vein Global</a></div>
                                 </div>
                             </li>
+                            <li>
+                                <a className={" linkForMenu text-primary-darkblue"} href={"/aboutus"}>About</a>
+                            </li>
+                            <li>
+                                <a className={" linkForMenu text-primary-darkblue"} href={"/contact"}>Contact us</a>
+                            </li>
                         </ul>
+                    </div>
+
+                    <ul className={'flex list-none pb-[39px] w-full justify-between '}>
+                        <li><a className={"flex bttn1 w-36 h-12 items-center bg-primary-blue rounded-full"} href={"/create-course"}><p className={"mx-auto text-primary-white md:text-[14px]"}>Create a Course</p></a></li>
+                        <li><a className={"flex bttn1 w-36 h-12 items-center border-primary-blue rounded-full border-primary-blue border-2 text-primary-blue"} href={"/find-a-course"}><p className={"mx-auto md:text-[14px]"}>Find a Course</p></a></li>
+                    </ul>
+                </div>
+
             </div>
+
+
+
+
+
+            {/* Burger Menu REMAKE */}
+
+
+
+            
+            {/*<div class="top-nav lg:hidden md:pt-8">*/}
+            {/*    <div className={"mobile-logo"}>*/}
+            {/*            <a href={"/"}><img src={header.logo.url}/></a>*/}
+            {/*     </div>*/}
+            {/*        <input id="menu-toggle" type="checkbox" />*/}
+            {/*            <label class='menu-button-container' for="menu-toggle">*/}
+            {/*                <div class='menu-button'></div>*/}
+            {/*            </label>*/}
+            {/*                <ul class="menu ">*/}
+            {/*                    <li><a className={"b3 text-primary-darkblue font-semibold "} href={"/company"}>Company</a></li>*/}
+            {/*                    <li className={"flex flex-col"}>*/}
+            {/*                        <div onClick={dropDownClick} className={"flex"}>*/}
+            {/*                            <a className={"b3 text-primary-darkblue font-semibold"} href={"#"}>Education</a>*/}
+            {/*                            <span className={"menu_arrow self-center ml-3"}></span>*/}
+            {/*                        </div>*/}
+            {/*                        <div className={`${!dropDownOpen && 'hidden'} flex flex-col`}>*/}
+            {/*                            <div className={""}><a href={"/aorn"} className={"h-[50px]"}>AORN</a></div>*/}
+            {/*                            <div className={""}><a href={"/ACS"}>ACS</a></div>*/}
+            {/*                            <div className={""}><a href={"/VeinGlobal"}>Vein Global</a></div>*/}
+            {/*                        </div>*/}
+            {/*                    </li>*/}
+            {/*                    <li><a className={"b3 text-primary-darkblue font-semibold"} href={"/aboutus"}>About</a></li>*/}
+            {/*                    <li><a className={"b3 text-primary-darkblue font-semibold"} href={"/contact"}>Contact us</a></li>*/}
+            {/*                    <ul className={"libtns"}>*/}
+            {/*                        <li className={"md:mobile-menu-buttons md:flex md:flex-row md:space-x-4 justify-center md:bg-white md:w-full"}>*/}
+            {/*                            <a className={"flex bttn1 w-36 h-10 items-center bg-primary-blue rounded-full font-semibold"} href={"/create-course"}><p className={"mx-auto text-primary-white md:text-[14px]"}>Create course</p></a>*/}
+            {/*                            <a className={"flex bttn1 w-36 h-10 items-center border-primary-blue rounded-full border-primary-blue border-2 text-primary-blue font-semibold"} href={"/find-a-course"}><p className={"mx-auto md:text-[14px]"}>Find a Course</p></a>*/}
+            {/*                        </li>*/}
+            {/*                    </ul>*/}
+            {/*                </ul>*/}
+            {/*</div>*/}
 
         </header>
     );
