@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import Switch from 'react-switch'
 import Select from "react-select";
 
@@ -28,7 +28,7 @@ const CourseItem = ({data})=> {
         </div>
     )
 }
-const CourseBlock = ({blockData, filters, cl})=>{
+const CourseBlock = ({blockData, filters, cl, deleteAll})=>{
     return(
         <div>
             <h3>
@@ -48,7 +48,7 @@ const CourseBlock = ({blockData, filters, cl})=>{
                     })}
                 </div>
 
-                <div className={`bttn2 invisible cursor-pointer`}>Clear all filter</div>
+                <div className={`bttn2 cursor-pointer`} style={{display:`${deleteAll ? "inline" : "none" }`}} onClick={()=>{cl("all")}}>Clear all filter</div>
 
             </div>
             <div className={"grid grid-cols-2 py-1 mb-5"}>
@@ -213,6 +213,7 @@ const FindCourseOfferings = ({module})=>{
     const selectLocRef = useRef();
     const selectTypeRef = useRef();
     const selectSpecialtyRef = useRef();
+    useEffect(()=>{ApplyFilters()},[locFilter,typeFilter,specialtyFilter,filter])
 
     // const course = {}
     // fields.courses.map((e)=>{course[e.fields.filter] ? course[e.fields.filter].push(e) : course[e.fields.filter] = [e] })
@@ -238,10 +239,19 @@ const FindCourseOfferings = ({module})=>{
                 if (filter == _) setFilter('')
             }
         })
-        console.log(filters)
+        if (i === "all"){
+            selectLocRef.current.clearValue()
+            setLocFilter('')
+            selectTypeRef.current.clearValue()
+            setTypeFilter('')
+            selectSpecialtyRef.current.clearValue();
+            setSpecialtyFilter('')
+            setFilter('')
+            newFilters =[]
+        }
+
         console.log(newFilters)
         setFilters(newFilters)
-        console.log(filters)
         ApplyFilters()
         console.log("filters")
 
@@ -344,7 +354,7 @@ const FindCourseOfferings = ({module})=>{
 
              <div className={"bg-primary-white py-14 my-8 "}>
                 <div className={"mx-auto max-w-screen-xl "} id={"fil"}>
-                    <CourseBlock blockData={courses} filters={filters} cl={(e)=>{DeleteFilter(e)}}/>
+                    <CourseBlock blockData={courses} filters={filters} cl={(e)=>{DeleteFilter(e)}} deleteAll={filter || locFilter || typeFilter || specialtyFilter}/>
                 </div>
              </div>
 
