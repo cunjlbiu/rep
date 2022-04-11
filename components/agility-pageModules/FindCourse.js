@@ -13,7 +13,8 @@ const FindCourse = ({module}) =>{
 
                 <div className="custom-search mx-auto">
                     <input type="text" className="custom-search-input" placeholder="Search"/>
-                        <a className="absolute right-[6px] top-[6px] bg-primary-blue text-primary-white rounded-full w-[140px] px-5 py-3 h-[56px] bttn1" href={"/find-a-course"} >Find a course</a>
+                        <a className="absolute right-[6px] top-[6px] bg-primary-blue text-primary-white rounded-full
+                        w-[140px] px-5 py-3 h-[56px] bttn1" href={fields.button.href} >{fields.button.text}</a>
                 </div>
 
             </div>
