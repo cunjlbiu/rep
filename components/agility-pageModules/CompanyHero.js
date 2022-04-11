@@ -12,9 +12,10 @@ const CompanyHero = ({module}) =>{
                     <p className={"b1 w-8/12 border-primary-blue left-border justify-self-start pl-5 ml-2"}>{fields.text}</p>
                 </div>
                 <br/>
-                <div className={""}>
-                    <img className={""} src={fields.image.url}/>
-                </div>
+
+            </div>
+            <div className={"mx-auto max-w-[1920px]"}>
+                <img className={"object-none"} src={fields.image.url}/>
             </div>
         </div>
     );
