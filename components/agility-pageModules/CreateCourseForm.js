@@ -60,7 +60,7 @@ const CreateCourseForm =({module}) =>{
 
     return(
         <div className={""}>
-            <div className={"max-w-screen-xl mx-auto grid grid-cols-2"}>
+            <div className={"max-w-screen-xl mx-auto grid grid-cols-2 my-12 "}>
                 <div>
                     <div className={"w-[640px]"}>
                         <caption className={"c3 text-primary-blue w-max"}>Create a course</caption>
@@ -122,7 +122,7 @@ const CreateCourseForm =({module}) =>{
                                 indicatorSeparator: (styles) => ({display:'none'})
                             }}
                         />
-                        <input className={"absolute w-0 h-0 top-12 left-4 opacity-0"} tabIndex={-1} required={true} value={reqSelectOne} autoComplete={"off"}/>
+                        <input className={"absolute w-[1px] h-[1px] top-3/5 left-1/3 opacity-0"} tabIndex={-1} required={true} value={reqSelectOne} autoComplete={"off"}/>
                     </label>
 
                     <label className={"b3 pt-4 w-[304px]"}>
@@ -138,7 +138,7 @@ const CreateCourseForm =({module}) =>{
                                 indicatorSeparator: (styles) => ({display:'none'})
                             }}
                         />
-                        <input className={"absolute w-0 h-0 top-12 left-4 opacity-0"} tabIndex={-1} required={true} value={reqSelectTwo} autoComplete={"off"}/>
+                        <input className={"absolute w-[1px] h-[1px] top-3/5 left-1/3 opacity-0"} tabIndex={-1} required={true} value={reqSelectTwo} autoComplete={"off"}/>
 
                     </label>
 
@@ -194,7 +194,7 @@ const CreateCourseForm =({module}) =>{
                                 indicatorSeparator: (styles) => ({display:'none'})
                             }}
                         />
-                        <input className={"absolute w-0 h-0 top-12 left-4 opacity-0"} tabIndex={-1} required={true} value={reqSelectBudget} autoComplete={"off"}/>
+                        <input className={"absolute w-[1px] h-[1px] top-3/5 left-1/3 opacity-0"} tabIndex={-1} required={true} value={reqSelectBudget} autoComplete={"off"}/>
 
                     </label>
 

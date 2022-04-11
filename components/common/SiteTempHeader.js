@@ -22,8 +22,8 @@ const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
         <header className="lg:relative lg:w-full lg:mx-auto lg:px-8 lg:h-24 lg:bg-primary-white lg:py-4 lg:my-2">
 
            <div className={"lg:flex lg:flex-row lg:max-w-screen-xl lg:justify-between lg:mx-auto md:hidden"}>
-               <div>
-                   <a href={"/"}><img src={header.logo.url}/></a>
+               <div className={"align-middle py-[16px]"}>
+                   <a className={"align-middle"} href={"/"}><img width={174} height={32} src={header.logo.url}/></a>
                </div>
                <div className={"flex pl-[100px] space-x-8 py-[19px]"}>
                    <a className={"b3"} href={"/company"}>Company</a>

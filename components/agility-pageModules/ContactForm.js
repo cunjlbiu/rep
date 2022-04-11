@@ -80,6 +80,7 @@ const ContactForm =({module}) =>{
                 <div className={"col-span-2 justify-center grid space-y-1"}>
                     <label className={"b3 pt-4"}>
                     <Select options={Specialities}
+                            aria-required={"true"}
                             isOptionDisabled={(option) => option.subDisabled}
                             name={"speciality"}
                             onChange ={(v)=> onSelect(v)}
@@ -89,7 +90,7 @@ const ContactForm =({module}) =>{
                                 indicatorSeparator: (styles) => ({display:'none'})
                             }}
                     />
-                        <input className={"absolute w-0 h-0 top-12 left-4 opacity-0"} tabIndex={-1} required={true} value={subSpec} autoComplete={"off"}/>
+                        <input className={"absolute w-[1px] h-[1px] top-3/5 left-1/3 opacity-0"} tabIndex={-1} required={true} value={subSpec} autoComplete={"off"}/>
                         </label>
 
                     <label className={"b3 pt-4"}>
