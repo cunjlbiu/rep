@@ -1,4 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react'
+import {useRouter} from 'next/router'
 import Switch from 'react-switch'
 import Select from "react-select";
 
@@ -182,10 +183,9 @@ const courseType =[
 ]
 
 
-const FindCourseOfferings = ({module})=>{
+const FindCourseOfferings = ({module,filtr})=>{
 
     const {fields} = module;
-
     const customStyle={
         control: (base, state) => ({
             ...base,
@@ -208,13 +208,16 @@ const FindCourseOfferings = ({module})=>{
     const [locFilter, setLocFilter] = useState('');
     const [typeFilter, setTypeFilter]=useState('');
     const [specialtyFilter, setSpecialtyFilter]=useState('');
-    const [filter, setFilter] = useState("");
+    const [filter, setFilter] = useState('');
     const [filters, setFilters] = useState([]);
     const selectLocRef = useRef();
+    const router = useRouter()
+    console.log(router.query.filter)
+    const initialFilter=router.query.filter || ""
     const selectTypeRef = useRef();
     const selectSpecialtyRef = useRef();
     useEffect(()=>{ApplyFilters()},[locFilter,typeFilter,specialtyFilter,filter])
-
+    useEffect(()=>setFilter(initialFilter),[])
     // const course = {}
     // fields.courses.map((e)=>{course[e.fields.filter] ? course[e.fields.filter].push(e) : course[e.fields.filter] = [e] })
     // const courseArr = Object.entries(course)
@@ -360,6 +363,9 @@ const FindCourseOfferings = ({module})=>{
 
         </div>
     );
-
 }
+
+
+
+
 export default FindCourseOfferings;

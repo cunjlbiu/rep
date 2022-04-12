@@ -59,40 +59,40 @@ const AORNHero = ({module}) => {
                         </h3>
 
 
-                        <div className={"space-y-6 pl-32 "}>
+                        <div className={"space-y-10 pl-32 overflow-auto"}>
                             <div className={"flex flex-auto space-x-6"}>
                                 <div><FaCheck className={"text-primary-blue"}></FaCheck></div>
-                                <div><p className={"b2"}>Registered Nurses currently enrolled in Periop 101</p></div>
+                                <div><p className={"b2 text-[24px]"}>Registered Nurses currently enrolled in Periop 101</p></div>
                             </div>
                             <div className={"flex flex-auto space-x-6"}>
-                                <div><FaCheck className={"text-primary-blue"}></FaCheck></div>
+                                <div><FaCheck className={"text-primary-blue"}/></div>
                                 <div><p className={"b2"}>Registered nurses transferring to the perioperative suite from other nursing specialties</p></div>
                             </div>
                             <div className={"flex flex-auto space-x-6"}>
-                                <div><FaCheck className={"text-primary-blue"}></FaCheck></div>
+                                <div><FaCheck className={"text-primary-blue"}/></div>
                                 <div><p className={"b2"}>Sterile processing team members</p></div>
                             </div>
                             <div className={"flex flex-auto space-x-6"}>
-                                <div><FaCheck className={"text-primary-blue"}></FaCheck></div>
+                                <div><FaCheck className={"text-primary-blue"}/></div>
                                 <div><p className={"b2"}>Non-RN perioperative team members (e.g. surgical technologist, surgical assistants/aids)</p></div>
                             </div>
                             <div className={"flex flex-auto space-x-6"}>
-                                <div><FaCheck className={"text-primary-blue"}></FaCheck></div>
+                                <div><FaCheck className={"text-primary-blue"}/></div>
                                 <div><p className={"b2"}>Other RNs involved in operative/invasive procedures in non-traditional OR settings (e.g. Endoscopy, OB, Cath Lab, Radiology)</p></div>
                             </div>
                             <div className={"flex flex-auto space-x-6"}>
-                                <div><FaCheck className={"text-primary-blue"}></FaCheck></div>
+                                <div><FaCheck className={"text-primary-blue"}/></div>
                                 <div><p className={"b2"}>Nurse managers interested in leveraging video content for in-services</p></div>
                             </div>
                         </div>
 
-                        <div className={" rounded-xl z-50 -translate-y-32 "} dangerouslySetInnerHTML={renderHTML(fields.video)}></div>
+                        <div className={" rounded-xl z-50 -translate-y-52 "} dangerouslySetInnerHTML={renderHTML(fields.video)}/>
 
                     </div>
 
                 </div>
             </div>
-            <div className={"bg-white h-60 w-full -translate-y-60"}></div>
+            <div className={"bg-white h-80 w-full -translate-y-80"}/>
         </div>
     )
 };
