@@ -14,7 +14,7 @@ const FindCourse = ({module}) =>{
                 <div className="custom-search mx-auto">
                     <input type="text" className="custom-search-input" placeholder="Search" value={filter} onChange={(e)=>setFilter(e.target.value)}/>
                         <a className="absolute right-[6px] top-[6px] bg-primary-blue text-primary-white rounded-full
-                        w-[140px] px-5 py-3 h-[56px] bttn1" href={`${fields.button.href}?filter=${filter}`}>{fields.button.text}</a>
+                        w-[140px] px-5 py-3 h-[56px] bttn1" href={`${fields.button.href}?filter=${filter}#fil`}>{fields.button.text}</a>
                 </div>
 
             </div>
