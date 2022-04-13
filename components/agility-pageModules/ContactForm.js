@@ -29,29 +29,29 @@ const ContactForm =({module}) =>{
             <form className={"grid grid-flow-row  justify-center gap-4 md:flex md:flex-col md:items-center"} action="http://info.cine-med.com/l/930733/2022-02-04/2dj4r" method="post">
 
 
-                <label className={""}><br/>
+                <label className={"md:min-w-[335px] md:w-full"}><br/>
                 <input id={"firstName"} name={"firstName"} placeholder={"First name"} className={"contactForm w-[416px] md:min-w-[335px] md:w-full"} required={true}/>
                     <span className={"b3"}>First name</span>
                 </label>
 
-                <label className={"b3"}><br/>
+                <label className={"b3 md:min-w-[335px] md:w-full"}><br/>
                     <input id={"lastName"}  name={"lastName"} placeholder={"Last Name"} className={"contactForm w-[416px] md:min-w-[335px] md:w-full"} required={true}/>
                     <span className={"b3"}>Last name</span>
                 </label>
 
-                <label className={""}><br/>
+                <label className={"md:min-w-[335px] md:w-full"}><br/>
                 <input id={"email"} name={"email"} placeholder={"Email"} className={"contactForm w-[416px] md:min-w-[335px] md:w-full"} type={"email"} required={true}/>
                     <span className={"b3"}>Email</span>
                 </label>
 
-                <label className={"b3 md:w-full"}>Phone
+                <label className={"b3 md:min-w-[335px] md:w-full"}>Phone
                     <PhoneInput inputClass={"contactForm"}
                                 buttonClass={"contactFormFlag"}
                                 required={true}
                                 inputProps={{name : "phone"}}
                                 country={"us"}
-                                inputStyle={{backgroundColor:"#F0F9FF", width:"416px"}}
-                                containerStyle={{backgroundColor:"#F0F9FF", width:"416px"}}
+                                inputStyle={{backgroundColor:"#F0F9FF", width:"100%"}}
+                                containerStyle={{backgroundColor:"#F0F9FF", width:"100%"}}
                                 buttonStyle={{backgroundColor:"#F0F9FF !important;"}}
                                 isValid={(value, country) => {
                                     if (value.match(/12345/)) {
@@ -66,18 +66,18 @@ const ContactForm =({module}) =>{
                 </label>
 
 
-                <label className={""}><br/>
+                <label className={"md:min-w-[335px] md:w-full"}><br/>
                     <input id={"companyName"} name={"companyName"} placeholder={"Company name"} className={"contactForm w-[416px]"} required={true}/>
                     <span className={"b3"}>Company Name</span>
                 </label>
 
 
-                <label className={"b3"}><br/>
+                <label className={"b3 md:min-w-[335px] md:w-full"}><br/>
                 <input id={"position"} name={"position"} placeholder={"Position"} className={"contactForm w-[416px]"} required={true}/>
                     <span className={"b3"}>Position</span>
                 </label>
 
-                <div className={"col-span-2 justify-center grid space-y-1"}>
+                <div className={"col-span-2 md:min-w-[335px] md:flex md:flex-col md:w-full justify-center grid space-y-1"}>
                     <label className={"b3 pt-4"}>
                     <Select options={Specialities}
                             aria-required={"true"}
@@ -93,7 +93,7 @@ const ContactForm =({module}) =>{
                         <input className={"absolute w-[1px] h-[1px] top-3/5 left-1/3 opacity-0"} tabIndex={-1} required={true} value={subSpec} autoComplete={"off"}/>
                         </label>
 
-                    <label className={"b3 pt-4"}>
+                    <label className={"b3 pt-4 md:min-w-[335px] md:w-full"}>
                         <Select options={Specialities}
                                 isOptionDisabled={(option) => option.disabled}
                                 onChange ={(v)=> onSubSelect(v)}
@@ -108,7 +108,7 @@ const ContactForm =({module}) =>{
 
                     <label className={"b3 message"}><br/>
                     <input type="text"
-                           className={"contactForm w-[864px] md:w-[335px]"}
+                           className={"contactForm w-[864px] md:min-w-[335px] md:w-full md:mt-[24px]"}
                            placeholder={"If you need support for a specific event, please include the name and URL of that event."}
                            name={"message"}
                            id={"message"}
@@ -116,8 +116,8 @@ const ContactForm =({module}) =>{
                         <span className={"b3 placeholder"}>If you need support for a specific event, please include the name and URL of that event.</span>
                         <span className={"b3 message"}>Message</span>
                     </label>
-                    <div className={" flex justify-end w-full  py-5"}>
-                        <input type={"submit"} value={"Send message"} required={true} className={'flex bttn1 w-36 h-12 bg-primary-blue rounded-full justify-center text-primary-white active:scale-90'}/>
+                    <div className={" flex justify-end w-full  py-5 md:pb-[40px]"}>
+                        <input type={"submit"} value={"Send message"} required={true} className={'flex bttn1 w-36 h-12 md:font-semibold md:text-[14px]  bg-primary-blue rounded-full justify-center text-primary-white active:scale-90'}/>
                     </div>
                 </div>
 
