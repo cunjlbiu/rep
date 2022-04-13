@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useRef, useState} from "react";
 import Link from "next/link";
 import head from "next/head";
 
@@ -7,9 +7,7 @@ const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
     const { header } = globalData;
     // open / close mobile nav
     const [open, setOpen] = useState(false);
-    
     const [dropDownOpen, setDropdownOpen] = useState(false);
-    console.log(dropDownOpen)
 
 
     if (!header) {
@@ -20,13 +18,7 @@ const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
         );
     }
 
-    const dropDownClick = () => {
-        setDropdownOpen(!dropDownOpen)
-        console.log('click')
-    }
 
-    console.log(dropDownOpen)
-    console.log(`${!dropDownOpen && 'hidden'}`)
 
 
             {/* Burger Menu REMAKE */}
@@ -34,11 +26,19 @@ const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
 
             const [isOpenMenu, setIsOpenMenu] = useState(false)
             const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+            const burger = useRef()
+
             const onDropdownClick = () => {
                 setIsDropdownOpen(!isDropdownOpen)
             }
 
             const onButtonClick = () => setIsOpenMenu(!isOpenMenu)
+
+            // $(function() {
+            //     $('#nav-icon4').click(function(){
+            //         $(this).toggleClass('open');
+            //     });
+            // });
 
 
 
@@ -79,13 +79,16 @@ const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
 
             {/* Burger Menu REMAKE */}
 
-
             <div className={"lg:hidden md:block  w-full"}>
                 <div className={"flex top-nav flex-center items-center p-5  justify-between w-full"}>
                     <a href={"/"}><img className={"min-w-[144px] w-[133px]"} src={header.logo.url}/></a>
-                    <label className='menu-button-container' onClick={onButtonClick} htmlFor="menu-toggle">
-                        <div className='menu-button'></div>
-                    </label>
+                    <div className={"burger-menu-x"}>
+                        <div onClick={onButtonClick} className={`${isOpenMenu ? 'open': ''}`} id="nav-icon4" ref={burger}>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
                 </div>
                 <div className={`burger-menu ${isOpenMenu && 'open'}`}>
                     <div className={"flex  flex-center items-center p-5  justify-between w-full"}>
