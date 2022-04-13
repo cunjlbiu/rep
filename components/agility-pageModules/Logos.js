@@ -6,9 +6,11 @@ const Logos = ({module}) =>{
     const {fields} = module;
 
     return(
-        <div className={"max-w-full bg-soft-blue h-64 justify-between py-6 "}>
-            <div className="max-w-screen-xl my-8 mx-auto grid grid-rows-2 justify-center space-y-5">
-                <caption className={"c1 w-max mx-auto"}>We collaborate with 200+ leading universities and companies</caption>
+        <div className={" max-w-full bg-soft-blue h-64 justify-center py-6 md:h-full md:min-h-[312px]"}>
+            <div className="max-w-screen-xl my-8 md:my-9 mx-auto justify-center flex md:px-[51px]">
+                <caption className={"c1 w-max mx-auto md:text-[24px] md:font-extrabold"}>We collaborate with 200+ leading universities and companies</caption>
+            </div>
+            <div className={"max-w-screen-lg justify-center mx-auto -translate-x-10"}>
                 <Slider
                     additionalTransfrom={100}
                     arrows = {false}
@@ -58,8 +60,8 @@ const Logos = ({module}) =>{
                     swipeable
                 >
                     {fields.images.media.map((image, index) =>
-                        <div className={"h-[48px] w-max-[160px]"}><img src={image.url} width={image.metaData.pixelWidth}
-                                            height="48"/></div>
+                        <div className={"md:mx-auto h-[48px] w-max-[160px] md:h-[48px] md:w-[144px] "}><img src={image.url} width={"144px"}
+                                                                                 height="48"/></div>
                     )}
                 </Slider>
             </div>
