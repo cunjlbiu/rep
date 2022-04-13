@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {AgilityImage, renderHTML} from "@agility/nextjs";
-import {FaSearch} from "react-icons/Fa";
+import {FaSearch} from "react-icons/fa";
 import Link from "next/link";
 
 const FindCourse = ({module}) =>{
