@@ -25,26 +25,26 @@ const ContactForm =({module}) =>{
 
     return(
     <div className={"bg-soft-blue"}>
-        <div className={"max-w-screen-xl mx-auto bg-soft-blue"}>
-            <form className={"grid grid-flow-row  justify-center gap-4"} action="http://info.cine-med.com/l/930733/2022-02-04/2dj4r" method="post">
+        <div className={"max-w-screen-xl mx-auto bg-soft-blue md:px-5"}>
+            <form className={"grid grid-flow-row  justify-center gap-4 md:flex md:flex-col md:items-center"} action="http://info.cine-med.com/l/930733/2022-02-04/2dj4r" method="post">
 
 
                 <label className={""}><br/>
-                <input id={"firstName"} name={"firstName"} placeholder={"First name"} className={"contactForm w-[416px]"} required={true}/>
+                <input id={"firstName"} name={"firstName"} placeholder={"First name"} className={"contactForm w-[416px] md:min-w-[335px] md:w-full"} required={true}/>
                     <span className={"b3"}>First name</span>
                 </label>
 
                 <label className={"b3"}><br/>
-                    <input id={"lastName"}  name={"lastName"} placeholder={"Last Name"} className={"contactForm w-[416px]"} required={true}/>
+                    <input id={"lastName"}  name={"lastName"} placeholder={"Last Name"} className={"contactForm w-[416px] md:min-w-[335px] md:w-full"} required={true}/>
                     <span className={"b3"}>Last name</span>
                 </label>
 
                 <label className={""}><br/>
-                <input id={"email"} name={"email"} placeholder={"Email"} className={"contactForm w-[416px]"} type={"email"} required={true}/>
+                <input id={"email"} name={"email"} placeholder={"Email"} className={"contactForm w-[416px] md:min-w-[335px] md:w-full"} type={"email"} required={true}/>
                     <span className={"b3"}>Email</span>
                 </label>
 
-                <label className={"b3"}>Phone
+                <label className={"b3 md:w-full"}>Phone
                     <PhoneInput inputClass={"contactForm"}
                                 buttonClass={"contactFormFlag"}
                                 required={true}
@@ -108,7 +108,7 @@ const ContactForm =({module}) =>{
 
                     <label className={"b3 message"}><br/>
                     <input type="text"
-                           className={"contactForm w-[864px]"}
+                           className={"contactForm w-[864px] md:w-[335px]"}
                            placeholder={"If you need support for a specific event, please include the name and URL of that event."}
                            name={"message"}
                            id={"message"}
