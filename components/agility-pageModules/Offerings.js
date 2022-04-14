@@ -4,12 +4,12 @@ import React from 'react'
 const CourseItem = ({data})=> {
     console.log(data)
     return(
-        <div className={"py-10 w-[640px]"}>
-            <div className={`h-[320px] w-[640px] rounded-xl text-white text-center ${!data.image ? 'bg-agility' : ''} `}>
-                {!data.image ? "image should be here" : <img className={"rounded-xl"} src={data.image.url} width={"640px"} height={"320px"}/>}
+        <div className={"py-10 lg:w-[640px]"}>
+            <div className={`lg:h-[320px] lg:w-[640px] rounded-xl text-white text-center ${!data.image ? 'bg-agility' : ''} `}>
+                {!data.image ? "image should be here" : <img className={"rounded-xl"} src={data.image.url}/>}
             </div>
             <div className={"b3 py-4"}>({new Date(data.startDate).getFullYear()}) (ITEM # {data.id})</div>
-            <div className={"c1 w-[640px]"}>{data.name}</div>
+            <div className={"c1 lg:w-[640px]"}>{data.name}</div>
         </div>
     )
 }
@@ -20,7 +20,7 @@ const CourseBlock = ({blockData})=>{
             <h3>
                 {blockData[0]}
             </h3>
-            <div className={"flex flex-wrap justify-between  py-1 mb-5"}>
+            <div className={"flex flex-wrap justify-between py-1 mb-5"}>
                 {blockData[1].map((e,i)=>{
                     return(
                         <CourseItem data={e.fields}/>
@@ -41,7 +41,7 @@ const Offerings = ({module})=>{
 
     return(
         <div>
-            <div className={"max-w-screen-xl mx-auto"}>
+            <div className={"max-w-screen-xl mx-auto md:mx-5"}>
                 <h1 className={"py-2"}>
                     {fields.title}
                 </h1>
