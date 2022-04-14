@@ -41,7 +41,7 @@ const AORNHero = ({module}) => {
                     <h2 className={"lg:hidden mobile"}>{fields.title}</h2>
                     <p className={"b1 lg:w-8/12 pl-12 md:pl-4 border-secondary-green border-l-2 my-6"}>{fields.text}</p>
                 </div>
-                <div className={"lg:translate-y-12"}>
+                <div className={"lg:translate-y-12 overflow-hidden"}>
                     <img className={"scale-[1.3] md:scale-120"} src={fields.image.url}/>
                 </div>
             </div>
