@@ -94,7 +94,7 @@ const Offerings = ({module})=>{
                 <div className={"b1 py-3"}>View our current curriculum.</div>
                 <div className={"flex overflow-hidden md:overflow-x-scroll mb-6"}>
                 <div className={"flex space-x-4 py-2 w-full flex-nowrap"} ref={ref}
-                     style={{translate:`${offset}px`, transition:"all 300ms ease-in-out 0s"}}>
+                     style={{transform:`translateX(${offset}px)`, transition:"all 300ms ease-in-out 0s"}}>
                     <div className={`flex-initial border-2 border-secondary-blue rounded-3xl b3 h-[42px] cursor-pointer
                         py-2 px-2 flex-shrink-0 text-center min-w-[55px] ${filter === "" ?"bg-secondary-blue":"" } `} onClick={()=>applyFilter("All")} >All</div>
                     {courseArr.map((e)=>
