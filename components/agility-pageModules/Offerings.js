@@ -92,7 +92,7 @@ const Offerings = ({module})=>{
                     {fields.title}
                 </h1>
                 <div className={"b1 py-3"}>View our current curriculum.</div>
-                <div className={"flex overflow-hidden mb-6"}>
+                <div className={"flex overflow-hidden md:overflow-x-scroll mb-6"}>
                 <div className={"flex space-x-4 py-2 w-full flex-nowrap"} ref={ref}
                      style={{translate:`${offset}px`, transition:"all 300ms ease-in-out 0s"}}>
                     <div className={`flex-initial border-2 border-secondary-blue rounded-3xl b3 h-[42px] cursor-pointer
@@ -102,7 +102,7 @@ const Offerings = ({module})=>{
                                 flex-shrink-0 text-center cursor-pointer ${filter.indexOf(e[0]) == -1 ? "" : "bg-secondary-blue" } ` } onClick={()=>applyFilter(e[0])}>{e[0]}</div>)}
 
                 </div>
-                    <div className={"flex space-x-2 z-50 bg-primary-white rounded-l-full px-5 py-2"}>
+                    <div className={"flex space-x-2 z-50 bg-primary-white rounded-l-full px-5 py-2 md:hidden"}>
                         <div className={"rounded-full h-[42px] w-[42px] p-[12px] z-50 border-2 border-secondary-blue"} onClick={decOffset}><FaArrowLeft/></div>
                         <div className={"z-50 rounded-full h-[42px] w-[42px] p-[12px] border-2 border-secondary-blue "} onClick={incOffset}><FaArrowRight/></div>
                     </div>
