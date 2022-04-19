@@ -12,12 +12,12 @@ const CourseItem = ({data})=> {
     const endDate = new Date(data.endDate);
     if(!data.place) data.place = ''
     return(
-        <div className={"py-10"}>
-            <div className={"w-[640px] h-[320px] rounded-xl text-white text-center relative"}>
+        <div className={"py-10 max-w-[640px] md:mx-5 mdplus:mx-auto"}>
+            <div className={"mdplus:min-w-[600px] mdplus:h-[320px] max-w-[640px] md:w-auto rounded-xl text-white text-center relative"}>
                 <div className={`absolute b3 rounded-full px-[12px] py-1 top-4 left-4 ${data.onDemand ? "bg-primary-blue" : "bg-primary-white text-black" }`}>{data.onDemand ? "On-Demand" : "Live"}</div>
-                {!data.image ? "image should be here" : <img className={"rounded-xl"} src={data.image.url}/>}
+                {!data.image ? "image should be here" : <img className={"rounded-xl object-contain"} src={data.image.url}/>}
             </div>
-            <div className={"flex justify-between w-[640px] my-4"}>
+            <div className={"flex justify-between mdplus:w-[600px] my-4"}>
                 <div className={"b3"}>{startDate.valueOf() ? `(${startDate.getFullYear()})` : ''} (ITEM # {data.id})</div>
                 <div className={"flex justify-between"}>
                     <div className={"b3"}>{(data.place.length > 15)? "International" : data.place}</div>
@@ -31,13 +31,15 @@ const CourseItem = ({data})=> {
 }
 const CourseBlock = ({blockData, filters, cl, deleteAll})=>{
     return(
-        <div>
-            <h3>
-                Offerings
-            </h3>
-            <div className={"b1 pt-3"}>View our current curriculum.</div>
+        <div className={"md:mx-5"}>
+            <div className={"md:mx-auto md:max-w-[640px]"}>
+                <h3 className={"mdplus:mx-auto"}>
+                    Offerings
+                </h3>
+                <div className={"b1 pt-3"}>View our current curriculum.</div>
+            </div>
             <div className={"flex justify-between"}>
-                <div className={"flex space-x-2"}>
+                <div className={"flex flex-wrap space-x-2"}>
                     {filters.map((e,i)=>{
                         if (!!e)
                             return (
@@ -52,7 +54,7 @@ const CourseBlock = ({blockData, filters, cl, deleteAll})=>{
                 <div className={`bttn2 cursor-pointer`} style={{display:`${deleteAll ? "inline" : "none" }`}} onClick={()=>{cl("all")}}>Clear all filter</div>
 
             </div>
-            <div className={"grid grid-cols-2 py-1 mb-5"}>
+            <div className={"flex flex-row flex-wrap justify-between py-1 mb-5"}>
                 {blockData.map((e,i)=>{
                     return(
                         <CourseItem data={e.fields}/>
@@ -184,12 +186,12 @@ const courseType =[
 
 
 const FindCourseOfferings = ({module,filtr})=>{
-
     const {fields} = module;
     const customStyle={
         control: (base, state) => ({
             ...base,
-            width:"256px",
+            width:"auto",
+            minWidth:"256px",
             borderWidth:"0px 0px 2px 0px",
             border: state.isFocused ? 0 : 0,
             // This line disable the blue border
@@ -274,21 +276,31 @@ const FindCourseOfferings = ({module,filtr})=>{
     console.log("courses")
     return(
         <div className={"bg-secondary-blue "}>
-            <div className={"max-w-screen-xl mx-auto py-16"}>
+            <div className={"max-w-screen-xl mx-auto md:mt-[45px] mdplus:mt-0 mdplus:py-16"}>
                 <div className={"bg-secondary-blue flex flex-col justify-center"}>
-                    <h1 className={"py-2 text-center "}>
+                    <h1 className={"py-2 text-center md:hidden"}>
                         Choose from a vast library<br/>
                         of curated content.
                     </h1>
-                    <div className={"b1 text-center py-2 "}>With over thousands of courses to choose from, our curriculum will advance your skills and help you and your<br/> team reduce medical errors.</div>
+                    <h2 className={"py-2 text-center lg:hidden"}>
+                        Choose from a vast library<br/>
+                        of curated content.
+                    </h2>
 
-                    <div className="relative w-[860px] h-16 mx-auto bg-primary-white rounded-full content-center object-center ">
+                    <div className={"b1 text-center py-4 mx-auto mdplus:max-w-[550px] lg:max-w-[700px] md:max-w-[90%]  "}>With over thousands of courses to choose from, our curriculum will advance your skills and help you and your team reduce medical errors.</div>
+
+                    <div className="relative lg:w-[860px] mdplus:w-[600px] mdplus:mx-auto h-16 md:mx-5 mx-auto bg-primary-white rounded-full content-center object-center ">
                             <input type="text"
-                                   className=" absolute top-[21px] left-14 w-3/5 border-none outline-none"
+                                   className=" mdplus:block absolute md:hidden top-[21px] left-14 mdplus:w-2/5 lg:w-3/5 border-none outline-none"
                                    placeholder="Search by specialty, learning objective, or location."
                                    value={filter}
                                    onChange={(e)=>setFilter(e.target.value)}/>
-                            <div className={"absolute flex top-1/3 right-[17%] b3"}>
+                        <input type="text"
+                               className=" mdplus:hidden absolute top-[21px] left-12 w-[50%] w-auto border-none outline-none"
+                               placeholder="Search"
+                               value={filter}
+                               onChange={(e)=>setFilter(e.target.value)}/>
+                            <div className={"absolute flex top-1/3 right-[28px] mdplus:right-[28%] b3"}>
                                 <Switch
                                     className={"mr-1"}
                                     checked={checked}
@@ -304,11 +316,14 @@ const FindCourseOfferings = ({module,filtr})=>{
                                 />
                                 <p>On-Demand</p>
                             </div>
-                        <a href={"#fil"}><button className="custom-search-botton bttn2 w-[130px] active:bg-primary-blue hover:bg-primary-darkblue" type="submit" onClick={ApplyFilters}>Find a course</button></a>
+                        <a href={"#fil"} className={"md:hidden mdplus:block"}><button className="custom-search-botton bttn2 w-[130px] active:bg-primary-blue hover:bg-primary-darkblue" type="submit" onClick={ApplyFilters}>Find a course</button></a>
                     </div>
+                    <button className="bttn2 mdplus:hidden h-[48px] bg-primary-blue  active:bg-primary-blue hover:bg-primary-darkblue mx-5 mt-2 rounded-full" type="submit" onClick={ApplyFilters}>Find a course</button>
 
-                    <div className={"w-[860px] flex justify-evenly bg-primary-white rounded-full mx-auto py-6 mt-6"}>
 
+                    <div className={"lg:w-[860px] mdplus:mx-auto mdplus:w-[600px] md:py-6 md:px-4 md:mx-5 mdplus:px-12 flex md:space-y-6 mx-4 mt-2 md:flex-col md:rounded-2xl lg:justify-evenly bg-primary-white lg:rounded-full lg:mx-auto lg:py-6 lg:mt-6"}>
+                        <div className={"lg:max-w-[256px] md:mx-auto w-full mdplus:w-[500px]"}>
+                            <p className={"b3 pl-[10px] text-primary-darkblue"}>Specialty</p>
                         <Select styles ={ customStyle}
                                 ref={selectSpecialtyRef}
                                 placeholder="Specialty"
@@ -322,7 +337,10 @@ const FindCourseOfferings = ({module,filtr})=>{
                                 onBlur={()=>ApplyFilters()}
 
                         />
+                        </div>
 
+                        <div className={"lg:max-w-[256px] md:mx-auto w-full mdplus:w-[500px]"}>
+                            <p className={"b3 pl-[10px] text-primary-darkblue"}>Course Type</p>
                         <Select styles ={ customStyle}
                                 ref={selectTypeRef}
                                 placeholder="Course Type"
@@ -336,7 +354,9 @@ const FindCourseOfferings = ({module,filtr})=>{
                                 onBlur={()=>ApplyFilters()}
 
                         />
-
+                        </div>
+                        <div className={"lg:max-w-[256px] md:mx-auto w-full mdplus:w-[500px]"}>
+                            <p className={"b3 pl-[10px] text-primary-darkblue"}>Location</p>
                         <Select styles ={ customStyle}
                                 ref={selectLocRef}
                                 placeholder="Location"
@@ -349,6 +369,7 @@ const FindCourseOfferings = ({module,filtr})=>{
                                 options={locations}
                                 isClearable={true}
                         />
+                        </div>
 
                     </div>
                 </div>
