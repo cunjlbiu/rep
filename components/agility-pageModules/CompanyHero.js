@@ -23,7 +23,7 @@ const CompanyHero = ({module}) => {
             {/*2*/}
             <div className={"mdplus:hidden min-h-[375px]"}>
                {/* <img className={"md:w-full md:object-contain"} src={fields.imageMobile.url}/>*/}
-                {fields.imageMobile.url ? <img className={"md:w-full md:object-contain"} src={fields.imageMobile.url} />: "image should be there"}
+                {fields.imageMobile ? <img className={"md:w-full md:object-contain"} src={fields.imageMobile.url} />: "image should be there"}
             </div>
         </div>
     );
