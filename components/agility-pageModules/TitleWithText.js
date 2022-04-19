@@ -14,4 +14,4 @@ const TitleWithText = ({module}) => {
     );
 }
 
-export default TitleWithText
+export default TitleWithText;
