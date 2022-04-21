@@ -4,7 +4,7 @@ const HorizontalCards = ({module}) => {
     const {fields} = module;
     const Card = ({iconUrl, title, text, iconBg}) => {
         return(
-            <div className={"border-2 border-agility w-80 card py-5 px-8 space-y-3 rounded-2xl"}>
+            <div className={"border-2 border-agility w-80 card py-5 px-8 space-y-3 rounded-2xl  md:w-full h_cards"}>
                 {iconUrl ?
                     <img className={"rounded"} src={iconUrl} height={"48"} width={"48"} style={{backgroundColor: iconBg}} />
                     : ''}
@@ -15,13 +15,13 @@ const HorizontalCards = ({module}) => {
     }
     if (fields.cards == null) return (null)
     return(
-        <div className={"flex flex-col justify-center space-y-5 py-12"}>
+        <div className={"flex flex-col justify-center space-y-5 py-12 md:py-0 md:px-[20px]"}>
             { fields.title ?
                 <div className={"flex justify-center"}>
                     <h3>{fields.title}</h3>
                 </div> : ''}
 
-            <div className={"flex justify-center space-x-6"}>
+            <div className={"flex justify-center space-x-6 md:flex-col"}>
                 {fields.cards.slice(0).reverse().map((card, index) => {
                         return(
                             <Card key={card.contentID.toString()}
