@@ -33,6 +33,13 @@
 
 @media (max-width: 1290px){
 
+  .datePickerMonth{
+    width: 242px !important;
+  }
+  .datePicker{
+    width:335px !important;
+  }
+
 
   h1{
     font-size: 48px;
@@ -222,7 +229,7 @@ a.bttn1:hover{
 
 .datePicker{
   height: 35px !important;
-  width: 304px !important;
+  width: 304px;
   border-width: 0px 0px 1px 0px !important;
   background-color: #FFFFFF;
   border-color: #C9D5FD !important;

@@ -60,28 +60,28 @@ const CreateCourseForm =({module}) =>{
 
     return(
         <div className={""}>
-            <div className={"max-w-screen-xl mx-auto grid grid-cols-2 my-12 "}>
+            <div className={"max-w-screen-xl mx-auto lg:grid lg:grid-cols-2 my-16 md:w-[375px]"}>
                 <div>
-                    <div className={"w-[640px]"}>
+                    <div className={"lg:w-[640px] md:px-5 "}>
                         <caption className={"c3 text-primary-blue w-max"}>Create a course</caption>
                         <h1>CineMed is the industry leader
                             in healthcare.</h1>
-                        <p className={"b1 pl-12 border-primary-blue left-border my-6 w-[506px]"}>From inception to execution and delivery, CineMed is the industry leader in healthcare education. Specify your learning objectives and delivery style, and let us do the rest!</p>
+                        <p className={"b1 pl-12 border-primary-blue left-border my-6 lg:w-[506px]"}>From inception to execution and delivery, CineMed is the industry leader in healthcare education. Specify your learning objectives and delivery style, and let us do the rest!</p>
                     </div>
                 </div>
-                <form className={"grid grid-cols-2 bg-primary-white"} action="https://info.cine-med.com/l/930733/2022-03-15/3kcqh" method="post">
+                <form className={"lg:grid lg:grid-cols-2 md:flex flex-col md:place-items-center mx-auto bg-primary-white"} action="https://info.cine-med.com/l/930733/2022-03-15/3kcqh" method="post">
 
 
-                    <label className={"bg-primary-white w-[304px]"}><br/>
+                    <label className={"bg-primary-white lg:w-[304px] md:w-[335px] md:block"}><br/>
                         <input id={"firstName"} name={"firstName"} placeholder={"First name"} className={"contactForm w-[304px] "} style={{background:"white"}} required={true}/>
                         <span className={"b3"}>First name</span>
                     </label>
 
-                    <label className={"b3 w-[304px]"}><br/>
+                    <label className={"b3 lg:w-[304px] md:w-[335px] md:block"}><br/>
                         <input id={"lastName"}  name={"lastName"} placeholder={"Last Name"} className={"contactForm w-[304px]"} style={{background:"white"}} required={true}/>
                         <span className={"b3"}>Last name</span>
                     </label>
-                    <label className={"b3 w-[304px]"}>Phone
+                    <label className={"b3 lg:w-[304px] md:w-[335px] md:block"}>Phone
                         <PhoneInput inputClass={"contactForm"}
                                     buttonClass={"contactFormFlag"}
                                     required={true}
@@ -101,13 +101,13 @@ const CreateCourseForm =({module}) =>{
                         />
                     </label>
 
-                    <label className={" w-[304px] "}><br/>
+                    <label className={" lg:w-[304px] md:w-[335px] md:block "}><br/>
                         <input id={"email"} name={"email"} placeholder={"Email"} className={"contactForm w-[304px]"} type={"email"} style={{background:"white"}} required={true}/>
                         <span className={"b3"}>Email</span>
                     </label>
 
 
-                    <label className={"b3 pt-4 w-[304px]"}>
+                    <label className={"b3 pt-4 lg:w-[304px] md:w-[335px] md:block"}>
 
                         <Select
                             options={courseTypes}
@@ -125,7 +125,7 @@ const CreateCourseForm =({module}) =>{
                         <input className={"absolute w-[1px] h-[1px] top-3/5 left-1/3 opacity-0"} tabIndex={-1} required={true} value={reqSelectOne} autoComplete={"off"}/>
                     </label>
 
-                    <label className={"b3 pt-4 w-[304px]"}>
+                    <label className={"b3 pt-4 lg:w-[304px] md:w-[335px] md:block"}>
 
                         <Select
                             options={formats}
@@ -142,12 +142,12 @@ const CreateCourseForm =({module}) =>{
 
                     </label>
 
-                    <label className={"bg-primary-white col-span-2 w-[640px]"}><br/>
+                    <label className={"bg-primary-white col-span-2 lg:w-[640px] md:w-[335px] md:block"}><br/>
                         <input id={"speakers"} name={"courseSpeakers"} placeholder={"Speakers"} className={"contactForm w-[640px]"} style={{background:"white"}} required={true}/>
                         <span className={"b3"}>Speakers</span>
                     </label>
 
-                    <label className={"bg-primary-white col-span-2 w-[640px] "}><br/>
+                    <label className={"bg-primary-white col-span-2 lg:w-[640px] md:w-[335px] md:block "}><br/>
                         <input id={"topics"} name={"courseTopics"} placeholder={"Topics"} className={"contactForm w-[640px]"} style={{background:"white"}} required={true}/>
                         <span className={"b3"}>Topics</span>
                     </label>
@@ -171,18 +171,18 @@ const CreateCourseForm =({module}) =>{
                     </label>
 
 
-                    <div className={"bg-primary-white -translate-y-4 space-x-2 b3 space-y-2 "}><br/>
+                    <div className={"bg-primary-white -translate-y-4 space-x-2 b3 space-y-2 md:translate-x-[-96px] "}><br/>
                         Are these dates flexible? <br/>
                         <input id={"firstName"} name={"flexible"} type={"radio"}  style={{background:"white"}} value={"Yes"} required={true}/> Yes
                         <input id={"firstName"} name={"flexible"} type={"radio"}  style={{background:"white"}} value={"No"}/> No
                     </div>
 
-                    <label className={"bg-primary-white w-[304px]"}><br/>
+                    <label className={"bg-primary-white lg:w-[304px] md:w-[335px] md:block"}><br/>
                         <input id={"locations"} name={"location"} placeholder={"Locations"} className={"contactForm w-[304px]"} style={{background:"white"}} required={true}/>
                         <span className={"b3"}>Location</span>
                     </label>
 
-                    <label className={"b3 pt-5 w-[304px]"}>
+                    <label className={"b3 pt-5 lg:w-[304px] md:w-[335px] md:block"}>
 
                         <Select
                             options={budgets}
@@ -198,11 +198,11 @@ const CreateCourseForm =({module}) =>{
 
                     </label>
 
-                    <label className={"bg-primary-white col-span-2 w-[640px] "}><br/>
+                    <label className={"bg-primary-white col-span-2 lg:w-[640px] md:w-[335px] md:block "}><br/>
                         <input id={"description"} name={"description"} placeholder={"description"} className={"contactForm w-[640px]"} style={{background:"white"}} required={true}/>
                         <span className={"b3"}>Course description</span>
                     </label>
-                    <input type={"submit"} value={"Send message"} required={true} className={'flex bttn1 w-36 h-12 bg-primary-blue rounded-full justify-center text-primary-white active:scale-90'}/>
+                    <input type={"submit"} value={"Send message"} required={true} className={'flex bttn1 w-36 h-12 bg-primary-blue rounded-full justify-center text-primary-white active:scale-90 md:translate-x-[-96px]'}/>
 
 
 
