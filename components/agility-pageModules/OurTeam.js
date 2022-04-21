@@ -1,5 +1,6 @@
-import React, {useState} from "react"
+import React, {useRef, useState} from "react"
 import {useSwipeable} from "react-swipeable";
+import {FaArrowLeft, FaArrowRight} from "react-icons/fa";
 
 
 
@@ -8,6 +9,8 @@ import {useSwipeable} from "react-swipeable";
 
 const OurTeam = ({module})=>{
     const {fields} = module;
+    const ref = useRef()
+    console.log(ref);
     const [offset, setOffset] = useState(0)
     const swipeHandler = useSwipeable({
         onSwiping:(eventData)=> {console.log("swiping ", eventData)
@@ -25,17 +28,50 @@ const OurTeam = ({module})=>{
         console.log(e)
         setOffset(offset + e.movementX)
     }
+
+    const nextSlide = () => {
+        let delta = 335+32
+        if (ref.current.clientWidth > 1290) delta = 448
+        let val = offset
+        let maxOffset = ref.current.clientWidth - ref.current.scrollWidth
+        if (val-delta < maxOffset)
+            setOffset(maxOffset)
+        else setOffset(val-delta)
+    }
+    const prevSlide = () => {
+        let delta = 335+32
+        if (ref.current.clientWidth > 1290) delta = 448
+        let val = offset
+        let minOffset = 0
+        if (val+delta > minOffset)
+            setOffset(minOffset)
+        else setOffset(val+delta)
+    }
+
     return(
         <div>
 
-            <div>
-                <div className={"overflow-hidden max-w-screen-xl mx-auto "}>
-                    <div className={" space-x-8 flex flex-row mx-auto bg-red-700 h-[320px]"}
+            <div className={"max-w-screen-xl mdplus:mx-auto md:mx-5 space-y-12"}>
+                <h2 className={"text-center"}>{fields.title}</h2>
+                <div className={"mdplus:w-[560px] mx-auto justify-center text-center"}>{fields.text}</div>
+
+                <div className={"flex mx-auto justify-center space-x-4"}>
+                    <div className={"bg-soft-blue w-[60px] h-[60px] rounded-full p-[22px]"} onClick={prevSlide}><FaArrowLeft/></div>
+                    <div className={"bg-soft-blue w-[60px] h-[60px] rounded-full p-[22px]"} onClick={nextSlide}><FaArrowRight/></div>
+                </div>
+                <div className={"overflow-hidden max-w-screen-xl lg:max-w-[1312px] md:w-[335px] mx-auto "}>
+                    <div className={" space-x-8 flex flex-row mx-auto"}
+                         ref={ref}
                          style={{transform:`translateX(${offset}px)`, transition:"all 300ms ease-in-out 0s"}}>
-                        <div className={"w-[416px] h-[320px] bg-red-200 flex-shrink-0"}>1</div>
-                        <div className={"w-[416px] h-[320px] bg-red-300 flex-shrink-0"}>2</div>
-                        <div className={"w-[416px] h-[320px] bg-red-400 flex-shrink-0"}>3</div>
-                        <div className={"w-[416px] h-[320px] bg-red-500 flex-shrink-0"}>4</div>
+                        {fields.ourTeam.map((e)=>{
+                            return(<div className={"lg:w-[416px] md:w-[335px]"}>
+                                <div className={"lg:w-[416px] lg:h-[520px] md:w-[335px] md:h-[415px] rounded-xl flex-shrink-0 " + `${e.fields.image ? "":"bg-soft-blue"}`}>{
+                                    e.fields.image ? <img className={"object-scale-down rounded-xl"} src={e.fields.image.url}/> : "image 416x520 should be there"
+                                }</div>
+                                <p className={"c1"}>{e.fields.name}</p>
+                                <p className={"b1"}>{e.fields.specialty}</p>
+                            </div>)
+                        })}
 
                     </div>
                 </div>
