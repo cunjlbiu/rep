@@ -5,7 +5,7 @@ const AvatarWithText = ({module}) =>{
     const {fields} = module
     console.log(fields)
     return(
-        <div className={"max-w-full bg-soft-purple py-12"}>
+        <div className={"max-w-full bg-soft-purple py-12 md:px-5"}>
             <div className={"max-w-screen-xl mx-auto flex items-center  text-center flex-col space-y-6"}>
                 <div className={"rounded-full content-center w-20 h-20"}>
                     <img src={fields.image.url}/>
