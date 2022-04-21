@@ -628,5 +628,11 @@ span.message{
   .video_section {
     width: 100%;
   }
+  .video_mobile iframe {
+    width: 100%;
+  }
 }
+
+
+
 
