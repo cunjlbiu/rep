@@ -13,13 +13,12 @@ const OurTeam = ({module})=>{
     console.log(ref);
     const [offset, setOffset] = useState(0)
     const swipeHandler = useSwipeable({
-        onSwiping:(eventData)=> {console.log("swiping ", eventData)
-        setOffset(offset + eventData.deltaX)},
-        onSwipedLeft: (eventData) => setOffset(offset - 100),
+        onSwipedRight:(eventData)=>prevSlide(367),
+        onSwipedLeft: (eventData) => nextSlide(367),
         delta: 10,                            // min distance(px) before a swipe starts. *See Notes*
         preventDefaultTouchmoveEvent: false,  // call e.preventDefault *See Details*
         trackTouch: true,                     // track touch input
-        trackMouse: true,                    // track mouse input
+        trackMouse: false,                    // track mouse input
         rotationAngle: 0,                     // set a rotation angle
 
 
@@ -29,18 +28,19 @@ const OurTeam = ({module})=>{
         setOffset(offset + e.movementX)
     }
 
-    const nextSlide = () => {
+    const nextSlide = (del) => {
         let delta = 335+32
-        if (ref.current.clientWidth > 1290) delta = 448
+        console.log(ref)
+        if (!del && ref.current.clientWidth > 1290) delta = 448
         let val = offset
         let maxOffset = ref.current.clientWidth - ref.current.scrollWidth
         if (val-delta < maxOffset)
             setOffset(maxOffset)
         else setOffset(val-delta)
     }
-    const prevSlide = () => {
+    const prevSlide = (del) => {
         let delta = 335+32
-        if (ref.current.clientWidth > 1290) delta = 448
+        if (!del && ref.current.clientWidth > 1290) delta = 448
         let val = offset
         let minOffset = 0
         if (val+delta > minOffset)
@@ -51,7 +51,7 @@ const OurTeam = ({module})=>{
     return(
         <div>
 
-            <div className={"max-w-screen-xl mdplus:mx-auto md:mx-5 space-y-12"}>
+            <div className={"max-w-screen-xl mdplus:mx-auto md:mx-5 space-y-12 my-16"}>
                 <h2 className={"text-center"}>{fields.title}</h2>
                 <div className={"mdplus:w-[560px] mx-auto justify-center text-center"}>{fields.text}</div>
 
@@ -59,10 +59,11 @@ const OurTeam = ({module})=>{
                     <div className={"bg-soft-blue w-[60px] h-[60px] rounded-full p-[22px]"} onClick={prevSlide}><FaArrowLeft/></div>
                     <div className={"bg-soft-blue w-[60px] h-[60px] rounded-full p-[22px]"} onClick={nextSlide}><FaArrowRight/></div>
                 </div>
-                <div className={"overflow-hidden max-w-screen-xl lg:max-w-[1312px] md:w-[335px] mx-auto "}>
+                <div className={"overflow-hidden max-w-screen-xl lg:max-w-[1312px] md:w-[335px] mx-auto "} {...swipeHandler}>
                     <div className={" space-x-8 flex flex-row mx-auto"}
                          ref={ref}
-                         style={{transform:`translateX(${offset}px)`, transition:"all 300ms ease-in-out 0s"}}>
+                         style={{transform:`translateX(${offset}px)`, transition:"all 300ms ease-in-out 0s"}}
+                         >
                         {fields.ourTeam.map((e)=>{
                             return(<div className={"lg:w-[416px] md:w-[335px]"}>
                                 <div className={"lg:w-[416px] lg:h-[520px] md:w-[335px] md:h-[415px] rounded-xl flex-shrink-0 " + `${e.fields.image ? "":"bg-soft-blue"}`}>{
