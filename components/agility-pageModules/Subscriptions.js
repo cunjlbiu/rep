@@ -6,8 +6,8 @@ const Subscriptions = ({module}) => {
 
     return(
         <div>
-            <div className={"max-w-screen-xl mx-auto py-20"}>
-                <div className={"flex justify-evenly"}>
+            <div className={"max-w-screen-xl md:w-[300px] mx-auto py-20"}>
+                <div className={"flex md:flex-col md:space-y-6 justify-evenly"}>
                     <div className={"flex flex-col space-y-3"}>
                         <div className={"w-[300px] h-[200px] bg-agility"}> {fields.imageLeft ? <img src={fields.imageLeft.url} />: "put image there"}</div>
                         <div className={"self-center b3 text-primary-darkblue cursor-default "}>{fields.buttonLeft.text}</div>
