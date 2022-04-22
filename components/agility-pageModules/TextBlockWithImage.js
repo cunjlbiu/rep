@@ -51,7 +51,7 @@ const TextBlockWithImage = ({ module }) => {
                     }`}
                 >
                     <div className="g:py-8 text-center justify-center lg:text-left  space-y-5">
-                        <div className={"c3 text-primary-blue"}>{fields.caption}</div>
+                        <div className={"c3 text-primary-blue md:flex"}>{fields.caption}</div>
                         <h3 className={`${
                             fields.imagePosition != "right"
                                 ? `lg:pr-8 md:pr-0 md:text-primary-darkblue md:text-[35px] md:text-left`

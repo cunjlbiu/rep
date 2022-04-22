@@ -1,13 +1,14 @@
 import React from "react"
 
-const TitledTextWithTwoButtons = ({module})=>{
+const TitledTextWithTwoButtons = ({module}) => {
     const {fields} = module
-    console.log(fields.leftButton)
-    console.log(fields.rightButton)
-    return(
+
+    return (
 
         <div className={""}>
-            <div className={"max-w-screen-xl lg:mx-auto flex flex-col content-center md:mx-5 space-y-8 my-12 md:py-12 lg:py-24 rounded-2xl"} style={{backgroundColor:fields.bgColor}}>
+            <div
+                className={"max-w-screen-xl lg:mx-auto flex flex-col content-center md:mx-5 space-y-8 my-12 md:py-12 lg:py-24 rounded-2xl"}
+                style={{backgroundColor: fields.bgColor}}>
                 <h3 className={"self-center text-center md:px-[20px]"}>{fields.title}</h3>
                 <p className={"b1 lg:w-[640px] text-center self-center md:px-[20px]"}>{fields.text}</p>
                 <div className={"flex flex-row justify-center space-x-5"}>
