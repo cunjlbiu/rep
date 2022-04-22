@@ -29,6 +29,7 @@ const OurTeam = ({module})=>{
     }
 
     const nextSlide = (del) => {
+        console.log(del)
         let delta = 335+32
         console.log(ref)
         if (!del && ref.current.clientWidth > 1290) delta = 448
@@ -56,8 +57,8 @@ const OurTeam = ({module})=>{
                 <div className={"mdplus:w-[560px] mx-auto justify-center text-center"}>{fields.text}</div>
 
                 <div className={"flex mx-auto justify-center space-x-4"}>
-                    <div className={"bg-soft-blue w-[60px] h-[60px] rounded-full p-[22px]"} onClick={prevSlide}><FaArrowLeft/></div>
-                    <div className={"bg-soft-blue w-[60px] h-[60px] rounded-full p-[22px]"} onClick={nextSlide}><FaArrowRight/></div>
+                    <div className={"bg-soft-blue w-[60px] h-[60px] rounded-full p-[22px]"} onClick={()=>prevSlide()}><FaArrowLeft/></div>
+                    <div className={"bg-soft-blue w-[60px] h-[60px] rounded-full p-[22px]"} onClick={()=>nextSlide()}><FaArrowRight/></div>
                 </div>
                 <div className={"overflow-hidden max-w-screen-xl lg:max-w-[1312px] md:w-[335px] mx-auto "} {...swipeHandler}>
                     <div className={" space-x-8 flex flex-row mx-auto"}
