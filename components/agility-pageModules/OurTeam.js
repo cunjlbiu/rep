@@ -16,7 +16,7 @@ const OurTeam = ({module})=>{
         onSwipedRight:(eventData)=>prevSlide(367),
         onSwipedLeft: (eventData) => nextSlide(367),
         delta: 10,                            // min distance(px) before a swipe starts. *See Notes*
-        preventDefaultTouchmoveEvent: false,  // call e.preventDefault *See Details*
+        preventDefaultTouchmoveEvent: true,  // call e.preventDefault *See Details*
         trackTouch: true,                     // track touch input
         trackMouse: false,                    // track mouse input
         rotationAngle: 0,                     // set a rotation angle
@@ -52,7 +52,7 @@ const OurTeam = ({module})=>{
     return(
         <div>
 
-            <div className={"max-w-screen-xl mdplus:mx-auto md:mx-5 space-y-12 my-16"}>
+            <div className={"max-w-screen-xl mdplus:mx-auto md:justify-center space-y-12 my-16"}>
                 <h2 className={"text-center"}>{fields.title}</h2>
                 <div className={"mdplus:w-[560px] mx-auto justify-center text-center"}>{fields.text}</div>
 
