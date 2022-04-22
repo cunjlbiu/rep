@@ -34,7 +34,13 @@ const HorizontalCards = ({module}) => {
                 })
                 }
             </div>
+            <div className={"lg:hidden mdplus:hidden md:flex flex-row items-center space-x-4 my-6 md:justify-center"}>
+                <a className={"flex bttn1 w-36 h-12 items-center bg-primary-blue rounded-full"} href={fields.button ? fields.button.href : ""}>
+                    <p className={"mx-auto text-primary-white md:text-[14px]"}>{fields.button ? fields.button.text : ""}</p>
+                </a>
+            </div>
         </div>
+
 
     );
 

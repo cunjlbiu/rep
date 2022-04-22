@@ -14,7 +14,7 @@ const FindCourse = ({module}) => {
                     className={"mx-auto text-center w-[490px] md:min-w-[303px] pd:px-4 md:w-full md:h-[72px] text-[16px]"}
                     dangerouslySetInnerHTML={renderHTML(fields.content)}>
                 </div>
-                <div className=" bg-white rounded-full relative w-[480px] h-[68px] md:h-[48px] mx-auto md:w-[303px]">
+                <div className=" bg-white rounded-full relative w-[480px] h-[68px] md:h-[48px] mx-auto md:w-full">
                     <input type="text"
                            className="h-[30px] w-[280px] md:top-[11px] top-[18px] md:w-3/4  left-11 absolute focus:outline-none"
                            placeholder="Search" value={filter} onChange={(e) => setFilter(e.target.value)}/>
@@ -24,7 +24,7 @@ const FindCourse = ({module}) => {
                        href={`${fields.button.href}?filter=${filter}#fil`}>{fields.button.text}</a>
                 </div>
                 <a className="hidden md:block right-[6px] top-[6px] bg-primary-blue text-primary-white rounded-full
-                        w-[303px] px-5 py-2 h-[48px] bttn1 text-center mx-auto"
+                        min-w-[259px] px-5 py-2 h-[48px] bttn1 text-center mx-auto"
                    href={`${fields.button.href}?filter=${filter}#fil`}>{fields.button.text}</a>
             </div>
         </div>
