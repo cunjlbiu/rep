@@ -39,11 +39,11 @@ const CourseBlock = ({blockData, filters, cl, deleteAll})=>{
                 <div className={"b1 pt-3"}>View our current curriculum.</div>
             </div>
             <div className={"flex justify-between"}>
-                <div className={"flex flex-wrap space-x-2"}>
+                <div className={"flex flex-nowrap overflow-x-scroll space-x-2"}>
                     {filters.map((e,i)=>{
                         if (!!e)
                             return (
-                                <div className={"border-secondary-blue rounded-full space-x-2 border-[1px] py-1 px-2 b3"}>{e}
+                                <div className={"border-secondary-blue rounded-full space-x-2 border-[1px] py-1 px-2 b3 flex-shrink-0 max-h-[36px]"}>{e}
                                     <div className={"text-[10px] font-extrabold px-1 inline-block cursor-pointer"} onClick={()=>{cl(i)}}>✕</div>
                                 </div>
                             )
@@ -51,7 +51,7 @@ const CourseBlock = ({blockData, filters, cl, deleteAll})=>{
                     })}
                 </div>
 
-                <div className={`bttn2 cursor-pointer`} style={{display:`${deleteAll ? "inline" : "none" }`}} onClick={()=>{cl("all")}}>Clear all filters</div>
+                <div className={`bttn2 cursor-pointer px-1`} style={{display:`${deleteAll ? "inline" : "none" }`}} onClick={()=>{cl("all")}}>Clear all filters</div>
 
             </div>
             <div className={"flex flex-row flex-wrap justify-between py-1 mb-5"}>
