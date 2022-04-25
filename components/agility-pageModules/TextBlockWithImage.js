@@ -16,7 +16,7 @@ const TextBlockWithImage = ({ module }) => {
         if (isUrlAbsolute(url) === false) {
             return (
                 <Link href={url} title={text} target={target}>
-                    <a className="flex bttn1 w-36 h-12 items-center justify-center bg-primary-blue text-primary-white rounded-full">
+                    <a className="flex bttn1 w-36 h-12 items-center justify-center md:mx-auto bg-primary-blue text-primary-white rounded-full">
                         {text}
                     </a>
                 </Link>
@@ -28,7 +28,7 @@ const TextBlockWithImage = ({ module }) => {
                     href={url}
                     title={text}
                     target={target}
-                    className="flex bttn1 w-36 h-12 items-center justify-center bg-primary-blue text-primary-white rounded-full"
+                    className="flex bttn1 w-36 h-12 items-center justify-center md:mx-auto bg-primary-blue text-primary-white rounded-full"
                 >
                     {text}
                 </a>

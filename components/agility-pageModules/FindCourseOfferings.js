@@ -51,7 +51,7 @@ const CourseBlock = ({blockData, filters, cl, deleteAll})=>{
                     })}
                 </div>
 
-                <div className={`bttn2 cursor-pointer`} style={{display:`${deleteAll ? "inline" : "none" }`}} onClick={()=>{cl("all")}}>Clear all filter</div>
+                <div className={`bttn2 cursor-pointer`} style={{display:`${deleteAll ? "inline" : "none" }`}} onClick={()=>{cl("all")}}>Clear all filters</div>
 
             </div>
             <div className={"flex flex-row flex-wrap justify-between py-1 mb-5"}>
@@ -318,7 +318,7 @@ const FindCourseOfferings = ({module,filtr})=>{
                             </div>
                         <a href={"#fil"} className={"md:hidden mdplus:block"}><button className="custom-search-botton bttn2 w-[130px] active:bg-primary-blue hover:bg-primary-darkblue" type="submit" onClick={ApplyFilters}>Find a course</button></a>
                     </div>
-                    <button className="bttn2 mdplus:hidden h-[48px] bg-primary-blue  active:bg-primary-blue hover:bg-primary-darkblue mx-5 mt-2 rounded-full" type="submit" onClick={ApplyFilters}>Find a course</button>
+                    <button className="bttn2 mdplus:hidden h-[48px] bg-primary-blue text-primary-white active:bg-primary-blue active:bg-primary-darkblue mx-5 mt-2 rounded-full" type="submit" onClick={ApplyFilters}>Find a course</button>
 
 
                     <div className={"lg:w-[860px] mdplus:mx-auto mdplus:w-[600px] md:py-6 md:px-4 md:mx-5 mdplus:px-12 flex md:space-y-6 mx-4 mt-2 md:flex-col md:rounded-2xl lg:justify-evenly bg-primary-white lg:rounded-full lg:mx-auto lg:py-6 lg:mt-6"}>
