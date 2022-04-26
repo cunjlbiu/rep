@@ -39,11 +39,11 @@ const CourseBlock = ({blockData, filters, cl, deleteAll})=>{
                 <div className={"b1 pt-3"}>View our current curriculum.</div>
             </div>
             <div className={"flex justify-between"}>
-                <div className={"flex flex-nowrap overflow-x-scroll space-x-2"}>
+                <div className={"flex flex-wrap space-x-2"}>
                     {filters.map((e,i)=>{
                         if (!!e)
                             return (
-                                <div className={"border-secondary-blue rounded-full space-x-2 border-[1px] py-1 px-2 b3 flex-shrink-0 max-h-[36px]"}>{e}
+                                <div className={"border-secondary-blue rounded-full space-x-2 border-[1px] py-1 px-2 b3 my-1 flex-shrink-0 max-h-[36px]"}>{e}
                                     <div className={"text-[10px] font-extrabold px-1 inline-block cursor-pointer"} onClick={()=>{cl(i)}}>✕</div>
                                 </div>
                             )
@@ -316,9 +316,11 @@ const FindCourseOfferings = ({module,filtr})=>{
                                 />
                                 <p>On-Demand</p>
                             </div>
-                        <a href={"#fil"} className={"md:hidden mdplus:block"}><button className="custom-search-botton bttn2 w-[130px] active:bg-primary-blue hover:bg-primary-darkblue" type="submit" onClick={ApplyFilters}>Find a course</button></a>
+                        <a href={"#fil"} className={"md:hidden mdplus:block"}><button className="custom-search-botton bttn2 w-[130px] active:bg-primary-blue hover:bg-primary-darkblue" onClick={ApplyFilters}>Find a course</button></a>
                     </div>
-                    <button className="bttn2 mdplus:hidden h-[48px] bg-primary-blue text-primary-white active:bg-primary-blue active:bg-primary-darkblue mx-5 mt-2 rounded-full" type="submit" onClick={ApplyFilters}>Find a course</button>
+                    <a href={"#fil"} className={"bttn2 flex mdplus:hidden h-[48px] bg-primary-blue text-primary-white items-center justify-center active:bg-primary-blue active:bg-primary-darkblue mx-5 mt-2 rounded-full"}>
+                        Find a course
+                    </a>
 
 
                     <div className={"lg:w-[860px] mdplus:mx-auto mdplus:w-[600px] md:py-6 md:px-4 md:mx-5 mdplus:px-12 flex md:space-y-6 mx-4 mt-2 md:flex-col md:rounded-2xl lg:justify-evenly bg-primary-white lg:rounded-full lg:mx-auto lg:py-6 lg:mt-6"}>
