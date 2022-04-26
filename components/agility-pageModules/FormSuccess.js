@@ -9,7 +9,7 @@ const FormSuccess = ({module}) =>{
 
 
     return(
-        <div className={"contents"}>
+        <div className={"flex flex-grow self-center min-h-[70vh] pb-12"} style={{backgroundColor:fields.bgColor}}>
             <div className={"max-w-screen-xl mx-auto space-y-5 my-auto"}>
                 <h1 className={"text-center text-primary-darkblue"}>
                     {fields.title}

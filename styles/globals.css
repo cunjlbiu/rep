@@ -226,6 +226,22 @@ a.bttn1:hover{
   color: white;
 }
 
+.avatarText{
+  font-family: Outfit;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 56px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+.avatarName{
+  font-family: Outfit;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 0em;
+  text-align: center;
+}
 
 .datePicker{
   height: 35px !important;
@@ -476,7 +492,6 @@ span.message{
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: #fff;
   height: 50px;
   padding: 1em;
   width: 100%;

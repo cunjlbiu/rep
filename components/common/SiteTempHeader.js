@@ -4,10 +4,19 @@ import head from "next/head";
 
 const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
     // get header data
+    console.log('page')
+    console.log(page)
+
     const { header } = globalData;
+
     // open / close mobile nav
     const [open, setOpen] = useState(false);
     const [dropDownOpen, setDropdownOpen] = useState(false);
+    const headerColorModule = page.zones['MainContentZone'].find((e)=>e.moduleName == "HeaderColor")
+    let color = "";
+    if(headerColorModule){
+        color = headerColorModule.item.fields.color;
+    }
 
 
     if (!header) {
@@ -47,7 +56,7 @@ const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
 
 
     return (
-        <header className="lg:relative lg:w-full lg:mx-auto lg:px-8 lg:h-24 lg:bg-primary-white lg:py-4 lg:my-2">
+        <header className="lg:relative lg:w-full lg:mx-auto lg:px-8 lg:h-24 lg:py-4" style={{backgroundColor: color}}>
 
            <div className={"lg:flex lg:flex-row lg:max-w-screen-xl lg:justify-between lg:mx-auto md:hidden"}>
                <div className={"align-middle py-[16px]"}>
@@ -55,7 +64,7 @@ const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
                </div>
                <div className={"flex pl-[100px] space-x-8 py-[19px]"}>
                    <a className={"b3"} href={"/company"}>Company</a>
-                   <div className="dropdown b3">
+                   <div className="dropdown b3 cursor-pointer">
                        <span>Education</span>
                        <div className="dropdown-content">
                            <div className={"py-2 px-3 hover:bg-soft-purple"}><a href={"/aorn"} className={"h-[50px]"}>AORN</a></div>
@@ -79,8 +88,8 @@ const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
 
             {/* Burger Menu REMAKE */}
 
-            <div className={"lg:hidden md:block  w-full"}>
-                <div className={"flex top-nav flex-center items-center p-5  justify-between w-full"}>
+            <div className={"lg:hidden md:block w-full"}>
+                <div className={"flex top-nav flex-center items-center p-5  justify-between w-full"} style={{backgroundColor: color}}>
                     <a href={"/"}><img className={"min-w-[144px] w-[133px]"} src={header.logo.url}/></a>
                     <div className={"burger-menu-x"}>
                         <div onClick={onButtonClick} className={`${isOpenMenu ? 'open': ''}`} id="nav-icon4" ref={burger}>

@@ -27,7 +27,7 @@ const Cards = ({module}) => {
     }
 
     return (
-        <div className={"max-w-full justify-between py-6 "} style={{backgroundColor: fields.bgColor}}>
+        <div className={"max-w-full justify-between py-6 lg:py-24 "} style={{backgroundColor: fields.bgColor}}>
             <div className="max-w-screen-xl my-8 mx-auto grid grid-cols-2 md:md:grid-cols-1 justify-center space-y-5">
                 <div className={"grid grid-cols-2 md:grid-cols-1 justify-center md:order-2"}>
                     <div className={"space-y-8 md:hidden"}>

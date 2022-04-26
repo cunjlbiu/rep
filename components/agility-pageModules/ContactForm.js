@@ -25,7 +25,7 @@ const ContactForm = ({module}) => {
 
 
     return (
-        <div className={"bg-soft-blue"}>
+        <div className={"bg-soft-blue pb-24 md:pb-12"}>
             <div className={"max-w-screen-xl mx-auto bg-soft-blue md:px-5"}>
                 <form className={"grid grid-flow-row  justify-center gap-4 md:flex md:flex-col md:items-center"}
                       action="http://info.cine-med.com/l/930733/2022-02-04/2dj4r" method="post">

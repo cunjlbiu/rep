@@ -204,9 +204,16 @@ const FindCourseOfferings = ({module,filtr})=>{
             visible: 'none',
         })
     }
-
+    console.log("курсируем");
+    console.log(fields.courses)
     const [checked, setChecked] = useState(false);
-    const [courses,setCourses] = useState(fields.courses);
+    const [courses,setCourses] = useState(fields.courses.sort((a,b)=>{
+        if (a.fields.startDate < b.fields.startDate)
+            return -1
+        if (a.fields.startDate > b.fields.startDate)
+            return 1
+        return 0
+    }));
     const [locFilter, setLocFilter] = useState('');
     const [typeFilter, setTypeFilter]=useState('');
     const [specialtyFilter, setSpecialtyFilter]=useState('');
@@ -275,9 +282,9 @@ const FindCourseOfferings = ({module,filtr})=>{
     console.log(courses)
     console.log("courses")
     return(
-        <div className={"bg-secondary-blue "}>
+        <div className={"bg-soft-purple"}>
             <div className={"max-w-screen-xl mx-auto md:mt-[45px] mdplus:mt-0 mdplus:py-16"}>
-                <div className={"bg-secondary-blue flex flex-col justify-center"}>
+                <div className={"bg-soft-purple flex flex-col justify-center"}>
                     <h1 className={"py-2 text-center md:hidden"}>
                         Choose from a vast library<br/>
                         of curated content.
