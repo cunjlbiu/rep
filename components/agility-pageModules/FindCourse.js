@@ -25,7 +25,7 @@ const FindCourse = ({module}) => {
                 </div>
                 <a className="hidden md:block right-[6px] top-[6px] bg-primary-blue text-primary-white rounded-full
                         min-w-[259px] px-5 py-2 h-[48px] bttn1 text-center mx-auto"
-                   href={`${fields.button.href}?filter=${filter}#fil`}>{fields.button.text}</a>
+                   href={`${fields.button.href}?filter=${filter}`}>{fields.button.text}</a>
             </div>
         </div>
     );

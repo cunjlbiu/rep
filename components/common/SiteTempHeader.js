@@ -13,7 +13,7 @@ const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
     const [open, setOpen] = useState(false);
     const [dropDownOpen, setDropdownOpen] = useState(false);
     const headerColorModule = page.zones['MainContentZone'].find((e)=>e.moduleName == "HeaderColor")
-    let color = "";
+    let color = "#FFF";
     if(headerColorModule){
         color = headerColorModule.item.fields.color;
     }
