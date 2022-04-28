@@ -63,8 +63,8 @@ const AORNHero = ({module}) => {
 
             <div className={"bg-soft-green md:pb-10"}>
                 <div className={"max-w-screen-xl mx-auto md:mx-5"}>
-                    <div className={"mx-auto bg-primary-white rounded-xl border-2 md:max-w-[700px] border-soft-green " +
-                        "-translate-y-1/2 lg:py-16 lg:px-32 text-center mt-28 md:-mb-32 mdplus:-mb-12"}>
+                    <div style={{backgroundImage:`url(${fields.textBg.url})`}} className={"mx-auto bg-elipse bg-primary-white rounded-xl border-2 md:max-w-[700px] border-soft-green " +
+                        "-translate-y-1/2 lg:py-16 lg:px-32 text-center mt-28 md:-mb-32 mdplus:-mb-12 "}>
                         <p className={"b1"}>Our continued education offerings are perfect for training new perioperative
                             nurses as well as experienced
                             registered nurses who are looking to transition into the perioperative suite from another
