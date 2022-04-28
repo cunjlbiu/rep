@@ -26,7 +26,7 @@ const CardsWithImage = ({module}) =>{
            <div className={"c1 pb-1 "}>{fields.caption}</div>
            <div className={"lg:grid lg:grid-cols-2 space-y-4"}>
                <div className={`lg:-translate-y-20 ${fields.imagePosition == "right" ? 'order-last' : '' }`}>
-                   <img src={fields.image.url}/>
+                   <img className={"rounded-xl"} src={fields.image.url}/>
                </div>
                <div className={"flex flex-wrap lg:justify-center md:justify-center"}>
 
