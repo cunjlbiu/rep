@@ -41,7 +41,7 @@ const TextBlockWithImage = ({ module }) => {
 
             <div className="flex flex-col lg:flex-row md:flex-columns justify-between max-w-screen-xl mx-auto py-20 md:py-5 md:pb-[64px] items-center ">
                 <div className="lg:w-6/12 md:w-full flex-shrink-0 md:pt-[52px] relative md:order-last">
-                    <img src={fields.image.url}/>
+                    <img className={"rounded-xl"} src={fields.image.url}/>
                 </div>
                 <div
                     className={`lg:w-6/12 md:w-full mt-16 md:mt-0 ${

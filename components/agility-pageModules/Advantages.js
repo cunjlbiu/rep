@@ -79,7 +79,7 @@ const Advantages = ({module}) =>{
                     </div>
                 </div>
                 <div className={"w-6/12 b1 max-h-80 md:hidden"} >
-                    {numbers[1].fields.image ? <img src={numbers[1].fields.image.url}/> : ''}
+                    {numbers[1].fields.image ? <img className={"rounded-xl"} src={numbers[1].fields.image.url}/> : ''}
                 </div>
             </div>
         </div>
