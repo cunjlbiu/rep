@@ -10,7 +10,7 @@ const Logos = ({module}) =>{
             <div className="max-w-screen-xl my-8 md:my-9 mx-auto justify-center flex md:px-[51px]">
                 <caption className={"c1 w-max mx-auto md:text-[24px] md:font-extrabold"}>We collaborate with 200+ leading universities and companies</caption>
             </div>
-            <div className={""}>
+            <div className={"mx-auto max-w-screen-xl"}>
                 <Slider
                     additionalTransfrom={100}
                     arrows = {false}
@@ -36,6 +36,7 @@ const Logos = ({module}) =>{
                                 min: 1024
                             },
                             items: 4,
+                            partialVisibilityGutter:0
 
                         },
                         mobile: {
@@ -61,7 +62,7 @@ const Logos = ({module}) =>{
                     swipeable
                 >
                     {fields.images.media.map((image, index) =>
-                        <img className={"mx-auto object-fill"} src={image.url} width={"144px"}
+                        <img className={"md:mx-auto object-fill"} src={image.url} width={"144px"}
                                                                                  height="48"/>
                     )}
                 </Slider>
