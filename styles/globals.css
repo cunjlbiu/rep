@@ -650,6 +650,11 @@ span.message{
     width: 100%;
   }
 }
+@media (max-width: 768px) {
+  .bg-elipse {
+    background-image: none!important;
+  }
+}
 
 
 
