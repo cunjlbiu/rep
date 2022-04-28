@@ -10,20 +10,21 @@ const Logos = ({module}) =>{
             <div className="max-w-screen-xl my-8 md:my-9 mx-auto justify-center flex md:px-[51px]">
                 <caption className={"c1 w-max mx-auto md:text-[24px] md:font-extrabold"}>We collaborate with 200+ leading universities and companies</caption>
             </div>
-            <div className={"max-w-screen-lg justify-center mx-auto -translate-x-10"}>
+            <div className={""}>
                 <Slider
                     additionalTransfrom={100}
                     arrows = {false}
                     autoPlay ={true}
                     autoPlaySpeed={1500}
                     centerMode={false}
+                    partialVisbile={true}
                     className=""
-                    containerClass=""
+                    containerClass="homeLogosContainer"
                     dotListClass=""
                     draggable={false}
                     focusOnSelect={false}
                     infinite={true}
-                    itemClass=""
+                    itemClass="homeLogosItem"
                     keyBoardControl={false}
                     minimumTouchDrag={80}
                     renderButtonGroupOutside={false}
@@ -42,16 +43,16 @@ const Logos = ({module}) =>{
                                 max: 464,
                                 min: 0
                             },
-                            items: 1,
-                            partialVisibilityGutter: 30
+                            items: 2,
+                            partialVisibilityGutter:0
                         },
                         tablet: {
                             breakpoint: {
                                 max: 1024,
                                 min: 464
                             },
-                            items: 2,
-                            partialVisibilityGutter: 30
+                            items: 3,
+                            partialVisibilityGutter:0
                         }
                     }}
                     showDots={false}
@@ -60,8 +61,8 @@ const Logos = ({module}) =>{
                     swipeable
                 >
                     {fields.images.media.map((image, index) =>
-                        <div className={"md:mx-auto h-[48px] w-max-[160px] md:h-[48px] md:w-[144px] "}><img src={image.url} width={"144px"}
-                                                                                 height="48"/></div>
+                        <img className={"mx-auto object-fill"} src={image.url} width={"144px"}
+                                                                                 height="48"/>
                     )}
                 </Slider>
             </div>
