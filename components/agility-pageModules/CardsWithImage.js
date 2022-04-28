@@ -3,7 +3,7 @@ import React from "react"
 
 const Card = ({iconUrl, title, text, iconBg, cardBg, textClr}) => {
     return(
-        <div className={"border-2 md:w-[335px] mr-4 mb-4 border-agility card p-4 pr-10 space-y-3 rounded-xl max-w-md  lg:h-40 inline-block lg:justify-start align-middle "} style={{backgroundColor: cardBg, color: textClr}}>
+        <div className={"border-2 md:w-[335px] mr-4 mb-4 border-agility card p-4 pr-10 space-y-3 rounded-xl max-w-md last:odd:max-w-max flex-grow lg:h-40 inline-block lg:justify-center align-middle "} style={{backgroundColor: cardBg, color: textClr}}>
             {iconUrl ?
                 <img className={"rounded"} src={iconUrl} height={"48"} width={"48"} style={{backgroundColor: iconBg}} />
                 : <div className={"w-12 h-12"}/>}
@@ -28,7 +28,7 @@ const CardsWithImage = ({module}) =>{
                <div className={`lg:-translate-y-20 ${fields.imagePosition == "right" ? 'order-last' : '' }`}>
                    <img src={fields.image.url}/>
                </div>
-               <div className={"flex flex-wrap justify-center"}>
+               <div className={"flex flex-wrap lg:justify-center md:justify-center"}>
 
                {fields.cards.slice(0).reverse().map((card, index) => {
 
