@@ -388,7 +388,7 @@ const FindCourseOfferings = ({module})=>{
                 <div className={"mx-auto max-w-screen-xl "} id={"fil"}>
                     <CourseBlock blockData={listedCourses} filters={filters} cl={(e)=>{DeleteFilter(e)}} deleteAll={filter || locFilter || typeFilter || specialtyFilter}/>
                 </div>
-                 <div className={"bttn1 flex cursor-pointer items-center justify-center h-[56px] w-[192px] lg:active:bg-primary-blue md:active:bg-primary-darkblue lg:hover:bg-primary-darkblue mx-auto bg-primary-blue rounded-full text-primary-white " + (courses.length <= amount ? " hidden" : "") } onClick={()=>IncreaseAmount(2)}>
+                 <div className={"bttn1 flex cursor-pointer items-center justify-center h-[56px] mdplus:w-[192px] md:flex-grow md:mx-5 lg:active:bg-primary-blue md:active:bg-primary-darkblue lg:hover:bg-primary-darkblue mdplus:mx-auto bg-primary-blue rounded-full text-primary-white " + (courses.length <= amount ? " hidden" : "") } onClick={()=>IncreaseAmount(2)}>
                      Load more</div>
              </div>
 
