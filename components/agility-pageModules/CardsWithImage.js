@@ -1,7 +1,7 @@
-import React from "react"
+import React, {useState} from "react"
 
 
-const Card = ({iconUrl, title, text, iconBg, cardBg, textClr}) => {
+const Card = ({iconUrl, title, text, iconBg, cardBg, textClr, imgPos}) => {
     return(
         <div className={"border-2 md:w-[335px] lg:mb-[29px]  border-agility card p-4 pr-10 space-y-2 rounded-xl max-w-md " +
             "last:odd:max-w-max flex-grow lg:h-40 inline-block lg:justify-center align-middle "+`${imgPos == "right" ? "mr-4" : "ml-4"}` } style={{backgroundColor: cardBg, color: textClr}}>
@@ -30,8 +30,7 @@ const CardsWithImage = ({module}) =>{
                </div>
                <div className={"flex flex-wrap lg:justify-center md:justify-center lg:content-center " + `${fields.imagePosition == "right" ? '' : '' }`}>
 
-               {fields.cards.slice(0).reverse().map((card, index) => {
-
+               {fields.cards.slice(0).reverse().map((card) => {
                        return(
                            <Card key={card.contentID.toString()}
                                  title={card.fields.title}
@@ -40,6 +39,7 @@ const CardsWithImage = ({module}) =>{
                                  iconUrl={card.fields.icon ? card.fields.icon.url : ''}
                                  iconBg={card.fields.iconBackground}
                                  cardBg={card.fields.cardBackground}
+                                 imgPos={"right"}
                            />
                        )
                })
