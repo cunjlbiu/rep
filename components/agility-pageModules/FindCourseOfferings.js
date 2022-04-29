@@ -3,7 +3,7 @@ import {useRouter} from 'next/router'
 import Switch from 'react-switch'
 import Select from "react-select";
 
-
+const DATE_NOW = Date.now()
 
 const CourseItem = ({data})=> {
     const startDate = new Date(data.startDate);
@@ -12,7 +12,7 @@ const CourseItem = ({data})=> {
     const endDate = new Date(data.endDate);
     if(!data.place) data.place = ''
     return(
-        <div className={"py-10 max-w-[640px] md:mx-5 mdplus:mx-auto"}>
+        <div className={"py-10 max-w-[640px] md:mx-5 "}>
             <div className={"mdplus:min-w-[600px] mdplus:h-[320px] max-w-[640px] md:w-auto rounded-xl text-white text-center relative"}>
                 <div className={`absolute b3 rounded-full px-[12px] py-1 top-4 left-4 ${data.onDemand ? "bg-primary-blue" : "bg-primary-white text-black" }`}>{data.onDemand ? "On-Demand" : "Live"}</div>
                 {!data.image ? "image should be here" : <img className={"rounded-xl object-contain"} src={data.image.url}/>}
@@ -66,16 +66,16 @@ const CourseBlock = ({blockData, filters, cl, deleteAll})=>{
 }
 const Filtering = (filters, courses,ondemand, loc,type, spec)=>{
     let filteredCourse = []
-        for (let k of courses) {
+
+            for (let k of courses) {
             if (!k.fields.place) k.fields.place = ""
             if (!k.fields.filter) k.fields.filter= ""
             if (!k.fields.type) k.fields.type = ""
             if (!k.fields.specialty) k.fields.specialty = ""
             if ((k.fields.filter.includes(filters) || k.fields.name.includes(filters) || k.fields.place.includes(filters))
                 && k.fields.place.includes(loc) && k.fields.type.includes(type) && k.fields.specialty.includes(spec)
-                && ( !ondemand || !!k.fields.onDemand)
+                && ( !ondemand || !!k.fields.onDemand) && (k.fields.onDemand || new Date(k.fields.endDate)>DATE_NOW || new Date(k.fields.startDate)>DATE_NOW )
             )
-
                 filteredCourse.push(k)
         }
     return filteredCourse;
@@ -185,7 +185,7 @@ const courseType =[
 ]
 
 
-const FindCourseOfferings = ({module,filtr})=>{
+const FindCourseOfferings = ({module})=>{
     const {fields} = module;
     const customStyle={
         control: (base, state) => ({
@@ -204,8 +204,6 @@ const FindCourseOfferings = ({module,filtr})=>{
             visible: 'none',
         })
     }
-    console.log("курсируем");
-    console.log(fields.courses)
     const [checked, setChecked] = useState(false);
     const [courses,setCourses] = useState(fields.courses.sort((a,b)=>{
         if (a.fields.startDate < b.fields.startDate)
@@ -214,6 +212,8 @@ const FindCourseOfferings = ({module,filtr})=>{
             return 1
         return 0
     }));
+    const [listedCourses,setListedCourses] = useState(courses.slice(0,4))
+    const [amount, setAmount]=useState(4)
     const [locFilter, setLocFilter] = useState('');
     const [typeFilter, setTypeFilter]=useState('');
     const [specialtyFilter, setSpecialtyFilter]=useState('');
@@ -221,12 +221,12 @@ const FindCourseOfferings = ({module,filtr})=>{
     const [filters, setFilters] = useState([]);
     const selectLocRef = useRef();
     const router = useRouter()
-    console.log(router.query.filter)
     const initialFilter=router.query.filter || ""
     const selectTypeRef = useRef();
     const selectSpecialtyRef = useRef();
     useEffect(()=>{ApplyFilters()},[locFilter,typeFilter,specialtyFilter,filter])
     useEffect(()=>setFilter(initialFilter),[])
+    useEffect(()=>setListedCourses(courses.slice(0,amount)),[amount,courses])
     // const course = {}
     // fields.courses.map((e)=>{course[e.fields.filter] ? course[e.fields.filter].push(e) : course[e.fields.filter] = [e] })
     // const courseArr = Object.entries(course)
@@ -262,11 +262,12 @@ const FindCourseOfferings = ({module,filtr})=>{
             newFilters =[]
         }
 
-        console.log(newFilters)
         setFilters(newFilters)
         ApplyFilters()
-        console.log("filters")
+    }
 
+    function IncreaseAmount(i){
+        setAmount(amount + i);
     }
 
     const ApplyFilters = (sw) => {
@@ -276,11 +277,9 @@ const FindCourseOfferings = ({module,filtr})=>{
         else
             setCourses(Filtering(filter, fields.courses,checked,locFilter,typeFilter,specialtyFilter))
         setFilters([filter,locFilter,typeFilter,specialtyFilter])
-        console.log("filtering")
+        setAmount(4);
         //setFilter("")
     }
-    console.log(courses)
-    console.log("courses")
     return(
         <div className={"bg-soft-purple"}>
             <div className={"max-w-screen-xl mx-auto md:mt-[45px] mdplus:mt-0 mdplus:py-16"}>
@@ -387,8 +386,10 @@ const FindCourseOfferings = ({module,filtr})=>{
 
              <div className={"bg-primary-white py-14 my-8 "}>
                 <div className={"mx-auto max-w-screen-xl "} id={"fil"}>
-                    <CourseBlock blockData={courses} filters={filters} cl={(e)=>{DeleteFilter(e)}} deleteAll={filter || locFilter || typeFilter || specialtyFilter}/>
+                    <CourseBlock blockData={listedCourses} filters={filters} cl={(e)=>{DeleteFilter(e)}} deleteAll={filter || locFilter || typeFilter || specialtyFilter}/>
                 </div>
+                 <div className={"bttn1 flex cursor-pointer items-center justify-center h-[56px] w-[192px] lg:active:bg-primary-blue md:active:bg-primary-darkblue lg:hover:bg-primary-darkblue mx-auto bg-primary-blue rounded-full text-primary-white " + (courses.length <= amount ? " hidden" : "") } onClick={()=>IncreaseAmount(2)}>
+                     Load more</div>
              </div>
 
         </div>

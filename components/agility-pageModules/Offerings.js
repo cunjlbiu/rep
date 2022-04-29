@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import {FaArrowLeft, FaArrowRight} from "react-icons/fa";
 
 
@@ -47,12 +47,37 @@ const Offerings = ({module})=>{
     const {fields} = module
     const course = {}
     fields.courses.map((e)=>{course[e.fields.filter] ? course[e.fields.filter].push(e) : course[e.fields.filter] = [e] })
+    const [amount, setAmount] = useState(7);
     const [courseArr,setCourseArr] =  useState(Object.entries(course))
+    const [courseList, setCourseList] = useState(courseArr)
     const [filter,setFilter] = useState("")
     const [offset, setOffset] = useState(0)
     let off = 0
-    console.log(courseArr)
+    console.log(courseList)
     console.log(filter)
+    useEffect(()=>FillCourseList(),[filter,amount])
+
+    function FillCourseList(){
+        let arr = [];
+        let i = 0;
+        for(let k of courseArr){
+            if(i == amount) break
+            if( filter === "" || filter.indexOf(k[0]) !== -1){
+                arr.push([k[0],[]]);
+                for (let j of k[1]){
+                    if(i == amount) break
+                    arr[arr.length-1][1].push(j)
+                    i++
+                }
+            }
+        }
+        setCourseList(arr)
+    }
+
+    function IncreaseAmount(i){
+        setAmount(amount + i);
+    }
+
 
     const applyFilter = (newFil)=>{
         console.log(ref.current)
@@ -67,6 +92,7 @@ const Offerings = ({module})=>{
             else
                 setFilter(filter.replace(newFil,""))
         }
+        setAmount(7)
     }
 
     const incOffset = ()=>{
@@ -108,11 +134,15 @@ const Offerings = ({module})=>{
                     </div>
                 </div>
                 {
-                    courseArr.map((e,i)=>{
+                    courseList.map((e,i)=>{
                         return(<CourseBlock blockData={e} filters={filter}/>)
                     })
                 }
-
+                <div className={"bttn1 flex cursor-pointer items-center justify-center h-[56px] w-[192px] lg:active:bg-primary-blue" +
+                    " md:active:bg-primary-darkblue lg:hover:bg-primary-darkblue mx-auto bg-primary-blue rounded-full " +
+                    `text-primary-white ${amount > 20 ? "hidden" : ""}`
+                } onClick={()=>IncreaseAmount(99)}>
+                    Load more</div>
             </div>
         </div>
     );
