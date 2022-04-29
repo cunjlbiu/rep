@@ -18,8 +18,7 @@ const Card = ({iconUrl, title, text, iconBg, cardBg, textClr}) => {
 
 const CardsWithImage = ({module}) =>{
     const {fields} = module
-
-
+    const [pos,setPos] = useState(fields.imagePosition)
 
     return(
        <div className={"lg:max-w-screen-xl mx-auto md:mx-5 "}>
