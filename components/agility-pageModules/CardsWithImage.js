@@ -14,6 +14,24 @@ const Card = ({iconUrl, title, text, iconBg, cardBg, textClr, imgPos}) => {
     )
 }
 
+const CardsBlock = ({cards,Pos})=>{
+    return(
+    cards.slice(0).reverse().map((card) => {
+        return(
+            <Card key={card.contentID.toString()}
+                  title={card.fields.title}
+                  text={card.fields.text}
+                  textClr={card.fields.textColor}
+                  iconUrl={card.fields.icon ? card.fields.icon.url : ''}
+                  iconBg={card.fields.iconBackground}
+                  cardBg={card.fields.cardBackground}
+                  imgPos={Pos}
+            />
+        )
+    })
+    )
+}
+
 
 
 const CardsWithImage = ({module}) =>{
@@ -29,21 +47,7 @@ const CardsWithImage = ({module}) =>{
                    <img className={"rounded-xl"} src={fields.image.url}/>
                </div>
                <div className={"flex flex-wrap lg:justify-center md:justify-center lg:content-center " + `${fields.imagePosition == "right" ? '' : '' }`}>
-
-               {fields.cards.slice(0).reverse().map((card) => {
-                       return(
-                           <Card key={card.contentID.toString()}
-                                 title={card.fields.title}
-                                 text={card.fields.text}
-                                 textClr={card.fields.textColor}
-                                 iconUrl={card.fields.icon ? card.fields.icon.url : ''}
-                                 iconBg={card.fields.iconBackground}
-                                 cardBg={card.fields.cardBackground}
-                                 imgPos={"right"}
-                           />
-                       )
-               })
-               }
+               <CardsBlock cards={fields.cards} Pos={fields.imagePosition}/>
                </div>
 
            </div>
