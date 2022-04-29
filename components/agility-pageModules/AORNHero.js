@@ -47,11 +47,11 @@ const AORNHero = ({module}) => {
                     <p className={"b1 lg:w-8/12 pl-12 md:pl-4 border-secondary-green border-l-2 my-6"}>{fields.text}</p>
                 </div>
                 <div className={"flex justify-evenly space-x-2 mt-3 lg:hidden"}>
-                    <a className={"text-white w-[157px] h-[48px] rounded-full text-primary-blue hover:bg-primary-blue " +
+                    <a href={"https://cine-med.com/aornonline/"} className={"text-white w-[157px] h-[48px] rounded-full text-primary-blue hover:bg-primary-blue " +
                         "hover:text-white active:scale-90 border-2 border-primary-blue text-center py-1 self-center"}>
                         <span className={"bttn1"}>Log in</span>
                     </a>
-                    <a className={"bttn1 text-white w-[157px] h-[48px] rounded-full bg-primary-blue " +
+                    <a href={"https://cine-med.com/aornonline/contact"} className={"bttn1 text-white w-[157px] h-[48px] rounded-full bg-primary-blue " +
                         "text-center py-2 self-center"}>
                         Sign up
                     </a>
