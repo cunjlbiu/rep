@@ -41,10 +41,10 @@ const Advantages = ({module}) =>{
 
     return(
         <div className={"bg-soft-green"}>
-            <div className={"max-w-screen-xl mx-auto flex flex-row py-16"}>
+            <div className={"max-w-screen-xl mx-auto flex flex-row lg:py-16 md:pt-8"}>
                 <div className={"lg:w-6/12 md:mx-auto"}>
                     <h2 className={"md:px-5"}>What makes us different.</h2>
-                    <div className={"lg:grid lg:grid-cols-8 py-5"}>
+                    <div className={"lg:grid lg:grid-cols-8 lg:py-5 md:pt-5"}>
                         <div className={"lg:w-3/12 mdplus:w-[600px] mdplus:mx-0 mdplus:px-5 text-primary-darkblue lg:space-y-5 justify-between md:mx-5 md:flex"}>
                             { numbers.map((e, index)=>
                                 <Number
@@ -71,10 +71,7 @@ const Advantages = ({module}) =>{
                             <FaArrowUp className={"h-6"}></FaArrowUp>
                             <span>Previous</span>
                         </div>
-                        <div className={"lg:hidden flex justify-center space-x-6"}>
-                            <div className={"bg-primary-white w-[60px] h-[60px] rounded-full p-[22px]"} onClick={clickPrev}><FaArrowLeft/></div>
-                            <div className={"bg-primary-white w-[60px] h-[60px] rounded-full p-[22px]"} onClick={clickNext}><FaArrowRight/></div>
-                        </div>
+
 
                     </div>
                 </div>
