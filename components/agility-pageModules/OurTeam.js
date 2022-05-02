@@ -1,17 +1,29 @@
-import React, {useRef, useState} from "react"
+import React, {useEffect, useRef, useState} from "react"
 import {useSwipeable} from "react-swipeable";
 import {FaArrowLeft, FaArrowRight} from "react-icons/fa";
-
-
-
-
 
 
 const OurTeam = ({module})=>{
     const {fields} = module;
     const ref = useRef()
-    console.log(ref);
+    const slides = [...fields.ourTeam.slice(-3), ...fields.ourTeam, ...fields.ourTeam.slice(0,3)]
+    const [transitionEnabled, setTransitionEnabled] = useState(true)
+    const [isLast, setIsLast] = useState(false)
+    const [isFirst, setIsFirst] = useState(false)
     const [offset, setOffset] = useState(0)
+    useEffect(()=>{
+        if (!transitionEnabled)
+            setTransitionEnabled(true)
+    },[offset])
+
+    useEffect(()=>{
+        if(ref.current.clientWidth > 1290){
+            setOffset(0-(448*3))
+        }
+        else setOffset(0-(367*3))
+    },[])
+
+
     const swipeHandler = useSwipeable({
         onSwipedRight:(eventData)=>prevSlide(367),
         onSwipedLeft: (eventData) => nextSlide(367),
@@ -28,6 +40,23 @@ const OurTeam = ({module})=>{
         setOffset(offset + e.movementX)
     }
 
+    const handleTransition = ()=>{
+        if(isLast){
+            setTransitionEnabled(false)
+            setIsLast(false)
+            if(ref.current.clientWidth > 1290)
+                setOffset(-1344)
+            else setOffset(0)
+        }
+        if(isFirst){
+            setTransitionEnabled(false)
+            setIsFirst(false)
+            if(ref.current.clientWidth > 1290)
+                setOffset((ref.current.clientWidth - ref.current.scrollWidth) + 448*3)
+            else setOffset(ref.current.clientWidth - ref.current.scrollWidth + 367*5)
+        }
+    }
+
     const nextSlide = (del) => {
         console.log(del)
         let delta = 335+32
@@ -35,8 +64,10 @@ const OurTeam = ({module})=>{
         if (!del && ref.current.clientWidth > 1290) delta = 448
         let val = offset
         let maxOffset = ref.current.clientWidth - ref.current.scrollWidth
-        if (val-delta < maxOffset)
+        if (val-delta <= maxOffset){
+            setIsLast(true)
             setOffset(maxOffset)
+        }
         else setOffset(val-delta)
     }
     const prevSlide = (del) => {
@@ -44,8 +75,11 @@ const OurTeam = ({module})=>{
         if (!del && ref.current.clientWidth > 1290) delta = 448
         let val = offset
         let minOffset = 0
-        if (val+delta > minOffset)
+
+        if (val+delta >= minOffset){
+            setIsFirst(true)
             setOffset(minOffset)
+        }
         else setOffset(val+delta)
     }
 
@@ -62,10 +96,14 @@ const OurTeam = ({module})=>{
                 </div>
                 <div className={"overflow-hidden max-w-screen-xl lg:max-w-[1312px] md:w-[335px] mx-auto "} {...swipeHandler}>
                     <div className={" space-x-8 flex flex-row mx-auto"}
+                         onTransitionEnd={()=>handleTransition()}
                          ref={ref}
-                         style={{transform:`translateX(${offset}px)`, transition:"all 300ms ease-in-out 0s"}}
+                         style={{
+                             transform:`translateX(${offset}px)`,
+                             transition: !transitionEnabled ? "none" : "all 300ms ease-in-out 0s"
+                    }}
                          >
-                        {fields.ourTeam.map((e)=>{
+                        {slides.map((e)=>{
                             return(<div className={"lg:w-[416px] md:w-[335px]"}>
                                 <div className={"lg:w-[416px] lg:h-[520px] md:w-[335px] md:h-[415px] rounded-xl flex-shrink-0 " + `${e.fields.image ? "":"bg-soft-blue"}`}>{
                                     e.fields.image ? <img className={"object-scale-down rounded-xl"} src={e.fields.image.url}/> : "image 416x520 should be there"
