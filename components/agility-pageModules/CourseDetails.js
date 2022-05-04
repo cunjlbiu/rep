@@ -227,8 +227,8 @@ const CourseDetails = ({module}) => {
 
                 {/*Fixed Section */}
 
-                <div className={"flex flex-row ml-8 min-w-[416px] relative "} style={{height:"max-content"}}>
-                    <div className={"flex flex-col w-full max-w-[450px] fixed bg-white"} style={{borderRadius:"10px", border:" 1px solid #EDF2F4"}}>
+                <div className={"flex flex-row ml-8 w-full sticky top-0 relative "} style={{height:"max-content"}}>
+                    <div className={"flex flex-col w-full max-w-[450px] bg-white"} style={{borderRadius:"10px", border:" 1px solid #EDF2F4"}}>
                         <div style={{borderBottom:"1px solid #EDF2F4"}}>
                             <div className={"flex mt-6 ml-6"}>
                                 <p className={"b3 text-primary-darkblue"}>Price</p>
