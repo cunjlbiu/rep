@@ -102,7 +102,7 @@ const CourseDetails = ({module}) => {
                         <div className={"flex flex-col"}>
                             <div className={"flex justify-start mt-10 "}>
                                 <div className={"flex"}>
-                                    <div className={"mr-[16px] flex items-center"}>
+                                    <div className={"mr-[16px] min-w-[64px] flex items-center"}>
                                         <p className={"c2"}>12:00</p>
                                     </div>
 
@@ -117,7 +117,7 @@ const CourseDetails = ({module}) => {
 
                             <div className={"flex justify-start mt-10 "}>
                                 <div className={"flex"}>
-                                    <div className={"mr-[16px] flex items-center"}>
+                                    <div className={"mr-[16px]  min-w-[64px] flex items-center"}>
                                         <p className={"c2"}>16:00</p>
                                     </div>
 
@@ -132,7 +132,7 @@ const CourseDetails = ({module}) => {
 
                             <div className={"flex justify-start mt-10 "}>
                                 <div className={"flex"}>
-                                    <div className={"mr-[11px] flex items-center"}>
+                                    <div className={"mr-[16px] min-w-[64px] flex items-center"}>
                                         <p className={"c2"}>20:00</p>
                                     </div>
 
@@ -146,7 +146,7 @@ const CourseDetails = ({module}) => {
                             </div>
                             <div className={"flex justify-start mt-10 "}>
                                 <div className={"flex"}>
-                                    <div className={"mr-[16px] flex items-center"}>
+                                    <div className={"mr-[16px] min-w-[64px] flex items-center"}>
                                         <p className={"c2"}>15:00</p>
                                     </div>
 
@@ -176,7 +176,7 @@ const CourseDetails = ({module}) => {
                         <div className={"flex flex-col"}>
                             <div className={"flex justify-start mt-10 "}>
                                 <div className={"flex"}>
-                                    <div className={"mr-[16px] flex items-center"}>
+                                    <div className={"mr-[16px] min-w-[64px] flex items-center"}>
                                         <p className={"c2"}>09:00</p>
                                     </div>
 
@@ -191,7 +191,7 @@ const CourseDetails = ({module}) => {
 
                             <div className={"flex justify-start mt-10 "}>
                                 <div className={"flex"}>
-                                    <div className={"mr-[20px] flex items-center"}>
+                                    <div className={"mr-[16px] min-w-[64px] flex items-center"}>
                                         <p className={"c2"}>13:00</p>
                                     </div>
 
@@ -206,7 +206,7 @@ const CourseDetails = ({module}) => {
 
                             <div className={"flex justify-start mt-10 "}>
                                 <div className={"flex"}>
-                                    <div className={"mr-[24px] flex items-center"}>
+                                    <div className={"mr-[16px] min-w-[64px] flex items-center"}>
                                         <p className={"c2"}>11:00</p>
                                     </div>
 
