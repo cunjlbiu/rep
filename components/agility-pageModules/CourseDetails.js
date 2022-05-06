@@ -2,16 +2,64 @@ import React, {useState} from "react";
 import {BiLeftArrowAlt} from "react-icons/bi";
 import {HiLocationMarker} from "react-icons/hi";
 import {GiOpenBook} from "react-icons/gi"
+import {renderHTML} from "@agility/nextjs";
+
+
+const Schedule = ({day})=>{
+    console.log(day)
+    return(
+        <div className={"flex flex-col mt-[82px]"}>
+            <div className={"flex flex-col"}>
+                <p className={"c1"}>{day?.fields?.date}</p>
+                <div className={"b1 mt-4 text-primary-darkblue"}
+                    dangerouslySetInnerHTML={renderHTML(day?.fields?.description)}/>
+            </div>
+            <div className={"flex flex-col"}>
+
+                {day?.fields?.timetable?.map((item)=>
+
+                    <div className={"flex justify-start mt-10 "}>
+                        <div className={"flex"}>
+                            <div className={"mr-[16px] min-w-[64px] flex items-center"}>
+                                <p className={"c2"}>{item.fields?.time}</p>
+                            </div>
+
+                            <span className={"w-[2px] bg-primary-blue"}></span>
+
+                            <div className={"flex flex-col ml-4"}>
+                                <p className={"b2 text-primary-grey"}>{item.fields?.type}</p>
+                                <p className={"b1 text-primary-darkblue"}>{item.fields?.description}</p>
+                            </div>
+                        </div>
+                    </div>
+                ).reverse()}
+
+
+            </div>
+        </div>
+
+
+    )
+}
+
 
 const CourseDetails = ({customData, module, dynamicPageItem}) => {
-    const {fields} = module
     const dynamicFields = dynamicPageItem.fields
-    console.log(dynamicPageItem)
+    const startDate = dynamicFields?.startDate ? (new Date(dynamicFields.startDate)) : null
+    const endDate = dynamicFields?.endDate ? (new Date(dynamicFields.endDate)) : null
+    console.log("date")
+    console.log(customData)
 
 
     const [isOpenMenu, setIsOpenMenu] = useState(false)
     const onButtonClick = () => setIsOpenMenu(!isOpenMenu)
 
+
+    const [schedule,setSchedule] = useState((customData?.schedule?.items || []));
+    const [include,setInclude] = useState((customData?.include?.items || []));
+    const [instructors,setInstructors] = useState((customData?.instructors?.items || []));
+    console.log(`instructors`);
+    console.log(instructors);
 
 
     return (
@@ -23,7 +71,7 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
                     < BiLeftArrowAlt/>
                 </div>
                 <div className={"flex pl-[14px]"}>
-                    <p className={"bttn2 cursor-pointer"}>Back to the courses</p>
+                    <a href={"/find-a-course"}><p className={"bttn2 cursor-pointer"}>Back to the courses</p></a>
                 </div>
             </div>
 
@@ -46,7 +94,7 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
                             <HiLocationMarker/>
                         </div>
                         <div className={"flex ml-[10px]"}>
-                            <a className={"b2 underline"} href="#">UK, London 31 N Worple Way, SW14 8QA</a>
+                            <a className={"b2 underline"} href="#">{dynamicFields.fullAddress}</a>
                         </div>
                     </div>
 
@@ -63,173 +111,30 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
 
                     {/*    */}
 
-                    <div className={"flex mt-[24px] flex-col b1 text-primary-darkblue"}>
-                        <p className={"b1"}>At CineMed we believe in the power of video-based education for engaging and training heal
-                            thcare providers.</p>
-                        <br/>
-                        <p className={"b1"}>Take your education further with CineMed's online education and training solutions, engaging
-                            and interactive. Our integrated content management system (CMS) allows us to create a site
-                            that acts as the channel for your training.</p>
-                        <br/>
-                        <p className={"b1"}>Our leadership team has decades of collective experience in software, bringing a diverse set
-                            of backgrounds and perspectives to the table. Take your education further with CineMed's online
-                            education and training solutions, engaging and interactive. Our integrated content management
-                            system (CMS) allows us to create a site that acts as the channel for your training.</p>
-                    </div>
+                    <div className={"flex mt-[24px] flex-col b1 text-primary-darkblue"}
+                         dangerouslySetInnerHTML={renderHTML(dynamicFields.courseDetails)}/>
 
                     {/*    */}
 
                     <div className={"flex mt-6"}>
                         <div style={{width:"124px", height:"40px", borderRadius:"57px",border:"2px solid #C9D5FD"}}
                              className={"flex items-center justify-center mr-2"}>
-                            <a  className={"b3 text-primary-darkblue"} href="">International</a>
+                            <a  className={"b3 text-primary-darkblue"} href="">{dynamicFields.place}</a>
                         </div>
                         <div style={{width:"124px", height:"40px", borderRadius:"57px",border:"2px solid #C9D5FD"}}
                              className={"flex items-center justify-center mr-2"}>
-                            <a  className={"b3 text-primary-darkblue"} href="">Master Class</a>
+                            <a  className={"b3 text-primary-darkblue"} href="">{dynamicFields.specialty}</a>
                         </div>
                         <div style={{width:"124px", height:"40px", borderRadius:"57px",border:"2px solid #C9D5FD"}}
                              className={"flex items-center justify-center mr-2"}>
-                            <a  className={"b3 text-primary-darkblue"} href="">Bariatrics</a>
+                            <a  className={"b3 text-primary-darkblue"} href="">{dynamicFields.type}</a>
                         </div>
                     </div>
 
-                    <div className={"flex flex-col mt-[82px]"}>
-                        <div className={"flex flex-col"}>
-                            <p className={"c1"}>February 21</p>
-                            <p className={"b1 mt-4"}>
-                                At CineMed we believe in the power of video-based education for engaging
-                                and training healthcare providers.
-                            </p>
-                            <p className={"b1 mt-4"}>
-                                Take your education further with CineMed's online education and training solutions, engaging
-                                and interactive. Our integrated content management system (CMS) allows us to create a
-                                site that acts as the channel for your training.
-                            </p>
-                        </div>
-                        <div className={"flex flex-col"}>
-                            <div className={"flex justify-start mt-10 "}>
-                                <div className={"flex"}>
-                                    <div className={"mr-[16px] min-w-[64px] flex items-center"}>
-                                        <p className={"c2"}>12:00</p>
-                                    </div>
-
-                                    <span className={"w-[2px] bg-primary-blue"}></span>
-
-                                    <div className={"flex flex-col ml-4"}>
-                                        <p className={"b2 text-primary-grey"}>Medical</p>
-                                        <p className={"b1 text-primary-darkblue"}>Hand Hygiene, Scrubbing, Gowning</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className={"flex justify-start mt-10 "}>
-                                <div className={"flex"}>
-                                    <div className={"mr-[16px]  min-w-[64px] flex items-center"}>
-                                        <p className={"c2"}>16:00</p>
-                                    </div>
-
-                                    <span className={"w-[2px] bg-primary-blue"}></span>
-
-                                    <div className={"flex flex-col ml-4"}>
-                                        <p className={"b2 text-primary-grey"}>Medical</p>
-                                        <p className={"b1 text-primary-darkblue"}>Hand Hygiene, Scrubbing, Gowning</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className={"flex justify-start mt-10 "}>
-                                <div className={"flex"}>
-                                    <div className={"mr-[16px] min-w-[64px] flex items-center"}>
-                                        <p className={"c2"}>20:00</p>
-                                    </div>
-
-                                    <span className={"w-[2px] bg-primary-blue"}></span>
-
-                                    <div className={"flex flex-col ml-4"}>
-                                        <p className={"b2 text-primary-grey"}>Pharmacy</p>
-                                        <p className={"b1 text-primary-darkblue"}>Preoperative Skin Antisepsis</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={"flex justify-start mt-10 "}>
-                                <div className={"flex"}>
-                                    <div className={"mr-[16px] min-w-[64px] flex items-center"}>
-                                        <p className={"c2"}>15:00</p>
-                                    </div>
-
-                                    <span className={"w-[2px] bg-primary-blue"}></span>
-
-                                    <div className={"flex flex-col ml-4"}>
-                                        <p className={"b2 text-primary-grey"}>Pharmacy</p>
-                                        <p className={"b1 text-primary-darkblue"}>Preoperative Skin Antisepsis</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+                    {schedule.map((item)=><Schedule day={item}/>).reverse()}
 
                 {/*    */}
                 {/*    */}
-
-                    <div className={"flex flex-col mt-[64px]"}>
-                        <div className={"flex flex-col"}>
-                            <p className={"c1"}>February 22</p>
-                            <p className={"b1 mt-4"}>
-                                CineMed is a global healthcare solutions company committed to improving patient outcomes
-                                through innovative training and customer engagement.
-                            </p>
-                        </div>
-                        <div className={"flex flex-col"}>
-                            <div className={"flex justify-start mt-10 "}>
-                                <div className={"flex"}>
-                                    <div className={"mr-[16px] min-w-[64px] flex items-center"}>
-                                        <p className={"c2"}>09:00</p>
-                                    </div>
-
-                                    <span className={"w-[2px] bg-primary-blue"}></span>
-
-                                    <div className={"flex flex-col ml-4"}>
-                                        <p className={"b2 text-primary-grey"}>Medical</p>
-                                        <p className={"b1 text-primary-darkblue"}>Hand Hygiene, Scrubbing, Gowning</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className={"flex justify-start mt-10 "}>
-                                <div className={"flex"}>
-                                    <div className={"mr-[16px] min-w-[64px] flex items-center"}>
-                                        <p className={"c2"}>13:00</p>
-                                    </div>
-
-                                    <span className={"w-[2px] bg-primary-blue"}></span>
-
-                                    <div className={"flex flex-col ml-4"}>
-                                        <p className={"b2 text-primary-grey"}>Medical</p>
-                                        <p className={"b1 text-primary-darkblue"}>Hand Hygiene, Scrubbing, Gowning</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className={"flex justify-start mt-10 "}>
-                                <div className={"flex"}>
-                                    <div className={"mr-[16px] min-w-[64px] flex items-center"}>
-                                        <p className={"c2"}>11:00</p>
-                                    </div>
-
-                                    <span className={"w-[2px] bg-primary-blue"}></span>
-
-                                    <div className={"flex flex-col ml-4"}>
-                                        <p className={"b2 text-primary-grey"}>Pharmacy</p>
-                                        <p className={"b1 text-primary-darkblue"}>Preoperative Skin Antisepsis</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
 
                 </div>
 
@@ -242,30 +147,41 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
                                 <p className={"b3 text-primary-darkblue"}>Price</p>
                             </div>
                             <div className={"flex ml-6 mt-1"}>
-                                <p className={"c1 text-primary-darkblue"}>500$-1200$</p>
+                                <p className={"c1 text-primary-darkblue"}>
+                                    {dynamicFields?.discount ? parseInt(dynamicFields.priceLow)*(100-parseInt(dynamicFields.discount))/100
+                                        : dynamicFields.priceLow}$-
+                                    {dynamicFields?.discount ? parseInt(dynamicFields.priceHigh)*(100-parseInt(dynamicFields.discount))/100
+                                        : dynamicFields.priceHigh}$
+                                </p>
                             </div>
                             <div className={"flex ml-6"}>
                                 <div className={"flex flex-row align-middle mt-1"}>
-                                    <p className={"line-through b3 text-primary-grey"}>800-1500$</p>
+                                    <p className={"line-through b3 text-primary-grey"}>
+                                        {dynamicFields?.discount ?
+                                            `${dynamicFields.priceLow}$ - ${dynamicFields.priceHigh}$`
+                                            : ""}
+                                    </p>
                                     <div className={"w-[63px] bg-primary-blue rounded-md flex justify-center ml-[14px] "}>
-                                        <p className={"text-primary-white b3 "}>25% off</p>
+                                        <p className={"text-primary-white b3 "}>{dynamicFields?.discount}% off</p>
                                     </div>
                                 </div>
                             </div>
                             <div className={"flex flex-row items-center mx-6 my-6 justify-between"}>
-                                <a className={"flex bttn1 w-[212px] h-14 items-center border-primary-blue rounded-full border-primary-blue border-2 text-primary-blue"} href={"#"}><p className={"mx-auto md:text-[14px]"}>Register for the course</p></a>
-                                <a className={"flex bttn1 w-[132px] h-14 items-center bg-primary-blue rounded-full"} href={"#"}><p className={"mx-auto text-primary-white md:text-[14px]"}>Website</p></a>
+                                <a className={"flex bttn1 w-[212px] h-14 items-center border-primary-blue rounded-full border-primary-blue border-2 text-primary-blue"} href={"#"}>
+                                    <p className={"mx-auto md:text-[14px]"}>Register for the course</p></a>
+                                <a className={"flex bttn1 w-[132px] h-14 items-center bg-primary-blue rounded-full"} href={"#"}>
+                                    <p className={"mx-auto text-primary-white md:text-[14px]"}>Website</p></a>
                             </div>
                         </div>
                         <div className={"flex flex-row py-6 justify-between px-6"} style={{border: "1px solid #EDF2F4"}}>
                             <div className={"flex flex-col"}>
-                                <p className={"b2 lg:font-normal"}>Start</p>
-                                <p className={"bttn1"}>February 21, 2022</p>
+                                <p className={"b2 lg:font-normal"}>{startDate? "Start" : ""}</p>
+                                <p className={"bttn1"}>{startDate ? startDate.toLocaleDateString(undefined,{month:"long", day:"numeric", year:"numeric"}) : ""}</p>
                             </div>
                             <span className={"w-[2px] bg-primary-blue"}></span>
                             <div className={"flex flex-col pr-16"}>
-                                <p className={"b2 lg:font-normal"}>End</p>
-                                <p className={"bttn1"}>February 22, 2022</p>
+                                <p className={"b2 lg:font-normal"}>{endDate? "End" : ""}</p>
+                                <p className={"bttn1"}>{endDate ? endDate.toLocaleDateString(undefined,{month:"long", day:"numeric", year:"numeric"}) : ""}</p>
                             </div>
                         </div>
                         <div className={"flex"} style={{border: "1px solid #EDF2F4"}}>
@@ -273,195 +189,54 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
                                 <p className={"b3"}>
                                     This course includes
                                 </p>
-                                <div className={"flex items-center flex-row mt-4"}>
-                                    <div>
-                                        <GiOpenBook/>
+                                {include.map((item)=>
+                                    <div className={"flex items-center flex-row mt-4"}>
+                                        <div>
+                                            <img width={22} height={19} src={item.fields.image.url}/>
+                                        </div>
+                                        <p className={"b2  ml-[19px]"}>
+                                            {item.fields.text}
+                                        </p>
                                     </div>
-                                    <p className={"b2  ml-[19px]"}>
-                                        2 hourse on-demand video
-                                    </p>
-                                </div>
-                                <div className={"flex items-center flex-row mt-4"}>
-                                    <div>
-                                        <GiOpenBook/>
-                                    </div>
-                                    <p className={"b2 ml-[19px]"}>1 article</p>
-                                </div>
-                                <div className={"flex items-center flex-row mt-4"}>
-                                    <div>
-                                        <GiOpenBook/>
-                                    </div>
-                                    <p className={"b2  ml-[19px]"}>50 downloadable resources</p>
-                                </div>
-                                <div className={"flex items-center flex-row mt-4"}>
-                                    <div>
-                                        <GiOpenBook/>
-                                    </div>
-                                    <p className={"b2  ml-[19px]"}>Access on mobile and TV</p>
-                                </div>
+                                ).reverse()}
                             </div>
                         </div>
 
-                        <div className={"flex flex-col pb-6 overflow-y-scroll max-h-[290px]"} style={{borderTop: "1px solid #EDF2F4"}}>
+                        <div className={"flex flex-col pb-6 max-h-[290px]"+ ` ${!isOpenMenu ? "": "overflow-y-scroll overflow-x-hidden"}`} style={{borderTop: "1px solid #EDF2F4"}}>
 
                             <div className={"flex flex-row px-6 pt-6 justify-between "}>
                                 <p className={"b3 text-primary-darkblue"}>Instructor</p>
-                                <a  onClick={onButtonClick} className={"underline b3 text-primary-darkblue"}>See all Instructors</a>
+                                <a  onClick={onButtonClick}
+                                    className={`underline b3 text-primary-darkblue  ${(instructors.length < 5) ? "hidden" : ""}`}>
+                                    {!isOpenMenu ? "See all instructors" : "Hide"}</a>
                             </div>
 
                             {/*Static instructors*/}
 
                                 <div className={`${isOpenMenu ? 'hidden': 'all_instuctors'}`}>
-
-                                    <div className={"flex flex-row pt-2 pl-6"}>
-                                        <img className={"rounded-full"} src={fields.roundIcon_1.url} alt="roundedFACE"/>
+                                    {instructors.map((item)=>
+                                        <div className={"flex flex-row pt-6 pl-6"}>
+                                        <img className={"rounded-full"} src={item.fields.image.url} alt="roundedFACE"/>
                                         <div className={"flex flex-col pl-6"}>
-                                            <p className={"c2 text-primary-darkblue"}>Eric Jones</p>
-                                            <p className={"b3 text-primary-darkblue"}>MD, CEO of Medic Inc.</p>
+                                            <p className={"c2 text-primary-darkblue"}>{item.fields.name}</p>
+                                            <p className={"b3 text-primary-darkblue"}>{item.fields.specialty}</p>
                                         </div>
-                                    </div>
+                                    </div>).reverse()}
 
-                                    <div className={"flex flex-row pt-6 pl-6"}>
-                                        <img className={"rounded-full"} src={fields.roundIcon_2.url} alt="roundedFACE"/>
-                                        <div className={"flex flex-col pl-6"}>
-                                            <p className={"c2 text-primary-darkblue"}>Norma Ray</p>
-                                            <p className={"b3 text-primary-darkblue"}>PhD, Oncology</p>
-                                        </div>
-                                    </div>
-
-                                    <div className={"flex flex-row pt-6 pl-6"}>
-                                        <img className={"rounded-full"} src={fields.roundIcon_3.url} alt="roundedFACE"/>
-                                        <div className={"flex flex-col pl-6"}>
-                                            <p className={"c2 text-primary-darkblue"}>Ken Ronald</p>
-                                            <p className={"b3 text-primary-darkblue"}>Nurse Practitioner, Banner Health</p>
-                                        </div>
-                                    </div>
                                 </div>
-
 
                             {/*Dinamic instructors*/}
 
                             <div className={`${isOpenMenu ? 'all_instuctors': 'hidden'}`}>
 
-                                <div className={"flex flex-row pt-2 pl-6"}>
-                                    <img className={"rounded-full"} src={fields.roundIcon_1.url} alt="roundedFACE"/>
-                                    <div className={"flex flex-col pl-6"}>
-                                        <p className={"c2 text-primary-darkblue"}>Eric Jones</p>
-                                        <p className={"b3 text-primary-darkblue"}>MD, CEO of Medic Inc.</p>
-                                    </div>
-                                </div>
-
-                                <div className={"flex flex-row pt-6 pl-6"}>
-                                    <img className={"rounded-full"} src={fields.roundIcon_2.url} alt="roundedFACE"/>
-                                    <div className={"flex flex-col pl-6"}>
-                                        <p className={"c2 text-primary-darkblue"}>Norma Ray</p>
-                                        <p className={"b3 text-primary-darkblue"}>PhD, Oncology</p>
-                                    </div>
-                                </div>
-
-                                <div className={"flex flex-row pt-6 pl-6"}>
-                                    <img className={"rounded-full"} src={fields.roundIcon_3.url} alt="roundedFACE"/>
-                                    <div className={"flex flex-col pl-6"}>
-                                        <p className={"c2 text-primary-darkblue"}>Ken Ronald</p>
-                                        <p className={"b3 text-primary-darkblue"}>Nurse Practitioner, Banner Health</p>
-                                    </div>
-                                </div>
-
-                                <div className={"flex flex-row pt-2 pl-6"}>
-                                    <img className={"rounded-full"} src={fields.roundIcon_1.url} alt="roundedFACE"/>
-                                    <div className={"flex flex-col pl-6"}>
-                                        <p className={"c2 text-primary-darkblue"}>Eric Jones</p>
-                                        <p className={"b3 text-primary-darkblue"}>MD, CEO of Medic Inc.</p>
-                                    </div>
-                                </div>
-
-                                <div className={"flex flex-row pt-6 pl-6"}>
-                                    <img className={"rounded-full"} src={fields.roundIcon_2.url} alt="roundedFACE"/>
-                                    <div className={"flex flex-col pl-6"}>
-                                        <p className={"c2 text-primary-darkblue"}>Norma Ray</p>
-                                        <p className={"b3 text-primary-darkblue"}>PhD, Oncology</p>
-                                    </div>
-                                </div>
-
-                                <div className={"flex flex-row pt-6 pl-6"}>
-                                    <img className={"rounded-full"} src={fields.roundIcon_3.url} alt="roundedFACE"/>
-                                    <div className={"flex flex-col pl-6"}>
-                                        <p className={"c2 text-primary-darkblue"}>Ken Ronald</p>
-                                        <p className={"b3 text-primary-darkblue"}>Nurse Practitioner, Banner Health</p>
-                                    </div>
-                                </div>
-
-                                <div className={"flex flex-row pt-2 pl-6"}>
-                                    <img className={"rounded-full"} src={fields.roundIcon_1.url} alt="roundedFACE"/>
-                                    <div className={"flex flex-col pl-6"}>
-                                        <p className={"c2 text-primary-darkblue"}>Eric Jones</p>
-                                        <p className={"b3 text-primary-darkblue"}>MD, CEO of Medic Inc.</p>
-                                    </div>
-                                </div>
-
-                                <div className={"flex flex-row pt-6 pl-6"}>
-                                    <img className={"rounded-full"} src={fields.roundIcon_2.url} alt="roundedFACE"/>
-                                    <div className={"flex flex-col pl-6"}>
-                                        <p className={"c2 text-primary-darkblue"}>Norma Ray</p>
-                                        <p className={"b3 text-primary-darkblue"}>PhD, Oncology</p>
-                                    </div>
-                                </div>
-
-                                <div className={"flex flex-row pt-6 pl-6"}>
-                                    <img className={"rounded-full"} src={fields.roundIcon_3.url} alt="roundedFACE"/>
-                                    <div className={"flex flex-col pl-6"}>
-                                        <p className={"c2 text-primary-darkblue"}>Ken Ronald</p>
-                                        <p className={"b3 text-primary-darkblue"}>Nurse Practitioner, Banner Health</p>
-                                    </div>
-                                </div>
-
-                                <div className={"flex flex-row pt-2 pl-6"}>
-                                    <img className={"rounded-full"} src={fields.roundIcon_1.url} alt="roundedFACE"/>
-                                    <div className={"flex flex-col pl-6"}>
-                                        <p className={"c2 text-primary-darkblue"}>Eric Jones</p>
-                                        <p className={"b3 text-primary-darkblue"}>MD, CEO of Medic Inc.</p>
-                                    </div>
-                                </div>
-
-                                <div className={"flex flex-row pt-6 pl-6"}>
-                                    <img className={"rounded-full"} src={fields.roundIcon_2.url} alt="roundedFACE"/>
-                                    <div className={"flex flex-col pl-6"}>
-                                        <p className={"c2 text-primary-darkblue"}>Norma Ray</p>
-                                        <p className={"b3 text-primary-darkblue"}>PhD, Oncology</p>
-                                    </div>
-                                </div>
-
-                                <div className={"flex flex-row pt-6 pl-6"}>
-                                    <img className={"rounded-full"} src={fields.roundIcon_3.url} alt="roundedFACE"/>
-                                    <div className={"flex flex-col pl-6"}>
-                                        <p className={"c2 text-primary-darkblue"}>Ken Ronald</p>
-                                        <p className={"b3 text-primary-darkblue"}>Nurse Practitioner, Banner Health</p>
-                                    </div>
-                                </div>
-
-                                <div className={"flex flex-row pt-2 pl-6"}>
-                                    <img className={"rounded-full"} src={fields.roundIcon_1.url} alt="roundedFACE"/>
-                                    <div className={"flex flex-col pl-6"}>
-                                        <p className={"c2 text-primary-darkblue"}>Eric Jones</p>
-                                        <p className={"b3 text-primary-darkblue"}>MD, CEO of Medic Inc.</p>
-                                    </div>
-                                </div>
-
-                                <div className={"flex flex-row pt-6 pl-6"}>
-                                    <img className={"rounded-full"} src={fields.roundIcon_2.url} alt="roundedFACE"/>
-                                    <div className={"flex flex-col pl-6"}>
-                                        <p className={"c2 text-primary-darkblue"}>Norma Ray</p>
-                                        <p className={"b3 text-primary-darkblue"}>PhD, Oncology</p>
-                                    </div>
-                                </div>
-
-                                <div className={"flex flex-row pt-6 pl-6"}>
-                                    <img className={"rounded-full"} src={fields.roundIcon_3.url} alt="roundedFACE"/>
-                                    <div className={"flex flex-col pl-6"}>
-                                        <p className={"c2 text-primary-darkblue"}>Ken Ronald</p>
-                                        <p className={"b3 text-primary-darkblue"}>Nurse Practitioner, Banner Health</p>
-                                    </div>
-                                </div>
+                                {instructors.map((item)=>
+                                    <div className={"flex flex-row pt-6 pl-6"}>
+                                        <img className={"rounded-full"} src={item.fields.image.url} alt="roundedFACE"/>
+                                        <div className={"flex flex-col pl-6"}>
+                                            <p className={"c2 text-primary-darkblue"}>{item.fields.name}</p>
+                                            <p className={"b3 text-primary-darkblue"}>{item.fields.specialty}</p>
+                                        </div>
+                                    </div>).reverse()}
 
                             </div>
                         </div>
@@ -470,101 +245,22 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
                 </div>
             </div>
 
-            <div className={"flex mt-[108px] max-w-[1312px] overflow-x-scroll "}>
+            <div className={`flex mt-[108px] max-w-[1312px] ${instructors.length > 3 ? "overflow-x-scroll":"" } `}>
 
                 <div className={"flex flex-row justify-between"}>
 
-                    <div className={"flex flex-row items-center w-[416px] ml-[30px]  mr-[30px]"}>
-                        <img className={"rounded-full w-[104px]"} src={fields.roundIcon_1.url} alt="roundedFACE"/>
-                        <div className={"flex flex-col pl-6"}>
-                            <p className={"c1 text-primary-darkblue"}>Eric Jones</p>
-                            <p className={"b2 text-primary-darkblue"}>MD, CEO of Medic Inc.</p>
-                        </div>
-                    </div>
 
-                    <div className={"flex flex-row items-center w-[416px]  mr-[30px]"}>
-                        <img className={"rounded-full w-[104px]"} src={fields.roundIcon_2.url} alt="roundedFACE"/>
-                        <div className={"flex flex-col pl-6"}>
-                            <p className={"c1 text-primary-darkblue"}>Norma Ray</p>
-                            <p className={"b2 text-primary-darkblue"}>PhD, Oncology</p>
-                        </div>
-                    </div>
-                    <div className={"flex flex-row items-center w-[416px]  mr-[30px]"}>
-                        <img className={"rounded-full w-[104px]"} src={fields.roundIcon_3.url} alt="roundedFACE"/>
-                        <div className={"flex flex-col pl-6"}>
-                            <p className={"c1 text-primary-darkblue"}>Ken Ronald</p>
-                            <p className={"b2 text-primary-darkblue"}>Nurse Practitioner, Banner Health</p>
-                        </div>
-                    </div>
+                    {instructors.map((item)=>
+                        <div className={"flex flex-row items-center w-[416px] ml-[30px]  mr-[30px]"}>
+                            <img className={"rounded-full w-[104px]"} src={item.fields.image.url} alt="roundedFACE"/>
+                            <div className={"flex flex-col pl-6"}>
+                                <p className={"c1 text-primary-darkblue"}>{item.fields.name}</p>
+                                <p className={"b2 text-primary-darkblue"}>{item.fields.specialty}</p>
+                            </div>
+                        </div>).reverse()}
 
-                    <div className={"flex flex-row items-center w-[416px]  mr-[30px]"}>
-                        <img className={"rounded-full w-[104px]"} src={fields.roundIcon_1.url} alt="roundedFACE"/>
-                        <div className={"flex flex-col pl-6"}>
-                            <p className={"c1 text-primary-darkblue"}>Eric Jones</p>
-                            <p className={"b2 text-primary-darkblue"}>MD, CEO of Medic Inc.</p>
-                        </div>
-                    </div>
 
-                    <div className={"flex flex-row items-center w-[416px]  mr-[30px]"}>
-                        <img className={"rounded-full w-[104px]"} src={fields.roundIcon_2.url} alt="roundedFACE"/>
-                        <div className={"flex flex-col pl-6"}>
-                            <p className={"c1 text-primary-darkblue"}>Norma Ray</p>
-                            <p className={"b2 text-primary-darkblue"}>PhD, Oncology</p>
-                        </div>
-                    </div>
-                    <div className={"flex flex-row items-center w-[416px]  mr-[30px]"}>
-                        <img className={"rounded-full w-[104px]"} src={fields.roundIcon_3.url} alt="roundedFACE"/>
-                        <div className={"flex flex-col pl-6"}>
-                            <p className={"c1 text-primary-darkblue"}>Ken Ronald</p>
-                            <p className={"b2 text-primary-darkblue"}>Nurse Practitioner, Banner Health</p>
-                        </div>
-                    </div>
 
-                    <div className={"flex flex-row items-center w-[416px]  mr-[30px]"}>
-                        <img className={"rounded-full w-[104px]"} src={fields.roundIcon_1.url} alt="roundedFACE"/>
-                        <div className={"flex flex-col pl-6"}>
-                            <p className={"c1 text-primary-darkblue"}>Eric Jones</p>
-                            <p className={"b2 text-primary-darkblue"}>MD, CEO of Medic Inc.</p>
-                        </div>
-                    </div>
-
-                    <div className={"flex flex-row items-center w-[416px]  mr-[30px]"}>
-                        <img className={"rounded-full w-[104px]"} src={fields.roundIcon_2.url} alt="roundedFACE"/>
-                        <div className={"flex flex-col pl-6"}>
-                            <p className={"c1 text-primary-darkblue"}>Norma Ray</p>
-                            <p className={"b2 text-primary-darkblue"}>PhD, Oncology</p>
-                        </div>
-                    </div>
-                    <div className={"flex flex-row items-center w-[416px]  mr-[30px]"}>
-                        <img className={"rounded-full w-[104px]"} src={fields.roundIcon_3.url} alt="roundedFACE"/>
-                        <div className={"flex flex-col pl-6"}>
-                            <p className={"c1 text-primary-darkblue"}>Ken Ronald</p>
-                            <p className={"b2 text-primary-darkblue"}>Nurse Practitioner, Banner Health</p>
-                        </div>
-                    </div>
-
-                    <div className={"flex flex-row items-center w-[416px]  mr-[30px]"}>
-                        <img className={"rounded-full w-[104px]"} src={fields.roundIcon_1.url} alt="roundedFACE"/>
-                        <div className={"flex flex-col pl-6"}>
-                            <p className={"c1 text-primary-darkblue"}>Eric Jones</p>
-                            <p className={"b2 text-primary-darkblue"}>MD, CEO of Medic Inc.</p>
-                        </div>
-                    </div>
-
-                    <div className={"flex flex-row items-center w-[416px]  mr-[30px]"}>
-                        <img className={"rounded-full w-[104px]"} src={fields.roundIcon_2.url} alt="roundedFACE"/>
-                        <div className={"flex flex-col pl-6"}>
-                            <p className={"c1 text-primary-darkblue"}>Norma Ray</p>
-                            <p className={"b2 text-primary-darkblue"}>PhD, Oncology</p>
-                        </div>
-                    </div>
-                    <div className={"flex flex-row items-center w-[416px]  mr-[30px]"}>
-                        <img className={"rounded-full w-[104px]"} src={fields.roundIcon_3.url} alt="roundedFACE"/>
-                        <div className={"flex flex-col pl-6"}>
-                            <p className={"c1 text-primary-darkblue"}>Ken Ronald</p>
-                            <p className={"b2 text-primary-darkblue"}>Nurse Practitioner, Banner Health</p>
-                        </div>
-                    </div>
                 </div>
 
             </div>
@@ -584,17 +280,41 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
 CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, languageCode}) => {
     // set up api
     const api = agility;
+    let schedule = null
+    let include = null
+    let instructors = null
     try{
         if (dynamicPageItem?.fields?.schedule?.referencename){
-            let schedule = await api.getContentList(
+            schedule = await api.getContentList(
                 {
                     referenceName: dynamicPageItem?.fields.schedule?.referencename,
                     locale:languageCode,
                     expandAllContentLinks: true
                 })
-            return (schedule)
         }
-        else return(null)
+
+        if (dynamicPageItem?.fields?.include?.referencename){
+            include = await api.getContentList(
+                {
+                    referenceName: dynamicPageItem?.fields.include?.referencename,
+                    locale:languageCode,
+                    expandAllContentLinks: true
+                })
+        }
+
+        if (dynamicPageItem?.fields?.instructors?.referencename){
+            instructors = await api.getContentList(
+                {
+                    referenceName: dynamicPageItem?.fields.instructors?.referencename,
+                    locale:languageCode,
+                    expandAllContentLinks: true
+                })
+        }
+        return({
+            schedule: schedule,
+            include: include,
+            instructors: instructors,
+        })
     }catch (err) {
         if (console) console.log(err)
     }
