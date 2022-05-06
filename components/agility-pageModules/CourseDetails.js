@@ -3,9 +3,12 @@ import {BiLeftArrowAlt} from "react-icons/bi";
 import {HiLocationMarker} from "react-icons/hi";
 import {GiOpenBook} from "react-icons/gi"
 
-const CourseDetails = ({agility, module, dynamicPageItem}) => {
+const CourseDetails = ({customData, module, dynamicPageItem}) => {
     const {fields} = module
     const dynamicFields = dynamicPageItem.fields
+    const sche = customData.items
+    console.log(dynamicPageItem)
+
     return (
         <div className={"max-w-screen-xl mx-auto"}>
 
@@ -368,65 +371,73 @@ const CourseDetails = ({agility, module, dynamicPageItem}) => {
 }
 
 
-CourseDetails.getCustomInitialProps = async ({
-                                                 agility,
-                                                 channelName,
-                                                 languageCode,
-                                             }) => {
+CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, languageCode}) => {
     // set up api
     const api = agility;
-
-    try {
-        // get sitemap...
-        let sitemap = await api.getSitemapFlat({
-            channelName: channelName,
-            languageCode,
-        });
-
-        // get posts...
-        let rawPosts = await api.getContentList({
-            referenceName: "testofferings",
-            languageCode,
-            contentLinkDepth: 3,
-            depth: 3,
-            take: 50,
-            expandAllContentLinks: true ,
-        });
-
-        // resolve dynamic urls
-        const posts = rawPosts.items.map((post) => {
-            //category
-            const category = post.fields.category?.fields.title || "Uncategorized"
-
-            // date
-            const date = new Date(post.fields.date).toLocaleDateString();
-
-            // url
-            const url = "#";
-
-            // post image src
-            let imageSrc = post.fields.image.url;
-
-            // post image alt
-            let imageAlt = post.fields.image?.label || null;
-
-            return {
-                contentID: post.contentID,
-                title: post.fields.title,
-                date,
-                url,
-                category,
-                imageSrc,
-                imageAlt,
-            };
-        });
-
-        return {
-            rawPosts
-        };
-    } catch (error) {
-        if (console) console.error(error);
+    try{
+        let schedule = await api.getContentList(
+            {
+                referenceName: dynamicPageItem.fields.schedule.referencename,
+                locale:languageCode,
+                expandAllContentLinks: true
+            })
+        return (schedule)
+    }catch (err) {
+        if (console) console.log(err)
     }
+
+
+    // try {
+    //     // get sitemap...
+    //     let sitemap = await api.getSitemapFlat({
+    //         channelName: channelName,
+    //         languageCode,
+    //     });
+    //
+    //     // get posts...
+    //     let rawPosts = await api.getContentList({
+    //         referenceName: "testofferings",
+    //         languageCode,
+    //         contentLinkDepth: 3,
+    //         depth: 3,
+    //         take: 50,
+    //         expandAllContentLinks: true ,
+    //     });
+    //
+    //     // resolve dynamic urls
+    //     const posts = rawPosts.items.map((post) => {
+    //         //category
+    //         const category = post.fields.category?.fields.title || "Uncategorized"
+    //
+    //         // date
+    //         const date = new Date(post.fields.date).toLocaleDateString();
+    //
+    //         // url
+    //         const url = "#";
+    //
+    //         // post image src
+    //         let imageSrc = post.fields.image.url;
+    //
+    //         // post image alt
+    //         let imageAlt = post.fields.image?.label || null;
+    //
+    //         return {
+    //             contentID: post.contentID,
+    //             title: post.fields.title,
+    //             date,
+    //             url,
+    //             category,
+    //             imageSrc,
+    //             imageAlt,
+    //         };
+    //     });
+    //
+    //     return {
+    //         rawPosts
+    //     };
+    // } catch (error) {
+    //     if (console) console.error(error);
+    // }
 
 }
 
