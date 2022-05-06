@@ -6,6 +6,12 @@ import {GiOpenBook} from "react-icons/gi"
 const CourseDetails = ({module}) => {
     const {fields} = module
 
+
+    const [isOpenMenu, setIsOpenMenu] = useState(false)
+    const onButtonClick = () => setIsOpenMenu(!isOpenMenu)
+
+
+
     return (
         <div className={"max-w-screen-xl mx-auto"}>
 
@@ -294,66 +300,271 @@ const CourseDetails = ({module}) => {
                             </div>
                         </div>
 
-                        <div className={"flex flex-col pb-6"} style={{borderTop: "1px solid #EDF2F4"}}>
+                        <div className={"flex flex-col pb-6 overflow-y-scroll max-h-[290px]"} style={{borderTop: "1px solid #EDF2F4"}}>
 
                             <div className={"flex flex-row px-6 pt-6 justify-between "}>
                                 <p className={"b3 text-primary-darkblue"}>Instructor</p>
-                                <a href={"#"} className={"underline b3 text-primary-darkblue"}>See all Instructors</a>
+                                <a  onClick={onButtonClick} className={"underline b3 text-primary-darkblue"}>See all Instructors</a>
                             </div>
 
-                            <div className={"flex flex-row pt-2 pl-6"}>
-                                <img className={"rounded-full"} src={fields.roundIcon_1.url} alt="roundedFACE"/>
-                                <div className={"flex flex-col pl-6"}>
-                                    <p className={"c2 text-primary-darkblue"}>Eric Jones</p>
-                                    <p className={"b3 text-primary-darkblue"}>MD, CEO of Medic Inc.</p>
+                            {/*Static instructors*/}
+
+                                <div className={`${isOpenMenu ? 'hidden': 'all_instuctors'}`}>
+
+                                    <div className={"flex flex-row pt-2 pl-6"}>
+                                        <img className={"rounded-full"} src={fields.roundIcon_1.url} alt="roundedFACE"/>
+                                        <div className={"flex flex-col pl-6"}>
+                                            <p className={"c2 text-primary-darkblue"}>Eric Jones</p>
+                                            <p className={"b3 text-primary-darkblue"}>MD, CEO of Medic Inc.</p>
+                                        </div>
+                                    </div>
+
+                                    <div className={"flex flex-row pt-6 pl-6"}>
+                                        <img className={"rounded-full"} src={fields.roundIcon_2.url} alt="roundedFACE"/>
+                                        <div className={"flex flex-col pl-6"}>
+                                            <p className={"c2 text-primary-darkblue"}>Norma Ray</p>
+                                            <p className={"b3 text-primary-darkblue"}>PhD, Oncology</p>
+                                        </div>
+                                    </div>
+
+                                    <div className={"flex flex-row pt-6 pl-6"}>
+                                        <img className={"rounded-full"} src={fields.roundIcon_3.url} alt="roundedFACE"/>
+                                        <div className={"flex flex-col pl-6"}>
+                                            <p className={"c2 text-primary-darkblue"}>Ken Ronald</p>
+                                            <p className={"b3 text-primary-darkblue"}>Nurse Practitioner, Banner Health</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className={"flex flex-row pt-6 pl-6"}>
-                                <img className={"rounded-full"} src={fields.roundIcon_2.url} alt="roundedFACE"/>
-                                <div className={"flex flex-col pl-6"}>
-                                    <p className={"c2 text-primary-darkblue"}>Norma Ray</p>
-                                    <p className={"b3 text-primary-darkblue"}>PhD, Oncology</p>
+
+                            {/*Dinamic instructors*/}
+
+                            <div className={`${isOpenMenu ? 'all_instuctors': 'hidden'}`}>
+
+                                <div className={"flex flex-row pt-2 pl-6"}>
+                                    <img className={"rounded-full"} src={fields.roundIcon_1.url} alt="roundedFACE"/>
+                                    <div className={"flex flex-col pl-6"}>
+                                        <p className={"c2 text-primary-darkblue"}>Eric Jones</p>
+                                        <p className={"b3 text-primary-darkblue"}>MD, CEO of Medic Inc.</p>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className={"flex flex-row pt-6 pl-6"}>
-                                <img className={"rounded-full"} src={fields.roundIcon_3.url} alt="roundedFACE"/>
-                                <div className={"flex flex-col pl-6"}>
-                                    <p className={"c2 text-primary-darkblue"}>Ken Ronald</p>
-                                    <p className={"b3 text-primary-darkblue"}>Nurse Practitioner, Banner Health</p>
+                                <div className={"flex flex-row pt-6 pl-6"}>
+                                    <img className={"rounded-full"} src={fields.roundIcon_2.url} alt="roundedFACE"/>
+                                    <div className={"flex flex-col pl-6"}>
+                                        <p className={"c2 text-primary-darkblue"}>Norma Ray</p>
+                                        <p className={"b3 text-primary-darkblue"}>PhD, Oncology</p>
+                                    </div>
                                 </div>
-                            </div>
 
+                                <div className={"flex flex-row pt-6 pl-6"}>
+                                    <img className={"rounded-full"} src={fields.roundIcon_3.url} alt="roundedFACE"/>
+                                    <div className={"flex flex-col pl-6"}>
+                                        <p className={"c2 text-primary-darkblue"}>Ken Ronald</p>
+                                        <p className={"b3 text-primary-darkblue"}>Nurse Practitioner, Banner Health</p>
+                                    </div>
+                                </div>
+
+                                <div className={"flex flex-row pt-2 pl-6"}>
+                                    <img className={"rounded-full"} src={fields.roundIcon_1.url} alt="roundedFACE"/>
+                                    <div className={"flex flex-col pl-6"}>
+                                        <p className={"c2 text-primary-darkblue"}>Eric Jones</p>
+                                        <p className={"b3 text-primary-darkblue"}>MD, CEO of Medic Inc.</p>
+                                    </div>
+                                </div>
+
+                                <div className={"flex flex-row pt-6 pl-6"}>
+                                    <img className={"rounded-full"} src={fields.roundIcon_2.url} alt="roundedFACE"/>
+                                    <div className={"flex flex-col pl-6"}>
+                                        <p className={"c2 text-primary-darkblue"}>Norma Ray</p>
+                                        <p className={"b3 text-primary-darkblue"}>PhD, Oncology</p>
+                                    </div>
+                                </div>
+
+                                <div className={"flex flex-row pt-6 pl-6"}>
+                                    <img className={"rounded-full"} src={fields.roundIcon_3.url} alt="roundedFACE"/>
+                                    <div className={"flex flex-col pl-6"}>
+                                        <p className={"c2 text-primary-darkblue"}>Ken Ronald</p>
+                                        <p className={"b3 text-primary-darkblue"}>Nurse Practitioner, Banner Health</p>
+                                    </div>
+                                </div>
+
+                                <div className={"flex flex-row pt-2 pl-6"}>
+                                    <img className={"rounded-full"} src={fields.roundIcon_1.url} alt="roundedFACE"/>
+                                    <div className={"flex flex-col pl-6"}>
+                                        <p className={"c2 text-primary-darkblue"}>Eric Jones</p>
+                                        <p className={"b3 text-primary-darkblue"}>MD, CEO of Medic Inc.</p>
+                                    </div>
+                                </div>
+
+                                <div className={"flex flex-row pt-6 pl-6"}>
+                                    <img className={"rounded-full"} src={fields.roundIcon_2.url} alt="roundedFACE"/>
+                                    <div className={"flex flex-col pl-6"}>
+                                        <p className={"c2 text-primary-darkblue"}>Norma Ray</p>
+                                        <p className={"b3 text-primary-darkblue"}>PhD, Oncology</p>
+                                    </div>
+                                </div>
+
+                                <div className={"flex flex-row pt-6 pl-6"}>
+                                    <img className={"rounded-full"} src={fields.roundIcon_3.url} alt="roundedFACE"/>
+                                    <div className={"flex flex-col pl-6"}>
+                                        <p className={"c2 text-primary-darkblue"}>Ken Ronald</p>
+                                        <p className={"b3 text-primary-darkblue"}>Nurse Practitioner, Banner Health</p>
+                                    </div>
+                                </div>
+
+                                <div className={"flex flex-row pt-2 pl-6"}>
+                                    <img className={"rounded-full"} src={fields.roundIcon_1.url} alt="roundedFACE"/>
+                                    <div className={"flex flex-col pl-6"}>
+                                        <p className={"c2 text-primary-darkblue"}>Eric Jones</p>
+                                        <p className={"b3 text-primary-darkblue"}>MD, CEO of Medic Inc.</p>
+                                    </div>
+                                </div>
+
+                                <div className={"flex flex-row pt-6 pl-6"}>
+                                    <img className={"rounded-full"} src={fields.roundIcon_2.url} alt="roundedFACE"/>
+                                    <div className={"flex flex-col pl-6"}>
+                                        <p className={"c2 text-primary-darkblue"}>Norma Ray</p>
+                                        <p className={"b3 text-primary-darkblue"}>PhD, Oncology</p>
+                                    </div>
+                                </div>
+
+                                <div className={"flex flex-row pt-6 pl-6"}>
+                                    <img className={"rounded-full"} src={fields.roundIcon_3.url} alt="roundedFACE"/>
+                                    <div className={"flex flex-col pl-6"}>
+                                        <p className={"c2 text-primary-darkblue"}>Ken Ronald</p>
+                                        <p className={"b3 text-primary-darkblue"}>Nurse Practitioner, Banner Health</p>
+                                    </div>
+                                </div>
+
+                                <div className={"flex flex-row pt-2 pl-6"}>
+                                    <img className={"rounded-full"} src={fields.roundIcon_1.url} alt="roundedFACE"/>
+                                    <div className={"flex flex-col pl-6"}>
+                                        <p className={"c2 text-primary-darkblue"}>Eric Jones</p>
+                                        <p className={"b3 text-primary-darkblue"}>MD, CEO of Medic Inc.</p>
+                                    </div>
+                                </div>
+
+                                <div className={"flex flex-row pt-6 pl-6"}>
+                                    <img className={"rounded-full"} src={fields.roundIcon_2.url} alt="roundedFACE"/>
+                                    <div className={"flex flex-col pl-6"}>
+                                        <p className={"c2 text-primary-darkblue"}>Norma Ray</p>
+                                        <p className={"b3 text-primary-darkblue"}>PhD, Oncology</p>
+                                    </div>
+                                </div>
+
+                                <div className={"flex flex-row pt-6 pl-6"}>
+                                    <img className={"rounded-full"} src={fields.roundIcon_3.url} alt="roundedFACE"/>
+                                    <div className={"flex flex-col pl-6"}>
+                                        <p className={"c2 text-primary-darkblue"}>Ken Ronald</p>
+                                        <p className={"b3 text-primary-darkblue"}>Nurse Practitioner, Banner Health</p>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
 
                     </div>
                 </div>
             </div>
 
-            <div className={"flex flex-row mt-[108px] justify-between"}>
+            <div className={"flex mt-[108px] max-w-[1312px] overflow-x-scroll "}>
 
-                    <div className={"flex flex-row items-center"}>
+                <div className={"flex flex-row justify-between"}>
+
+                    <div className={"flex flex-row items-center w-[416px] ml-[30px]  mr-[30px]"}>
                         <img className={"rounded-full w-[104px]"} src={fields.roundIcon_1.url} alt="roundedFACE"/>
                         <div className={"flex flex-col pl-6"}>
                             <p className={"c1 text-primary-darkblue"}>Eric Jones</p>
                             <p className={"b2 text-primary-darkblue"}>MD, CEO of Medic Inc.</p>
                         </div>
                     </div>
-                    <div className={"flex flex-row items-center"}>
+
+                    <div className={"flex flex-row items-center w-[416px]  mr-[30px]"}>
                         <img className={"rounded-full w-[104px]"} src={fields.roundIcon_2.url} alt="roundedFACE"/>
                         <div className={"flex flex-col pl-6"}>
                             <p className={"c1 text-primary-darkblue"}>Norma Ray</p>
                             <p className={"b2 text-primary-darkblue"}>PhD, Oncology</p>
                         </div>
                     </div>
-                    <div className={"flex flex-row items-center"}>
+                    <div className={"flex flex-row items-center w-[416px]  mr-[30px]"}>
                         <img className={"rounded-full w-[104px]"} src={fields.roundIcon_3.url} alt="roundedFACE"/>
                         <div className={"flex flex-col pl-6"}>
                             <p className={"c1 text-primary-darkblue"}>Ken Ronald</p>
                             <p className={"b2 text-primary-darkblue"}>Nurse Practitioner, Banner Health</p>
                         </div>
                     </div>
+
+                    <div className={"flex flex-row items-center w-[416px]  mr-[30px]"}>
+                        <img className={"rounded-full w-[104px]"} src={fields.roundIcon_1.url} alt="roundedFACE"/>
+                        <div className={"flex flex-col pl-6"}>
+                            <p className={"c1 text-primary-darkblue"}>Eric Jones</p>
+                            <p className={"b2 text-primary-darkblue"}>MD, CEO of Medic Inc.</p>
+                        </div>
+                    </div>
+
+                    <div className={"flex flex-row items-center w-[416px]  mr-[30px]"}>
+                        <img className={"rounded-full w-[104px]"} src={fields.roundIcon_2.url} alt="roundedFACE"/>
+                        <div className={"flex flex-col pl-6"}>
+                            <p className={"c1 text-primary-darkblue"}>Norma Ray</p>
+                            <p className={"b2 text-primary-darkblue"}>PhD, Oncology</p>
+                        </div>
+                    </div>
+                    <div className={"flex flex-row items-center w-[416px]  mr-[30px]"}>
+                        <img className={"rounded-full w-[104px]"} src={fields.roundIcon_3.url} alt="roundedFACE"/>
+                        <div className={"flex flex-col pl-6"}>
+                            <p className={"c1 text-primary-darkblue"}>Ken Ronald</p>
+                            <p className={"b2 text-primary-darkblue"}>Nurse Practitioner, Banner Health</p>
+                        </div>
+                    </div>
+
+                    <div className={"flex flex-row items-center w-[416px]  mr-[30px]"}>
+                        <img className={"rounded-full w-[104px]"} src={fields.roundIcon_1.url} alt="roundedFACE"/>
+                        <div className={"flex flex-col pl-6"}>
+                            <p className={"c1 text-primary-darkblue"}>Eric Jones</p>
+                            <p className={"b2 text-primary-darkblue"}>MD, CEO of Medic Inc.</p>
+                        </div>
+                    </div>
+
+                    <div className={"flex flex-row items-center w-[416px]  mr-[30px]"}>
+                        <img className={"rounded-full w-[104px]"} src={fields.roundIcon_2.url} alt="roundedFACE"/>
+                        <div className={"flex flex-col pl-6"}>
+                            <p className={"c1 text-primary-darkblue"}>Norma Ray</p>
+                            <p className={"b2 text-primary-darkblue"}>PhD, Oncology</p>
+                        </div>
+                    </div>
+                    <div className={"flex flex-row items-center w-[416px]  mr-[30px]"}>
+                        <img className={"rounded-full w-[104px]"} src={fields.roundIcon_3.url} alt="roundedFACE"/>
+                        <div className={"flex flex-col pl-6"}>
+                            <p className={"c1 text-primary-darkblue"}>Ken Ronald</p>
+                            <p className={"b2 text-primary-darkblue"}>Nurse Practitioner, Banner Health</p>
+                        </div>
+                    </div>
+
+                    <div className={"flex flex-row items-center w-[416px]  mr-[30px]"}>
+                        <img className={"rounded-full w-[104px]"} src={fields.roundIcon_1.url} alt="roundedFACE"/>
+                        <div className={"flex flex-col pl-6"}>
+                            <p className={"c1 text-primary-darkblue"}>Eric Jones</p>
+                            <p className={"b2 text-primary-darkblue"}>MD, CEO of Medic Inc.</p>
+                        </div>
+                    </div>
+
+                    <div className={"flex flex-row items-center w-[416px]  mr-[30px]"}>
+                        <img className={"rounded-full w-[104px]"} src={fields.roundIcon_2.url} alt="roundedFACE"/>
+                        <div className={"flex flex-col pl-6"}>
+                            <p className={"c1 text-primary-darkblue"}>Norma Ray</p>
+                            <p className={"b2 text-primary-darkblue"}>PhD, Oncology</p>
+                        </div>
+                    </div>
+                    <div className={"flex flex-row items-center w-[416px]  mr-[30px]"}>
+                        <img className={"rounded-full w-[104px]"} src={fields.roundIcon_3.url} alt="roundedFACE"/>
+                        <div className={"flex flex-col pl-6"}>
+                            <p className={"c1 text-primary-darkblue"}>Ken Ronald</p>
+                            <p className={"b2 text-primary-darkblue"}>Nurse Practitioner, Banner Health</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>

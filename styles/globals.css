@@ -474,6 +474,11 @@ span.message{
     z-index: 99;
 
 }
+.all_instuctors {
+  display: flex;
+  flex-direction: column;
+  z-index: 12;
+}
 .burger-menu.open {
   transition: all .4s ease 0s;
 }
