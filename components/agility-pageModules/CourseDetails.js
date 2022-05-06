@@ -311,9 +311,9 @@ CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, language
                 })
         }
         return({
-            schedule: schedule,
-            include: include,
-            instructors: instructors,
+            schedule,
+            include,
+            instructors,
         })
     }catch (err) {
         if (console) console.log(err)
