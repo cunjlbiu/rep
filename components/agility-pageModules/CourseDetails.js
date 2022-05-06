@@ -5,6 +5,8 @@ import {GiOpenBook} from "react-icons/gi"
 
 const CourseDetails = ({customData, module, dynamicPageItem}) => {
     const {fields} = module
+    const dynamicFields = dynamicPageItem.fields
+    console.log(dynamicPageItem)
 
     return (
         <div className={"max-w-screen-xl mx-auto"}>
