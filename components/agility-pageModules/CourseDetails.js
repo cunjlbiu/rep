@@ -377,7 +377,7 @@ CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, language
     try{
         let schedule = await api.getContentList(
             {
-                referenceName: dynamicPageItem.fields.schedule?.referencename,
+                referenceName: dynamicPageItem.fields.schedule?.referencename || "",
                 locale:languageCode,
                 expandAllContentLinks: true
             })
