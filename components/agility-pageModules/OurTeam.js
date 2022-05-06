@@ -108,8 +108,8 @@ const OurTeam = ({module})=>{
                                 <div className={"lg:w-[416px] lg:h-[520px] md:w-[335px] md:h-[415px] rounded-xl flex-shrink-0 " + `${e.fields.image ? "":"bg-soft-blue"}`}>{
                                     e.fields.image ? <img className={"object-scale-down rounded-xl"} src={e.fields.image.url}/> : "image 416x520 should be there"
                                 }</div>
-                                <p className={"c1"}>{e.fields.name}</p>
-                                <p className={"b1"}>{e.fields.specialty}</p>
+                                <p className={"c1 md:pt-5"}>{e.fields.name}</p>
+                                <p className={"b1 md:pt-2"}>{e.fields.specialty}</p>
                             </div>)
                         })}
 

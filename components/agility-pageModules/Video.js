@@ -11,7 +11,7 @@ const Video = ({module}) => {
             <div className={"flex max-w-full justify-center py-12 md:px-5 md:hidden mdplus:flex  video_desktop"} style={bgGradient}>
                 <div className={"rounded-2xl"} dangerouslySetInnerHTML={renderHTML(fields.video)}/>
             </div>
-            <div className={"lg:hidden mdplus:hidden flex max-w-full justify-center py-12 md:px-5 video_mobile"} style={bgGradient}>
+            <div className={"lg:hidden mdplus:hidden flex max-w-full justify-center py-5 md:px-5 video_mobile"} style={bgGradient}>
                 <div className={"rounded-2xl w-full"} dangerouslySetInnerHTML={renderHTML(fields.videoMobile)}/>
             </div>
         </div>

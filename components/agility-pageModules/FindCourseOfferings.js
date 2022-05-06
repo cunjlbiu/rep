@@ -15,7 +15,7 @@ const CourseItem = ({data})=> {
         <div className={"py-10 max-w-[640px] md:mx-5 "}>
             <div className={"mdplus:min-w-[600px] mdplus:h-[320px] max-w-[640px] md:w-auto rounded-xl text-white text-center relative"}>
                 <div className={`absolute b3 rounded-full px-[12px] py-1 top-4 left-4 ${data.onDemand ? "bg-primary-blue" : "bg-primary-white text-black" }`}>{data.onDemand ? "On-Demand" : "Live"}</div>
-                {!data.image ? "image should be here" : <img className={"rounded-xl object-contain"} src={data.image.url}/>}
+                {!data.image ? "image should be here" : <a href={`/dynamic/${data.id.toLowerCase()}`}><img className={"rounded-xl object-contain"} src={data.image.url}/></a>}
             </div>
             <div className={"flex justify-between mdplus:w-[600px] my-4"}>
                 <div className={"b3"}>{startDate.valueOf() ? `(${startDate.getFullYear()})` : ''} (ITEM # {data.id})</div>
