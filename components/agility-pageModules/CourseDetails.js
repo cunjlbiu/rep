@@ -3,8 +3,10 @@ import {BiLeftArrowAlt} from "react-icons/bi";
 import {HiLocationMarker} from "react-icons/hi";
 import {GiOpenBook} from "react-icons/gi"
 
-const CourseDetails = ({module}) => {
+const CourseDetails = ({customData, module, dynamicPageItem}) => {
     const {fields} = module
+    const dynamicFields = dynamicPageItem.fields
+    console.log(dynamicPageItem)
 
 
     const [isOpenMenu, setIsOpenMenu] = useState(false)
@@ -21,7 +23,7 @@ const CourseDetails = ({module}) => {
                     < BiLeftArrowAlt/>
                 </div>
                 <div className={"flex pl-[14px]"}>
-                    <p className={"bttn2"}>Back to the courses</p>
+                    <p className={"bttn2 cursor-pointer"}>Back to the courses</p>
                 </div>
             </div>
 
@@ -33,7 +35,7 @@ const CourseDetails = ({module}) => {
                 <div className={"flex flex-col max-w-[864px]"}>
 
                     <div className={"flex flex-col"}>
-                        <h3>Energy-Generating Devices: Safety Precautions (includes Electrosurgery)</h3>
+                        <h3>{dynamicFields.name}</h3>
                     </div>
 
 
@@ -55,7 +57,7 @@ const CourseDetails = ({module}) => {
                         <a className=" b3 absolute  left-[16px] top-[16px] bg-primary-blue text-primary-white rounded-full
                                 w-[102px] px-[10px] py-[4px] h-[32px] "
                            href={"#"}>On-demand</a>
-                        <img className={"rounded-xl"} src={fields.image.url} alt="device"/>
+                        <img className={"rounded-xl"} src={dynamicFields.image.url} alt="device"/>
                     </div>
 
 
@@ -571,5 +573,86 @@ const CourseDetails = ({module}) => {
     );
 
 
+
+
+
+
+
 }
+
+
+CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, languageCode}) => {
+    // set up api
+    const api = agility;
+    try{
+        if (dynamicPageItem?.fields?.schedule?.referencename){
+            let schedule = await api.getContentList(
+                {
+                    referenceName: dynamicPageItem?.fields.schedule?.referencename,
+                    locale:languageCode,
+                    expandAllContentLinks: true
+                })
+            return (schedule)
+        }
+        else return(null)
+    }catch (err) {
+        if (console) console.log(err)
+    }
+
+
+    // try {
+    //     // get sitemap...
+    //     let sitemap = await api.getSitemapFlat({
+    //         channelName: channelName,
+    //         languageCode,
+    //     });
+    //
+    //     // get posts...
+    //     let rawPosts = await api.getContentList({
+    //         referenceName: "testofferings",
+    //         languageCode,
+    //         contentLinkDepth: 3,
+    //         depth: 3,
+    //         take: 50,
+    //         expandAllContentLinks: true ,
+    //     });
+    //
+    //     // resolve dynamic urls
+    //     const posts = rawPosts.items.map((post) => {
+    //         //category
+    //         const category = post.fields.category?.fields.title || "Uncategorized"
+    //
+    //         // date
+    //         const date = new Date(post.fields.date).toLocaleDateString();
+    //
+    //         // url
+    //         const url = "#";
+    //
+    //         // post image src
+    //         let imageSrc = post.fields.image.url;
+    //
+    //         // post image alt
+    //         let imageAlt = post.fields.image?.label || null;
+    //
+    //         return {
+    //             contentID: post.contentID,
+    //             title: post.fields.title,
+    //             date,
+    //             url,
+    //             category,
+    //             imageSrc,
+    //             imageAlt,
+    //         };
+    //     });
+    //
+    //     return {
+    //         rawPosts
+    //     };
+    // } catch (error) {
+    //     if (console) console.error(error);
+    // }
+
+}
+
+
 export default CourseDetails;
