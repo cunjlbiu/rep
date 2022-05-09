@@ -161,7 +161,7 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
                                             `${dynamicFields.priceLow}$ - ${dynamicFields.priceHigh}$`
                                             : ""}
                                     </p>
-                                    <div className={"w-[63px] bg-primary-blue rounded-md flex justify-center ml-[14px] "}>
+                                    <div className={"w-[63px] bg-primary-blue rounded-md flex justify-center ml-[14px] " + ` ${dynamicFields?.discount ? '' : 'hidden'}`}>
                                         <p className={"text-primary-white b3 "}>{dynamicFields?.discount}% off</p>
                                     </div>
                                 </div>
@@ -202,26 +202,31 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
                             </div>
                         </div>
 
-                        <div className={"flex flex-col pb-6 max-h-[290px]"+ ` ${!isOpenMenu ? "": "overflow-y-scroll overflow-x-hidden"}`} style={{borderTop: "1px solid #EDF2F4"}}>
+                        <div className={"flex flex-col pb-6 max-h-[310px]"+ ` ${!isOpenMenu ? "": "overflow-y-scroll overflow-x-hidden"}`} style={{borderTop: "1px solid #EDF2F4"}}>
 
                             <div className={"flex flex-row px-6 pt-6 justify-between "}>
                                 <p className={"b3 text-primary-darkblue"}>Instructor</p>
                                 <a  onClick={onButtonClick}
-                                    className={`underline b3 text-primary-darkblue  ${(instructors.length < 5) ? "hidden" : ""}`}>
+                                    className={`underline b3 text-primary-darkblue  ${(instructors.length < 4) ? "hidden" : ""}`}>
                                     {!isOpenMenu ? "See all instructors" : "Hide"}</a>
                             </div>
 
                             {/*Static instructors*/}
 
                                 <div className={`${isOpenMenu ? 'hidden': 'all_instuctors'}`}>
-                                    {instructors.map((item)=>
-                                        <div className={"flex flex-row pt-6 pl-6"}>
-                                        <img className={"rounded-full"} src={item.fields.image.url} alt="roundedFACE"/>
-                                        <div className={"flex flex-col pl-6"}>
-                                            <p className={"c2 text-primary-darkblue"}>{item.fields.name}</p>
-                                            <p className={"b3 text-primary-darkblue"}>{item.fields.specialty}</p>
-                                        </div>
-                                    </div>).reverse()}
+                                    {instructors.map((item,i)=> {
+                                        if(i < 3)
+                                            return(
+                                                <div className={"flex flex-row pt-6 pl-6"}>
+                                                    <img className={"rounded-full"} src={item.fields.image.url} alt="roundedFACE"/>
+                                                    <div className={"flex flex-col pl-6"}>
+                                                        <p className={"c2 text-primary-darkblue"}>{item.fields.name}</p>
+                                                        <p className={"b3 text-primary-darkblue"}>{item.fields.specialty}</p>
+                                                    </div>
+                                                </div>
+                                            )
+                                    }).reverse()}
+
 
                                 </div>
 
