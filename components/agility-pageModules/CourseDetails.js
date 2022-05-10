@@ -47,8 +47,7 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
     const dynamicFields = dynamicPageItem.fields
     const startDate = dynamicFields?.startDate ? (new Date(dynamicFields.startDate)) : null
     const endDate = dynamicFields?.endDate ? (new Date(dynamicFields.endDate)) : null
-    console.log("date")
-    console.log(customData)
+
 
 
     const [isOpenMenu, setIsOpenMenu] = useState(false)
@@ -58,8 +57,7 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
     const [schedule,setSchedule] = useState((customData?.schedule?.items || []));
     const [include,setInclude] = useState((customData?.include?.items || []));
     const [instructors,setInstructors] = useState((customData?.instructors?.items || []));
-    console.log(`instructors`);
-    console.log(instructors);
+
 
 
     return (
@@ -225,9 +223,6 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
                                                     </div>
                                                 </div>
                                             )
-                                    })}
-
-
                                 </div>
 
                             {/*Dinamic instructors*/}
@@ -302,6 +297,7 @@ CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, language
     }catch (err) {
         if (console) console.log(err)
     }
+
 
 }
 
