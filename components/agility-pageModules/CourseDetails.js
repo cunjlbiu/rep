@@ -57,6 +57,7 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
     const [schedule,setSchedule] = useState((customData?.schedule?.items || []));
     const [include,setInclude] = useState((customData?.include?.items || []));
     const [instructors,setInstructors] = useState((customData?.instructors?.items || []));
+    console.log(instructors)
 
 
 
@@ -200,7 +201,7 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
                             </div>
                         </div>
 
-                        <div className={"flex flex-col pb-6 max-h-[370px]"+ ` ${!isOpenMenu ? "": "overflow-y-scroll overflow-x-hidden"}` + instructors.length ? "": "hidden"}
+                        <div className={"flex flex-col pb-6 max-h-[370px]"+ ` ${!isOpenMenu ? "": "overflow-y-scroll overflow-x-hidden"}` + `${instructors.length ? "": " hidden"}`}
                              style={{borderTop: "1px solid #EDF2F4"}}>
 
                             <div className={"flex flex-row px-6 pt-6 justify-between "}>
@@ -212,8 +213,8 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
 
                             {/*Static instructors*/}
 
-                                <div className={`${isOpenMenu ? 'hidden': 'all_instuctors'}` + instructors.length ? "": "hidden" }>
-                                    {instructors.reverse().map((item,i)=> {
+                                <div className={`${isOpenMenu ? 'hidden': 'all_instuctors'}`}>
+                                    {instructors.slice(0).reverse().map((item,i)=> {
                                         if(i < 3)
                                             return(
                                                 <div className={"flex flex-row pt-6 pl-6"}>
