@@ -167,9 +167,9 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
                                 </div>
                             </div>
                             <div className={"flex flex-row items-center mx-6 my-6 justify-between"}>
-                                <a className={"flex bttn1 w-[212px] h-14 items-center border-primary-blue rounded-full border-primary-blue border-2 text-primary-blue"} href={dynamicFields.priceLButton.href}>
+                                <a className={"flex bttn1 w-[212px] h-14 items-center border-primary-blue rounded-full border-primary-blue border-2 text-primary-blue"} href={dynamicFields?.priceLButton?.href}>
                                     <p className={"mx-auto md:text-[14px]"}>{dynamicFields.priceLButton.text}</p></a>
-                                <a className={"flex bttn1 w-[132px] h-14 items-center bg-primary-blue rounded-full cursor-pointer"} href={dynamicFields.priceRButton.href}>
+                                <a className={"flex bttn1 w-[132px] h-14 items-center bg-primary-blue rounded-full cursor-pointer"} href={dynamicFields?.priceRButton?.href}>
                                     <p className={"mx-auto text-primary-white md:text-[14px]"}>{dynamicFields.priceRButton.text}</p></a>
                             </div>
                         </div>
