@@ -47,8 +47,7 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
     const dynamicFields = dynamicPageItem.fields
     const startDate = dynamicFields?.startDate ? (new Date(dynamicFields.startDate)) : null
     const endDate = dynamicFields?.endDate ? (new Date(dynamicFields.endDate)) : null
-    console.log("date")
-    console.log(customData)
+
 
 
     const [isOpenMenu, setIsOpenMenu] = useState(false)
@@ -58,8 +57,7 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
     const [schedule,setSchedule] = useState((customData?.schedule?.items || []));
     const [include,setInclude] = useState((customData?.include?.items || []));
     const [instructors,setInstructors] = useState((customData?.instructors?.items || []));
-    console.log(`instructors`);
-    console.log(instructors);
+
 
 
     return (
@@ -226,8 +224,6 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
                                                 </div>
                                             )
                                     }).reverse()}
-
-
                                 </div>
 
                             {/*Dinamic instructors*/}
@@ -263,9 +259,6 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
                                 <p className={"b2 text-primary-darkblue"}>{item.fields.specialty}</p>
                             </div>
                         </div>).reverse()}
-
-
-
                 </div>
 
             </div>
@@ -325,57 +318,6 @@ CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, language
     }
 
 
-    // try {
-    //     // get sitemap...
-    //     let sitemap = await api.getSitemapFlat({
-    //         channelName: channelName,
-    //         languageCode,
-    //     });
-    //
-    //     // get posts...
-    //     let rawPosts = await api.getContentList({
-    //         referenceName: "testofferings",
-    //         languageCode,
-    //         contentLinkDepth: 3,
-    //         depth: 3,
-    //         take: 50,
-    //         expandAllContentLinks: true ,
-    //     });
-    //
-    //     // resolve dynamic urls
-    //     const posts = rawPosts.items.map((post) => {
-    //         //category
-    //         const category = post.fields.category?.fields.title || "Uncategorized"
-    //
-    //         // date
-    //         const date = new Date(post.fields.date).toLocaleDateString();
-    //
-    //         // url
-    //         const url = "#";
-    //
-    //         // post image src
-    //         let imageSrc = post.fields.image.url;
-    //
-    //         // post image alt
-    //         let imageAlt = post.fields.image?.label || null;
-    //
-    //         return {
-    //             contentID: post.contentID,
-    //             title: post.fields.title,
-    //             date,
-    //             url,
-    //             category,
-    //             imageSrc,
-    //             imageAlt,
-    //         };
-    //     });
-    //
-    //     return {
-    //         rawPosts
-    //     };
-    // } catch (error) {
-    //     if (console) console.error(error);
-    // }
 
 }
 
