@@ -274,6 +274,7 @@ CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, language
         }
     }catch (err) {
         if (console) console.log(err)
+        schedule = null
     }
     try{
         if (dynamicPageItem?.fields?.include?.referencename){
@@ -286,6 +287,7 @@ CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, language
         }
     }catch (err) {
         if (console) console.log(err)
+        include = null
     }
     try{
         if (dynamicPageItem?.fields?.instructors?.referencename){
@@ -298,6 +300,7 @@ CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, language
         }
     }catch (err) {
         if (console) console.log(err)
+        instructors = null
     }
         return({
             schedule,
