@@ -272,7 +272,10 @@ CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, language
                     expandAllContentLinks: true
                 })
         }
-
+    }catch (err) {
+        if (console) console.log(err)
+    }
+    try{
         if (dynamicPageItem?.fields?.include?.referencename){
             include = await api.getContentList(
                 {
@@ -281,7 +284,10 @@ CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, language
                     expandAllContentLinks: true
                 })
         }
-
+    }catch (err) {
+        if (console) console.log(err)
+    }
+    try{
         if (dynamicPageItem?.fields?.instructors?.referencename){
             instructors = await api.getContentList(
                 {
@@ -290,14 +296,15 @@ CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, language
                     expandAllContentLinks: true
                 })
         }
+    }catch (err) {
+        if (console) console.log(err)
+    }
         return({
             schedule,
             include,
             instructors,
         })
-    }catch (err) {
-        if (console) console.log(err)
-    }
+
 
 
 }
