@@ -63,7 +63,7 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
 
 
     return (
-        <div className={"max-w-screen-xl mx-auto"}>
+        <div className={"max-w-screen-xl mx-auto py-5 pb-8"}>
 
 
             <div className={"flex text-primary-darkblue flex-row items-center"}>
@@ -148,10 +148,10 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
                             </div>
                             <div className={"flex ml-6 mt-1"}>
                                 <p className={"c1 text-primary-darkblue"}>
-                                    {dynamicFields?.discount ? parseInt(dynamicFields.priceLow)*(100-parseInt(dynamicFields.discount))/100
-                                        : dynamicFields.priceLow}$-
+                                    ${dynamicFields?.discount ? parseInt(dynamicFields.priceLow)*(100-parseInt(dynamicFields.discount))/100
+                                        : dynamicFields.priceLow}- $
                                     {dynamicFields?.discount ? parseInt(dynamicFields.priceHigh)*(100-parseInt(dynamicFields.discount))/100
-                                        : dynamicFields.priceHigh}$
+                                        : dynamicFields.priceHigh}
                                 </p>
                             </div>
                             <div className={"flex ml-6"}>
@@ -167,10 +167,10 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
                                 </div>
                             </div>
                             <div className={"flex flex-row items-center mx-6 my-6 justify-between"}>
-                                <a className={"flex bttn1 w-[212px] h-14 items-center border-primary-blue rounded-full border-primary-blue border-2 text-primary-blue"} href={"#"}>
-                                    <p className={"mx-auto md:text-[14px]"}>Register for the course</p></a>
-                                <a className={"flex bttn1 w-[132px] h-14 items-center bg-primary-blue rounded-full"} href={"#"}>
-                                    <p className={"mx-auto text-primary-white md:text-[14px]"}>Website</p></a>
+                                <a className={"flex bttn1 w-[212px] h-14 items-center border-primary-blue rounded-full border-primary-blue border-2 text-primary-blue"} href={dynamicFields.priceLButton.href}>
+                                    <p className={"mx-auto md:text-[14px]"}>{dynamicFields.priceLButton.text}</p></a>
+                                <a className={"flex bttn1 w-[132px] h-14 items-center bg-primary-blue rounded-full cursor-pointer"} href={dynamicFields.priceRButton.href}>
+                                    <p className={"mx-auto text-primary-white md:text-[14px]"}>{dynamicFields.priceRButton.text}</p></a>
                             </div>
                         </div>
                         <div className={"flex flex-row py-6 justify-between px-6"} style={{border: "1px solid #EDF2F4"}}>
@@ -187,12 +187,12 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
                         <div className={"flex"} style={{border: "1px solid #EDF2F4"}}>
                             <div className={"flex-col items-center justify-center px-7 py-7"}>
                                 <p className={"b3"}>
-                                    This course includes
+                                    {dynamicFields?.includeTitle}
                                 </p>
                                 {include.map((item)=>
                                     <div className={"flex items-center flex-row mt-4"}>
-                                        <div>
-                                            <img width={22} height={19} src={item.fields.image.url}/>
+                                        <div className={"w-[24px] flex-shrink-0 h-[24px]"}>
+                                            <img width={24} height={24} src={item.fields.image.url}/>
                                         </div>
                                         <p className={"b2  ml-[19px]"}>
                                             {item.fields.text}
@@ -214,18 +214,18 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
                             {/*Static instructors*/}
 
                                 <div className={`${isOpenMenu ? 'hidden': 'all_instuctors'}`}>
-                                    {instructors.map((item,i)=> {
+                                    {instructors.reverse().map((item,i)=> {
                                         if(i < 3)
                                             return(
                                                 <div className={"flex flex-row pt-6 pl-6"}>
-                                                    <img className={"rounded-full"} src={item.fields.image.url} alt="roundedFACE"/>
+                                                    <img className={"rounded-full flex-shrink-0 h-[56px] w-[56px] object-cover"} src={item.fields.image.url} alt="roundedFACE"/>
                                                     <div className={"flex flex-col pl-6"}>
                                                         <p className={"c2 text-primary-darkblue"}>{item.fields.name}</p>
                                                         <p className={"b3 text-primary-darkblue"}>{item.fields.specialty}</p>
                                                     </div>
                                                 </div>
                                             )
-                                    }).reverse()}
+                                    })}
 
 
                                 </div>
@@ -236,7 +236,7 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
 
                                 {instructors.map((item)=>
                                     <div className={"flex flex-row pt-6 pl-6"}>
-                                        <img className={"rounded-full"} src={item.fields.image.url} alt="roundedFACE"/>
+                                        <img className={"rounded-full flex-shrink-0 h-[56px] w-[56px] object-cover"} src={item.fields.image.url} alt="roundedFACE"/>
                                         <div className={"flex flex-col pl-6"}>
                                             <p className={"c2 text-primary-darkblue"}>{item.fields.name}</p>
                                             <p className={"b3 text-primary-darkblue"}>{item.fields.specialty}</p>
@@ -249,27 +249,6 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
                     </div>
                 </div>
             </div>
-
-            <div className={`flex mt-[108px] max-w-[1312px] ${instructors.length > 3 ? "overflow-x-scroll":"" } `}>
-
-                <div className={"flex flex-row justify-between"}>
-
-
-                    {instructors.map((item)=>
-                        <div className={"flex flex-row items-center w-[416px] ml-[30px]  mr-[30px]"}>
-                            <img className={"rounded-full w-[104px]"} src={item.fields.image.url} alt="roundedFACE"/>
-                            <div className={"flex flex-col pl-6"}>
-                                <p className={"c1 text-primary-darkblue"}>{item.fields.name}</p>
-                                <p className={"b2 text-primary-darkblue"}>{item.fields.specialty}</p>
-                            </div>
-                        </div>).reverse()}
-
-
-
-                </div>
-
-            </div>
-
         </div>
     );
 
@@ -323,59 +302,6 @@ CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, language
     }catch (err) {
         if (console) console.log(err)
     }
-
-
-    // try {
-    //     // get sitemap...
-    //     let sitemap = await api.getSitemapFlat({
-    //         channelName: channelName,
-    //         languageCode,
-    //     });
-    //
-    //     // get posts...
-    //     let rawPosts = await api.getContentList({
-    //         referenceName: "testofferings",
-    //         languageCode,
-    //         contentLinkDepth: 3,
-    //         depth: 3,
-    //         take: 50,
-    //         expandAllContentLinks: true ,
-    //     });
-    //
-    //     // resolve dynamic urls
-    //     const posts = rawPosts.items.map((post) => {
-    //         //category
-    //         const category = post.fields.category?.fields.title || "Uncategorized"
-    //
-    //         // date
-    //         const date = new Date(post.fields.date).toLocaleDateString();
-    //
-    //         // url
-    //         const url = "#";
-    //
-    //         // post image src
-    //         let imageSrc = post.fields.image.url;
-    //
-    //         // post image alt
-    //         let imageAlt = post.fields.image?.label || null;
-    //
-    //         return {
-    //             contentID: post.contentID,
-    //             title: post.fields.title,
-    //             date,
-    //             url,
-    //             category,
-    //             imageSrc,
-    //             imageAlt,
-    //         };
-    //     });
-    //
-    //     return {
-    //         rawPosts
-    //     };
-    // } catch (error) {
-    //     if (console) console.error(error);
-    // }
 
 }
 
