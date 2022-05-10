@@ -266,7 +266,7 @@ CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, language
         if (dynamicPageItem?.fields?.schedule?.referencename){
             schedule = await api.getContentList(
                 {
-                    referenceName: dynamicPageItem?.fields.schedule?.referencename,
+                    referenceName: dynamicPageItem?.fields?.schedule?.referencename,
                     locale:languageCode,
                     expandAllContentLinks: true
                 })
@@ -275,7 +275,7 @@ CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, language
         if (dynamicPageItem?.fields?.include?.referencename){
             include = await api.getContentList(
                 {
-                    referenceName: dynamicPageItem?.fields.include?.referencename,
+                    referenceName: dynamicPageItem?.fields?.include?.referencename,
                     locale:languageCode,
                     expandAllContentLinks: true
                 })
@@ -284,7 +284,7 @@ CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, language
         if (dynamicPageItem?.fields?.instructors?.referencename){
             instructors = await api.getContentList(
                 {
-                    referenceName: dynamicPageItem?.fields.instructors?.referencename,
+                    referenceName: dynamicPageItem?.fields?.instructors?.referencename,
                     locale:languageCode,
                     expandAllContentLinks: true
                 })
