@@ -222,7 +222,7 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
                                                         <p className={"b3 text-primary-darkblue"}>{item.fields.specialty}</p>
                                                     </div>
                                                 </div>
-                                            )
+                                        )})}
                                 </div>
 
                             {/*Dinamic instructors*/}
