@@ -3,8 +3,9 @@ import {useRouter} from 'next/router'
 import Switch from 'react-switch'
 import Select from "react-select";
 
-const DATE_NOW = Date.now()
-
+const DATE_NOW = Date.now();
+let aornText = '';
+let aornTitle = '';
 const CourseItem = ({data, aorn, logo})=> {
     const startDate = new Date(data.startDate);
     const mm = ('0'+ (startDate.getMonth()+1)).slice(-2);
@@ -17,8 +18,11 @@ const CourseItem = ({data, aorn, logo})=> {
         <div className={"py-10 max-w-[640px] md:mx-5 "}>
             <div className={"mdplus:min-w-[600px] mdplus:h-[320px] max-w-[640px] md:w-auto rounded-xl text-white text-center relative"}>
                 <div className={`absolute b3 rounded-full px-[12px] py-1 top-4 left-4 ${data.onDemand ? "bg-primary-blue" : "bg-primary-white text-black" }`}>{data.onDemand ? "On-Demand" : "Live"}</div>
-                <div className={`absolute b3 rounded-full px-[12px] py-1 bottom-4 right-6 ${aorn ? "bg-primary-white" : "hidden" }`}>{aorn ? <img src={logo.url}/> : "" }</div>
-                {!data.image ? "image should be here" : <a href={aorn ? "/aorn":`/dynamic/${data.id.toLowerCase()}`}><img className={"rounded-xl object-contain"} src={data.image.url}/></a>}
+                <div className={`absolute b3 rounded-full px-[12px] py-1 bottom-4 right-6 ${aorn ? "bg-primary-white" : "hidden" }`}>
+                    {aorn ? <img src={logo.url}/> : "" }
+                </div>
+                {!data.image ? "image should be here" : <a href={aorn ? "https://cine-med.com/aornonline/":`/dynamic/${data.id.toLowerCase()}`}>
+                    <img className={"rounded-xl object-contain"} src={data.image.url}/></a>}
             </div>
             <div className={"flex justify-between mdplus:w-[600px] my-4"}>
                 <div className={"b3"}>{startDate.valueOf() ? `(${startDate.getFullYear()})` : ''} (ITEM # {data.id})</div>
@@ -35,13 +39,12 @@ const CourseItem = ({data, aorn, logo})=> {
 const CourseBlock = ({blockData, filters, cl, deleteAll, aorn, logo})=>{
     return(
         <div className={"md:mx-5"}>
-            <div className={"md:mx-auto md:max-w-[640px]"}>
+            <div className={"md:mx-auto md:max-w-[640px]" + `${blockData.length ? "":" hidden"}`}>
                 <h3 className={"mdplus:mx-auto"}>
-                    {aorn ? "AORN offerings":"Offerings"}
+                    {aorn ? aornTitle:"Offerings"}
                 </h3>
                 <div className={"b1 pt-3"}>{aorn ?
-                    "User's are not able to just buy one single product from AORN. But if they subscribe to the service," +
-                    " they get all products associated with AORN."
+                    aornText
                             :
                     "View our current curriculum."}</div>
             </div>
@@ -194,6 +197,8 @@ const courseType =[
 
 const FindCourseOfferings = ({module})=>{
     const {fields} = module;
+    aornText = fields?.aornText
+    aornTitle = fields?.aornTitle
     const customStyle={
         control: (base, state) => ({
             ...base,
@@ -243,7 +248,7 @@ const FindCourseOfferings = ({module})=>{
     useEffect(()=>setFilter(initialFilter),[])
     useEffect(()=>{setListedCourses(courses.slice(0,amount));
                          setListedAORNCourses(aornCourses.slice(0,amount))},
-                    [amount,courses])
+                    [amount,courses,aornCourses])
     // const course = {}
     // fields.courses.map((e)=>{course[e.fields.filter] ? course[e.fields.filter].push(e) : course[e.fields.filter] = [e] })
     // const courseArr = Object.entries(course)
@@ -290,9 +295,12 @@ const FindCourseOfferings = ({module})=>{
     const ApplyFilters = (sw) => {
         if (typeof(sw)=="boolean") {
             setCourses(Filtering(filter, fields.courses, sw, locFilter, typeFilter, specialtyFilter))
+            setAornCourses(Filtering(filter, fields.aorn, sw, locFilter, typeFilter, specialtyFilter))
         }
-        else
+        else{
             setCourses(Filtering(filter, fields.courses,checked,locFilter,typeFilter,specialtyFilter))
+            setAornCourses(Filtering(filter, fields.aorn,checked,locFilter,typeFilter,specialtyFilter))
+        }
         setFilters([filter,locFilter,typeFilter,specialtyFilter])
         setAmount(4);
         //setFilter("")
@@ -400,18 +408,37 @@ const FindCourseOfferings = ({module})=>{
                 </div>
             </div>
 
-
-             <div className={"bg-primary-white py-14 my-8 "}>
-                <div className={"mx-auto max-w-screen-xl "} id={"fil"}>
+             <div className={"bg-primary-white py-14 my-8 " + `${listedCourses.length && listedAORNCourses.length ? "" : " "}`} id={"fil"}>
+                <div className={"mx-auto max-w-screen-xl " + `${listedCourses.length || listedAORNCourses.length ? "" : ""} `}>
                     <CourseBlock aorn={true} logo={fields.aornLogo} blockData={listedAORNCourses} filters={filters} cl={(e)=>{DeleteFilter(e)}} deleteAll={filter || locFilter || typeFilter || specialtyFilter}/>
                 </div>
 
-                 <div className={"mx-auto max-w-screen-xl "} id={"fil"}>
+                 <div className={"mx-auto max-w-screen-xl " + `${listedCourses.length ? "":" hidden"}`}>
                      <CourseBlock aorn={false} blockData={listedCourses} filters={filters} cl={(e)=>{DeleteFilter(e)}} deleteAll={filter || locFilter || typeFilter || specialtyFilter}/>
                  </div>
                  <div className={"bttn1 flex cursor-pointer items-center justify-center h-[56px] mdplus:w-[192px] md:flex-grow md:mx-5 lg:active:bg-primary-blue md:active:bg-primary-darkblue lg:hover:bg-primary-darkblue mdplus:mx-auto bg-primary-blue rounded-full text-primary-white " + (courses.length <= amount ? " hidden" : "") } onClick={()=>IncreaseAmount(2)}>
                      Load more</div>
+
+                 <div className={`flex flex-col space-y-8 mdplus:mx-auto md:mx-5 max-w-[780px] text-center border-2 border-soft-purple py-12 px-5 rounded-2xl ${listedCourses.length && listedAORNCourses.length ? " hidden" : ""}`}>
+                     Sorry, there are currently no courses meeting those search criteria being offered at this time.
+                     Please check back soon or contact us for more information.
+                     <div className={"mdplus:justify-center mdplus:space-x-6 flex md:justify-evenly"}>
+                         <a className={"bttn2 flex mdplus:px-6 md:px-2  h-[48px] bg-primary-blue text-primary-white items-center " +
+                             "justify-center hover:bg-primary-darkblue active:bg-primary-blue lg:mx-5 mt-2 rounded-full cursor-pointer"}
+                         href={"/contact"}>
+                             Contact us
+                         </a>
+                         <a className={"bttn2 flex mdplus:px-6 md:px-2 h-[48px] bg-primary-white text-primary-blue items-center " +
+                             "justify-center hover:bg-primary-blue hover:text-primary-white active:bg-primary-white " +
+                             "active:text-primary-blue border-primary-blue border-2 lg:mx-5 mt-2 rounded-full cursor-pointer"}>
+                             Signup for news letter
+                         </a>
+
+                     </div>
+                 </div>
+
              </div>
+
 
         </div>
     );
