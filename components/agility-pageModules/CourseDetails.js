@@ -8,9 +8,9 @@ import {renderHTML} from "@agility/nextjs";
 const Schedule = ({day})=>{
     console.log(day)
     return(
-        <div className={"flex flex-col mt-[82px]"}>
+        <div className={"flex flex-col mt-[82px] md:first:mt-16 md:mt-10"}>
             <div className={"flex flex-col"}>
-                <p className={"c1"}>{day?.fields?.date}</p>
+                <p className={"c1 md:font-medium md:text-[24px] md:leading-8"}>{day?.fields?.date}</p>
                 <div className={"b1 mt-4 text-primary-darkblue"}
                     dangerouslySetInnerHTML={renderHTML(day?.fields?.description)}/>
             </div>
@@ -18,17 +18,22 @@ const Schedule = ({day})=>{
 
                 {day?.fields?.timetable?.map((item)=>
 
-                    <div className={"flex justify-start mt-10 "}>
-                        <div className={"flex"}>
-                            <div className={"mr-[16px] min-w-[64px] flex items-center"}>
+                    <div className={"flex justify-start mt-10 md:mt-6 "}>
+                        <div className={"flex md:min-h-[50px] md:items-center"}>
+                            <div className={"mr-[16px] md:mr-2 min-w-[100px] md:min-h-[50px] flex items-center"} style={{borderRight:"2px solid #1C58F8"}}>
                                 <p className={"c2"}>{item.fields?.time}</p>
                             </div>
 
-                            <span className={"w-[2px] bg-primary-blue"}></span>
-
                             <div className={"flex flex-col ml-4"}>
-                                <p className={"b2 text-primary-grey"}>{item.fields?.type}</p>
-                                <p className={"b1 text-primary-darkblue"}>{item.fields?.description}</p>
+                                <div className={"lg:hidden"}>
+                                    <p className={"b3 text-primary-grey"}>{item.fields?.type}</p>
+                                    <p className={"b1 mobile text-primary-darkblue"}>{item.fields?.description}</p>
+                                </div>
+                                <div className={"md:hidden"}>
+                                    <p className={"b2 text-primary-grey"}>{item.fields?.type}</p>
+                                    <p className={"b1 text-primary-darkblue"}>{item.fields?.description}</p>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -62,7 +67,7 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
 
 
     return (
-        <div className={"max-w-screen-xl mx-auto py-5 pb-8"}>
+        <div className={"max-w-screen-xl mx-auto py-14 pb-8 md:px-5"}>
 
 
             <div className={"flex text-primary-darkblue flex-row items-center"}>
@@ -75,11 +80,11 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
             </div>
 
 
-            <div className={"flex pt-[24px]"}>
+            <div className={"flex pt-[24px] md:pt-[16px]"}>
 
                 {/*  */}
 
-                <div className={"flex flex-col max-w-[864px]"}>
+                <div className={"flex flex-col max-w-[864px] md:min-w-[335px]"}>
 
                     <div className={"flex flex-col"}>
                         <h3>{dynamicFields.name}</h3>
@@ -88,12 +93,12 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
 
                     {/*    */}
 
-                    <div className={"flex pt-[26px] text-primary-darkblue"}>
+                    <div className={"flex pt-[26px] md:pt-[20px] md:items-center text-primary-darkblue"}>
                         <div className={"text-[20px] "}>
                             <HiLocationMarker/>
                         </div>
                         <div className={"flex ml-[10px]"}>
-                            <a className={"b2 underline"} href="#">{dynamicFields.fullAddress}</a>
+                            <a className={"b2 md:text-[14px] md:font-medium md:leading-4 md:uppercase underline"} href="#">{dynamicFields.fullAddress}</a>
                         </div>
                     </div>
 
@@ -101,36 +106,180 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
                     {/*    */}
 
                     <div className={"flex mt-[24px] relative"}>
-                        <a className=" b3 absolute  left-[16px] top-[16px] bg-primary-blue text-primary-white rounded-full
+                        <a className=" b3 absolute  left-[16px] top-[16px] md:left-[8px] md:top-[8px] bg-primary-blue text-primary-white rounded-full
                                 w-[102px] px-[10px] py-[4px] h-[32px] "
                            href={"#"}>On-demand</a>
                         <img className={"rounded-xl"} src={dynamicFields.image.url} alt="device"/>
                     </div>
 
 
-                    {/*    */}
 
-                    <div className={"flex mt-[24px] flex-col b1 text-primary-darkblue"}
+
+
+
+
+                    {/*Mobile Fixed Price Section*/}  {/*TODO Start*/}
+
+
+                    <div className={"lg:hidden mdplus:hidden md:flex-row mt-[15px] w-full md:flex "} style={{height:"max-content"}}>
+                        <div className={"flex flex-col w-full max-w-[450px] pb-5 bg-white"} style={{borderRadius:"10px", border:" 1px solid #EDF2F4"}}>
+                            <div style={{borderBottom:"1px solid #EDF2F4"}}>
+                                <div className={"flex mt-4 ml-4"}>
+                                    <p className={"b3 text-primary-darkblue"}>Price</p>
+                                </div>
+                                <div className={"flex ml-4 mt-1"}>
+                                    <p className={"c1 text-primary-darkblue"}>
+                                        ${dynamicFields?.discount ? parseInt(dynamicFields.priceLow)*(100-parseInt(dynamicFields.discount))/100
+                                        : dynamicFields.priceLow}- $
+                                        {dynamicFields?.discount ? parseInt(dynamicFields.priceHigh)*(100-parseInt(dynamicFields.discount))/100
+                                            : dynamicFields.priceHigh}
+                                    </p>
+                                </div>
+                                <div className={"flex ml-4"}>
+                                    <div className={"flex flex-row align-middle mt-2"}>
+                                        <p className={"line-through b3 text-primary-grey"}>
+                                            {dynamicFields?.discount ?
+                                                `${dynamicFields.priceLow}$ - ${dynamicFields.priceHigh}$`
+                                                : ""}
+                                        </p>
+                                        <div className={"w-[63px] bg-primary-blue rounded-md flex justify-center ml-[14px] " + ` ${dynamicFields?.discount ? '' : 'hidden'}`}>
+                                            <p className={"text-primary-white b3 "}>{dynamicFields?.discount}% off</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/*<div className={"flex flex-row items-center mx-6 my-6 justify-between"}>*/}
+                                {/*    <a className={"flex bttn1 w-[212px] h-14 items-center border-primary-blue rounded-full border-primary-blue border-2 text-primary-blue"} href={dynamicFields?.priceLButton?.href}>*/}
+                                {/*        <p className={"mx-auto md:text-[14px]"}>{dynamicFields?.priceLButton?.text}</p></a>*/}
+                                {/*    <a className={"flex bttn1 w-[132px] h-14 items-center bg-primary-blue rounded-full cursor-pointer"} href={dynamicFields?.priceRButton?.href}>*/}
+                                {/*        <p className={"mx-auto text-primary-white md:text-[14px]"}>{dynamicFields?.priceRButton?.text}</p></a>*/}
+                                {/*</div>*/}
+                            </div>
+                            <div className={"flex flex-row py-6 justify-between px-6"} style={{border: "1px solid #EDF2F4"}}>
+                                <div className={"flex flex-col"}>
+                                    <p className={"b2 lg:font-normal"}>{startDate? "Start" : ""}</p>
+                                    <p className={"bttn1"}>{startDate ? startDate.toLocaleDateString(undefined,{month:"long", day:"numeric", year:"numeric"}) : ""}</p>
+                                </div>
+                                <span className={"w-[2px] bg-primary-blue"}></span>
+                                <div className={"flex flex-col pr-[17px]"}>
+                                    <p className={"b2 lg:font-normal"}>{endDate? "End" : ""}</p>
+                                    <p className={"bttn1"}>{endDate ? endDate.toLocaleDateString(undefined,{month:"long", day:"numeric", year:"numeric"}) : ""}</p>
+                                </div>
+                            </div>
+                            <div className={"flex"} style={{border: "1px solid #EDF2F4"}}>
+                                <div className={"flex-col items-center justify-center px-4 py-4"}>
+                                    <p className={"b3"}>
+                                        {dynamicFields?.includeTitle}
+                                    </p>
+                                    {include.map((item)=>
+                                        <div className={"flex items-center flex-row mt-4"}>
+                                            <div className={"w-[24px] flex-shrink-0 h-[24px]"}>
+                                                <img width={24} height={24} src={item.fields.image.url}/>
+                                            </div>
+                                            <p className={"b2  ml-[19px]"}>
+                                                {item.fields.text}
+                                            </p>
+                                        </div>
+                                    ).reverse()}
+                                </div>
+                            </div>
+
+                            <div className={"flex flex-col pb-4  max-h-[370px]"+ ` ${!isOpenMenu ? "": "overflow-y-scroll overflow-x-hidden"}` + `${instructors.length ? "": " hidden"}`}
+                                 style={{borderTop: "1px solid #EDF2F4"}}>
+
+                                <div className={"flex flex-row px-4 pt-4 justify-between "}>
+                                    <p className={"detail-course text-primary-darkblue"}>Instructor</p>
+                                    <a  onClick={onButtonClick}
+                                        className={`underline detail-course text-primary-darkblue  ${(instructors.length < 4) ? "hidden" : ""}`}>
+                                        {!isOpenMenu ? "See all instructors" : "Hide"}</a>
+                                </div>
+
+                                {/*Static instructors*/}
+
+                                <div className={`${isOpenMenu ? 'hidden': 'all_instuctors'}`}>
+                                    {instructors.slice(0).reverse().map((item,i)=> {
+                                        if(i < 3)
+                                            return(
+                                                <div className={"flex flex-row pt-4 pl-4"}>
+                                                    <img className={"rounded-full flex-shrink-0 h-[56px] w-[56px] object-cover"} src={item.fields.image.url} alt="roundedFACE"/>
+                                                    <div className={"flex flex-col pl-6"}>
+                                                        <p className={"c2 text-primary-darkblue"}>{item.fields.name}</p>
+                                                        <p className={"b3 text-primary-darkblue"}>{item.fields.specialty}</p>
+                                                    </div>
+                                                </div>
+                                            )})}
+                                </div>
+
+                                {/*Dinamic instructors*/}
+
+                                <div className={`${isOpenMenu ? 'all_instuctors': 'hidden'}`}>
+
+                                    {instructors.map((item)=>
+                                        <div className={"flex flex-row pt-6 pl-6"}>
+                                            <img className={"rounded-full flex-shrink-0 h-[56px] w-[56px] object-cover"} src={item.fields.image.url} alt="roundedFACE"/>
+                                            <div className={"flex flex-col pl-6"}>
+                                                <p className={"c2 text-primary-darkblue"}>{item.fields.name}</p>
+                                                <p className={"b3 text-primary-darkblue"}>{item.fields.specialty}</p>
+                                            </div>
+                                        </div>).reverse()}
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                                                {/*TODO END*/}
+                    {/*/////////////-------------///////////////*/}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div className={"flex mt-[24px] md:mt-[16px] flex-col b1 text-primary-darkblue"}
                          dangerouslySetInnerHTML={renderHTML(dynamicFields.courseDetails)}/>
 
                     {/*    */}
 
-                    <div className={"flex mt-6"}>
-                        <div style={{width:"124px", height:"40px", borderRadius:"57px",border:"2px solid #C9D5FD"}}
-                             className={"flex items-center justify-center mr-2"}>
+                    <div className={"flex flex-wrap mt-4 md:justify-evenly"}>
+                        <div style={{minWidth:"124px", height:"40px", borderRadius:"57px",border:"2px solid #C9D5FD"}}
+                             className={"flex items-center justify-center mr-2 md:mt-2"}>
                             <a  className={"b3 text-primary-darkblue"} href="">{dynamicFields.place}</a>
                         </div>
-                        <div style={{width:"124px", height:"40px", borderRadius:"57px",border:"2px solid #C9D5FD"}}
-                             className={"flex items-center justify-center mr-2"}>
+                        <div style={{minWidth:"124px", height:"40px", borderRadius:"57px",border:"2px solid #C9D5FD"}}
+                             className={"flex items-center justify-center mr-2 md:mt-2"}>
                             <a  className={"b3 text-primary-darkblue"} href="">{dynamicFields.specialty}</a>
                         </div>
-                        <div style={{width:"124px", height:"40px", borderRadius:"57px",border:"2px solid #C9D5FD"}}
-                             className={"flex items-center justify-center mr-2"}>
+                        <div style={{minWidth:"124px", height:"40px", borderRadius:"57px",border:"2px solid #C9D5FD"}}
+                             className={"flex items-center justify-center mr-2 md:mt-2"}>
                             <a  className={"b3 text-primary-darkblue"} href="">{dynamicFields.type}</a>
                         </div>
                     </div>
 
-                    {schedule.map((item)=><Schedule day={item}/>).reverse()}
+                    <div>{schedule.map((item)=><Schedule day={item}/>).reverse()}</div>
+
+                    <div className={"lg:hidden md:flex flex-row items-center my-6 justify-between"}>
+                        <a  className={"flex bttn1 min-w-[192px] h-14 items-center border-primary-blue rounded-full border-primary-blue border-2 text-primary-blue"}
+                            target={dynamicFields?.priceLButton?.target}
+                            href={dynamicFields?.priceLButton?.href}>
+                            <p className={"mx-auto md:text-[14px]"}>{dynamicFields?.priceLButton?.text}</p></a>
+                        <a className={"flex bttn1 min-w-[127px] h-14 items-center bg-primary-blue rounded-full cursor-pointer"}
+                           target={dynamicFields?.priceRButton?.target}
+                           href={dynamicFields?.priceRButton?.href}>
+                            <p className={"mx-auto text-primary-white md:text-[14px]"}>{dynamicFields?.priceRButton?.text}</p></a>
+                    </div>
+
+
 
                 {/*    */}
                 {/*    */}
@@ -139,7 +288,7 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
 
                 {/*Fixed Section */}
 
-                <div className={"flex flex-row ml-8 w-full sticky top-0 relative "} style={{height:"max-content"}}>
+                <div className={"flex flex-row ml-8 w-full sticky top-0 relative md:hidden "} style={{height:"max-content"}}>
                     <div className={"flex flex-col w-full max-w-[450px] bg-white"} style={{borderRadius:"10px", border:" 1px solid #EDF2F4"}}>
                         <div style={{borderBottom:"1px solid #EDF2F4"}}>
                             <div className={"flex mt-6 ml-6"}>
@@ -166,9 +315,13 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
                                 </div>
                             </div>
                             <div className={"flex flex-row items-center mx-6 my-6 justify-between"}>
-                                <a className={"flex bttn1 w-[212px] h-14 items-center border-primary-blue rounded-full border-primary-blue border-2 text-primary-blue"} href={dynamicFields?.priceLButton?.href}>
+                                <a className={"flex bttn1 w-[212px] h-14 items-center border-primary-blue rounded-full border-primary-blue border-2 text-primary-blue"}
+                                   target={dynamicFields?.priceLButton?.target}
+                                   href={dynamicFields?.priceLButton?.href}>
                                     <p className={"mx-auto md:text-[14px]"}>{dynamicFields?.priceLButton?.text}</p></a>
-                                <a className={"flex bttn1 w-[132px] h-14 items-center bg-primary-blue rounded-full cursor-pointer"} href={dynamicFields?.priceRButton?.href}>
+                                <a className={"flex bttn1 w-[132px] h-14 items-center bg-primary-blue rounded-full cursor-pointer"}
+                                   target={dynamicFields?.priceRButton?.target}
+                                   href={dynamicFields?.priceRButton?.href}>
                                     <p className={"mx-auto text-primary-white md:text-[14px]"}>{dynamicFields?.priceRButton?.text}</p></a>
                             </div>
                         </div>
