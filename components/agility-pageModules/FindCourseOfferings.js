@@ -419,16 +419,16 @@ const FindCourseOfferings = ({module})=>{
                  <div className={"bttn1 flex cursor-pointer items-center justify-center h-[56px] mdplus:w-[192px] md:flex-grow md:mx-5 lg:active:bg-primary-blue md:active:bg-primary-darkblue lg:hover:bg-primary-darkblue mdplus:mx-auto bg-primary-blue rounded-full text-primary-white " + (courses.length <= amount ? " hidden" : "") } onClick={()=>IncreaseAmount(2)}>
                      Load more</div>
 
-                 <div className={`flex flex-col space-y-8 mdplus:mx-auto md:mx-5 max-w-[780px] text-center border-2 border-soft-purple py-12 px-5 rounded-2xl ${listedCourses.length && listedAORNCourses.length ? " hidden" : ""}`}>
+                 <div className={`flex flex-col mdplus:mx-auto md:mx-5 mdplus:max-w-[600px] lg:max-w-[780px] font-normal md:text-[14px] mdplus:text-[18px] leading-[24px] text-primary-grey mdplus:text-center border-2 border-soft-purple py-12 px-5 rounded-2xl ${!listedCourses.length && !listedAORNCourses.length ? "" : " hidden"}`}>
                      Sorry, there are currently no courses meeting those search criteria being offered at this time.
                      Please check back soon or contact us for more information.
-                     <div className={"mdplus:justify-center mdplus:space-x-6 flex md:justify-evenly"}>
-                         <a className={"bttn2 flex mdplus:px-6 md:px-2  h-[48px] bg-primary-blue text-primary-white items-center " +
+                     <div className={"mdplus:justify-center mdplus:space-x-6 mt-4 mdplus:mt-6 flex md:justify-evenly"}>
+                         <a className={"bttn2 flex mdplus:px-6 md:px-6 min-w-[115px] flex-shrink-0  h-[48px] mx-1 bg-primary-blue text-primary-white items-center " +
                              "justify-center hover:bg-primary-darkblue active:bg-primary-blue lg:mx-5 mt-2 rounded-full cursor-pointer"}
                          href={"/contact"}>
                              Contact us
                          </a>
-                         <a className={"bttn2 flex mdplus:px-6 md:px-2 h-[48px] bg-primary-white text-primary-blue items-center " +
+                         <a className={"bttn2 flex mdplus:px-6 md:px-6 h-[48px] min-w-[115px] mx-1 bg-primary-white text-primary-blue items-center text-center " +
                              "justify-center hover:bg-primary-blue hover:text-primary-white active:bg-primary-white " +
                              "active:text-primary-blue border-primary-blue border-2 lg:mx-5 mt-2 rounded-full cursor-pointer"}>
                              Signup for news letter
