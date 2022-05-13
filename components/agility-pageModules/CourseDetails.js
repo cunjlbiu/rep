@@ -434,8 +434,8 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
                 <h3>Related Course</h3>
 
                 <div className={"flex justify-between"}>
-                    {related.map((data) =>
-                        <CourseItem data={data.fields}/>
+                    {related.map((data)=>
+                    <CourseItem data={data.fields}/>
                     )}
                 </div>
             </div>
@@ -473,13 +473,13 @@ CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, language
             })
 
         courses.map(i =>{
-            if (i.fields.specialty.search(dynamicPageItem.fields.specialty) != -1){
+            if (i?.fields?.specialty?.search(dynamicPageItem.fields.specialty) != -1){
                 relatedCourse.push(i)
             }
         })
         if (relatedCourse.length < 2){
             courses.map(i =>{
-                if (i.fields.type.search(dynamicPageItem.fields.type) != -1 && relatedCourse.length<2){
+                if (i?.fields?.type?.search(dynamicPageItem.fields.type) != -1 && relatedCourse.length<2){
                     relatedCourse.push(i)
                 }
             })
@@ -487,7 +487,7 @@ CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, language
         }
         if (relatedCourse.length < 2){
             courses.map(i =>{
-                if (i.fields.place.search(dynamicPageItem.fields.place) != -1 && relatedCourse.length<2){
+                if (i?.fields?.place?.search(dynamicPageItem.fields.place) != -1 && relatedCourse.length<2){
                     relatedCourse.push(i)
                 }
             })
@@ -506,8 +506,8 @@ CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, language
             }
         }
 
-
     }catch (err) {
+        for(let i = 0;i<100;i++)
         if (console) console.log(err)
         relatedCourse = null
     }
