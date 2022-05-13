@@ -6,7 +6,7 @@ import Select from "react-select";
 const DATE_NOW = Date.now();
 let aornText = '';
 let aornTitle = '';
-const CourseItem = ({data, aorn, logo})=> {
+export const CourseItem = ({data, aorn, logo})=> {
     const startDate = new Date(data.startDate);
     const mm = ('0'+ (startDate.getMonth()+1)).slice(-2);
     const dd = ('0'+ startDate.getDate()).slice(-2);
