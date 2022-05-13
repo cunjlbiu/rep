@@ -12,8 +12,7 @@ const CourseItem = ({data, aorn, logo})=> {
     const dd = ('0'+ startDate.getDate()).slice(-2);
     const endDate = new Date(data.endDate);
     if(!data.place) data.place = ''
-    console.log(`logo`);
-    console.log(logo);
+
     return(
         <div className={"py-10 max-w-[640px] md:mx-5 "}>
             <div className={"mdplus:min-w-[600px] mdplus:h-[320px] max-w-[640px] md:w-auto rounded-xl text-white text-center relative"}>
@@ -233,22 +232,49 @@ const FindCourseOfferings = ({module})=>{
     }));
     const [listedCourses,setListedCourses] = useState(courses.slice(0,4))
     const [listedAORNCourses,setListedAORNCourses] = useState(aornCourses.slice(0,4))
-    const [amount, setAmount]=useState(4)
-    const [locFilter, setLocFilter] = useState('');
-    const [typeFilter, setTypeFilter]=useState('');
-    const [specialtyFilter, setSpecialtyFilter]=useState('');
-    const [filter, setFilter] = useState('');
+    const [amount, setAmount] = useState(4)
+    const [locFilter, setLocFilter] = useState(''); //select location
+    const [typeFilter, setTypeFilter] = useState('');  // Type
+    const [specialtyFilter, setSpecialtyFilter]= useState('');  //select Specialty
+    const [filter, setFilter] = useState('');  //select
     const [filters, setFilters] = useState([]);
     const selectLocRef = useRef();
     const router = useRouter()
-    const initialFilter=router.query.filter || ""
+    const initialFilter= router.query.filter || ""
     const selectTypeRef = useRef();
     const selectSpecialtyRef = useRef();
-    useEffect(()=>{ApplyFilters()},[locFilter,typeFilter,specialtyFilter,filter])
+
+
+
+    const fillStorage = () => {
+        window.sessionStorage.setItem('locFilter', locFilter)
+        window.sessionStorage.setItem('typeFilter', typeFilter)
+        window.sessionStorage.setItem('specialtyFilter', specialtyFilter)
+        window.sessionStorage.setItem('filter', filter)
+
+    }
+
+    const getStorage = () => {
+        setLocFilter(window.sessionStorage.getItem('locFilter'))
+        setTypeFilter(window.sessionStorage.getItem('typeFilter'))
+        setSpecialtyFilter(window.sessionStorage.getItem('specialtyFilter'))
+        setFilter(window.sessionStorage.getItem('filter'))
+    }
+
+
+    useEffect(() => {getStorage()},[])
+
+
+
+
+    useEffect(()=>{ApplyFilters()
+        fillStorage()},[locFilter,typeFilter,specialtyFilter,filter])
     useEffect(()=>setFilter(initialFilter),[])
     useEffect(()=>{setListedCourses(courses.slice(0,amount));
                          setListedAORNCourses(aornCourses.slice(0,amount))},
                     [amount,courses,aornCourses])
+
+
     // const course = {}
     // fields.courses.map((e)=>{course[e.fields.filter] ? course[e.fields.filter].push(e) : course[e.fields.filter] = [e] })
     // const courseArr = Object.entries(course)
