@@ -3,7 +3,7 @@ import {BiLeftArrowAlt} from "react-icons/bi";
 import {HiLocationMarker} from "react-icons/hi";
 import {GiOpenBook} from "react-icons/gi"
 import {renderHTML} from "@agility/nextjs";
-
+import {CourseItem} from "./FindCourseOfferings";
 
 const Schedule = ({day}) => {
     console.log(day)
@@ -49,11 +49,12 @@ const Schedule = ({day}) => {
 }
 
 
+
 const CourseDetails = ({customData, module, dynamicPageItem}) => {
     const dynamicFields = dynamicPageItem.fields
     const startDate = dynamicFields?.startDate ? (new Date(dynamicFields.startDate)) : null
     const endDate = dynamicFields?.endDate ? (new Date(dynamicFields.endDate)) : null
-
+    const related = customData.relatedCourse
 
     const [isOpenMenu, setIsOpenMenu] = useState(false)
     const onButtonClick = () => setIsOpenMenu(!isOpenMenu)
@@ -62,9 +63,7 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
     const [schedule, setSchedule] = useState((customData?.schedule?.items || []));
     const [include, setInclude] = useState((customData?.include?.items || []));
     const [instructors, setInstructors] = useState((customData?.instructors?.items || []));
-    console.log(instructors)
-
-
+    console.log(customData)
     return (
         <div className={"max-w-screen-xl mx-auto py-14 pb-8 md:px-5"}>
 
@@ -431,6 +430,15 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
                     </div>
                 </div>
             </div>
+            <div className={"flex flex-col mt-16 "}>
+                <h3>Related Course</h3>
+
+                <div className={"flex justify-between"}>
+                    {related.map((data)=>
+                    <CourseItem data={data.fields}/>
+                    )}
+                </div>
+            </div>
         </div>
     );
 
@@ -444,7 +452,67 @@ CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, language
     let schedule = null
     let include = null
     let instructors = null
-    console.log(dynamicPageItem?.fields)
+    let relatedCourse = []
+    let courses = []
+    try{
+        let tmp = await api.getContentList({
+            referenceName:dynamicPageItem.properties.referenceName,
+            locale: languageCode,
+            take:50
+        })
+
+            tmp.items.sort((a,b)=>{
+            if (a.fields.startDate < b.fields.startDate)
+                return -1
+            if (a.fields.startDate > b.fields.startDate)
+                return 1
+            return 0
+        }).map(i =>{
+            if( dynamicPageItem.contentID != i.contentID && (i.fields.onDemand || new Date(i.fields.startDate)> Date.now() || new Date(i.fields.endDate)> Date.now()))
+                courses.push(i)
+            })
+
+        courses.map(i =>{
+            if (i?.fields?.specialty?.search(dynamicPageItem.fields.specialty) != -1){
+                relatedCourse.push(i)
+            }
+        })
+        if (relatedCourse.length < 2){
+            courses.map(i =>{
+                if (i?.fields?.type?.search(dynamicPageItem.fields.type) != -1 && relatedCourse.length<2){
+                    relatedCourse.push(i)
+                }
+            })
+
+        }
+        if (relatedCourse.length < 2){
+            courses.map(i =>{
+                if (i?.fields?.place?.search(dynamicPageItem.fields.place) != -1 && relatedCourse.length<2){
+                    relatedCourse.push(i)
+                }
+            })
+
+        }
+
+        if (courses.length >=2){
+            console.log(relatedCourse.length)
+            if(relatedCourse.length == 0) relatedCourse.push(courses[0])
+            let i = 0
+            while(relatedCourse.length < 0){
+                if(relatedCourse[0] != courses[i]){
+                    relatedCourse.push(courses[i])
+                }
+            else i++
+            }
+        }
+
+    }catch (err) {
+        for(let i = 0;i<100;i++)
+        if (console) console.log(err)
+        relatedCourse = null
+    }
+
+
     try {
         if (dynamicPageItem?.fields?.schedule?.referencename) {
             let tmp = await api.getContentList(
@@ -491,6 +559,8 @@ CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, language
         schedule,
         include,
         instructors,
+        relatedCourse,
+        courses
     })
 
 
