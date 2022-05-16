@@ -256,10 +256,10 @@ const FindCourseOfferings = ({module})=>{
     }
 
     const getStorage = () => {
-        setLocFilter(window.sessionStorage.getItem('locFilter'))
-        setTypeFilter(window.sessionStorage.getItem('typeFilter'))
-        setSpecialtyFilter(window.sessionStorage.getItem('specialtyFilter'))
-        setFilter(window.sessionStorage.getItem('filter'))
+        setLocFilter(window.sessionStorage.getItem('locFilter') ?? "")
+        setTypeFilter(window.sessionStorage.getItem('typeFilter') ?? "")
+        setSpecialtyFilter(window.sessionStorage.getItem('specialtyFilter') ?? "")
+        setFilter(window.sessionStorage.getItem('filter') ?? "")
     }
 
 
