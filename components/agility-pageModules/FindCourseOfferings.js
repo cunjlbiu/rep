@@ -2,6 +2,7 @@ import React, {useState, useRef, useEffect} from 'react'
 import {useRouter} from 'next/router'
 import Switch from 'react-switch'
 import Select from "react-select";
+import {renderHTML} from "@agility/nextjs";
 
 const DATE_NOW = Date.now();
 let aornText = '';
@@ -446,18 +447,20 @@ const FindCourseOfferings = ({module})=>{
                      Load more</div>
 
                  <div className={`flex flex-col mdplus:mx-auto md:mx-5 mdplus:max-w-[600px] lg:max-w-[780px] font-normal md:text-[14px] mdplus:text-[18px] leading-[24px] text-primary-grey mdplus:text-center border-2 border-soft-purple py-12 px-5 rounded-2xl ${!listedCourses.length && !listedAORNCourses.length ? "" : " hidden"}`}>
-                     Sorry, there are currently no courses meeting those search criteria being offered at this time.
-                     Please check back soon or contact us for more information.
+                     <div dangerouslySetInnerHTML={renderHTML(fields.emptyText)}></div>
                      <div className={"mdplus:justify-center mdplus:space-x-6 mt-4 mdplus:mt-6 flex md:justify-evenly"}>
                          <a className={"bttn2 flex mdplus:px-6 md:px-6 min-w-[115px] flex-shrink-0  h-[48px] mx-1 bg-primary-blue text-primary-white items-center " +
                              "justify-center hover:bg-primary-darkblue active:bg-primary-blue lg:mx-5 mt-2 rounded-full cursor-pointer"}
-                         href={"/contact"}>
-                             Contact us
+                            href={fields.emptyLButton.href}
+                            target={fields.emptyLButton.target}>
+                             {fields.emptyLButton.text}
                          </a>
                          <a className={"bttn2 flex mdplus:px-6 md:px-6 h-[48px] min-w-[115px] mx-1 bg-primary-white text-primary-blue items-center text-center " +
                              "justify-center hover:bg-primary-blue hover:text-primary-white active:bg-primary-white " +
-                             "active:text-primary-blue border-primary-blue border-2 lg:mx-5 mt-2 rounded-full cursor-pointer"}>
-                             Signup for news letter
+                             "active:text-primary-blue border-primary-blue border-2 lg:mx-5 mt-2 rounded-full cursor-pointer"}
+                            href={fields.emptyRButton.href}
+                            target={fields.emptyRButton.target}>
+                             {fields.emptyRButton.text}
                          </a>
 
                      </div>
