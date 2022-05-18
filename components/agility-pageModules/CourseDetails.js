@@ -20,12 +20,11 @@ const Schedule = ({day}) => {
 
                     <div className={"flex justify-start mt-10 md:mt-6 "}>
                         <div className={"flex md:min-h-[50px] md:items-center"}>
-                            <div className={"mr-[16px] md:mr-2 min-w-[100px] md:min-h-[50px] flex items-center"}
-                                 style={{borderRight: "2px solid #1C58F8"}}>
+                            <div className={"mr-[16px] md:mr-2 min-w-[180px] max-w-[180px] md:pr-1 md:min-h-[50px] flex items-center"}>
                                 <p className={"c2"}>{item.fields?.time}</p>
                             </div>
-
-                            <div className={"flex flex-col ml-4"}>
+                            <span className={"h-full"} style={{borderRight: "2px solid #1C58F8"}}></span>
+                            <div className={"flex flex-col ml-4 justify-center"}>
                                 <div className={"lg:hidden"}>
                                     <p className={"b3 text-primary-grey"}>{item.fields?.type}</p>
                                     <p className={"b1 mobile text-primary-darkblue"}>{item.fields?.description}</p>
@@ -151,7 +150,7 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
                                 {/*        <p className={"mx-auto text-primary-white md:text-[14px]"}>{dynamicFields?.priceRButton?.text}</p></a>*/}
                                 {/*</div>*/}
                             </div>
-                            <div className={"flex flex-row py-6 justify-between px-6"}
+                            <div className={"flex flex-row py-6 justify-between px-[12px]"}
                                  style={{border: "1px solid #EDF2F4"}}>
                                 <div className={"flex flex-col"}>
                                     <p className={"b2 lg:font-normal"}>{startDate ? "Start" : ""}</p>
@@ -162,7 +161,7 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
                                     }) : ""}</p>
                                 </div>
                                 <span className={"w-[2px] bg-primary-blue"}></span>
-                                <div className={"flex flex-col pr-[17px]"}>
+                                <div className={"flex flex-col pl-[10px] "}>
                                     <p className={"b2 lg:font-normal"}>{endDate ? "End" : ""}</p>
                                     <p className={"bttn1"}>{endDate ? endDate.toLocaleDateString(undefined, {
                                         month: "long",
@@ -432,8 +431,7 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
             </div>
             <div className={"flex flex-col mt-16 "}>
                 <h3>Related Course</h3>
-
-                <div className={"flex justify-between"}>
+                <div className={"flex md:flex-col mdplus:flex-row justify-between"}>
                     {related.map((data)=>
                     <CourseItem data={data.fields}/>
                     )}
