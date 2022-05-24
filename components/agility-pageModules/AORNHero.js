@@ -41,7 +41,7 @@ const AORNHero = ({module}) => {
         <div style={{backgroundColor: fields.bgColor}} className={"lg:h-[1600px] md:mt-[90px] "}>
             <div className={"lg:max-w-screen-xl mx-auto lg:flex lg:flex-row my-8 md:mx-5 md:mb-[30px]"}>
                 <div className={"lg:w-7/12"}>
-                    <img src={fields.logo.url}/>
+                    {fields?.logo?.url ? <img src={fields.logo.url}/> : ""}
                     <h1 className={"pr-6 lg:w-[751px] md:hidden"}>{fields.title}</h1>
                     <h2 className={"lg:hidden mobile"}>{fields.title}</h2>
                     <p className={"b1 lg:w-8/12 pl-12 md:pl-4 border-secondary-green border-l-2 my-6"}>{fields.text}</p>
@@ -63,7 +63,7 @@ const AORNHero = ({module}) => {
 
             <div className={"bg-soft-green md:pb-10"}>
                 <div className={"max-w-screen-xl mx-auto md:mx-5"}>
-                    <div style={{backgroundImage:`url(${fields.textBg.url})`}} className={"mx-auto bg-elipse bg-primary-white rounded-xl border-2 md:max-w-[700px] border-soft-green " +
+                    <div style={{backgroundImage:`url(${fields?.textBg?.url})`}} className={"mx-auto bg-elipse bg-primary-white rounded-xl border-2 md:max-w-[700px] border-soft-green " +
                         "-translate-y-1/2 lg:py-16 lg:px-32 text-center mt-28 md:-mb-32 mdplus:-mb-12 "}>
                         <p className={"b1"}>Our continued education offerings are perfect for training new perioperative
                             nurses as well as experienced

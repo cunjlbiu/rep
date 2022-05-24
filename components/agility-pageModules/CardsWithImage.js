@@ -44,7 +44,7 @@ const CardsWithImage = ({module}) =>{
            <div className={"c1 pb-1 relative z-50 translate-y-6 "}>{fields.caption}</div>
            <div className={"lg:grid lg:grid-cols-2 space-y-4 " + `${fields.imagePosition == "right" ? 'space-x-0' : 'space-x-0' }`}>
                <div className={`lg:-translate-y-12 ${fields.imagePosition == "right" ? 'order-last ml-4' : 'mr-4' }`}>
-                   <img className={"rounded-xl"} src={fields.image.url}/>
+                   <img className={"rounded-xl"} src={fields?.image?.url}/>
                </div>
                <div className={"flex flex-wrap lg:justify-center md:justify-center lg:content-center " + `${fields.imagePosition == "right" ? '' : '' }`}>
                <CardsBlock cards={fields.cards} Pos={fields.imagePosition}/>

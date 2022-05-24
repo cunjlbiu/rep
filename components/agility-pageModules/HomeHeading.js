@@ -50,7 +50,7 @@ const HomeHeading  = ({module}) => {
                     </div>
                 </div>
                 <div className={"lg:w-6/12 md:w-full md:justify-center md:items-center"}>
-                    <img className={"transform lg:-translate-y-16"} src={fields.image.url}/>
+                    <img className={"transform lg:-translate-y-16"} src={fields?.image?.url}/>
                 </div>
             </div>
         </div>
