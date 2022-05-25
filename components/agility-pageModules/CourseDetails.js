@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {BiLeftArrowAlt} from "react-icons/bi";
 import {HiLocationMarker} from "react-icons/hi";
 import {GiOpenBook} from "react-icons/gi"
@@ -6,7 +6,54 @@ import {renderHTML} from "@agility/nextjs";
 import {CourseItem} from "./FindCourseOfferings";
 
 const Schedule = ({day}) => {
-    console.log(day)
+
+    //splice Нахуй выкинуть из головы )))
+
+
+    const tester = day.fields?.timetable.map(
+        (item) => {
+
+            let startTime = null
+            let endTime = null
+
+            let genTime = item.fields?.time  // genT 8:00 - 10:00 AM
+
+            let minusIndex = genTime.indexOf('-')
+
+            if (minusIndex === -1) {
+                startTime = genTime
+            }
+            else {
+                startTime = genTime.slice(0, minusIndex )
+
+                endTime = genTime.slice(minusIndex + 1 , genTime.length)
+            }
+
+
+
+
+
+
+
+
+
+
+
+            return {
+                type: item.fields?.type,
+                description: item.fields?.description,
+                startTime: startTime,
+                endTime: endTime,
+            }
+
+
+        }
+    )
+    //serch, slice
+    console.log(tester)
+
+
+
     return (
         <div className={"flex flex-col mt-[82px] md:first:mt-16 md:mt-10"}>
             <div className={"flex flex-col"}>
@@ -16,22 +63,26 @@ const Schedule = ({day}) => {
             </div>
             <div className={"flex flex-col"}>
 
-                {day?.fields?.timetable?.map((item) =>
+                {tester.map((item) =>
 
                     <div className={"flex justify-start mt-10 md:mt-6 "}>
                         <div className={"flex md:min-h-[50px] md:items-center"}>
-                            <div className={"mr-[16px] md:mr-2 min-w-[180px] max-w-[180px] md:pr-1 md:min-h-[50px] flex items-center"}>
-                                <p className={"c2"}>{item.fields?.time}</p>
+                            <div className={"mr-[16px] md:mr-2 min-w-[90px] max-w-[90px] md:pr-1 md:min-h-[50px] flex flex-col items-start"}>
+                                <p className={"c2"}>{item?.startTime}</p>
+                                <p className={"c2"}>{item?.endTime}</p>
                             </div>
+
+
+
                             <span className={"h-full"} style={{borderRight: "2px solid #1C58F8"}}></span>
                             <div className={"flex flex-col ml-4 justify-center"}>
                                 <div className={"lg:hidden"}>
-                                    <p className={"b3 text-primary-grey"}>{item.fields?.type}</p>
-                                    <p className={"b1 mobile text-primary-darkblue"}>{item.fields?.description}</p>
+                                    <p className={"b3 text-primary-grey"}>{item?.type}</p>
+                                    <p className={"b1 mobile text-primary-darkblue"}>{item?.description}</p>
                                 </div>
                                 <div className={"md:hidden"}>
-                                    <p className={"b2 text-primary-grey"}>{item.fields?.type}</p>
-                                    <p className={"b1 text-primary-darkblue"}>{item.fields?.description}</p>
+                                    <p className={"b2 text-primary-grey"}>{item?.type}</p>
+                                    <p className={"b1 text-primary-darkblue"}>{item?.description}</p>
                                 </div>
 
                             </div>
@@ -46,7 +97,6 @@ const Schedule = ({day}) => {
 
     )
 }
-
 
 
 const CourseDetails = ({customData, module, dynamicPageItem}) => {
