@@ -76,30 +76,30 @@ export default async function handler(req, res) {
                 }
 
 
-                try {
-                    await apiMgmt.deleteContent({
-                        contentID: 508,
-                        languageCode
-                    })
-                }catch (e) {
-                    console.log(e)
-                }
-
-                await apiMgmt.saveContentItem({
-                    contentItem,
-                    languageCode,
-                    referenceName
-                })
-                    .then(function(contentID) {
-                        //check contentID is greater > 0 for success
-                           //update contentID of saved item
-                        console.log(contentID)
-                        console.log(`contentID`)
-                    })
-                    .catch(function(error) {
-                        console.log(`error`)
-                        console.log(error)
-                    });
+                // try {
+                //     await apiMgmt.deleteContent({
+                //         contentID: 508,
+                //         languageCode
+                //     })
+                // }catch (e) {
+                //     console.log(e)
+                // }
+                //
+                // await apiMgmt.saveContentItem({
+                //     contentItem,
+                //     languageCode,
+                //     referenceName
+                // })
+                //     .then(function(contentID) {
+                //         //check contentID is greater > 0 for success
+                //            //update contentID of saved item
+                //         console.log(contentID)
+                //         console.log(`contentID`)
+                //     })
+                //     .catch(function(error) {
+                //         console.log(`error`)
+                //         console.log(error)
+                //     });
 
                 res.status(200).json({ success: true });
 
