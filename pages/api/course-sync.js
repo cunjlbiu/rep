@@ -35,19 +35,36 @@ export default async function handler(req, res) {
             const { authorization } = req.headers;
 
             if (authorization === `Bearer ${process.env.AGILITY_SECURITY_KEY}`) {
-
+                let courseList
                 try{
-                    let courseList = await apiFetch.getContentList({
+                    courseList = await apiFetch.getContentList({
                         referenceName: "synctestavailabe",
                         locale: languageCode,
-                        take:50
+                        take:250
                     })
-                    console.log("courseList");
-                    console.log(courseList);
                 }catch (e){
                     console.log("Content fetch Error!: ",e)
                 }
 
+                try {
+                    for (let item of courseList?.items){
+                        if(!(item.fields.onDemand || new Date(item.fields.endDate)>Date.now() || new Date(item.fields.startDate)>Date.now()))
+                            await apiMgmt.saveContentItem({
+                                contentItem:{
+                                    contentID: -1,
+                                    fields: item.fields
+                                },
+                                languageCode,
+                                referenceName: 'synctestarchived'
+                            })
+                            await apiMgmt.deleteContent({
+                                contentID: item.contentId,
+                                languageCode
+                            })
+                    }
+                }catch (e) {
+                    console.log(e)
+                }
 
 
                 try {
