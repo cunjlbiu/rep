@@ -57,6 +57,7 @@ export default async function handler(req, res) {
                                 languageCode,
                                 referenceName: 'synctestarchived'
                             })
+                        
                             await apiMgmt.deleteContent({
                                 contentID: item.contentId,
                                 languageCode
