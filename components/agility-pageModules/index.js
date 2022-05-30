@@ -40,6 +40,7 @@ import TitledTextWithTwoButtons from "./TitledTextWithTwoButtons";
 import OurTeam from "./OurTeam";
 import HeaderColor from "./HeaderColor";
 import CourseDetails from "./CourseDetails";
+import ForceSync from "./ForceSync";
 
 // All of the Agility Page Module Components that are in use in this site need to be imported into this index file.
 // Place Page Modules in allModules array below, passing in a name and the component.
@@ -87,6 +88,8 @@ const allModules = [
   { name: "OurTeam", module: OurTeam},
   { name: "HeaderColor", module: HeaderColor},
   {name: "CourseDetails", module: CourseDetails},
+  { name: "ForceSync", module: ForceSync},
+
 ];
 
 export const getModule = (moduleName) => {
