@@ -1,11 +1,14 @@
 name: CourseArchive
 on:
   schedule:
-    - cron: '*/6 * * * *'
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
 jobs:
   cron:
     runs-on: ubuntu-latest
     steps:
+      - name: Echo
+        run: echo I'm working!!!!
       - name: Call our API route
         run: |
           curl --request POST \
