@@ -53,7 +53,7 @@ export default async function handler(req, res) {
                                 languageCode: 'en-us',
                                 contentID: item.contentID,
                             })
-                            console.log("content item",k)
+                            console.log("!!!!!content item!!!!!!!",k)
                         }
                             // await apiMgmt.saveContentItem({
                             //     contentItem:{
