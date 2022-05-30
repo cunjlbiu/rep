@@ -1,7 +1,7 @@
-name: 15-minute-cron
+name: CourseArchive
 on:
   schedule:
-    - cron: '*/1 * * * *'
+    - cron: '*/6 * * * *'
 jobs:
   cron:
     runs-on: ubuntu-latest
