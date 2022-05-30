@@ -6,7 +6,7 @@ import agility from '@agility/content-fetch'
 //Create fetch API instance
 const apiFetch = agility.getApi({
     guid: '191309ca-e675-4be2-bb29-351879528707',
-    apiKey: 'aGd13M.fa30c36e553a36f871860407e902da9a7375322457acd6bcda038e60af699411',
+    apiKey: 'defaultlive.48286711fe6ec4b8a5a88fc5cb74ef10eea5f5dd9fc14cdb71eb7d6a1847f8d8',
     isPreview: false
 });
 
