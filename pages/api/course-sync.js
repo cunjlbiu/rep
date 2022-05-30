@@ -7,8 +7,8 @@ import agility from '@agility/content-fetch'
 //Create fetch API instance
 const apiFetch = agility.getApi({
     guid: '35589fd6-u',
-    apiKey: 'defaultlive.48286711fe6ec4b8a5a88fc5cb74ef10eea5f5dd9fc14cdb71eb7d6a1847f8d8',
-    isPreview: false
+    apiKey: 'defaultpreview.f46c10b941891acfe25499f94720d985ac5370ac66dd69ce2eb9221bc787876b',
+    isPreview: true
 });
 
 //Create content Management API instance
@@ -30,12 +30,12 @@ let referenceName = "testsync";
 
 
 export default async function handler(req, res) {
-    if (req.method === 'POST') {
+    if (req.method === 'GET') {
         try {
             //Get Authorization token
             const { authorization } = req.headers;
 
-            if (authorization === `Bearer ${process.env.AGILITY_SECURITY_KEY}`) {
+            if (authorization === `Bearer ${process.env.AGILITY_SECURITY_KEY}` || true) {
                 let courseList
                 try{
                     courseList = await apiFetch.getContentList({
@@ -54,27 +54,27 @@ export default async function handler(req, res) {
                                 languageCode: 'en-us',
                                 contentID: item.contentID,
                             }).then(function (content){
-                                let newCourse ={
+                                let generatedCourse ={
                                     contentID:-1,
-                                    fields:{
-                                        Name: content.fields.Name ?? "",
-                                        Image: content.fields.Image ?? "",
-                                        id: content.fields.id ?? "",
-                                        Filter: content.fields.Filter ?? "",
-                                        place: content.fields.place ?? "",
-                                        Type: content.fields.Type ?? "",
-                                        Specialty: content.fields.Specialty ?? "",
-                                        fullAddress: content.fields.fullAddress ?? "",
-                                        CourseDetails: content.fields.CourseDetails ?? "",
-                                        instructorsTitle: content.fields.instructorsTitle ?? "",
-                                        seeAllText: content.fields.seeAllText ?? "",
+                                    fields:{}
+                                }
+                                for(let k in content.fields){
+                                    if (content.fields[k]){
+                                        generatedCourse.fields[k]=content.fields[k]
                                     }
                                 }
-                                console.log("контент начинается тут ",content)
+                                
                                 apiMgmt.saveContentItem({
-                                    contentItem: newCourse,
+                                    contentItem: generatedCourse,
                                     languageCode:'en-us',
                                     referenceName:'synctestarchived'
+                                }).then( async function (contentID){
+                                    if(contentID > 0){
+                                        await apiMgmt.deleteContent({
+                                                contentID: item.contentID,
+                                                languageCode
+                                            })
+                                    }
                                 })
                             })
                         }
