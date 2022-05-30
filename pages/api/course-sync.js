@@ -54,24 +54,25 @@ export default async function handler(req, res) {
                                 languageCode: 'en-us',
                                 contentID: item.contentID,
                             }).then(async function (content){
+                                let newCourse ={
+                                    contentID:-1,
+                                    fields:{
+                                        Name: content.Name ?? "",
+                                        Image: content.Image ?? "",
+                                        id: content.id ?? "",
+                                        Filter: content.Filter ?? "",
+                                        place: content.place ?? "",
+                                        Type: content.Type ?? "",
+                                        Specialty: content.Specialty ?? "",
+                                        fullAddress: content.fullAddress ?? "",
+                                        CourseDetails: content.CourseDetails ?? "",
+                                        instructorsTitle: content.instructorsTitle ?? "",
+                                        seeAllText: content.seeAllText ?? "",
+                                    }
+                                }
                                 console.log("контент начинается тут ",content)
                                 await apiMgmt.saveContentItem({
-                                    contentItem:{
-                                        contentID:-1,
-                                        fields:{
-                                            Name: content.Name ?? "",
-                                            Image: content.Image ?? "",
-                                            id: content.id ?? "",
-                                            Filter: content.Filter ?? "",
-                                            place: content.place ?? "",
-                                            Type: content.Type ?? "",
-                                            Specialty: content.Specialty ?? "",
-                                            fullAddress: content.fullAddress ?? "",
-                                            CourseDetails: content.CourseDetails ?? "",
-                                            instructorsTitle: content.instructorsTitle ?? "",
-                                            seeAllText: content.seeAllText ?? "",
-                                        }
-                                    },
+                                    contentItem: newCourse,
                                     languageCode:'en-us',
                                     referenceName:'synctestarchived'
                                 })
