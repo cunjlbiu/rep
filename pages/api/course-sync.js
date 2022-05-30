@@ -55,9 +55,11 @@ export default async function handler(req, res) {
                                 contentID: item.contentID,
                             })
                             console.log("!!!!!content item!!!!!!!",k)
-                            k.contentID = -1
                             await apiMgmt.saveContentItem({
-                                contentItem: k,
+                                contentItem: {
+                                    contentID: -1,
+                                    fields: k.fields
+                                },
                                 languageCode,
                                 referenceName: 'synctestarchived'
                             })
