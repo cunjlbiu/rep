@@ -21,7 +21,7 @@ export default async function handler(req, res) {
     if (req.method === 'POST') {
         try {
             const { authorization } = req.headers;
-
+            console.log(authorization)
             if (authorization === `Bearer ${process.env.AGILITY_SECURITY_KEY}`) {
 
                 api.saveContentItem({
@@ -36,7 +36,8 @@ export default async function handler(req, res) {
                         console.log(`contentID`)
                     })
                     .catch(function(error) {
-                        //handle error
+                        console.log(`error`)
+                        console.log(error)
                     });
 
                 res.status(200).json({ success: true });
