@@ -40,7 +40,7 @@ export default async function handler(req, res) {
                     courseList = await apiFetch.getContentList({
                         referenceName: "synctestavailabe",
                         locale: languageCode,
-                        take:250
+                        take:50
                     })
                 }catch (e){
                     console.log("Content fetch Error!: ",e)
@@ -57,7 +57,7 @@ export default async function handler(req, res) {
                                 languageCode,
                                 referenceName: 'synctestarchived'
                             })
-                        
+
                             await apiMgmt.deleteContent({
                                 contentID: item.contentId,
                                 languageCode
