@@ -30,12 +30,12 @@ let referenceName = "testsync";
 
 
 export default async function handler(req, res) {
-    if (req.method === 'POST') {
+    if (req.method === 'GET') {
         try {
             //Get Authorization token
             const { authorization } = req.headers;
 
-            if (authorization === `Bearer ${process.env.AGILITY_SECURITY_KEY}`) {
+            if (authorization === `Bearer ${process.env.AGILITY_SECURITY_KEY}`|| true) {
                 let courseList
                 try{
                     courseList = await apiFetch.getContentList({
@@ -50,33 +50,55 @@ export default async function handler(req, res) {
                 try {
                     for (let item of courseList?.items){
                         if(!(item.fields.onDemand || new Date(item.fields.endDate)>Date.now() || new Date(item.fields.startDate)>Date.now())){
-                            await apiMgmt.getContentItem({
+                           let cItem = await apiMgmt.getContentItem({
                                 languageCode: 'en-us',
                                 contentID: item.contentID,
-                            }).then(function (content){
-                                let generatedCourse ={
-                                    contentID:-1,
-                                    fields:{}
-                                }
-                                for(let k in content.fields){
-                                    if (content.fields[k]){
-                                        generatedCourse.fields[k]=content.fields[k]
+                            })
+                            let generatedCourse ={
+                                        contentID:-1,
+                                        fields:{}
                                     }
+                            for(let k in cItem.fields){
+                                if (cItem.fields[k]){
+                                    generatedCourse.fields[k]=cItem.fields[k]
                                 }
-
-                                apiMgmt.saveContentItem({
+                            }
+                            let savedItem = await apiMgmt.saveContentItem({
                                     contentItem: generatedCourse,
                                     languageCode:'en-us',
                                     referenceName:'synctestarchived'
-                                }).then( async function (contentID){
-                                    if(contentID > 0){
-                                        await apiMgmt.deleteContent({
-                                                contentID: item.contentID,
-                                                languageCode
-                                            })
-                                    }
                                 })
-                            })
+                            if (savedItem > 0){
+                               await apiMgmt.deleteContent({
+                                    contentID: item.contentID,
+                                    languageCode
+                                })
+                            }
+
+                            //    .then(function (content){
+                            //     let generatedCourse ={
+                            //         contentID:-1,
+                            //         fields:{}
+                            //     }
+                            //     for(let k in content.fields){
+                            //         if (content.fields[k]){
+                            //             generatedCourse.fields[k]=content.fields[k]
+                            //         }
+                            //     }
+                            //
+                            //     apiMgmt.saveContentItem({
+                            //         contentItem: generatedCourse,
+                            //         languageCode:'en-us',
+                            //         referenceName:'synctestarchived'
+                            //     }).then(function (contentID){
+                            //         if(contentID > 0){
+                            //             apiMgmt.deleteContent({
+                            //                     contentID: item.contentID,
+                            //                     languageCode
+                            //                 })
+                            //         }
+                            //     })
+                            // })
                         }
                             // await apiMgmt.saveContentItem({
                             //     contentItem:{
