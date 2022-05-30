@@ -30,12 +30,12 @@ let referenceName = "testsync";
 
 
 export default async function handler(req, res) {
-    if (req.method === 'GET') {
+    if (req.method === 'POST') {
         try {
             //Get Authorization token
             const { authorization } = req.headers;
 
-            if (authorization === `Bearer ${process.env.AGILITY_SECURITY_KEY}` || true) {
+            if (authorization === `Bearer ${process.env.AGILITY_SECURITY_KEY}`) {
                 let courseList
                 try{
                     courseList = await apiFetch.getContentList({
@@ -63,7 +63,7 @@ export default async function handler(req, res) {
                                         generatedCourse.fields[k]=content.fields[k]
                                     }
                                 }
-                                
+
                                 apiMgmt.saveContentItem({
                                     contentItem: generatedCourse,
                                     languageCode:'en-us',
