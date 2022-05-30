@@ -51,18 +51,17 @@ export default async function handler(req, res) {
                         if(!(item.fields.onDemand || new Date(item.fields.endDate)>Date.now() || new Date(item.fields.startDate)>Date.now()))
                             await apiMgmt.saveContentItem({
                                 contentItem:{
-                                    contentID: -1,
-                                    fields: item.fields
+                                    contentID: item.contentID
                                 },
                                 languageCode,
                                 referenceName: 'synctestarchived'
                             }).then(function (contentID){
                                 console.log("content saved with id: ",contentID)
                             })
-                            await apiMgmt.deleteContent({
-                                contentID: item.contentID,
-                                languageCode
-                            })
+                            // await apiMgmt.deleteContent({
+                            //     contentID: item.contentID,
+                            //     languageCode
+                            // })
                     }
                 }catch (e) {
                     console.log(e)
