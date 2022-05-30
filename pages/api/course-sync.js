@@ -37,10 +37,10 @@ export default async function handler(req, res) {
             if (authorization === `Bearer ${process.env.AGILITY_SECURITY_KEY}`) {
 
                 try{
-                    let courseList = await apiMgmt.getContentList({
-                        referenceName,
+                    let courseList = await apiFetch.getContentItem({
+                        contentID: 512,
                         locale: languageCode,
-                        take:50
+                        
                     })
                     console.log("courseList");
                     console.log(courseList);
