@@ -1,11 +1,22 @@
 import agilityMgmt from '@agility/content-management'
+import agility from '@agility/content-fetch'
 
-//Create a new instance API client
-const api = agilityMgmt.getApi({
+
+
+//Create fetch API instance
+const apiFetch = agility.getApi({
+    guid: '191309ca-e675-4be2-bb29-351879528707',
+    apiKey: 'aGd13M.fa30c36e553a36f871860407e902da9a7375322457acd6bcda038e60af699411',
+    isPreview: false
+});
+
+//Create content Management API instance
+const apiMgmt = agilityMgmt.getApi({
     location: 'USA',
     websiteName: 'CineMed',
     securityKey: 'QwBpAG4AZQBNAGUAZAAtADYAQgA2AEEAMABFAEEAOAAtAEYANQBBADkALQA0AEIAQQA5AC0AOQAwAEYAMgAtADIAMABDADUANwBEAEYAQQA0AEUAQgA5AA=='
 });
+//Mocked ContentItem and variables(TO DELETE)
 let contentItem = {
     contentID: -1,
     fields: {
@@ -20,11 +31,27 @@ let referenceName = "testsync";
 export default async function handler(req, res) {
     if (req.method === 'POST') {
         try {
+            //Get Authorization token
             const { authorization } = req.headers;
-            console.log(authorization)
+
             if (authorization === `Bearer ${process.env.AGILITY_SECURITY_KEY}`) {
+
+                try{
+                    let courseList = await api.getContentList({
+                        referenceName: "syncTestAvailabe",
+                        locale: languageCode,
+                        take:50
+                    })
+                    console.log("courseList");
+                    console.log(courseList);
+                }catch (e){
+                    console.log("Content fetch Error!: ",e)
+                }
+
+
+
                 try {
-                    await api.deleteContent({
+                    await apiMgmt.deleteContent({
                         contentID: 508,
                         languageCode
                     })
@@ -32,7 +59,7 @@ export default async function handler(req, res) {
                     console.log(e)
                 }
 
-                await api.saveContentItem({
+                await apiMgmt.saveContentItem({
                     contentItem,
                     languageCode,
                     referenceName
@@ -49,6 +76,9 @@ export default async function handler(req, res) {
                     });
 
                 res.status(200).json({ success: true });
+
+
+
             } else {
                 res.status(401).json({ success: false });
             }
