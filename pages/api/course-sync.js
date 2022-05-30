@@ -37,16 +37,13 @@ export default async function handler(req, res) {
             if (authorization === `Bearer ${process.env.AGILITY_SECURITY_KEY}`) {
 
                 try{
-                    apiFetch.getContentItem({
-                        contentID: 510,
-                        locale: 'en-us'
+                    let courseList = await apiFetch.getContentList({
+                        referenceName: "synctestavailabe",
+                        locale: languageCode,
+                        take:50
                     })
-                        .then(function(contentItem) {
-                            console.log(contentItem);
-                        })
-                        .catch(function(error) {
-                            console.log(error);
-                        });
+                    console.log("courseList");
+                    console.log(courseList);
                 }catch (e){
                     console.log("Content fetch Error!: ",e)
                 }
