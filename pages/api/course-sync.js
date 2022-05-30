@@ -53,25 +53,25 @@ export default async function handler(req, res) {
                             await apiMgmt.getContentItem({
                                 languageCode: 'en-us',
                                 contentID: item.contentID,
-                            }).then(async function (content){
+                            }).then(function (content){
                                 let newCourse ={
                                     contentID:-1,
                                     fields:{
-                                        Name: content.Name ?? "",
-                                        Image: content.Image ?? "",
-                                        id: content.id ?? "",
-                                        Filter: content.Filter ?? "",
-                                        place: content.place ?? "",
-                                        Type: content.Type ?? "",
-                                        Specialty: content.Specialty ?? "",
-                                        fullAddress: content.fullAddress ?? "",
-                                        CourseDetails: content.CourseDetails ?? "",
-                                        instructorsTitle: content.instructorsTitle ?? "",
-                                        seeAllText: content.seeAllText ?? "",
+                                        Name: content.fields.Name ?? "",
+                                        Image: content.fields.Image ?? "",
+                                        id: content.fields.id ?? "",
+                                        Filter: content.fields.Filter ?? "",
+                                        place: content.fields.place ?? "",
+                                        Type: content.fields.Type ?? "",
+                                        Specialty: content.fields.Specialty ?? "",
+                                        fullAddress: content.fields.fullAddress ?? "",
+                                        CourseDetails: content.fields.CourseDetails ?? "",
+                                        instructorsTitle: content.fields.instructorsTitle ?? "",
+                                        seeAllText: content.fields.seeAllText ?? "",
                                     }
                                 }
                                 console.log("контент начинается тут ",content)
-                                await apiMgmt.saveContentItem({
+                                apiMgmt.saveContentItem({
                                     contentItem: newCourse,
                                     languageCode:'en-us',
                                     referenceName:'synctestarchived'
