@@ -1,5 +1,6 @@
 import agilityMgmt from '@agility/content-management'
 import agility from '@agility/content-fetch'
+import saveContentItem from "@agility/content-management/src/methods/content/saveContentItem";
 
 
 
@@ -54,6 +55,8 @@ export default async function handler(req, res) {
                                 contentID: item.contentID,
                             })
                             console.log("!!!!!content item!!!!!!!",k)
+                            k.contentID = -1;
+                            await apiMgmt.saveContentItem(k)
                         }
                             // await apiMgmt.saveContentItem({
                             //     contentItem:{
