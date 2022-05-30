@@ -53,8 +53,16 @@ export default async function handler(req, res) {
                             await apiMgmt.getContentItem({
                                 languageCode: 'en-us',
                                 contentID: item.contentID,
-                            }).then(function (content){
+                            }).then(async function (content){
                                 console.log("контент начинается тут ",content)
+                                await apiMgmt.saveContentItem({
+                                    contentItem:{
+                                        contentID:-1,
+                                        fields:content.fields
+                                    },
+                                    languageCode:'en-us',
+                                    referenceName:'synctestarchived'
+                                })
                             })
                         }
                             // await apiMgmt.saveContentItem({
