@@ -1,4 +1,4 @@
-name: Courses Archive Sync
+name: Courses Cron Sync
 on:
   schedule:
     - cron: '* * * * *'
