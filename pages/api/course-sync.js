@@ -50,18 +50,11 @@ export default async function handler(req, res) {
                 try {
                     for (let item of courseList?.items){
                         if(!(item.fields.onDemand || new Date(item.fields.endDate)>Date.now() || new Date(item.fields.startDate)>Date.now())){
-                            let k = await apiMgmt.getContentItem({
+                            await apiMgmt.getContentItem({
                                 languageCode: 'en-us',
                                 contentID: item.contentID,
-                            })
-                            console.log("!!!!!content item!!!!!!!",k)
-                            await apiMgmt.saveContentItem({
-                                contentItem: {
-                                    contentID: -1,
-                                    fields: k.fields
-                                },
-                                languageCode,
-                                referenceName: 'synctestarchived'
+                            }).then(function (content){
+                                console.log("контент начинается тут ",content)
                             })
                         }
                             // await apiMgmt.saveContentItem({
