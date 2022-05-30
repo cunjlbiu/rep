@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo
-        run: echo I'm working!!!!
+        run: echo I am alive!!!!
       - name: Call our API route
         run: |
           curl --request POST \
