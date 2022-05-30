@@ -56,10 +56,11 @@ export default async function handler(req, res) {
                                 },
                                 languageCode,
                                 referenceName: 'synctestarchived'
+                            }).then(function (contentID){
+                                console.log("content saved with id: ",contentID)
                             })
-
                             await apiMgmt.deleteContent({
-                                contentID: item.contentId,
+                                contentID: item.contentID,
                                 languageCode
                             })
                     }
