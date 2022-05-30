@@ -38,7 +38,7 @@ export default async function handler(req, res) {
 
                 try{
                     let courseList = await apiFetch.getContentList({
-                        referenceName:'testofferings',
+                        referenceName,
                         locale: languageCode,
                         take:50
                     })
