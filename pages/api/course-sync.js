@@ -58,7 +58,19 @@ export default async function handler(req, res) {
                                 await apiMgmt.saveContentItem({
                                     contentItem:{
                                         contentID:-1,
-                                        fields:content.fields
+                                        fields:{
+                                            Name: content.Name ?? "",
+                                            Image: content.Image ?? "",
+                                            id: content.id ?? "",
+                                            Filter: content.Filter ?? "",
+                                            place: content.place ?? "",
+                                            Type: content.Type ?? "",
+                                            Specialty: content.Specialty ?? "",
+                                            fullAddress: content.fullAddress ?? "",
+                                            CourseDetails: content.CourseDetails ?? "",
+                                            instructorsTitle: content.instructorsTitle ?? "",
+                                            seeAllText: content.seeAllText ?? "",
+                                        }
                                     },
                                     languageCode:'en-us',
                                     referenceName:'synctestarchived'
