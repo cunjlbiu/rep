@@ -48,20 +48,26 @@ export default async function handler(req, res) {
 
                 try {
                     for (let item of courseList?.items){
-                        if(!(item.fields.onDemand || new Date(item.fields.endDate)>Date.now() || new Date(item.fields.startDate)>Date.now()))
-                            await apiMgmt.saveContentItem({
-                                contentItem:{
-                                    contentID: item.contentID
-                                },
-                                languageCode,
-                                referenceName: 'synctestarchived'
-                            }).then(function (contentID){
-                                console.log("content saved with id: ",contentID)
+                        if(!(item.fields.onDemand || new Date(item.fields.endDate)>Date.now() || new Date(item.fields.startDate)>Date.now())){
+                            let k = await apiMgmt.getContentItem({
+                                languageCode: 'en-us',
+                                contentID: item.contentID,
                             })
-                            // await apiMgmt.deleteContent({
-                            //     contentID: item.contentID,
-                            //     languageCode
+                            console.log("content item",k)
+                        }
+                            // await apiMgmt.saveContentItem({
+                            //     contentItem:{
+                            //         contentID: item.contentID
+                            //     },
+                            //     languageCode,
+                            //     referenceName: 'synctestarchived'
+                            // }).then(function (contentID){
+                            //     console.log("content saved with id: ",contentID)
                             // })
+                            // // await apiMgmt.deleteContent({
+                            // //     contentID: item.contentID,
+                            // //     languageCode
+                            // // })
                     }
                 }catch (e) {
                     console.log(e)
