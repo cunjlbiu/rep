@@ -24,7 +24,7 @@ export default async function handler(req, res) {
             console.log(authorization)
             if (authorization === `Bearer ${process.env.AGILITY_SECURITY_KEY}`) {
 
-                api.saveContentItem({
+                await api.saveContentItem({
                     contentItem,
                     languageCode,
                     referenceName
