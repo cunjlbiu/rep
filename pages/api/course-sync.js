@@ -23,6 +23,14 @@ export default async function handler(req, res) {
             const { authorization } = req.headers;
             console.log(authorization)
             if (authorization === `Bearer ${process.env.AGILITY_SECURITY_KEY}`) {
+                try {
+                    await api.deleteContent({
+                        contentID: 508,
+                        languageCode
+                    })
+                }catch (e) {
+                    console.log(e)
+                }
 
                 await api.saveContentItem({
                     contentItem,
