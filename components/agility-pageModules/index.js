@@ -40,60 +40,62 @@ import TitledTextWithTwoButtons from "./TitledTextWithTwoButtons";
 import OurTeam from "./OurTeam";
 import HeaderColor from "./HeaderColor";
 import CourseDetails from "./CourseDetails";
+import AvatarSliderWithText from "./AvatarSliderWithText"
 
 // All of the Agility Page Module Components that are in use in this site need to be imported into this index file.
 // Place Page Modules in allModules array below, passing in a name and the component.
 
 const allModules = [
-  { name: "TextBlockWithImage", module: TextBlockWithImage },
-  { name: "resttest", module: resttest },
-  { name: "Registration", module: Registration },
-  { name: "Heading", module: Heading },
-  { name: "Separator", module: Separator },
-  { name: "SingleTitle", module: SingleTitle },
-  { name: "TitledList", module: TitledList },
-  { name: "FeaturedPost", module: FeaturedPost },
-  { name: "PostsListing", module: PostsListing },
-  { name: "PostDetails", module: PostDetails },
-  { name: "RichTextArea", module: RichTextArea },
-  { name: "GoalsListing", module: GoalsListing },
-  { name: "TwoColumnTextWithImage", module: TwoColumnTextWithImage},
-  { name: "TeamMembersListing", module: TeamMembersListing },
-  { name: "ImageRowsWithTitle", module: ImageRowsWithTitle},
-  { name: "Testimonials", module: Testimonials},
-  { name: "ImageCarouselWithText", module: ImageCarouselWithText},
-  { name: "HomeHeading", module: HomeHeading},
-  { name: "Logos", module: Logos},
-  { name: "FindCourse", module: FindCourse},
-  { name: "Cards", module: Cards},
-  { name: "Video", module: Video},
-  { name: "TitleWithText", module: TitleWithText},
-  { name: "HorizontalCards", module: HorizontalCards},
-  { name: "ContactForm", module: ContactForm},
-  { name: "HorizontalTextWithTitle", module: HorizontalTextWithTitle},
-  { name: "Advantages", module: Advantages},
-  { name: "Investors", module: Investors},
-  { name: "Avatarwithtext", module: AvatarWithText},
-  { name: "FormSuccess", module: FormSuccess},
-  { name: "CompanyHero", module: CompanyHero},
-  { name: "Offerings", module: Offerings},
-  { name: "CardsWithImage", module: CardsWithImage},
-  { name: "AORNHero", module: AORNHero},
-  { name: "CreateCourseForm", module: CreateCourseForm},
-  { name: "FindCourseOfferings", module: FindCourseOfferings},
-  { name: "Subscriptions", module: Subscriptions},
-  { name: "ButtonWithText", module: ButtonWithText},
-  { name: "TitledTextWithTwoButtons", module: TitledTextWithTwoButtons},
-  { name: "OurTeam", module: OurTeam},
-  { name: "HeaderColor", module: HeaderColor},
-  {name: "CourseDetails", module: CourseDetails},
+    {name: "TextBlockWithImage", module: TextBlockWithImage},
+    {name: "resttest", module: resttest},
+    {name: "Registration", module: Registration},
+    {name: "Heading", module: Heading},
+    {name: "Separator", module: Separator},
+    {name: "SingleTitle", module: SingleTitle},
+    {name: "TitledList", module: TitledList},
+    {name: "FeaturedPost", module: FeaturedPost},
+    {name: "PostsListing", module: PostsListing},
+    {name: "PostDetails", module: PostDetails},
+    {name: "RichTextArea", module: RichTextArea},
+    {name: "GoalsListing", module: GoalsListing},
+    {name: "TwoColumnTextWithImage", module: TwoColumnTextWithImage},
+    {name: "TeamMembersListing", module: TeamMembersListing},
+    {name: "ImageRowsWithTitle", module: ImageRowsWithTitle},
+    {name: "Testimonials", module: Testimonials},
+    {name: "ImageCarouselWithText", module: ImageCarouselWithText},
+    {name: "HomeHeading", module: HomeHeading},
+    {name: "Logos", module: Logos},
+    {name: "FindCourse", module: FindCourse},
+    {name: "Cards", module: Cards},
+    {name: "Video", module: Video},
+    {name: "TitleWithText", module: TitleWithText},
+    {name: "HorizontalCards", module: HorizontalCards},
+    {name: "ContactForm", module: ContactForm},
+    {name: "HorizontalTextWithTitle", module: HorizontalTextWithTitle},
+    {name: "Advantages", module: Advantages},
+    {name: "Investors", module: Investors},
+    {name: "Avatarwithtext", module: AvatarWithText},
+    {name: "FormSuccess", module: FormSuccess},
+    {name: "CompanyHero", module: CompanyHero},
+    {name: "Offerings", module: Offerings},
+    {name: "CardsWithImage", module: CardsWithImage},
+    {name: "AORNHero", module: AORNHero},
+    {name: "CreateCourseForm", module: CreateCourseForm},
+    {name: "FindCourseOfferings", module: FindCourseOfferings},
+    {name: "Subscriptions", module: Subscriptions},
+    {name: "ButtonWithText", module: ButtonWithText},
+    {name: "TitledTextWithTwoButtons", module: TitledTextWithTwoButtons},
+    {name: "OurTeam", module: OurTeam},
+    {name: "HeaderColor", module: HeaderColor},
+    {name: "CourseDetails", module: CourseDetails},
+    {name: "AvatarSliderWithText", module: AvatarSliderWithText},
 ];
 
 export const getModule = (moduleName) => {
-  if (!moduleName) return null;
-  const obj = allModules.find(
-    (m) => m.name.toLowerCase() === moduleName.toLowerCase()
-  );
-  if (!obj) return null;
-  return obj.module;
+    if (!moduleName) return null;
+    const obj = allModules.find(
+        (m) => m.name.toLowerCase() === moduleName.toLowerCase()
+    );
+    if (!obj) return null;
+    return obj.module;
 };
