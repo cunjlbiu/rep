@@ -30,7 +30,7 @@ let referenceName = "testsync";
 
 
 export default async function handler(req, res) {
-    if (req.method === 'POST') {
+    if (req.method === 'GET') {
         try {
             //Get Authorization token
             const { authorization } = req.headers;
@@ -69,8 +69,17 @@ export default async function handler(req, res) {
                                     referenceName:'synctestarchived'
                                 })
                             if (savedItem > 0){
-                               await apiMgmt.deleteContent({
-                                    contentID: item.contentID,
+                                generatedCourse.contentID=cItem.contentID
+                                generatedCourse.fields.Instructors = "";
+                                generatedCourse.fields.include = "";
+                                generatedCourse.fields.Schedule = "";
+                                let garbage = await apiMgmt.saveContentItem({
+                                    contentItem: generatedCourse,
+                                    languageCode:'en-us',
+                                    referenceName:'synctestavailabe'
+                                })
+                                await apiMgmt.deleteContent({
+                                    contentID: garbage,
                                     languageCode
                                 })
                             }
