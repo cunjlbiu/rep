@@ -30,7 +30,7 @@ let referenceName = "testsync";
 
 
 export default async function handler(req, res) {
-    if (req.method === 'GET') {
+    if (req.method === 'POST') {
         try {
             //Get Authorization token
             const { authorization } = req.headers;
