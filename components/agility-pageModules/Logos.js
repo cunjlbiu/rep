@@ -7,8 +7,8 @@ const Logos = ({module}) =>{
 
     return(
         <div className={" max-w-full bg-soft-blue h-64 justify-center py-6 md:h-full md:min-h-[312px]"}>
-            <div className="max-w-screen-xl my-8 md:my-9 mx-auto justify-center flex md:px-[51px]">
-                <caption className={"c1 w-max mx-auto md:text-[24px] md:font-extrabold"}>We collaborate with 200+ leading universities and companies</caption>
+            <div className="max-w-screen-xl my-8 md:my-9 mx-auto justify-center flex md:    px-[51px]">
+                <caption className={"c1 w-max mx-auto md:text-[24px] md:font-extrabold"}>{fields?.title}</caption>
             </div>
             <div className={"mx-auto max-w-screen-xl"}>
                 <Slider
