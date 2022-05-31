@@ -49,8 +49,9 @@ export default async function handler(req, res) {
 
                 try {
                     for (let item of courseList?.items){
-                        if(!(item.fields.onDemand || new Date(item.fields.endDate)>Date.now() || new Date(item.fields.startDate)>Date.now())){
-                           let cItem = await apiMgmt.getContentItem({
+                        if(!((item.fields.onDemand && item.fields.onDemand !=="false") || new Date(item.fields.endDate)>Date.now() || new Date(item.fields.startDate)>Date.now())){
+                           console.log(item.fields.id)
+                            let cItem = await apiMgmt.getContentItem({
                                 languageCode: 'en-us',
                                 contentID: item.contentID,
                             })
