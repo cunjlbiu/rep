@@ -152,7 +152,7 @@ const FAQ = ({module}) => {
                 <div
                     className={"flex flex-row justify-center flex-wrap mx-auto md:mt-[-22px] mdplus:mt-[118px] mt-[118px] md:mb-0 mdplus:mb-[50px] max-w-[1010px]"}>
                     {selectItem.length === 0 && fields?.fAQCards?.slice(0).reverse().map((card) => {
-                        let link = card?.fields?.title?.replaceAll(" ","-")
+                        let link = card?.fields?.title?.toLowerCase()?.replace(/ /g,"-")
                         return (
                             <div
                                 className={"lg:w-[291px] mdplus:w-[304px] md:min-w-[310px] mdplus:h-[228px] md:min-h-[168px] mb-[32px] md:mx-0  mdplus:mx-[16px] p-[24px] cards rounded-lg"}>
