@@ -40,7 +40,9 @@ import TitledTextWithTwoButtons from "./TitledTextWithTwoButtons";
 import OurTeam from "./OurTeam";
 import HeaderColor from "./HeaderColor";
 import CourseDetails from "./CourseDetails";
-import AvatarSliderWithText from "./AvatarSliderWithText"
+import AvatarSliderWithText from "./AvatarSliderWithText";
+import FAQ from "./FAQ";
+import SearchResult from "./SearchResult";
 import ForceSync from "./ForceSync";
 import VGOfferings from "./VGOfferings";
 
@@ -92,6 +94,8 @@ const allModules = [
     {name: "HeaderColor", module: HeaderColor},
     {name: "CourseDetails", module: CourseDetails},
     {name: "AvatarSliderWithText", module: AvatarSliderWithText},
+    {name: "FAQ", module: FAQ},
+    {name: "SearchResult", module: SearchResult},
     {name: "ForceSync", module: ForceSync},
     {name: "VGOfferings", module: VGOfferings},
 
