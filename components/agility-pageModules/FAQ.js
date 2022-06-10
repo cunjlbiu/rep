@@ -10,7 +10,7 @@ const Test = ({item}) => {
     return (
         <>
             <div className={"flex flex-col mx-auto w-[864px] md:mt-[-20px] md:min-w-[335px] "}>
-                {item.length > 1 && <div><p className={"flex   c1 text-primary-darkblue mb-[24px]"}>Found {item.length} results </p></div>}
+                {item.length > 1 && <div><p className={"flex   c1 text-primary-darkblue mt-16 mb-[24px]"}>Found {item.length} results </p></div>}
 
                 {item.map((elem) => {
                     let link = elem?.page.toLowerCase().replaceAll(" ","-")
@@ -155,7 +155,7 @@ const FAQ = ({module}) => {
                         let link = card?.fields?.title.toLowerCase().replaceAll(" ","-")
                         return (
                             <div
-                                className={" lg:w-[291px] mdplus:w-[304px] md:min-w-[310px] mdplus:h-[228px] md:min-h-[168px] mb-[32px] md:mx-0  mdplus:mx-[16px] p-[24px] cards rounded-lg"}>
+                                className={"lg:w-[291px] mdplus:w-[304px] md:min-w-[310px] mdplus:h-[228px] md:min-h-[168px] mb-[32px] md:mx-0  mdplus:mx-[16px] p-[24px] cards rounded-lg"}>
                                 <div
                                     className={"flex md:items-center mdplus:items-baseline md:flex-row mdplus:flex-col"}>
                                     {card.fields.icon ?
@@ -165,7 +165,7 @@ const FAQ = ({module}) => {
                                    <a href={`/faq/${link}`}><p className={"c2 mdplus:mt-4 md:mt-0 md:pl-4 mdplus:pl-0 text-primary-darkblue"}>{card.fields.title}</p></a>
                                 </div>
                                 <div>
-                                    {card.fields.elements.map((elem)=> {
+                                    {card.fields.elements.slice(0).reverse().map((elem)=> {
                                         return (
                                             <div>
                                                 <a href={`/faq/${link}#${elem.fields.title}`}><p className={"b3 md:mt-3 mdplus:mt-0 text-primary-darkblue"}>{elem.fields.title}</p></a>

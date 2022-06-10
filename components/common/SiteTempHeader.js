@@ -74,6 +74,7 @@ const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
                    </div>
                    <a className={"b3"} href={"/aboutus"}>About us</a>
                    <a className={"b3"} href={"/contact"}>Contact us</a>
+                   <a className={"b3"} href="/faq">FAQ</a>
                </div>
                <div className={"flex py-[8px] space-x-3"}>
                    <a className={"flex bttn1 w-36 h-12 items-center bg-primary-blue rounded-full"} href={"/create-course"}><p className={"mx-auto text-primary-white"}>Create a Course</p></a>
@@ -123,6 +124,9 @@ const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
                             </li>
                             <li>
                                 <a className={" linkForMenu text-primary-darkblue"} href={"/contact"}>Contact us</a>
+                            </li>
+                            <li>
+                                <a className={" linkForMenu text-primary-darkblue"} href={"/faq"}>FAQ</a>
                             </li>
                         </ul>
                     </div>

@@ -76,6 +76,7 @@ const SiteFooter = () => {
             <div><a href={"https://cinemed-agility.vercel.app/aboutus"}><p className={"bttn1 hover:bg-white"}>About us</p></a></div>
             <div><a href={"assets/order_form.pdf"} download><p className={"b3 hover:bg-white"}>Printable order form</p></a></div>
             <div><a href={"https://cinemed-agility.vercel.app/privacy-policy"}><p className={"b3 hover:bg-white"}>Privacy policy</p></a></div>
+            <div><a href={"/faq"}><p className={"b3 hover:bg-white"}>FAQ</p></a></div>
           </div>
 
           <div className={"text-primary-darkblue space-y-3"}>
@@ -106,6 +107,7 @@ const SiteFooter = () => {
                 <a className={"bttn2 text-primary-darkblue"} href="#">The Cinemed</a>
                 <a className={"b2 pt-2 text-primary-darkblue"} href="/company">Company</a>
                 <a className={"b2 pt-2 text-primary-darkblue"} href="/aboutus">About us</a>
+                <a className={"b2 pt-2 text-primary-darkblue"} href="/faq">FAQ</a>
                 <a className={"b2 pt-2 text-primary-darkblue"} href="/contact">Contact us</a>
                 <a className={"b2 pt-2 text-primary-darkblue"} href="/create-course">Create a course</a>
                 <a className={"b2 pt-2 text-primary-darkblue"} href="/find-a-course">Find a course</a>

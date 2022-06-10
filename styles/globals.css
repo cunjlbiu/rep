@@ -172,6 +172,13 @@
   line-height: 16px;
   letter-spacing: 0em;
 }
+.faqTitle {
+  font-family: Outfit;
+  font-size: 46px;
+  font-style: normal;
+  line-height: 52px;
+  font-weight: 600;
+}
 
 @media (min-width: 1291px) {
   h1 {
