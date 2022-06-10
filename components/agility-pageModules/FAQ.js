@@ -12,7 +12,7 @@ const Test = ({item}) => {
             <div className={"flex flex-col mx-auto w-[864px] md:mt-[-20px] md:min-w-[335px] "}>
                 {item.length > 1 && <div><p className={"flex   c1 text-primary-darkblue mt-16 mb-[24px]"}>Found {item.length} results </p></div>}
 
-                {item.map((elem) => {
+                {item?.map((elem) => {
                     let link = elem?.page.toLowerCase().replaceAll(" ","-")
                     console.log(link)
                     return (
@@ -49,7 +49,7 @@ const FAQ = ({module}) => {
     console.log(fields.fAQCards)
 
     for (let item of fields.fAQCards) {
-        let newarr = item.fields.elements.map(i=>{
+        let newarr = item?.fields?.elements?.map(i=>{
             i.fields.page = item.fields.title
             return i
         })
@@ -59,7 +59,7 @@ const FAQ = ({module}) => {
     }
 
 
-    let formattedArr = items.map((item) => {
+    let formattedArr = items?.map((item) => {
 
             return {
                 id: item.contentID,
@@ -151,7 +151,7 @@ const FAQ = ({module}) => {
 
                 <div
                     className={"flex flex-row justify-center flex-wrap mx-auto md:mt-[-22px] mdplus:mt-[118px] mt-[118px] md:mb-0 mdplus:mb-[50px] max-w-[1010px]"}>
-                    {selectItem.length === 0 && fields.fAQCards.slice(0).reverse().map((card) => {
+                    {selectItem.length === 0 && fields?.fAQCards?.slice(0).reverse().map((card) => {
                         let link = card?.fields?.title.toLowerCase().replaceAll(" ","-")
                         return (
                             <div
@@ -165,7 +165,7 @@ const FAQ = ({module}) => {
                                    <a href={`/faq/${link}`}><p className={"c2 mdplus:mt-4 md:mt-0 md:pl-4 mdplus:pl-0 text-primary-darkblue"}>{card.fields.title}</p></a>
                                 </div>
                                 <div>
-                                    {card.fields.elements.slice(0).reverse().map((elem)=> {
+                                    {card?.fields?.elements?.slice(0).reverse().map((elem)=> {
                                         return (
                                             <div>
                                                 <a href={`/faq/${link}#${elem.fields.title}`}><p className={"b3 md:mt-3 mdplus:mt-0 text-primary-darkblue"}>{elem.fields.title}</p></a>
