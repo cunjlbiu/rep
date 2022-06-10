@@ -6,25 +6,27 @@ import {BsArrowRightShort} from "react-icons/bs"
 //change name Test
 
 const Test = ({item}) => {
-    console.log(item)
-
 
     return (
         <>
             <div className={"flex flex-col mx-auto w-[864px] md:mt-[-20px] md:min-w-[335px] "}>
                 {item.length > 1 && <div><p className={"flex   c1 text-primary-darkblue mb-[24px]"}>Found {item.length} results </p></div>}
 
-                {item.map((elem) =>
-                    <div className={" flex flex-col mt-[32px] bord"}>
-                        <p className={"c2 text-primary-darkblue"}>{elem.title}</p>
-                        <p className={"b1 mt-4 text-primary-darkblue pb-[24px]"}>{elem.description}</p>
-                        <div className={"row pb-[22px]"}>
-                            <a className={"flex"} href="">
-                                <p className={"bttn2 text-primary-darkblue"}>View</p>
-                                <BsArrowRightShort className={"text-primary-darkblue w-[24px] h-[24px]"}/>
-                            </a>
-                        </div>
-                    </div>
+                {item.map((elem) => {
+                    let link = elem?.page.toLowerCase().replaceAll(" ","-")
+                    console.log(link)
+                    return (
+                        <div className={" flex flex-col mt-[32px] bord"}>
+                            <p className={"c2 text-primary-darkblue"}>{elem.title}</p>
+                            <p className={"b1 mt-4 text-primary-darkblue pb-[24px]"}>{elem.description}</p>
+                            <div className={"row pb-[22px]"}>
+                                <a className={"flex"} href={`/faq/${link}#${elem.title}`}>
+                                    <p className={"bttn2 text-primary-darkblue"}>View</p>
+                                    <BsArrowRightShort className={"text-primary-darkblue w-[24px] h-[24px]"}/>
+                                </a>
+                            </div>
+                        </div>)
+                    }
                 )}
             </div>
 
@@ -47,7 +49,12 @@ const FAQ = ({module}) => {
     console.log(fields.fAQCards)
 
     for (let item of fields.fAQCards) {
-        items = [...items, ...item.fields.elements]
+        let newarr = item.fields.elements.map(i=>{
+            i.fields.page = item.fields.title
+            return i
+        })
+        console.log(newarr)
+        items = [...items, ...newarr]
 
     }
 
@@ -57,11 +64,11 @@ const FAQ = ({module}) => {
             return {
                 id: item.contentID,
                 title: item.fields.title,
-                description: item.fields.description
+                description: item.fields.description,
+                page: item.fields.page
             }
         }
     )
-    console.log(formattedArr)
 
     const handleOnSearch = (string, result) => {
         setSelectItem(
@@ -145,6 +152,7 @@ const FAQ = ({module}) => {
                 <div
                     className={"flex flex-row justify-center flex-wrap mx-auto md:mt-[-22px] mdplus:mt-[118px] mt-[118px] md:mb-0 mdplus:mb-[50px] max-w-[1010px]"}>
                     {selectItem.length === 0 && fields.fAQCards.slice(0).reverse().map((card) => {
+                        let link = card?.fields?.title.toLowerCase().replaceAll(" ","-")
                         return (
                             <div
                                 className={" lg:w-[291px] mdplus:w-[304px] md:min-w-[310px] mdplus:h-[228px] md:min-h-[168px] mb-[32px] md:mx-0  mdplus:mx-[16px] p-[24px] cards rounded-lg"}>
@@ -154,13 +162,13 @@ const FAQ = ({module}) => {
                                         <img className={"rounded"} src={card.fields.icon.url} height={"48"}
                                              width={"48"}/> :
                                         <div className={"w-12 h-12"}/>}
-                                    <p className={"c2 mdplus:mt-4 md:mt-0 md:pl-4 mdplus:pl-0 text-primary-darkblue"}>{card.fields.title}</p>
+                                   <a href={`/faq/${link}`}><p className={"c2 mdplus:mt-4 md:mt-0 md:pl-4 mdplus:pl-0 text-primary-darkblue"}>{card.fields.title}</p></a>
                                 </div>
                                 <div>
                                     {card.fields.elements.map((elem)=> {
                                         return (
                                             <div>
-                                                <p className={"b3 md:mt-3 mdplus:mt-0 text-primary-darkblue"}>{elem.fields.title}</p>
+                                                <a href={`/faq/${link}#${elem.fields.title}`}><p className={"b3 md:mt-3 mdplus:mt-0 text-primary-darkblue"}>{elem.fields.title}</p></a>
                                             </div>
                                         )
                                     })}
