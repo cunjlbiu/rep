@@ -52,7 +52,7 @@ SearchResult.getCustomInitialProps = async ({agility, dynamicPageItem, languageC
     }catch (e) {
         console.log("Error: ", e)
     }
-    return {content: content.items}
+    return {content: content?.items}
 
 }
 
