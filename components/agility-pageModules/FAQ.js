@@ -9,7 +9,7 @@ const Test = ({item}) => {
 
     return (
         <>
-            <div className={"flex flex-col mx-auto w-[864px] md:mt-[-20px] md:min-w-[335px] "}>
+            <div className={"flex flex-col mx-auto w-[864px] md:mt-[-20px] md:min-w-[310px] "}>
                 {item.length > 1 && <div><p className={"flex   c1 text-primary-darkblue mt-16 mb-[24px]"}>Found {item.length} results </p></div>}
 
                 {item?.map((elem) => {
