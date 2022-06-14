@@ -22,7 +22,7 @@ const SearchResult = ({dynamicPageItem, customData}) => {
                 <div>
                     {content.slice(0).reverse().map(item =>
                         <div  id={item.fields.title}>
-                            <div className={"flex flex-col mt-[32px]  bord"}>
+                            <div className={"flex flex-col mt-[32px] md:px-2 mdplus:px-0  bord"}>
                                 <p className={"c2 text-primary-darkblue"}>{item.fields.title}</p>
                                 <div className={"b1 mt-4 text-primary-darkblue pb-[24px]"} dangerouslySetInnerHTML={renderHTML(item.fields.description)}></div>
                             </div>

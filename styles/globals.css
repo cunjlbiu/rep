@@ -686,10 +686,10 @@ span.message {
     border-radius: 0.5px;
 }
 
-.serch {
-    border: 2px solid #F2F5FF;
-    border-radius: 32px;
-}
+/*.serch {*/
+/*    border: 2px solid #F2F5FF;*/
+/*    border-radius: 32px;*/
+/*}*/
 
 .cards {
     border: 1px solid #EDF2F4;
@@ -698,43 +698,43 @@ span.message {
 /* Search*/
 /*Search input*/
 
-.hCOnUy {
-    height: 64px;
-    width: 640px !important;
-    margin: 0 auto;
-}
+/*.hCOnUy {*/
+/*    height: 64px;*/
+/*    width: 640px !important;*/
+/*    margin: 0 auto;*/
+/*}*/
 
-.bdHMCv {
-    height: 46px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+/*.bdHMCv {*/
+/*    height: 46px;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*}*/
 
-.bdHMCv > .wrapper {
-    width: 640px !important;
-    margin: 0 auto;
-    border-radius: 32px !important;
-    top: 9px;
-    border: 2px solid #F2F5FF !important;
-}
+/*.bdHMCv > .wrapper {*/
+/*    width: 640px !important;*/
+/*    margin: 0 auto;*/
+/*    border-radius: 32px !important;*/
+/*    top: 9px;*/
+/*    border: 2px solid #F2F5FF !important;*/
+/*}*/
 
-.fASA-Dv {
-    fill: #1C58F8 !important;
-    margin: 18px 16px 16px 16px !important;
-}
+/*.fASA-Dv {*/
+/*    fill: #1C58F8 !important;*/
+/*    margin: 18px 16px 16px 16px !important;*/
+/*}*/
 
-.bdHMCv > .wrapper:hover {
-    box-shadow: 0px 1px 2px 0px #F2F5FF !important;
-}
+/*.bdHMCv > .wrapper:hover {*/
+/*    box-shadow: 0px 1px 2px 0px #F2F5FF !important;*/
+/*}*/
 
-.kOYplv > svg {
-    fill: #1C58F8 !important;
-}
+/*.kOYplv > svg {*/
+/*    fill: #1C58F8 !important;*/
+/*}*/
 
-.hCOnUy > input {
-    padding: 0 0 0 0 !important;
-}
+/*.hCOnUy > input {*/
+/*    padding: 0 0 0 0 !important;*/
+/*}*/
 
 .bord {
     border-bottom: 2px solid #F2F5FF;
@@ -779,20 +779,20 @@ span.message {
         background-image: none !important;
     }
 
-    .hCOnUy {
-        height: 32px;
-        max-width: 335px !important;
-        margin: 0 auto;
-    }
+    /*.hCOnUy {*/
+    /*    height: 32px;*/
+    /*    max-width: 335px !important;*/
+    /*    margin: 0 auto;*/
+    /*}*/
 
 
-    .bdHMCv > .wrapper {
-        width: 350px !important;
-        margin: 0 auto;
-        border-radius: 32px !important;
-        top: 19px;
-        border: 2px solid #F2F5FF !important;
-    }
+    /*.bdHMCv > .wrapper {*/
+    /*    width: 350px !important;*/
+    /*    margin: 0 auto;*/
+    /*    border-radius: 32px !important;*/
+    /*    top: 19px;*/
+    /*    border: 2px solid #F2F5FF !important;*/
+    /*}*/
 }
 
 

@@ -36,7 +36,7 @@ const HomeHeading  = ({module}) => {
             <div className={"max-w-screen-xl md:mx-{20px} md:content-center flex m-auto flex-row my-8 md:flex-col"}>
                 <div className={"lg:w-6/12 md:w-full md:justify-center md:items-center"}>
                     <div className={"md:flex md:justify-center"}>
-                        <caption className={"c3 text-primary-blue w-max md:text-[14px]"}>{fields.blueText}</caption>
+                        <caption className={"c3 text-primary-blue md:mt-7 mdplus:mt-7 lg:mt-0 w-max md:text-[14px]"}>{fields.blueText}</caption>
                     </div>
                     <div className={"md:min-w-[335px] md:pt-10 md:w-full"}>
                         <h1 className = {"md:text-[44px] md:leading-[3rem] md:text-primary-darkblue md:px-5"}>{fields.title}</h1>
