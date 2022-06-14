@@ -10,7 +10,10 @@ const CourseItem = ({data})=> {
                 <div className={`absolute b3 rounded-full px-[12px] py-1 top-4 left-4 bg-primary-blue`}>{data.tag}</div>
                 {!data.image ? "image should be here" : <img className={"rounded-xl lg:h-[320px] lg:w-[640px]"} src={data.image.url}/>}
             </div>
-            <div className={"b3 py-4"}>(ITEM # {data.iD})</div>
+            <div className={"flex justify-between px-1"}>
+                <div className={"b3 py-4"}>(ITEM # {data.iD})</div>
+                <div className={"b3 py-4"}>{data.instructor ? `Instructor: ${data.instructor}` : ""}</div>
+            </div>
             <div className={"c1 lg:w-[640px]"}>{data.name}</div>
         </div>
     )
