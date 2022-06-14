@@ -121,7 +121,7 @@ const VGOfferings = ({module})=>{
                 <h1 className={"py-2"}>
                     {fields.title}
                 </h1>
-                <div className={"b1 py-3"}>View our current curriculum.</div>
+                <div className={"b1 py-3"}>{fields.text}</div>
                 <div className={"flex overflow-hidden md:overflow-x-scroll mb-6"}>
                     <div className={"flex space-x-4 py-2 w-full flex-nowrap"} ref={ref}
                          style={{transform:`translateX(${offset}px)`, transition:"all 300ms ease-in-out 0s"}}>
