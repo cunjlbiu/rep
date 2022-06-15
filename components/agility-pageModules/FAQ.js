@@ -42,6 +42,7 @@ const FAQ = ({module}) => {
 
     const {fields} = module
 
+
     const [selectItem, setSelectItem] = useState([])
     const [height, setHeight] = useState('64px')
 
@@ -51,14 +52,13 @@ const FAQ = ({module}) => {
 
     let items = []
 
-    console.log(fields.fAQCards)
+
 
     for (let item of fields.fAQCards) {
         let newarr = item?.fields?.elements?.map(i => {
             i.fields.page = item.fields.title
             return i
         })
-        console.log(newarr)
         items = [...items, ...newarr]
 
     }
@@ -74,6 +74,9 @@ const FAQ = ({module}) => {
             }
         }
     )
+
+
+
 
     const handleOnSearch = (string, result) => {
         setSelectItem(
@@ -133,13 +136,14 @@ const FAQ = ({module}) => {
                             fontFamily: "Outfit",
                             iconColor: "#1C58F8",
                             lineColor: "#F0F9FF",
-                            placeholderColor: "grey",
+                            placeholderColor: "#BDBDBD",
                             clearIconMargin: '1px 14px 0 0',
-                            searchIconMargin: '16px',
+                            searchIconMargin: '16px 0 16px 16px',
                         }}
                         items={formattedArr}
                         fuseOptions={{keys: ["title", "description"]}}
                         resultStringKeyName="title"
+                        placeholder="Search by keyword, learning objective, or service."
                         onHover={handleOnHover}
                         onSearch={handleOnSearch}
                         onSelect={handleOnSelect}
@@ -175,14 +179,14 @@ const FAQ = ({module}) => {
                                         className={"c2 mdplus:mt-4 md:mt-0 md:pl-4 mdplus:pl-0 text-primary-darkblue"}>{card.fields.title}</p>
                                     </a>
                                 </div>
-                                <div>
+                                <div className={"space-y-3"}>
                                     {card?.fields?.elements?.slice(0).reverse().map((elem) => {
                                         return (
                                             <div>
-                                                <a href={`/faq/${link}#${elem.fields.title}`}><p
-                                                    className={"b3 md:mt-3 mdplus:mt-0 text-primary-darkblue"}>{elem.fields.title}</p>
+                                                <a className={"b3"} href={`/faq/${link}#${elem.fields?.title.toLowerCase()?.replace(/ /g, "")}`}>
+                                                    <p className={"leading-5 md:mt-3 mdplus:mt-0 text-primary-darkblue"}>{elem.fields.title}</p>
                                                 </a>
-                                            </div>
+                                            </div >
                                         )
                                     })}
                                 </div>
