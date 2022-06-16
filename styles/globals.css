@@ -64,7 +64,9 @@
 
 }
 
-
+video{
+    border-radius: inherit;
+}
 .two-column-text {
     column-count: 2;
     column-width: auto;
