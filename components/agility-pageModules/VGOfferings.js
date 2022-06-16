@@ -3,12 +3,12 @@ import {FaArrowLeft, FaArrowRight} from "react-icons/fa";
 
 
 const CourseItem = ({data})=> {
-   console.log(data)
+   // console.log(data)
     return(
         <div className={"py-10 lg:w-[640px]"}>
             <div className={`lg:h-[320px] lg:w-[640px] rounded-xl relative text-white text-center ${!data.image ? 'bg-agility' : ''} `}>
                 <div className={`absolute b3 rounded-full px-[12px] py-1 top-4 left-4 bg-primary-blue`}>{data.tag}</div>
-                {!data.image ? "image should be here" : <img className={"rounded-xl lg:h-[320px] lg:w-[640px]"} src={data.image.url}/>}
+                {!data.image ? "image should be here" : <a href={data?.imageUrl?.href} target={data?.imageUrl?.target}><img className={"rounded-xl lg:h-[320px] lg:w-[640px]"} src={data.image.url}/></a>}
             </div>
             <div className={"flex justify-between px-1"}>
                 <div className={"b3 py-4"}>(ITEM # {data.iD})</div>
@@ -53,13 +53,48 @@ const VGOfferings = ({module})=>{
     fields.courses.map((e)=>{course[e.fields.filter] ? course[e.fields.filter].push(e) : course[e.fields.filter] = [e] })
     const [amount, setAmount] = useState(7);
     const [courseArr,setCourseArr] =  useState(Object.entries(course))
+    // const [courseArr,setCourseArr] =  useState([])
     const [courseList, setCourseList] = useState(courseArr)
     const [filter,setFilter] = useState("")
     const [offset, setOffset] = useState(0)
     let off = 0
+    console.log("courseList")
+    console.log("courseList")
+    console.log("courseList")
+    console.log("courseList")
+    console.log(course)
     console.log(courseList)
+    console.log(courseArr)
     console.log(filter)
-    useEffect(()=>FillCourseList(),[filter,amount])
+    useEffect(()=>{
+        FillCourseList()
+        setCourseArr(filterMap(fields.courses))
+        // filterMap(fields.courses)
+    },[filter,amount])
+
+    function filterMap(courseArr){
+        let newarr = courseArr.map((e)=>{
+            return (e.fields.filter.split(";"))
+        })
+        let filArr = [...new Set(newarr.flat())].map(e=>e.trim())
+        newarr = [...new Set(newarr.flat())].map(e=>[e.trim(),[]])
+
+
+        for(let k of courseArr){
+            for(let i=0;i<filArr.length;i++){
+                if(k.fields.filter.indexOf(filArr[i])!== -1){
+                    newarr[i][1].push(k)
+                }
+            }
+        }
+
+        console.log("newarr")
+        console.log("newarr")
+        console.log(filArr)
+        // console.log(fils)
+        console.log(newarr)
+        return newarr
+    }
 
     function FillCourseList(){
         let arr = [];
@@ -84,7 +119,6 @@ const VGOfferings = ({module})=>{
 
 
     const applyFilter = (newFil)=>{
-        console.log(ref.current)
         if(newFil === "All"){
             setFilter("")
         }
