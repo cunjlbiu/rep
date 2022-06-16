@@ -178,8 +178,8 @@ const VGOfferings = ({module})=>{
                 }
                 <div className={"bttn1 flex cursor-pointer items-center justify-center h-[56px] mdplus:w-[192px] md:w-full lg:active:bg-primary-blue" +
                     " md:active:bg-primary-darkblue lg:hover:bg-primary-darkblue mx-auto bg-primary-blue rounded-full " +
-                    `text-primary-white ${amount > 20 ? "hidden" : ""}`
-                } onClick={()=>IncreaseAmount(99)}>
+                    `text-primary-white ${amount > 200 ? "hidden" : ""}`
+                } onClick={()=>IncreaseAmount(450)}>
                     Load more</div>
             </div>
         </div>
