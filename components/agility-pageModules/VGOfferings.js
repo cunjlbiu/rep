@@ -61,7 +61,7 @@ const VGOfferings = ({module})=>{
     console.log("courseList")
     console.log("courseList")
     console.log("courseList")
-    console.log("courseList")
+    console.log(fields.courses)
     console.log(course)
     console.log(courseList)
     console.log(courseArr)
@@ -74,7 +74,7 @@ const VGOfferings = ({module})=>{
 
     function filterMap(courseArr){
         let newarr = courseArr.map((e)=>{
-            return (e.fields.filter.split(";"))
+            return (e.fields.filter.split(";").map(e=>e.trim()))
         })
         let filArr = [...new Set(newarr.flat())].map(e=>e.trim())
         newarr = [...new Set(newarr.flat())].map(e=>[e.trim(),[]])
