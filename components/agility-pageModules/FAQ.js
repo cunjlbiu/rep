@@ -183,7 +183,7 @@ const FAQ = ({module}) => {
                                     {card?.fields?.elements?.slice(0).reverse().map((elem, i) => {
                                         if (i>2) return(null)
                                         return (
-                                            <div>
+                                            <div className={"border-b-[1px] border-soft-purple pb-[3px] "}>
                                                 <a className={"b3"} href={`/faq/${link}#${elem.fields?.title.toLowerCase()?.replace(/ /g, "")}`}>
                                                     <p className={"leading-5 md:mt-3 mdplus:mt-0 text-primary-darkblue"}>{elem.fields.title}</p>
                                                 </a>
