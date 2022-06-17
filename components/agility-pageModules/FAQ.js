@@ -168,7 +168,7 @@ const FAQ = ({module}) => {
                         let link = card?.fields?.title?.toLowerCase()?.replace(/ /g, "-")
                         return (
                             <div
-                                className={"lg:w-[291px] md:max-w-[310px] mdplus:w-[304px] md:min-w-[310px] mdplus:min-h-[228px] md:min-h-[168px] mb-[32px] md:mx-0  mdplus:mx-[16px] p-[24px] cards rounded-lg"}>
+                                className={"lg:w-[291px] md:max-w-[310px] mdplus:w-[304px] md:min-w-[310px] mdplus:min-h-[290px] md:min-h-[168px] mb-[32px] md:mx-0  mdplus:mx-[16px] p-[24px] cards relative rounded-lg"}>
                                 <div
                                     className={"flex md:items-center mdplus:items-baseline md:flex-row mdplus:flex-col"}>
                                     {card.fields.icon ?
@@ -180,15 +180,23 @@ const FAQ = ({module}) => {
                                     </a>
                                 </div>
                                 <div className={"space-y-3"}>
-                                    {card?.fields?.elements?.slice(0).reverse().map((elem) => {
+                                    {card?.fields?.elements?.slice(0).reverse().map((elem, i) => {
+                                        if (i>2) return(null)
                                         return (
-                                            <div>
+                                            <div className={"border-b-[1px] border-soft-purple pb-[3px] "}>
                                                 <a className={"b3"} href={`/faq/${link}#${elem.fields?.title.toLowerCase()?.replace(/ /g, "")}`}>
                                                     <p className={"leading-5 md:mt-3 mdplus:mt-0 text-primary-darkblue"}>{elem.fields.title}</p>
                                                 </a>
                                             </div >
                                         )
                                     })}
+
+                                </div>
+                                <div className={"absolute bottom-2"}>
+                                    <a className={"flex"} href={`/faq/${link}#`}>
+                                        <p className={"bttn2 text-primary-darkblue"}>View all</p>
+                                        <BsArrowRightShort className={"text-primary-darkblue w-[24px] h-[24px]"}/>
+                                    </a>
                                 </div>
                             </div>
                         )
