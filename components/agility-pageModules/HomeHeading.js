@@ -33,7 +33,7 @@ const HomeHeading  = ({module}) => {
     };
     return(
         <div style={{backgroundColor: fields.bgColor}}>
-            <div className={"max-w-screen-xl md:mx-{20px} md:content-center flex m-auto flex-row my-8 md:flex-col"}>
+            <div className={"max-w-screen-xl md:mx-{20px} md:content-center flex m-auto flex-row py-8 md:flex-col"}>
                 <div className={"lg:w-6/12 md:w-full md:justify-center md:items-center"}>
                     <div className={"md:flex md:justify-center"}>
                         <caption className={"c3 text-primary-blue md:mt-7 mdplus:mt-7 lg:mt-0 w-max md:text-[14px]"}>{fields.blueText}</caption>
@@ -45,12 +45,22 @@ const HomeHeading  = ({module}) => {
                         </div>
                     </div>
                     <div className={"flex flex-row items-center space-x-4 my-6  md:justify-center"}>
-                        <a className={"flex bttn1 w-36 h-12 items-center bg-primary-blue rounded-full"} href={fields.leftButton.href}><p className={"mx-auto text-primary-white md:text-[14px]"}>{fields.leftButton.text}</p></a>
-                        <a className={"flex bttn1 w-36 h-12 items-center border-primary-blue rounded-full border-primary-blue border-2 text-primary-blue"} href={fields.rightButton.href}><p className={"mx-auto md:text-[14px]"}>{fields.rightButton.text}</p></a>
+                        {
+                            fields.leftButton ?
+                        <a className={"flex bttn1 w-36 h-12 items-center bg-primary-blue rounded-full"} href={fields?.leftButton?.href} target={fields?.leftButton?.target}>
+                            <p className={"mx-auto text-primary-white md:text-[14px]"}>{fields?.leftButton?.text}</p>
+                        </a> : ""
+                        }
+                        {
+                            fields.rightButton ?
+                            <a className={"flex bttn1 w-36 h-12 items-center border-primary-blue rounded-full border-primary-blue border-2 text-primary-blue"} href={fields?.rightButton?.href} target={fields?.rightButton?.target}>
+                                <p className={"mx-auto md:text-[14px]"}>{fields?.rightButton?.text}</p>
+                            </a> : ""
+                        }
                     </div>
                 </div>
                 <div className={"lg:w-6/12 md:w-full md:justify-center md:items-center"}>
-                    <img className={"transform lg:-translate-y-16"} src={fields?.image?.url}/>
+                    <img className={"rounded-xl"} src={fields?.image?.url}/>
                 </div>
             </div>
         </div>
