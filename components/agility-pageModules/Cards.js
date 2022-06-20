@@ -8,7 +8,7 @@ import {FaCheck, FaEye, FaAward, FaBookmark, FaCertificate, FaHeart, FaUserAlt} 
 const Cards = ({module}) => {
     const {fields} = module;
 
-    const listItems = fields.list.split('</p>').map((e) =>
+    const listItems = fields?.list?.split('</p>').map((e) =>
         e.slice(e.indexOf('<p>') + 3)
     );
 
@@ -92,7 +92,7 @@ const Cards = ({module}) => {
                     <h3 className={"md:text-primary-darkblue md:text-[40px]"}
                         dangerouslySetInnerHTML={renderHTML(fields.title)}></h3>
                     <div className={" md:text-[16px] b1"} dangerouslySetInnerHTML={renderHTML(fields.text)}></div>
-                    {listItems.map((e, i) => {
+                    {listItems?.map((e, i) => {
                             if (e.length > 0)
                                 return (
                                     <div key={i} className={"flex flex-auto space-x-6"}>
