@@ -39,7 +39,7 @@ const HomeHeading  = ({module}) => {
                         <caption className={"c3 text-primary-blue md:mt-7 mdplus:mt-7 lg:mt-0 w-max md:text-[14px]"}>{fields.blueText}</caption>
                     </div>
                     <div className={"md:min-w-[335px] md:pt-10 md:w-full"}>
-                        <h1 className = {"md:text-[44px] md:leading-[3rem] md:text-primary-darkblue md:px-5"}>{fields.title}</h1>
+                        <h2 className = {"md:text-[44px] md:leading-[3rem] md:text-primary-darkblue md:px-5"}>{fields.title}</h2>
                         <div className = {"md:px-5"}>
                             <p className={"b1 w-8/12 pl-12 border-primary-blue left-border my-6 md:w-full md:pl-4 md:pr-5"}>{fields.text}</p>
                         </div>
