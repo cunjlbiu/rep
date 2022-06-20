@@ -5,8 +5,6 @@ import {BsArrowRightShort} from "react-icons/bs";
 const HorizontalCards = ({module}) => {
     const {fields} = module;
     const Card = ({iconUrl, title, text, iconBg, link}) => {
-        console.log(link)
-        console.log("link")
         return(
             <div className={"border-2 border-agility w-80 card py-5 px-8 space-y-3 rounded-2xl  md:w-full h_cards"}>
                 {iconUrl ?
@@ -33,7 +31,7 @@ const HorizontalCards = ({module}) => {
                 : ''}
 
             <div className={"flex justify-center space-x-6 md:flex-col"}>
-                {fields.cards.slice(0).reverse().map((card, index) => {
+                {fields.cards.slice().map((card, index) => {
                         return(
                             <Card key={card.contentID.toString()}
                                   title={card.fields.title}
