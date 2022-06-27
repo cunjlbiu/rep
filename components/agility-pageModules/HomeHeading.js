@@ -33,8 +33,8 @@ const HomeHeading  = ({module}) => {
     };
     return(
         <div style={{backgroundColor: fields.bgColor}}>
-            <div className={"max-w-screen-xl md:mx-{20px} md:content-center flex m-auto flex-row py-8 md:flex-col"}>
-                <div className={"lg:w-6/12 md:w-full md:justify-center md:items-center"}>
+            <div className={"max-w-screen-xl md:mx-{20px} md:content-center flex mx-auto flex-row py-8 md:flex-col justify-between space-x-4 "}>
+                <div className={" max-w-[750px] md:w-full md:justify-center md:items-center self-center"}>
                     <div className={"md:flex md:justify-center"}>
                         <caption className={"c3 text-primary-blue md:mt-7 mdplus:mt-7 lg:mt-0 w-max md:text-[14px]"}>{fields.blueText}</caption>
                     </div>
@@ -59,7 +59,7 @@ const HomeHeading  = ({module}) => {
                         }
                     </div>
                 </div>
-                <div className={"lg:w-6/12 md:w-full md:justify-center md:items-center"}>
+                <div className={"flex w-full justify-end md:w-full md:justify-center md:items-center"}>
                     <img className={"rounded-xl"} src={fields?.image?.url}/>
                 </div>
             </div>

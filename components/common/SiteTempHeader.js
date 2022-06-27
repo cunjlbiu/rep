@@ -67,9 +67,9 @@ const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
                    <div className="dropdown b3 cursor-pointer">
                        <span>Education</span>
                        <div className="dropdown-content">
-                           <div className={"py-2 px-3 hover:bg-soft-purple"}><a href={"/aorn"} className={"h-[50px]"}>AORN</a></div>
-                           <div className={"py-2 px-3 hover:bg-soft-purple"}><a href={"/ACS"}>ACS</a></div>
-                           <div className={"py-2 px-3 hover:bg-soft-purple"}><a href={"/VeinGlobal"}>Vein Global</a></div>
+                           <a href={"/AORN"}><div className={"py-2 px-3 hover:bg-soft-purple"}>AORN</div></a>
+                           <a href={"/ACS"}><div className={"py-2 px-3 hover:bg-soft-purple"}>ACS</div></a>
+                           <a href={"/VeinGlobal"}><div className={"py-2 px-3 hover:bg-soft-purple"}>Vein Global</div></a>
                        </div>
                    </div>
                    <a className={"b3"} href={"/aboutus"}>About us</a>
@@ -114,7 +114,7 @@ const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
                                     <span className={"menu_arrow self-center ml-3"}></span>
                                 </div>
                                 <div className={`${!isDropdownOpen ? "max-h-0" : "max-h-[100px]"} overflow-hidden dropdown-menu-content`}>
-                                    <div className={"linkForMenu text-primary-darkblue"}><a href={"/aorn"} className={"h-[50px]"}>AORN</a></div>
+                                    <div className={"linkForMenu text-primary-darkblue"}><a href={"/AORN"} className={"h-[50px]"}>AORN</a></div>
                                     <div className={"linkForMenu text-primary-darkblue"}><a href={"/ACS"}>ACS</a></div>
                                     <div className={"linkForMenu text-primary-darkblue"}><a href={"/VeinGlobal"}>Vein Global</a></div>
                                 </div>
