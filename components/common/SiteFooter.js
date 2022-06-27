@@ -55,7 +55,7 @@ const SiteFooter = () => {
               <FaFacebook className={"w-6 h-6"}/>
               <FaLinkedin className={"w-6 h-6"}/>
             </div>
-            <p className={" b3 text-[11px] text-primary-grey "}>Copyright © CineMed. All Rights Reserved.</p>
+            <p className={" b3 text-[11px] text-primary-grey "}>Copyright © 2022 CineMed. All Rights Reserved.</p>
           </div>
 
           <div className={"text-primary-darkblue space-y-3"}>
@@ -132,7 +132,7 @@ const SiteFooter = () => {
               </div>
               <div className={"flex flex-col mt-5"}>
                 <p className={"b4"}>
-                    Copyright © CineMed. All Rights Reserved.
+                    Copyright © 2022 CineMed. All Rights Reserved.
                 </p>
               </div>
             </div>
