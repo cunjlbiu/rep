@@ -11,7 +11,7 @@ const CourseItem = ({data})=> {
                 {!data.image ? "image should be here" : <a href={data?.imageUrl?.href} target={data?.imageUrl?.target}><img className={"rounded-xl lg:h-[320px] lg:w-[640px]"} src={data.image.url}/></a>}
             </div>
             <div className={"flex justify-between px-1"}>
-                <div className={"b3 py-4"}>(ITEM # {data.iD})</div>
+                <div className={"b3 py-4 hidden"}>(ITEM # {data.iD})</div>
                 <div className={"b3 py-4"}>{data.instructor ? `Instructor: ${data.instructor}` : ""}</div>
             </div>
             <div className={"c1 lg:w-[640px]"}>{data.name}</div>

@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react'
 import {FaArrowLeft, FaArrowRight} from "react-icons/fa";
+import {renderHTML} from "@agility/nextjs";
 
 
 const CourseItem = ({data})=> {
@@ -9,8 +10,7 @@ const CourseItem = ({data})=> {
             <div className={`lg:h-[320px] lg:w-[640px] rounded-xl text-white text-center ${!data.image ? 'bg-agility' : ''} `}>
                 {!data.image ? "image should be here" : <img className={"rounded-xl"} src={data.image.url}/>}
             </div>
-            <div className={"b3 py-4"}>({new Date(data.startDate).getFullYear()}) (ITEM # {data.id})</div>
-            <div className={"c1 lg:w-[640px]"}>{data.name}</div>
+            <div className={"c1 pt-2 lg:w-[640px]"}>{data.name}</div>
         </div>
     )
 }
@@ -117,7 +117,7 @@ const Offerings = ({module})=>{
                 <h1 className={"py-2"}>
                     {fields.title}
                 </h1>
-                <div className={"b1 py-3"}>View our current curriculum.</div>
+                <div className={"b1 py-3"} dangerouslySetInnerHTML={renderHTML(fields.text)}/>
                 <div className={"flex overflow-hidden md:overflow-x-scroll mb-6"}>
                 <div className={"flex space-x-4 py-2 w-full flex-nowrap"} ref={ref}
                      style={{transform:`translateX(${offset}px)`, transition:"all 300ms ease-in-out 0s"}}>
