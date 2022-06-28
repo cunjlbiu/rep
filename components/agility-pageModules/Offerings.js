@@ -47,30 +47,32 @@ const Offerings = ({module})=>{
     const {fields} = module
     const course = {}
     fields.courses.map((e)=>{course[e.fields.filter] ? course[e.fields.filter].push(e) : course[e.fields.filter] = [e] })
-    const [amount, setAmount] = useState(7);
-    const [courseArr,setCourseArr] =  useState(Object.entries(course))
-    const [courseList, setCourseList] = useState(courseArr)
-    const [filter,setFilter] = useState("")
-    const [offset, setOffset] = useState(0)
-    let off = 0
-    console.log(courseList)
-    console.log(filter)
+    const [amount, setAmount] = useState(8);
+    const [courseArr,setCourseArr] =  useState(Object.entries(course));
+    const [courseList, setCourseList] = useState(courseArr);
+    const [filter,setFilter] = useState("");
+    const [offset, setOffset] = useState(0);
+    const [courseCountMax, setCourseCountMax] = useState(0);
+    let maxPosCours = 0;
     useEffect(()=>FillCourseList(),[filter,amount])
 
     function FillCourseList(){
         let arr = [];
+        maxPosCours = 0;
         let i = 0;
         for(let k of courseArr){
-            if(i == amount) break
             if( filter === "" || filter.indexOf(k[0]) !== -1){
+                maxPosCours +=k[1].length
+                if(i >= amount) continue
                 arr.push([k[0],[]]);
                 for (let j of k[1]){
-                    if(i == amount) break
+                    if(i >= amount) continue
                     arr[arr.length-1][1].push(j)
                     i++
                 }
             }
         }
+        setCourseCountMax(maxPosCours)
         setCourseList(arr)
     }
 
@@ -140,8 +142,8 @@ const Offerings = ({module})=>{
                 }
                 <div className={"bttn1 flex cursor-pointer items-center justify-center h-[56px] mdplus:w-[192px] md:w-full lg:active:bg-primary-blue" +
                     " md:active:bg-primary-darkblue lg:hover:bg-primary-darkblue mx-auto bg-primary-blue rounded-full " +
-                    `text-primary-white ${amount > 20 ? "hidden" : ""}`
-                } onClick={()=>IncreaseAmount(99)}>
+                    `text-primary-white ${amount >= courseCountMax ? "hidden" : ""}`
+                } onClick={()=>IncreaseAmount(8)}>
                     Load more</div>
             </div>
         </div>

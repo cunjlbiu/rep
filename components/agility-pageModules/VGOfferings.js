@@ -51,21 +51,14 @@ const VGOfferings = ({module})=>{
     const {fields} = module
     const course = {}
     fields.courses.map((e)=>{course[e.fields.filter] ? course[e.fields.filter].push(e) : course[e.fields.filter] = [e] })
-    const [amount, setAmount] = useState(7);
+    const [amount, setAmount] = useState(8);
     const [courseArr,setCourseArr] =  useState(Object.entries(course))
     // const [courseArr,setCourseArr] =  useState([])
     const [courseList, setCourseList] = useState(courseArr)
     const [filter,setFilter] = useState("")
     const [offset, setOffset] = useState(0)
-    let off = 0
-    console.log("courseList")
-    console.log("courseList")
-    console.log("courseList")
-    console.log(fields.courses)
-    console.log(course)
-    console.log(courseList)
-    console.log(courseArr)
-    console.log(filter)
+    const [courseCountMax, setCourseCountMax] = useState(0)
+    let maxPosCours = 0
     useEffect(()=>{
         FillCourseList()
         setCourseArr(filterMap(fields.courses))
@@ -87,36 +80,40 @@ const VGOfferings = ({module})=>{
                 }
             }
         }
-
-        console.log("newarr")
-        console.log("newarr")
-        console.log(filArr)
-        // console.log(fils)
-        console.log(newarr)
         return newarr
     }
 
     function FillCourseList(){
         let arr = [];
+        maxPosCours=0
         let i = 0;
         for(let k of courseArr){
-            if(i == amount) break
+            //if(i == amount) break
             if( filter === "" || filter.indexOf(k[0]) !== -1){
+                maxPosCours +=k[1].length
+                if(i >= amount) continue
                 arr.push([k[0],[]]);
                 for (let j of k[1]){
-                    if(i == amount) break
-                    arr[arr.length-1][1].push(j)
-                    i++
+                    if(i < amount){
+                        arr[arr.length-1][1].push(j)
+                        i++
+                    }
                 }
             }
         }
         setCourseList(arr)
+        setCourseCountMax(maxPosCours)
     }
 
     function IncreaseAmount(i){
         setAmount(amount + i);
     }
-
+    function ResetCountMax(){
+        setCourseCountMax(0)
+    }
+    function IncreaseCountMax(i){
+        setCourseCountMax(courseCountMax + i)
+    }
 
     const applyFilter = (newFil)=>{
         if(newFil === "All"){
@@ -130,7 +127,7 @@ const VGOfferings = ({module})=>{
             else
                 setFilter(filter.replace(newFil,""))
         }
-        setAmount(7)
+        setAmount(8)
     }
 
     const incOffset = ()=>{
@@ -178,8 +175,8 @@ const VGOfferings = ({module})=>{
                 }
                 <div className={"bttn1 flex cursor-pointer items-center justify-center h-[56px] mdplus:w-[192px] md:w-full lg:active:bg-primary-blue" +
                     " md:active:bg-primary-darkblue lg:hover:bg-primary-darkblue mx-auto bg-primary-blue rounded-full " +
-                    `text-primary-white ${amount > 200 ? "hidden" : ""}`
-                } onClick={()=>IncreaseAmount(450)}>
+                    `text-primary-white ${amount >= courseCountMax ? "hidden" : ""}`
+                } onClick={()=>IncreaseAmount(8)}>
                     Load more</div>
             </div>
         </div>

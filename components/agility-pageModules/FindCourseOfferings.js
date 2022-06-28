@@ -443,7 +443,7 @@ const FindCourseOfferings = ({module})=>{
                  <div className={"mx-auto max-w-screen-xl " + `${listedCourses.length ? "":" hidden"}`}>
                      <CourseBlock aorn={false} blockData={listedCourses} filters={filters} cl={(e)=>{DeleteFilter(e)}} deleteAll={filter || locFilter || typeFilter || specialtyFilter}/>
                  </div>
-                 <div className={"bttn1 flex cursor-pointer items-center justify-center h-[56px] mdplus:w-[192px] md:flex-grow md:mx-5 lg:active:bg-primary-blue md:active:bg-primary-darkblue lg:hover:bg-primary-darkblue mdplus:mx-auto bg-primary-blue rounded-full text-primary-white " + (courses.length <= amount ? " hidden" : "") } onClick={()=>IncreaseAmount(2)}>
+                 <div className={"bttn1 flex cursor-pointer items-center justify-center h-[56px] mdplus:w-[192px] md:flex-grow md:mx-5 lg:active:bg-primary-blue md:active:bg-primary-darkblue lg:hover:bg-primary-darkblue mdplus:mx-auto bg-primary-blue rounded-full text-primary-white " + (courses.length <= amount ? " hidden" : "") } onClick={()=>IncreaseAmount(8)}>
                      Load more</div>
 
                  <div className={`flex flex-col mdplus:mx-auto md:mx-5 mdplus:max-w-[600px] lg:max-w-[780px] font-normal md:text-[14px] mdplus:text-[18px] leading-[24px] text-primary-grey mdplus:text-center border-2 border-soft-purple py-12 px-5 rounded-2xl ${!listedCourses.length && !listedAORNCourses.length ? "" : " hidden"}`}>
