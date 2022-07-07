@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker"
 import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css'
 import "react-datepicker/dist/react-datepicker.css";
+import {renderHTML} from "@agility/nextjs";
 const CreateCourseForm =({module}) =>{
     const {fields} = module;
     const [subSpec, setSubSpec] = useState(true)
@@ -63,10 +64,9 @@ const CreateCourseForm =({module}) =>{
             <div className={"max-w-screen-xl mx-auto lg:grid lg:grid-cols-2 my-16 md:w-[375px]"}>
                 <div>
                     <div className={"lg:w-[640px] md:px-5 "}>
-                        <caption className={"c3 text-primary-blue w-max"}>Create a course</caption>
-                        <h1>CineMed is the industry leader
-                            in healthcare.</h1>
-                        <p className={"b1 pl-12 border-primary-blue left-border my-6 lg:w-[506px]"}>From inception to execution and delivery, CineMed is the industry leader in healthcare education. Specify your learning objectives and delivery style, and let us do the rest!</p>
+                        <caption className={"c3 text-primary-blue w-max"}>{fields.caption}</caption>
+                        <h1>{fields.title}</h1>
+                        <div className={"b1 pl-12 border-primary-blue left-border my-6 lg:w-[506px]"} dangerouslySetInnerHTML={renderHTML(fields.text)}></div>
                     </div>
                 </div>
                 <form className={"lg:grid lg:grid-cols-2 md:flex flex-col md:place-items-center mx-auto bg-primary-white"} action="https://info.cine-med.com/l/930733/2022-03-15/3kcqh" method="post">

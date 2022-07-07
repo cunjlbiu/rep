@@ -8,7 +8,7 @@ const CourseItem = ({data})=> {
     return(
         <div className={"py-10 lg:w-[640px]"}>
             <div className={`lg:h-[320px] lg:w-[640px] rounded-xl text-white text-center ${!data.image ? 'bg-agility' : ''} `}>
-                {!data.image ? "image should be here" : <img className={"rounded-xl"} src={data.image.url}/>}
+                <a href={"https://cine-med.com/aornonline/"} target={"_blank"}>{!data.image ? "image should be here" : <img className={"rounded-xl"} src={data.image.url}/>}</a>
             </div>
             <div className={"c1 pt-2 lg:w-[640px]"}>{data.name}</div>
         </div>
