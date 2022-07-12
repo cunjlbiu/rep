@@ -5,6 +5,7 @@ import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css'
 import "react-datepicker/dist/react-datepicker.css";
 import {renderHTML} from "@agility/nextjs";
+import {now} from "next-auth/client/_utils";
 const CreateCourseForm =({module}) =>{
     const {fields} = module;
     const [subSpec, setSubSpec] = useState(true)
@@ -31,9 +32,20 @@ const CreateCourseForm =({module}) =>{
     const [reqSelectBudget, setReqSelectBudget] = useState('')
     const [t, setT] = useState(null)
     const onChange = (dates) => {
+        let day = new Date()
+        day.setHours(0, 0, 0, 0)
         const [start, end] = dates;
+        console.log("start")
+        console.log(start)
+        if (start >= day){
         setStartDate(start);
-        setEndDate(end);}
+        setEndDate(end);
+        }
+        else {
+            setStartDate(null)
+            setEndDate(null)
+        }
+    }
 
     const courseTypes = [{value: 'Online', label: 'Online', online:true},
         {value: 'In person', label: 'In person', online:false}]

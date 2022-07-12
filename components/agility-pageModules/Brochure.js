@@ -42,8 +42,12 @@ const Brochure = ({module})=>{
                                 <span className={"b3"}>Email</span>
                             </label>
                             <div className={" flex md:pb-[40px]"}>
-                                <input type={"submit"} value={fields.bLabel} required={true}
-                                       className={'flex bttn1 px-4 h-12 md:font-semibold md:text-[14px]  bg-primary-blue rounded-full justify-center text-primary-white active:scale-90'}/>
+                                <a className={'flex bttn1 px-4 py-2 h-12 md:font-semibold md:text-[14px]  bg-primary-blue rounded-full justify-center text-primary-white active:scale-90'}
+                                    href={"assets/CineMed-Brochure.pdf"}
+                                    download
+                                    target={"_blank"}>
+                                    {fields.bLabel}
+                                </a>
                             </div>
                         </form>
                     </div>

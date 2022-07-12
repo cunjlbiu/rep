@@ -11,7 +11,7 @@ const HorizontalCards = ({module}) => {
                     <img className={"rounded"} src={iconUrl} height={"48"} width={"48"} style={{backgroundColor: iconBg}} />
                     : ''}
                 <p className={"c2"}>{title}</p>
-                <p className={"b3 text-justify"}>{text}</p>
+                <p className={"b3"}>{text}</p>
                 {link ? <a className={"flex"} href={link.href} target={link.target}>
                     <p className={"bttn2 text-primary-darkblue"}>{link.text}</p>
                     <BsArrowRightShort className={"text-primary-darkblue w-[24px] h-[24px]"}/>

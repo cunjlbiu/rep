@@ -4,13 +4,15 @@ import {renderHTML} from "@agility/nextjs";
 
 
 const CourseItem = ({data})=> {
+    const date = new Date(data.startDate)
     //console.log(data)
     return(
-        <div className={"py-10 lg:w-[640px]"}>
-            <div className={`lg:h-[320px] lg:w-[640px] rounded-xl text-white text-center ${!data.image ? 'bg-agility' : ''} `}>
+        <div className={"py-10 lg:w-[570px]"}>
+            <div className={`lg:h-[320px] lg:w-[570px] rounded-xl text-white text-center ${!data.image ? 'bg-agility' : ''} `}>
                 <a href={"https://cine-med.com/aornonline/"} target={"_blank"}>{!data.image ? "image should be here" : <img className={"rounded-xl"} src={data.image.url}/>}</a>
             </div>
-            <div className={"c1 pt-2 lg:w-[640px]"}>{data.name}</div>
+            <div className={"pt-2 b2"}>({date.getFullYear()})</div>
+            <div className={"c1 pt-2 lg:w-[570px]"}>{data.name}</div>
         </div>
     )
 }
