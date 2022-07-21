@@ -72,7 +72,7 @@ const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
                            <a href={"/VeinGlobal"}><div className={"py-2 px-3 hover:bg-soft-purple"}>Vein Global</div></a>
                        </div>
                    </div>
-                   <a className={"b3"} href={"/aboutus"}>About us</a>
+                   {/*<a className={"b3"} href={"/aboutus"}>About us</a>*/}
                    <a className={"b3"} href={"/contact"}>Contact us</a>
                    <a className={"b3"} href="/faq">FAQ</a>
                </div>
