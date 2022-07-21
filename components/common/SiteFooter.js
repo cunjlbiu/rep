@@ -72,12 +72,12 @@ const SiteFooter = () => {
             <div><a href={"https://cinemed-agility.vercel.app/VeinGlobal"}><p className={"b3 hover:bg-white"}>Vein Global</p></a></div>
           </div>
 
-          <div className={"text-primary-darkblue space-y-3"}>
-            <div><a href={"https://cinemed-agility.vercel.app/aboutus"}><p className={"bttn1 hover:bg-white"}>About us</p></a></div>
-            <div><a href={"assets/order_form.pdf"} download><p className={"b3 hover:bg-white"}>Printable order form</p></a></div>
-            <div><a href={"https://cinemed-agility.vercel.app/privacy-policy"}><p className={"b3 hover:bg-white"}>Privacy policy</p></a></div>
-            <div><a href={"/faq"}><p className={"b3 hover:bg-white"}>FAQ</p></a></div>
-          </div>
+          {/*<div className={"text-primary-darkblue space-y-3"}>*/}
+          {/*  <div><a href={"https://cinemed-agility.vercel.app/aboutus"}><p className={"bttn1 hover:bg-white"}>About us</p></a></div>*/}
+          {/*  <div><a href={"assets/order_form.pdf"} download><p className={"b3 hover:bg-white"}>Printable order form</p></a></div>*/}
+          {/*  <div><a href={"https://cinemed-agility.vercel.app/privacy-policy"}><p className={"b3 hover:bg-white"}>Privacy policy</p></a></div>*/}
+          {/*  <div><a href={"/faq"}><p className={"b3 hover:bg-white"}>FAQ</p></a></div>*/}
+          {/*</div>*/}
 
           <div className={"text-primary-darkblue space-y-3"}>
             <a href={"https://cinemed-agility.vercel.app/contact"}><p className={"bttn1 hover:bg-white"}>Contact us</p></a>
