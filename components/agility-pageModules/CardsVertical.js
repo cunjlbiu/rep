@@ -91,9 +91,9 @@ const CardsVertical = ({module}) => {
                     <div className={"w-[800px] h-[600px] rounded-xl ml-[-66px]"}>
                         <img className={"rounded-xl object-cover"} src={fields?.img?.url}/>
                     </div>
-                    <h3 className={"md:text-primary-darkblue md:text-[40px]"}
+                    <h3 className={"md:text-primary-darkblue md:text-[40px] max-w-[700px]"}
                         dangerouslySetInnerHTML={renderHTML(fields.title)}></h3>
-                    <div className={" md:text-[16px] b1"} dangerouslySetInnerHTML={renderHTML(fields.text)}></div>
+                    <div className={" md:text-[16px] b1 max-w-[700px] "} dangerouslySetInnerHTML={renderHTML(fields.text)}></div>
                     {listItems?.map((e, i) => {
                             if (e.length > 0)
                                 return (
