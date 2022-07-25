@@ -21,7 +21,7 @@ export const CourseItem = ({data, aorn, logo})=> {
                 <div className={`absolute b3 rounded-full px-[12px] py-1 bottom-4 right-6 ${aorn ? "bg-primary-white" : "hidden" }`}>
                     {aorn ? <img src={logo.url}/> : "" }
                 </div>
-                {!data.image ? "image should be here" : <a target={aorn ? '_blank':'_self'} href={aorn ? "https://cine-med.com/aornonline/":`/dynamic/${data.id.toLowerCase()}`}>
+                {!data.image ? "image should be here" : <a target={aorn ? '_blank':'_self'} href={aorn ? "https://cine-med.com/aornonline/": data?.id ? `/dynamic/${data?.id?.toLowerCase()}` : `#`}>
                     <img className={"rounded-xl object-fill"} src={data.image.url}/></a>}
             </div>
             <div className={"flex justify-between mdplus:w-[570px] my-4"}>
