@@ -185,7 +185,7 @@ const courseType =[
     {value:"Conference", label:"Conference"},
     {value:"Master Class", label:"Master Class"},
     {value:"Symposia", label:"Symposia"},
-    {value:"Ground Rounds", label:"Ground Rounds"},
+    {value:"Grand Rounds", label:"Grand Rounds"},
     {value:"Virtual Event", label:"Virtual Event"},
     {value:"Webinar", label:"Webinar"},
     {value:"eLearning", label:"eLearning"},
