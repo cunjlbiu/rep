@@ -5,7 +5,7 @@ import Link from "next/link";
 const TextBlockWithImage = ({ module }) => {
     // get module fields
     const { fields } = module;
-    let tag = fields?.caption?.toLowerCase()?.replaceAll("for healthcare ", "")
+    let tag = fields?.caption?.toLowerCase()?.replace("for healthcare ", "")
     // function to check whether or not the url is absolute
     const isUrlAbsolute = (url) =>
         url.indexOf("://") > 0 || url.indexOf("//") === 0;
