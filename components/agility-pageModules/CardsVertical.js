@@ -12,16 +12,20 @@ const CardsVertical = ({module}) => {
         e.slice(e.indexOf('<p>') + 3)
     );
 
-    const Card = ({iconUrl, title, text, iconBg, cardBg, textClr}) => {
+    const Card = ({iconUrl, title, text, iconBg, cardBg, textClr, link}) => {
         return (
-            <div className={"border-2 border-agility w-80 min-h-[170] card p-4 space-y-3 rounded-xl md:w-full md:h-full"}
-                 style={{backgroundColor: cardBg, color: textClr}}>
-                {iconUrl ?
-                    <img className={"rounded"} src={iconUrl} height={"48"} width={"48"}
-                         style={{backgroundColor: iconBg}}/>
-                    : <div className={"w-12 h-12"}/>}
-                <p className={"bttn1"}>{title}</p>
-                <p className={"b3 text-justify"}>{text}</p>
+            <div>
+                <a href={link?.href} target={link?.target}>
+                    <div className={"border-2 border-agility w-80 min-h-[170] card p-4 space-y-3 rounded-xl md:w-full md:h-full"}
+                         style={{backgroundColor: cardBg, color: textClr}}>
+                        {iconUrl ?
+                            <img className={"rounded"} src={iconUrl} height={"48"} width={"48"}
+                                 style={{backgroundColor: iconBg}}/>
+                            : <div className={"w-12 h-12"}/>}
+                        <p className={"bttn1"}>{title}</p>
+                        <p className={"b3 text-justify"}>{text}</p>
+                    </div>
+                </a>
             </div>
         )
     }
@@ -40,6 +44,7 @@ const CardsVertical = ({module}) => {
                                           iconUrl={card.fields.icon ? card.fields.icon.url : ''}
                                           iconBg={card.fields.iconBackground}
                                           cardBg={card.fields.cardBackground}
+                                          link = {card.fields?.link}
                                     />
                                 )
                         })
@@ -60,6 +65,7 @@ const CardsVertical = ({module}) => {
                                               iconUrl={card.fields.icon ? card.fields.icon.url : ''}
                                               iconBg={card.fields.iconBackground}
                                               cardBg={card.fields.cardBackground}
+                                              link = {card.fields?.link}
                                         />
                                     </div>
                                 )
