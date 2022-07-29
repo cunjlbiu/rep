@@ -555,7 +555,6 @@ CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, language
         }
 
     }catch (err) {
-        for(let i = 0;i<100;i++)
         if (console) console.log(err)
         relatedCourse = null
     }

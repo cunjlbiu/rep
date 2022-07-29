@@ -47,9 +47,10 @@ const CourseBlock = ({blockData, filters})=>{
 }
 
 
-const VGOfferings = ({module})=>{
+const VGOfferings = ({module, customData})=>{
     const ref = useRef()
     const {fields} = module
+    fields.courses = customData
     const course = {}
     fields.courses.map((e)=>{course[e.fields.filter] ? course[e.fields.filter].push(e) : course[e.fields.filter] = [e] })
     const [amount, setAmount] = useState(8);
@@ -185,3 +186,32 @@ const VGOfferings = ({module})=>{
 
 }
 export default VGOfferings;
+
+VGOfferings.getCustomInitialProps = async ({agility, item, languageCode})=>{
+    const api = agility;
+    const refName =item.fields.courses[0].properties.referenceName;
+    let skip = 0;
+    let totalCount = 0;
+    let courseList = []
+    do {
+            try{
+                let courses = await api.getContentList({
+                    referenceName:refName,
+                    locale: languageCode,
+                    take:50,
+                    skip: skip,
+                })
+                totalCount = courses.totalCount
+                skip+=50
+                courseList.push(...courses.items)
+        }catch (e) {
+            if (console) console.log(`VGOfferings skip ${skip} totalCount ${totalCount} ERROR: `, e);
+            skip += 50
+        }
+    } while(skip < totalCount)
+    return (
+        courseList
+    )
+
+
+}
