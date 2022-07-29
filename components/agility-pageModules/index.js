@@ -47,6 +47,7 @@ import ForceSync from "./ForceSync";
 import VGOfferings from "./VGOfferings";
 import Brochure from "./Brochure";
 import CardsVertical from "./CardsVertical";
+import FeaturedProducts from "./FeaturedProducts";
 
 
 // All of the Agility Page Module Components that are in use in this site need to be imported into this index file.
@@ -102,8 +103,7 @@ const allModules = [
     {name: "VGOfferings", module: VGOfferings},
     {name: "Brochure", module: Brochure},
     {name: "CardsVertical", module: CardsVertical},
-
-
+    {name: "FeaturedProducts", module: FeaturedProducts},
 
 ];
 
