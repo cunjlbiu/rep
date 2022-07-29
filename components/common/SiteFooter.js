@@ -50,26 +50,26 @@ const SiteFooter = () => {
             <p className={"text-primary-grey b3 w-[337px]"}>CineMed is a global healthcare solutions company committed to improving
               patient outcomes through innovative training and customer engagement.</p>
             <div className={"text-primary-grey flex space-x-[22px]"}>
-              <FaYoutube className={"w-6 h-6"}/>
-              <FaTwitter className={"w-6 h-6"}/>
-              <FaFacebook className={"w-6 h-6"}/>
-              <FaLinkedin className={"w-6 h-6"}/>
+              <a href={"https://www.youtube.com/cinemed"} target={"_blank"}><FaYoutube className={"w-6 h-6"}/></a>
+              <a href={"https://www.instagram.com/cinemed_inc/"} target={"_blank"}><FaInstagram className={"w-6 h-6"}/></a>
+              <a href={"https://www.facebook.com/CineMed/ "} target={"_blank"}><FaFacebook className={"w-6 h-6"}/></a>
+              <a href={"https://www.linkedin.com/company/cine-med/"} target={"_blank"}><FaLinkedin className={"w-6 h-6"}/></a>
             </div>
             <p className={" b3 text-[11px] text-primary-grey "}>Copyright © 2022 CineMed. All Rights Reserved.</p>
           </div>
 
           <div className={"text-primary-darkblue space-y-3"}>
-            <div><a href={"https://cinemed-agility.vercel.app/company"}><p className={"bttn1 hover:bg-white"}>Company</p></a></div>
-            <div><a href={"https://cinemed-agility.vercel.app/company"}><p className={"b3 hover:bg-white"}>Healthcare Providers</p></a></div>
-            <div><a href={"https://cinemed-agility.vercel.app/company"}><p className={"b3 hover:bg-white"}>Healthcare Facilities</p></a></div>
-            <div><a href={"https://cinemed-agility.vercel.app/company"}><p className={"b3 hover:bg-white"}>Healthcare Industry</p></a></div>
+            <div><a href={"/company"}><p className={"bttn1 hover:bg-white"}>Company</p></a></div>
+            <div><a href={"/company#providers"}><p className={"b3 hover:bg-white"}>Healthcare Providers</p></a></div>
+            <div><a href={"/company#facilities"}><p className={"b3 hover:bg-white"}>Healthcare Facilities</p></a></div>
+            <div><a href={"/company#industry"}><p className={"b3 hover:bg-white"}>Healthcare Industry</p></a></div>
           </div>
 
           <div className={"text-primary-darkblue space-y-3"}>
             <p className={"bttn1 hover:bg-white"}>Education</p>
-            <div><a href={"https://cinemed-agility.vercel.app/AORN"}><p className={"b3 hover:bg-white"}>AORN Library</p></a></div>
-            <div><a href={"https://cinemed-agility.vercel.app/ACS"}><p className={"b3 hover:bg-white"}>ACS Library</p></a></div>
-            <div><a href={"https://cinemed-agility.vercel.app/VeinGlobal"}><p className={"b3 hover:bg-white"}>Vein Global</p></a></div>
+            <div><a href={"/AORN"}><p className={"b3 hover:bg-white"}>AORN Library</p></a></div>
+            <div><a href={"/ACS"}><p className={"b3 hover:bg-white"}>ACS Library</p></a></div>
+            <div><a href={"/VeinGlobal"}><p className={"b3 hover:bg-white"}>Vein Global</p></a></div>
           </div>
 
           {/*<div className={"text-primary-darkblue space-y-3"}>*/}
@@ -80,7 +80,7 @@ const SiteFooter = () => {
           {/*</div>*/}
 
           <div className={"text-primary-darkblue space-y-3"}>
-            <a href={"https://cinemed-agility.vercel.app/contact"}><p className={"bttn1 hover:bg-white"}>Contact us</p></a>
+            <a href={"/contact"}><p className={"bttn1 hover:bg-white"}>Contact us</p></a>
             <p className={"b3 hover:bg-white"}>
               CineMed, Inc. 127 Main Street<br/>
               North Woodbury, CT 06798<br/>
@@ -125,10 +125,10 @@ const SiteFooter = () => {
 
             <div className = {"flex flex-col mt-11"}>
               <div className={"flex text-primary-grey"}>
-                <a href=""><FaYoutube className={"w-[23px] h-[17px]"}/></a>
-                <a className={"pl-5"} href="#"><FaTwitter className={"w-[23px] h-[17px]"}/></a>
-                <a className={"pl-5"} href="#"><FaFacebook className={"w-[23px] h-[17px]"}/></a>
-                <a className={"pl-5"} href="#"><FaLinkedin className={"w-[23px] h-[17px]"}/></a>
+                <a href="https://www.youtube.com/cinemed"><FaYoutube className={"w-[23px] h-[17px]"}/></a>
+                <a className={"pl-5"} href="https://www.instagram.com/cinemed_inc/"><FaInstagram className={"w-[23px] h-[17px]"}/></a>
+                <a className={"pl-5"} href="https://www.facebook.com/CineMed/ "><FaFacebook className={"w-[23px] h-[17px]"}/></a>
+                <a className={"pl-5"} href="https://www.linkedin.com/company/cine-med/"><FaLinkedin className={"w-[23px] h-[17px]"}/></a>
               </div>
               <div className={"flex flex-col mt-5"}>
                 <p className={"b4"}>
