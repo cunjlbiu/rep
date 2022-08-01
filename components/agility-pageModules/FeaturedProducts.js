@@ -55,7 +55,7 @@ const FeaturedProducts =({module})=>{
                                min: 1600
                            },
                            items: 3,
-                           partialVisibilityGutter: 40
+                           partialVisibilityGutter: 80
                        },
                        mobile: {
                            breakpoint: {
@@ -84,7 +84,7 @@ const FeaturedProducts =({module})=>{
                    {fields?.products?.map(
                        product =>
 
-                               <div className={"h-[373px] w-[528px] rounded-xl hover:bg-soft-blue mx-5 border-[1px] flex flex-col border-gray-200"}>
+                               <div className={"h-[373px] max-w-[528px] rounded-xl hover:bg-soft-blue border-[1px] flex flex-col border-gray-200"}>
                                    <img className={"rounded-t-xl h-[289px]"} src={product.fields.image.url} height={289} width={528}/>
                                    <div className={"flex justify-between px-3 flex-grow"}>
                                        <div className={"c1 self-center"}>{product.fields.title}</div>
