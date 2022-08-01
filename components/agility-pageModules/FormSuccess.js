@@ -18,8 +18,10 @@ const FormSuccess = ({module}) =>{
                 <div className={"flex flex-row justify-center space-x-4"}>
                     <a className={"flex bttn1 w-36 h-12 items-center border-primary-blue rounded-full border-primary-blue border-2 text-primary-blue"}
                        href={"https://cinemed-agility.vercel.app/home"}><p className={"mx-auto"}>Back Home</p></a>
-                    <a className={"flex bttn1 w-36 h-12 items-center bg-primary-blue rounded-full"}
-                       href={fields.formLink.href}><p className={"mx-auto text-primary-white"}>{fields.formLink.text}</p></a>
+
+                    {fields?.formLink ?
+                        <a className={"flex bttn1 w-36 h-12 items-center bg-primary-blue rounded-full"}
+                       href={fields?.formLink?.href}><p className={"mx-auto text-primary-white"}>{fields?.formLink?.text}</p></a> : ""}
                 </div>
             </div>
         </div>
