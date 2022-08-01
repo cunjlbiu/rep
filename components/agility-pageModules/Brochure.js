@@ -3,6 +3,20 @@ import {renderHTML} from "@agility/nextjs";
 
 const Brochure = ({module})=>{
     const {fields} = module;
+    async function FormButton(e){
+        e.preventDefault()
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json','Accept': 'application/json', },
+            body: JSON.stringify({ email: 'test@test.test' })
+        };
+        const response = await fetch('https://info.cine-med.com/l/930733/2022-08-01/8zw75', requestOptions);
+        const data = await response.json();
+        console.log(response)
+        alert(data);
+    }
+
+
     return(
         <div className={"py-5"} style={{
             background:fields.bgColor,
@@ -19,7 +33,7 @@ const Brochure = ({module})=>{
                 </div>
                     <div className={"w-[640px] bg-primary-white py-5 rounded-xl"}>
                         <form className={"grid grid-flow-row  justify-center gap-4 md:flex md:flex-col md:items-center"}
-                              action="" method="post">
+                              onSubmit={e=>FormButton(e)}>
                             <label className={"md:min-w-[335px] md:w-full"}><br/>
                                 <input id={"firstName"} name={"firstName"} placeholder={"First name"}
                                        className={"contactForm w-[416px] md:min-w-[335px] md:w-full"} required={true}
@@ -48,6 +62,7 @@ const Brochure = ({module})=>{
                                     target={"_blank"}>
                                     {fields.bLabel}
                                 </a>
+                                <input type={"submit"}/>
                             </div>
                         </form>
                     </div>
