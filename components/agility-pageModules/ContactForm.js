@@ -22,6 +22,8 @@ const ContactForm = ({module}) => {
             k.subDisabled = false;
         value.subDisabled = true;
     }
+    const emailPattern = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+
 
 
     return (
@@ -46,6 +48,7 @@ const ContactForm = ({module}) => {
                     <label className={"md:min-w-[335px] md:w-full"}><br/>
                         <input id={"email"} name={"email"} placeholder={"Email"}
                                className={"contactForm w-[416px] md:min-w-[335px] md:w-full"} type={"email"}
+                               pattern={emailPattern}
                                required={true}/>
                         <span className={"b3"}>Email</span>
                     </label>

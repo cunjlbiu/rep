@@ -2,6 +2,7 @@ import React from "react";
 import {renderHTML} from "@agility/nextjs";
 
 const Brochure = ({module})=>{
+    const emailPattern = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
     const {fields} = module;
     async function FormButton(e){
         // e.preventDefault()
@@ -55,6 +56,7 @@ const Brochure = ({module})=>{
                                 <input id={"email"} name={"email"} placeholder={"Email"}
                                        className={"contactForm w-[416px] md:min-w-[335px] md:w-full"} type={"email"}
                                        required={true}
+                                       pattern={emailPattern}
                                        style={{background:'#FFF'}}/>
                                 <span className={"b3"}>Email</span>
                             </label>

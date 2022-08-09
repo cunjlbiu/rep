@@ -6,8 +6,10 @@ import 'react-phone-input-2/lib/style.css'
 import "react-datepicker/dist/react-datepicker.css";
 import {renderHTML} from "@agility/nextjs";
 import {now} from "next-auth/client/_utils";
+
 const CreateCourseForm =({module}) =>{
     const {fields} = module;
+    const emailPattern = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
     const [subSpec, setSubSpec] = useState(true)
     // const Specialities = fields.specialities.split('</p>').map((e) =>{
     //         let elem = e.slice(e.indexOf('<p>')+3)
@@ -114,7 +116,14 @@ const CreateCourseForm =({module}) =>{
                     </label>
 
                     <label className={" lg:w-[304px] md:w-[335px] md:block "}><br/>
-                        <input id={"email"} name={"email"} placeholder={"Email"} className={"contactForm w-[304px]"} type={"email"} style={{background:"white"}} required={true}/>
+                        <input id={"email"}
+                               name={"email"}
+                               placeholder={"Email"}
+                               pattern={emailPattern}
+                               className={"contactForm w-[304px]"}
+                               type={"email"}
+                               style={{background:"white"}}
+                               required={true}/>
                         <span className={"b3"}>Email</span>
                     </label>
 

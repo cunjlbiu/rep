@@ -34,11 +34,12 @@ const FeaturedProducts =({module})=>{
             </div>
             <div className={"mx-auto flex flex-col"}>
                <Slider
+                   itemClass={"p-[10px]"}
                    autoPlay
                    autoPlaySpeed={2000}
                    arrows={false}
                    draggable
-                   partialVisbile={true}
+                   centerMode={true}
                    focusOnSelect={true}
                    infinite
                    minimumTouchDrag={80}
@@ -49,13 +50,21 @@ const FeaturedProducts =({module})=>{
                    renderButtonGroupOutside={true}
                    renderDotsOutside={false}
                    responsive={{
-                       desktop: {
+                       largeDesktop: {
                            breakpoint: {
                                max: 3000,
-                               min: 1600
+                               min: 2101
+                           },
+                           items: 4,
+
+                       },
+                       desktop: {
+                           breakpoint: {
+                               max: 2100,
+                               min: 1601
                            },
                            items: 3,
-                           partialVisibilityGutter: 80
+
                        },
                        mobile: {
                            breakpoint: {
@@ -63,7 +72,7 @@ const FeaturedProducts =({module})=>{
                                min: 0
                            },
                            items: 1,
-                           partialVisibilityGutter: 30
+
                        },
                        tablet: {
                            breakpoint: {
@@ -71,7 +80,7 @@ const FeaturedProducts =({module})=>{
                                min: 464
                            },
                            items: 2,
-                           partialVisibilityGutter: 30
+
                        }
                    }}
                    shouldResetAutoplay
@@ -85,12 +94,24 @@ const FeaturedProducts =({module})=>{
                        product =>
 
                                <div className={"h-[373px] max-w-[528px] rounded-xl hover:bg-soft-blue border-[1px] flex flex-col border-gray-200"}>
-                                   <img className={"rounded-t-xl h-[289px]"} src={product.fields.image.url} height={289} width={528}/>
+                                   <img className={"rounded-t-xl h-[289px] object-cover"} src={product.fields.image.url} height={289}/>
                                    <div className={"flex justify-between px-3 flex-grow"}>
                                        <div className={"c1 self-center"}>{product.fields.title}</div>
                                        <a className={"bttn2 self-center hover:text-primary-blue"} href={product.fields.link.href} target={product.fields.link.target}>{product.fields.link.text}</a>
                                    </div>
                                </div>
+
+                   )}
+                   {fields?.products?.map(
+                       product =>
+
+                           <div className={"h-[373px] max-w-[528px] rounded-xl hover:bg-soft-blue border-[1px] flex flex-col border-gray-200"}>
+                               <img className={"rounded-t-xl h-[289px] object-cover"} src={product.fields.image.url} height={289}/>
+                               <div className={"flex justify-between px-3 flex-grow"}>
+                                   <div className={"c1 self-center"}>{product.fields.title}</div>
+                                   <a className={"bttn2 self-center hover:text-primary-blue"} href={product.fields.link.href} target={product.fields.link.target}>{product.fields.link.text}</a>
+                               </div>
+                           </div>
 
                    )}
 
