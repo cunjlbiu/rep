@@ -90,26 +90,26 @@ const FeaturedProducts =({module})=>{
                    swipeable
                >
 
-                   {fields?.products?.map(
-                       product =>
+                   {/*{fields?.products?.map(*/}
+                   {/*    product =>*/}
 
-                               <div className={"h-[373px] max-w-[528px] rounded-xl hover:bg-soft-blue border-[1px] flex flex-col border-gray-200"}>
-                                   <img className={"rounded-t-xl h-[289px] object-cover"} src={product.fields.image.url} height={289}/>
-                                   <div className={"flex justify-between px-3 flex-grow"}>
-                                       <div className={"c1 self-center"}>{product.fields.title}</div>
-                                       <a className={"bttn2 self-center hover:text-primary-blue"} href={product.fields.link.href} target={product.fields.link.target}>{product.fields.link.text}</a>
-                                   </div>
-                               </div>
+                   {/*            <div className={"h-[373px] max-w-[528px] rounded-xl hover:bg-soft-blue border-[1px] flex flex-col border-gray-200"}>*/}
+                   {/*                <img className={"rounded-t-xl h-[289px] object-cover"} src={product.fields.image.url} height={289}/>*/}
+                   {/*                <div className={"flex justify-between px-3 flex-grow"}>*/}
+                   {/*                    <div className={"c1 self-center"}>{product.fields.title}</div>*/}
+                   {/*                    <a className={"bttn2 self-center hover:text-primary-blue"} href={product.fields.link.href} target={product.fields.link.target}>{product.fields.link.text}</a>*/}
+                   {/*                </div>*/}
+                   {/*            </div>*/}
 
-                   )}
+                   {/*)}*/}
                    {fields?.products?.map(
                        product =>
 
                            <div className={"h-[373px] max-w-[528px] rounded-xl hover:bg-soft-blue border-[1px] flex flex-col border-gray-200"}>
                                <img className={"rounded-t-xl h-[289px] object-cover"} src={product.fields.image.url} height={289}/>
-                               <div className={"flex justify-between px-3 flex-grow"}>
-                                   <div className={"c1 self-center"}>{product.fields.title}</div>
-                                   <a className={"bttn2 self-center hover:text-primary-blue"} href={product.fields.link.href} target={product.fields.link.target}>{product.fields.link.text}</a>
+                               <div className={"flex justify-between my-auto space-x-3 items-baseline px-3"}>
+                                   <div className={"c1"}>{product.fields.title}</div>
+                                   <a className={"bttn2 hover:text-primary-blue"} href={product.fields.link.href} target={product.fields.link.target}><span className={""}>{product.fields.link.text}</span></a>
                                </div>
                            </div>
 
