@@ -108,7 +108,7 @@ const FeaturedProducts =({module})=>{
                            <div className={"h-[373px] max-w-[528px] rounded-xl hover:bg-soft-blue border-[1px] flex flex-col border-gray-200"}>
                                <img className={"rounded-t-xl h-[289px] object-cover"} src={product.fields.image.url} height={289}/>
                                <div className={"flex justify-between my-auto space-x-3 items-baseline px-3"}>
-                                   <div className={"c1"}>{product.fields.title}</div>
+                                   <div className={"c1_mobile"}>{product.fields.title}</div>
                                    <a className={"bttn2 hover:text-primary-blue"} href={product.fields.link.href} target={product.fields.link.target}><span className={""}>{product.fields.link.text}</span></a>
                                </div>
                            </div>
