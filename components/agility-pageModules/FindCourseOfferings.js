@@ -220,16 +220,16 @@ const FindCourseOfferings = ({module})=>{
     const [checked, setChecked] = useState(false);
     const [courses,setCourses] = useState(fields.courses?.sort((a,b)=>{
         if (a.fields.startDate < b.fields.startDate)
-            return -1
-        if (a.fields.startDate > b.fields.startDate)
             return 1
+        if (a.fields.startDate > b.fields.startDate)
+            return -1
         return 0
     }));
     const [aornCourses,setAornCourses] = useState(fields.aorn?.sort((a,b)=>{
         if (a.fields.startDate < b.fields.startDate)
-            return -1
-        if (a.fields.startDate > b.fields.startDate)
             return 1
+        if (a.fields.startDate > b.fields.startDate)
+            return -1
         return 0
     }));
     const [listedCourses,setListedCourses] = useState(courses?.slice(0,4))
