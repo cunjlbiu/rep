@@ -173,38 +173,40 @@ const CreateCourseForm =({module}) =>{
                         <span className={"b3"}>Topics</span>
                     </label>
 
-                    <label className={"b3"}><br/>
-                        <DatePicker
-                            name={"porposedDates"}
-                            selected={startDate}
-                            onChange={onChange}
-                            startDate={startDate}
-                            endDate={endDate}
-                            dateFormat="MM.dd.yyyy"
-                            selectsRange
-                            monthsShown={2}
-                            showDisabledMonthNavigation
-                            className={"datePicker"}
-                            calendarClassName={"datePickerMonth"}
-                        />
-                        <input className={"hidden "}/>
-                        <span className={"b3"}>Proposed dates</span>
-                    </label>
+                    <div className={"col-span-2 grid grid-cols-3 justify-center"}>
+                        <label className={"b3"}><br/>
+                            <DatePicker
+                                name={"porposedDates"}
+                                selected={startDate}
+                                onChange={onChange}
+                                startDate={startDate}
+                                endDate={endDate}
+                                dateFormat="MM.dd.yyyy"
+                                selectsRange
+                                monthsShown={2}
+                                showDisabledMonthNavigation
+                                className={"datePicker"}
+                                calendarClassName={"datePickerMonth"}
+                            />
+                            <input className={"hidden "}/>
+                            <span className={"b3"}>Proposed dates</span>
+                        </label>
 
 
-                    <div className={"bg-primary-white -translate-y-4 space-x-2 b3 space-y-2 md:translate-x-[-96px] translate-x-[-75px]"}><br/>
-                        <div className={"grid grid-cols-2"}>
-                            <div className={"space-x-2"}>
+                            <div className={"b3 mx-auto"}>
                                 Are these dates flexible? <br/>
-                                <input id={"flexible"} name={"flexible"} type={"radio"}  style={{background:"white"}} value={"Yes"} required={true}/> Yes
-                                <input id={"flexible"} name={"flexible"} type={"radio"}  style={{background:"white"}} value={"No"}/> No
+                                <div className={"pt-3"}>
+                                    <input id={"flexible"} name={"flexible"} type={"radio"}  style={{background:"white"}} value={"Yes"} required={true}/> Yes
+                                    <input className={"ml-2"} id={"flexible"} name={"flexible"} type={"radio"}  style={{background:"white"}} value={"No"}/> No
+                                </div>
                             </div>
-                            <div className={"lg:w-[165px] space-x-2 "}>
+                            <div className={"b3 mx-auto"}>
                                 CME accreditation offered <br/>
-                                <input id={"cme"} name={"cme"} type={"radio"}  style={{background:"white"}} value={"Yes"} required={true}/> Yes
-                                <input id={"cme"} name={"cme"} type={"radio"}  style={{background:"white"}} value={"No"}/> No
+                                <div className={"pt-3"}>
+                                    <input  id={"cme"} name={"cme"} type={"radio"}  style={{background:"white"}} value={"Yes"} required={true}/> Yes
+                                    <input className={"ml-2"} id={"cme"} name={"cme"} type={"radio"}  style={{background:"white"}} value={"No"}/> No
+                                </div>
                             </div>
-                        </div>
                     </div>
 
                     <label className={"bg-primary-white lg:w-[304px] md:w-[335px] md:block"}><br/>
