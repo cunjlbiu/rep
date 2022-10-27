@@ -2,7 +2,7 @@ import React from 'react'
 
 const Subscriptions = ({module}) => {
     const {fields} = module
-    console.log(fields)
+    //console.log(fields)
 
     return(
         <div>

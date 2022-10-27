@@ -6,7 +6,7 @@ const resttest = ({module}) =>{
     const {fields} = module;
     const { data: session } = useSession()
     if (session) {
-        console.log(session.user)
+        //console.log(session.user)
         return (
             <div className="max-w-screen-xl mx-auto">
                 Signed in as {session.user.name} <br />

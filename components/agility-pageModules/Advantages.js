@@ -64,7 +64,7 @@ const Advantages = ({module}) =>{
 
 
     function clickNext(){
-        console.log("clicked next")
+        //console.log("clicked next")
         if (numId < length-1) handleClick(numId+1);
     }
 
@@ -73,7 +73,7 @@ const Advantages = ({module}) =>{
     }
 
     function handleClick(pos){
-        console.log("hanled ", pos)
+        //console.log("hanled ", pos)
         setNumId(pos);
         //pos.classList.remove('text-secondary-green','opacity-30')
         // const elements = document.getElementsByClassName("num-element");

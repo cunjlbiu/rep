@@ -37,8 +37,8 @@ const CreateCourseForm =({module}) =>{
         let day = new Date()
         day.setHours(0, 0, 0, 0)
         const [start, end] = dates;
-        console.log("start")
-        console.log(start)
+        //console.log("start")
+        //console.log(start)
         if (start >= day){
         setStartDate(start);
         setEndDate(end);
@@ -63,14 +63,14 @@ const CreateCourseForm =({module}) =>{
         {value: 'Conference', label: 'Conference', online: false},
         {value: 'Master Class', label: 'Master Class', online: false},
         {value: 'Symposia', label: 'Symposia', online: false},
-        {value: 'Ground Rounds', label: 'Ground Rounds', online: false},
+        {value: 'Grand Rounds', label: 'Grand Rounds', online: false},
 
     ]
 
     const budgets = [
-        {value: 'Up tp $499', label: 'Up tp $499'},
+        {value: 'Up to $499', label: 'Up to $499'},
         {value: '$500 - $999$', label: '$500 - $999$'},
-        {value: '1,000+', label: '1,000+'}]
+        {value: '$1,000+', label: '$1,000+'}]
 
 
     return(
@@ -192,10 +192,19 @@ const CreateCourseForm =({module}) =>{
                     </label>
 
 
-                    <div className={"bg-primary-white -translate-y-4 space-x-2 b3 space-y-2 md:translate-x-[-96px] "}><br/>
-                        Are these dates flexible? <br/>
-                        <input id={"firstName"} name={"flexible"} type={"radio"}  style={{background:"white"}} value={"Yes"} required={true}/> Yes
-                        <input id={"firstName"} name={"flexible"} type={"radio"}  style={{background:"white"}} value={"No"}/> No
+                    <div className={"bg-primary-white -translate-y-4 space-x-2 b3 space-y-2 md:translate-x-[-96px] translate-x-[-75px]"}><br/>
+                        <div className={"grid grid-cols-2"}>
+                            <div className={"space-x-2"}>
+                                Are these dates flexible? <br/>
+                                <input id={"flexible"} name={"flexible"} type={"radio"}  style={{background:"white"}} value={"Yes"} required={true}/> Yes
+                                <input id={"flexible"} name={"flexible"} type={"radio"}  style={{background:"white"}} value={"No"}/> No
+                            </div>
+                            <div className={"lg:w-[165px] space-x-2 "}>
+                                CME accreditation offered <br/>
+                                <input id={"cme"} name={"cme"} type={"radio"}  style={{background:"white"}} value={"Yes"} required={true}/> Yes
+                                <input id={"cme"} name={"cme"} type={"radio"}  style={{background:"white"}} value={"No"}/> No
+                            </div>
+                        </div>
                     </div>
 
                     <label className={"bg-primary-white lg:w-[304px] md:w-[335px] md:block"}><br/>

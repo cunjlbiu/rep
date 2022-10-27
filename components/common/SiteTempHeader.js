@@ -4,8 +4,8 @@ import head from "next/head";
 
 const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
     // get header data
-    console.log('page')
-    console.log(page)
+    //console.log('page')
+    //console.log(page)
 
     const { header } = globalData;
 
@@ -74,7 +74,8 @@ const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
                    </div>
                    {/*<a className={"b3"} href={"/aboutus"}>About us</a>*/}
                    <a className={"b3"} href={"/contact"}>Contact us</a>
-                   <a className={"b3"} href="/faq">FAQ</a>
+                   {/*<a className={"b3"} href="/faq">FAQ</a>  ?filter=${filter}#fil */}
+                   <a className={"b3"} href="/find-a-course?live=true#fil">Events</a>
                </div>
                <div className={"flex py-[8px] space-x-3"}>
                    <a className={"flex bttn1 w-36 h-12 items-center bg-primary-blue rounded-full"} href={"/create-course"}><p className={"mx-auto text-primary-white"}>Create a Course</p></a>

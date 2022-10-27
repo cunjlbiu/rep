@@ -50,7 +50,7 @@ const Schedule = ({day}) => {
         }
     )
     //serch, slice
-    console.log(tester)
+    //console.log(tester)
 
 
 
@@ -112,7 +112,7 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
     const [schedule, setSchedule] = useState((customData?.schedule?.items || []));
     const [include, setInclude] = useState((customData?.include?.items || []));
     const [instructors, setInstructors] = useState((customData?.instructors?.items || []));
-    console.log(customData)
+    //console.log(customData)
     return (
         <div className={"max-w-screen-xl mx-auto py-14 pb-8 md:px-5"}>
 
@@ -543,7 +543,7 @@ CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, language
         }
 
         if (courses.length >=2){
-            console.log(relatedCourse.length)
+            //console.log(relatedCourse.length)
             if(relatedCourse.length == 0) relatedCourse.push(courses[0])
             let i = 0
             while(relatedCourse.length < 0){

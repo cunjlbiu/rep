@@ -27,8 +27,8 @@ export default async function handler(req, res) {
                                "Content-Type": "application/json" }
                 })
                 let credentials = await user.json();
-                console.log("А вот и секретные документики подъехали");
-                console.log(credentials);
+                //console.log("А вот и секретные документики подъехали");
+                //console.log(credentials);
                 res.status(200).json(auth(credentials, req.body));
 
             }
@@ -38,7 +38,7 @@ export default async function handler(req, res) {
                         "Content-Type": "application/json" }
                 })
                 let credentials = await user.json();
-                console.log(credentials);
+                //console.log(credentials);
                 res.status(200).json(auth(credentials,req.body));
             }
             break;

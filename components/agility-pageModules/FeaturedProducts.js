@@ -19,7 +19,7 @@ const ButtonGroup = ({previous, next})=>{
 
 const FeaturedProducts =({module})=>{
     const {fields} = module
-    console.log(fields)
+    //console.log(fields)
     return(
         <div className={"my-10"}>
             <div className={"flex flex-col justify-center space-y-5"}>

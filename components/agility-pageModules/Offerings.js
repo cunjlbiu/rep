@@ -84,7 +84,7 @@ const Offerings = ({module})=>{
 
 
     const applyFilter = (newFil)=>{
-        console.log(ref.current)
+        //console.log(ref.current)
         if(newFil === "All"){
             setFilter("")
         }

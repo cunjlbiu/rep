@@ -44,13 +44,13 @@ export default async function handler(req, res) {
                         take:50
                     })
                 }catch (e){
-                    console.log("Content fetch Error!: ",e)
+                    //console.log("Content fetch Error!: ",e)
                 }
 
                 try {
                     for (let item of courseList?.items){
                         if(!((item.fields.onDemand && item.fields.onDemand !=="false") || new Date(item.fields.endDate)>Date.now() || new Date(item.fields.startDate)>Date.now())){
-                           console.log(item.fields.id)
+                           //console.log(item.fields.id)
                             let cItem = await apiMgmt.getContentItem({
                                 languageCode: 'en-us',
                                 contentID: item.contentID,
@@ -125,7 +125,7 @@ export default async function handler(req, res) {
                             // // })
                     }
                 }catch (e) {
-                    console.log(e)
+                    //console.log(e)
                 }
 
 

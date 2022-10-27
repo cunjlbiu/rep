@@ -2,7 +2,7 @@
 
 const ButtonWithText = ({module})=>{
     const {fields} = module
-console.log(fields)
+    //console.log(fields)
 
     return(
       <div className={"md:bg-[#F0F9FF]"}>
