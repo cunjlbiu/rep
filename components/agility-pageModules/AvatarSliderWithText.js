@@ -6,7 +6,7 @@ const AvatarSliderWithText = ({module}) => {
     const {fields} = module
 
 
-    console.log(fields.avatarSlide[0].fields)
+    //console.log(fields.avatarSlide[0].fields)
 
 
     return (

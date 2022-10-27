@@ -7,7 +7,7 @@ const SiteHeader = ({ globalData, sitemapNode, page }) => {
   const { header } = globalData;
   // open / close mobile nav
   const [open, setOpen] = useState(false);
-  console.log(page)
+  //console.log(page)
 
 
   if (!header) {

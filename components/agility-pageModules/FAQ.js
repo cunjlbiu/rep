@@ -16,7 +16,7 @@ const Test = ({item}) => {
 
                 {item?.map((elem) => {
                         let link = elem?.page?.toLowerCase()?.replaceAll(" ", "-")
-                        console.log(link)
+                        //console.log(link)
                         return (
                             <div className={" flex flex-col mt-[32px] bord"}>
                                 <p className={"c2 text-primary-darkblue"}>{elem.title}</p>

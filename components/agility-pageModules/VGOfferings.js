@@ -93,7 +93,11 @@ const VGOfferings = ({module, customData})=>{
             //if(i == amount) break
             if( filter === "" || filter.indexOf(k[0]) !== -1){
                 maxPosCours +=k[1].length
-                if(i >= amount) continue
+                if(i >= amount)
+                    if(arr[arr.length -1][1].length % 2 != 0)
+                        setAmount(amount+1)
+                    else
+                        continue
                 arr.push([k[0],[]]);
                 for (let j of k[1]){
                     if(i < amount){

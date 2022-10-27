@@ -3,7 +3,7 @@ import {AgilityImage} from "@agility/nextjs";
 
 const Investors = ({module}) =>{
     const {fields} = module;
-console.log(fields.images.media[0])
+    //console.log(fields.images.media[0])
     return(
         <div className={"max-w-full justify-between py-6 "}>
             <div className="max-w-screen-xl my-8 mx-auto grid grid-rows-2 justify-center space-y-5">

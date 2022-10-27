@@ -21,7 +21,7 @@ function Layout(props) {
     pageTemplateName,
   } = props;
 
-  console.log({...props});
+  //console.log({...props});
 
   // If the page is not yet generated, this will be displayed
   // initially until getStaticProps() finishes running

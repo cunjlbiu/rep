@@ -13,15 +13,15 @@ export const Carousel = ({children}) => {
         setOffset(currentOffset => {
             const newOffset = currentOffset + PAGE_WIDTH
 
-            console.log(newOffset)
+            //console.log(newOffset)
             return Math.min(newOffset,0)
         })
 
-        console.log('handleLeftArrowClick')
+        //console.log('handleLeftArrowClick')
     }
 
     const handleRightArrowClick = () => {
-        console.log('handleRightArrowClick')
+        //console.log('handleRightArrowClick')
 
         setOffset((currentOffset) => {
 
@@ -29,7 +29,7 @@ export const Carousel = ({children}) => {
 
             const maxOffset = -(PAGE_WIDTH * (pages.length - 1))
 
-            console.log(newOffset,maxOffset)
+            //console.log(newOffset,maxOffset)
             return Math.max(newOffset,maxOffset)
 
         })

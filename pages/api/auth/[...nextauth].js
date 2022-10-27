@@ -29,11 +29,11 @@ export default NextAuth({
                     headers: { "Content-Type": "application/json" }
                 })
                 const user = await res.json()
-                console.log("Чуть менее секретные");
-                console.log(user);
+                //console.log("Чуть менее секретные");
+                //console.log(user);
                 // If no error and we have user data, return it
                 if (res.ok && user) {
-                    console.log("all OK");
+                    //console.log("all OK");
                     return user
                 }
                 // Return null if user data could not be retrieved

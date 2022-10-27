@@ -36,7 +36,7 @@ const OurTeam = ({module})=>{
 
     });
     function mouseMove(e){
-        console.log(e)
+        //console.log(e)
         setOffset(offset + e.movementX)
     }
 
@@ -58,9 +58,9 @@ const OurTeam = ({module})=>{
     }
 
     const nextSlide = (del) => {
-        console.log(del)
+        //console.log(del)
         let delta = 335+32
-        console.log(ref)
+        //console.log(ref)
         if (!del && ref.current.clientWidth > 1290) delta = 448
         let val = offset
         let maxOffset = ref.current.clientWidth - ref.current.scrollWidth

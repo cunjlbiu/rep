@@ -5,7 +5,7 @@ const FormSuccess = ({module}) =>{
     const {fields} = module;
     
     
-    console.log(fields.formLink)
+    //console.log(fields.formLink)
 
 
     return(

@@ -25,7 +25,7 @@ export const CourseItem = ({data, aorn, logo})=> {
                     <img className={"rounded-xl object-fill"} src={data.image.url}/></a>}
             </div>
             <div className={"flex justify-between mdplus:w-[570px] my-4"}>
-                <div className={"b3"}>{startDate.valueOf() ? `(${startDate.getFullYear()})` : ''} (ITEM # {data.id})</div>
+                <div className={"b3"}>{startDate.valueOf() ? `(${startDate.getFullYear()})` : ''}</div>
                 <div className={"flex justify-between"}>
                     <div className={"b3"}>{(data.place.length > 15)? "International" : data.place}</div>
                     <div className={`text-secondary-blue px-1 ${(!!startDate.valueOf() && !!data.place)? "" : "hidden"}`}>|</div>
@@ -74,9 +74,8 @@ const CourseBlock = ({blockData, filters, cl, deleteAll, aorn, logo})=>{
         </div>
     )
 }
-const Filtering = (filters, courses,ondemand, loc,type, spec)=>{
+const Filtering = (filters, courses,ondemand, loc,type, spec,live)=>{
     let filteredCourse = []
-
             for (let k of courses) {
             if (!k.fields.place) k.fields.place = ""
             if (!k.fields.filter) k.fields.filter= ""
@@ -84,8 +83,10 @@ const Filtering = (filters, courses,ondemand, loc,type, spec)=>{
             if (!k.fields.specialty) k.fields.specialty = ""
             if ((k.fields.filter.includes(filters) || k.fields.name.includes(filters) || k.fields.place.includes(filters))
                 && k.fields.place.includes(loc) && k.fields.type.includes(type) && k.fields.specialty.includes(spec)
-                && ( !ondemand || !!k.fields.onDemand) && (k.fields.onDemand || new Date(k.fields.endDate)>DATE_NOW || new Date(k.fields.startDate)>DATE_NOW )
+                && ( !ondemand || !!k.fields.onDemand)
+                && (k.fields.onDemand || new Date(k.fields.endDate)>DATE_NOW || new Date(k.fields.startDate)>DATE_NOW )
             )
+                if(!k.fields.onDemand == !!live || !live)
                 filteredCourse.push(k)
         }
     return filteredCourse;
@@ -241,7 +242,8 @@ const FindCourseOfferings = ({module})=>{
     const [filters, setFilters] = useState([]);
     const selectLocRef = useRef();
     const router = useRouter()
-    const initialFilter= router.query.filter || ""
+    const initialFilter = router.query.filter || ""
+    const [liveOnly,setLiveOnly] = useState(router.query.live || "")
     const selectTypeRef = useRef();
     const selectSpecialtyRef = useRef();
 
@@ -268,7 +270,7 @@ const FindCourseOfferings = ({module})=>{
 
 
 
-    useEffect(()=>{ApplyFilters()
+    useEffect(()=>{ApplyFilters(1,liveOnly)
         fillStorage()},[locFilter,typeFilter,specialtyFilter,filter])
     useEffect(()=>setFilter(initialFilter),[])
     useEffect(()=>{setListedCourses(courses.slice(0,amount));
@@ -321,12 +323,13 @@ const FindCourseOfferings = ({module})=>{
 
     const ApplyFilters = (sw) => {
         if (typeof(sw)=="boolean") {
+            setLiveOnly("")
             setCourses(Filtering(filter, fields.courses, sw, locFilter, typeFilter, specialtyFilter))
             setAornCourses(Filtering(filter, fields.aorn, sw, locFilter, typeFilter, specialtyFilter))
         }
         else{
-            setCourses(Filtering(filter, fields.courses,checked,locFilter,typeFilter,specialtyFilter))
-            setAornCourses(Filtering(filter, fields.aorn,checked,locFilter,typeFilter,specialtyFilter))
+            setCourses(Filtering(filter, fields.courses, checked, locFilter, typeFilter, specialtyFilter, liveOnly))
+            setAornCourses(Filtering(filter, fields.aorn, checked, locFilter, typeFilter, specialtyFilter, liveOnly))
         }
         setFilters([filter,locFilter,typeFilter,specialtyFilter])
         setAmount(4);
