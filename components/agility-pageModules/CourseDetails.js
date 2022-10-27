@@ -7,9 +7,6 @@ import {CourseItem} from "./FindCourseOfferings";
 
 const Schedule = ({day}) => {
 
-    //splice Нахуй выкинуть из головы )))
-
-
     const tester = day.fields?.timetable.map(
         (item) => {
 
@@ -49,10 +46,6 @@ const Schedule = ({day}) => {
 
         }
     )
-    //serch, slice
-    //console.log(tester)
-
-
 
     return (
         <div className={"flex flex-col mt-[82px] md:first:mt-16 md:mt-10"}>
@@ -104,15 +97,12 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
     const startDate = dynamicFields?.startDate ? (new Date(dynamicFields.startDate)) : null
     const endDate = dynamicFields?.endDate ? (new Date(dynamicFields.endDate)) : null
     const related = customData.relatedCourse
-
     const [isOpenMenu, setIsOpenMenu] = useState(false)
     const onButtonClick = () => setIsOpenMenu(!isOpenMenu)
-
-
     const [schedule, setSchedule] = useState((customData?.schedule?.items || []));
     const [include, setInclude] = useState((customData?.include?.items || []));
     const [instructors, setInstructors] = useState((customData?.instructors?.items || []));
-    //console.log(customData)
+
     return (
         <div className={"max-w-screen-xl mx-auto py-14 pb-8 md:px-5"}>
 
@@ -482,8 +472,9 @@ const CourseDetails = ({customData, module, dynamicPageItem}) => {
             <div className={"flex flex-col mt-16 "}>
                 <h3>Related Course</h3>
                 <div className={"flex md:flex-col mdplus:flex-row justify-between"}>
-                    {related.map((data)=>
-                    <CourseItem data={data.fields}/>
+                    {related.map((data,i)=>{
+                        if (i<2)  return <CourseItem data={data.fields}/>
+                    }
                     )}
                 </div>
             </div>
@@ -543,7 +534,7 @@ CourseDetails.getCustomInitialProps = async ({agility, dynamicPageItem, language
         }
 
         if (courses.length >=2){
-            //console.log(relatedCourse.length)
+            console.log(relatedCourse.length)
             if(relatedCourse.length == 0) relatedCourse.push(courses[0])
             let i = 0
             while(relatedCourse.length < 0){
