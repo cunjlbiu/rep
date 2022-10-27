@@ -108,7 +108,6 @@ const VGOfferings = ({module, customData})=>{
             }
         }
         setCourseList(arr)
-        console.log(arr, i)
         setCourseCountMax(maxPosCours)
     }
 
