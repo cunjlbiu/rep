@@ -3,6 +3,7 @@ import {useRouter} from 'next/router'
 import Switch from 'react-switch'
 import Select from "react-select";
 import {renderHTML} from "@agility/nextjs";
+import VGOfferings from "./VGOfferings";
 
 const DATE_NOW = Date.now();
 let aornText = '';
@@ -17,11 +18,11 @@ export const CourseItem = ({data, aorn, logo})=> {
     return(
         <div className={"py-10 max-w-[570px] md:mx-5 "}>
             <div className={"mdplus:min-w-[570px] mdplus:h-[320px] max-w-[570px] md:w-auto rounded-xl text-white text-center relative"}>
-                <div className={`absolute b3 rounded-full px-[12px] py-1 top-4 left-4 ${data.onDemand ? "bg-primary-blue" : "bg-primary-white text-black" }`}>{data.onDemand ? "On-Demand" : "Live"}</div>
+                <div className={`absolute b3 rounded-full px-[12px] py-1 top-4 left-4 ${data.onDemand ? "bg-primary-blue" : "bg-primary-white text-black" }`}>{data.onDemand ? "On-Demand" : data.vg ? "Vein global" :"Live"}</div>
                 <div className={`absolute b3 rounded-full px-[12px] py-1 bottom-4 right-6 ${aorn ? "bg-primary-white" : "hidden" }`}>
                     {aorn ? <img src={logo.url}/> : "" }
                 </div>
-                {!data.image ? "image should be here" : <a target={aorn ? '_blank':'_self'} href={aorn ? "https://cine-med.com/aornonline/": data?.id ? `/dynamic/${data?.id?.toLowerCase()}` : `#`}>
+                {!data.image ? "image should be here" : <a target={aorn ? '_blank':'_self'} href={aorn ? "https://cine-med.com/aornonline/": data.imageUrl ? data.imageUrl?.href : ""}>
                     <img className={"rounded-xl object-fill"} src={data.image.url}/></a>}
             </div>
             <div className={"flex justify-between mdplus:w-[570px] my-4"}>
@@ -78,16 +79,16 @@ const CourseBlock = ({blockData, filters, cl, deleteAll, aorn, logo})=>{
 const Filtering = (filters, courses,ondemand, loc,type, spec,live)=>{
     let filteredCourse = []
             for (let k of courses) {
-            if (!k.fields.place) k.fields.place = ""
-            if (!k.fields.filter) k.fields.filter= ""
-            if (!k.fields.type) k.fields.type = ""
-            if (!k.fields.specialty) k.fields.specialty = ""
-            if ((k.fields.filter.includes(filters) || k.fields.name.includes(filters) || k.fields.place.includes(filters))
+            if (!k.fields?.place) k.fields.place = ""
+            if (!k.fields?.filter) k.fields.filter= ""
+            if (!k.fields?.type) k.fields.type = ""
+            if (!k.fields?.specialty) k.fields.specialty = ""
+            if ((k.fields?.filter?.includes(filters) || k.fields.name.includes(filters) || k.fields.place.includes(filters))
                 && k.fields.place.includes(loc) && k.fields.type.includes(type) && k.fields.specialty.includes(spec)
-                && ( !ondemand || !!k.fields.onDemand)
-                && (k.fields.onDemand || new Date(k.fields.endDate)>DATE_NOW || new Date(k.fields.startDate)>DATE_NOW )
+                && ( !ondemand || !!k.fields.onDemand )
+                && (k.fields.onDemand || new Date(k.fields.endDate)>DATE_NOW || new Date(k.fields.startDate)>DATE_NOW || k.fields.vg)
             )
-                if(!k.fields.onDemand == !!live || !live)
+                if(!k.fields.onDemand == !!live || !live || k.fields.vg)
                 filteredCourse.push(k)
         }
     return filteredCourse;
@@ -197,8 +198,9 @@ const courseType =[
 ]
 
 
-const FindCourseOfferings = ({module})=>{
+const FindCourseOfferings = ({module, customData})=>{
     const {fields} = module;
+    const test = [...fields.courses, ...customData]
     aornText = fields?.aornText
     aornTitle = fields?.aornTitle
     const customStyle={
@@ -219,7 +221,7 @@ const FindCourseOfferings = ({module})=>{
         })
     }
     const [checked, setChecked] = useState(false);
-    const [courses,setCourses] = useState(fields.courses?.sort((a,b)=>{
+    const [courses,setCourses] = useState(test.sort((a,b)=>{
         if (a.fields.startDate < b.fields.startDate)
             return 1
         if (a.fields.startDate > b.fields.startDate)
@@ -325,11 +327,11 @@ const FindCourseOfferings = ({module})=>{
     const ApplyFilters = (sw) => {
         if (typeof(sw)=="boolean") {
             setLiveOnly("")
-            setCourses(Filtering(filter, fields.courses, sw, locFilter, typeFilter, specialtyFilter))
+            setCourses(Filtering(filter, test, sw, locFilter, typeFilter, specialtyFilter))
             setAornCourses(Filtering(filter, fields.aorn, sw, locFilter, typeFilter, specialtyFilter))
         }
         else{
-            setCourses(Filtering(filter, fields.courses, checked, locFilter, typeFilter, specialtyFilter, liveOnly))
+            setCourses(Filtering(filter, test, checked, locFilter, typeFilter, specialtyFilter, liveOnly))
             setAornCourses(Filtering(filter, fields.aorn, checked, locFilter, typeFilter, specialtyFilter, liveOnly))
         }
         setFilters([filter,locFilter,typeFilter,specialtyFilter])
@@ -481,3 +483,37 @@ const FindCourseOfferings = ({module})=>{
 
 
 export default FindCourseOfferings;
+
+FindCourseOfferings.getCustomInitialProps = async ({agility, item, languageCode})=>{
+    const api = agility;
+    const refName =`veinglobalcourses`
+    let skip = 0;
+    let totalCount = 0;
+    let courseList = []
+    do {
+        try{
+            let courses = await api.getContentList({
+                referenceName:refName,
+                locale: languageCode,
+                take:50,
+                skip: skip,
+            })
+            totalCount = courses.totalCount
+            skip+=50
+            courseList.push(...courses.items)
+        }catch (e) {
+            if (console) console.log(`VGOfferings skip ${skip} totalCount ${totalCount} ERROR: `, e);
+            skip += 50
+        }
+    } while(skip < totalCount)
+    courseList = courseList.map(k=>{
+        k.fields.vg = true
+        k.fields.startDate = Date.now()
+        return k
+    })
+    return (
+        courseList
+    )
+
+
+}
