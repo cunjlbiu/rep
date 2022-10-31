@@ -31,7 +31,7 @@ export const CourseItem = ({data, aorn, logo})=> {
                 <div className={"flex justify-between"}>
                     <div className={"b3"}>{(data.place.length > 15)? "International" : data.place}</div>
                     <div className={`text-secondary-blue px-1 ${(!!startDate.valueOf() && !!data.place)? "" : "hidden"}`}>|</div>
-                    <div className={"b3"}>{startDate.valueOf() ? `${mm}.${dd}.${startDate.getFullYear()}`: '' } </div>
+                    <div className={"b3 "+`${data.vg ? "hidden":""}`}>{startDate.valueOf() ? `${mm}.${dd}.${startDate.getFullYear()}`: '' } </div>
                 </div>
             </div>
             <div className={"c1"}>{data.name}</div>
