@@ -18,7 +18,7 @@ export const CourseItem = ({data, aorn, logo})=> {
     return(
         <div className={"py-10 max-w-[570px] md:mx-5 "}>
             <div className={"mdplus:min-w-[570px] mdplus:h-[320px] max-w-[570px] md:w-auto rounded-xl text-white text-center relative"}>
-                <div className={`absolute b3 rounded-full px-[12px] py-1 top-4 left-4 ${data.onDemand ? "bg-primary-blue" : "bg-primary-white text-black" }`}>{data.onDemand ? "On-Demand" : data.vg ? "Vein global" :"Live"}</div>
+                <div className={`absolute b3 rounded-full px-[12px] py-1 top-4 left-4 ${data.onDemand ? "bg-primary-blue" : "bg-primary-white text-black" } ${data.vg ? " hidden" : ""}`}>{data.onDemand ? "On-Demand" :"Live"}</div>
                 <div className={`absolute b3 rounded-full px-[12px] py-1 bottom-4 right-6 ${aorn ? "bg-primary-white" : "hidden" }`}>
                     {aorn ? <img src={logo.url}/> : "" }
                 </div>
