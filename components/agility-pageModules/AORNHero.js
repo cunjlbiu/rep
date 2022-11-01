@@ -65,13 +65,8 @@ const AORNHero = ({module}) => {
                 <div className={"max-w-screen-xl mx-auto md:mx-5"}>
                     <div style={{backgroundImage:`url(${fields?.textBg?.url})`}} className={"mx-auto bg-elipse bg-primary-white rounded-xl border-2 md:max-w-[700px] border-soft-green " +
                         "-translate-y-1/2 lg:py-16 lg:px-32 text-center mt-28 md:-mb-32 mdplus:-mb-12 "}>
-                        <p className={"b1"}>Our continued education offerings are perfect for training new perioperative
-                            nurses as well as experienced
-                            registered nurses who are looking to transition into the perioperative suite from another
-                            specialty.</p><br/>
-                        <p className={"b1"}>Pay per course, assigning only the videos suitable for your students, or
-                            purchase an Annual subscription
-                            <br/>to unlock complete access to our entire library of AORN online curriculum.</p>
+                        <div dangerouslySetInnerHTML={renderHTML(fields.cardText)} className={"b1"}>
+                        </div>
                     </div>
                     <div className={"lg:grid lg:grid-cols-2"}>
                         <h3 className={"lg:w-[640px] lg:h-[200px] md:hidden"}>

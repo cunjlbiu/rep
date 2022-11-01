@@ -48,7 +48,7 @@ const SiteFooter = () => {
           <div className={"space-y-7"}>
             <img src={"/assets/CineMedLogo.svg"}/>
             <p className={"text-primary-grey b3 w-[337px]"}>CineMed is a global healthcare solutions company committed to improving
-              patient outcomes through innovative training and customer engagement.</p>
+              patient outcomes through innovative education and customer engagement.</p>
             <div className={"text-primary-grey flex space-x-[22px]"}>
               <a href={"https://www.youtube.com/cinemed"} target={"_blank"}><FaYoutube className={"w-6 h-6"}/></a>
               <a href={"https://www.instagram.com/cinemed_inc/"} target={"_blank"}><FaInstagram className={"w-6 h-6"}/></a>
@@ -60,7 +60,7 @@ const SiteFooter = () => {
 
           <div className={"text-primary-darkblue space-y-3"}>
             <div><a href={"/company"}><p className={"bttn1 hover:bg-white"}>Company</p></a></div>
-            <div><a href={"/company#providers"}><p className={"b3 hover:bg-white"}>Healthcare Providers</p></a></div>
+            <div><a href={"/company#providers"}><p className={"b3 hover:bg-white"}>Healthcare Professionals</p></a></div>
             <div><a href={"/company#facilities"}><p className={"b3 hover:bg-white"}>Healthcare Facilities</p></a></div>
             <div><a href={"/company#industry"}><p className={"b3 hover:bg-white"}>Healthcare Industry</p></a></div>
           </div>
@@ -97,7 +97,7 @@ const SiteFooter = () => {
             <div className = {"md:flex md:flex-col md:mt-10"}>
                 <img className={"md:w-[134px]"} src={"/assets/CineMedLogo.svg"}/>
                 <p className = {"text-[12px] md:b3 md:text-primary-grey md:mt-3.5"}>
-                    CineMed is a global healthcare solutions company committed to improving patient outcomes through innovative training and customer engagement.
+                    CineMed is a global healthcare solutions company committed to improving patient outcomes through innovative education and customer engagement.
                 </p>
             </div>
 
