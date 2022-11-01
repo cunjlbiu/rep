@@ -60,7 +60,7 @@ const SiteFooter = () => {
 
           <div className={"text-primary-darkblue space-y-3"}>
             <div><a href={"/company"}><p className={"bttn1 hover:bg-white"}>Company</p></a></div>
-            <div><a href={"/company#providers"}><p className={"b3 hover:bg-white"}>Healthcare Professionals</p></a></div>
+            <div><a href={"/company#professionals"}><p className={"b3 hover:bg-white"}>Healthcare Professionals</p></a></div>
             <div><a href={"/company#facilities"}><p className={"b3 hover:bg-white"}>Healthcare Facilities</p></a></div>
             <div><a href={"/company#industry"}><p className={"b3 hover:bg-white"}>Healthcare Industry</p></a></div>
           </div>
