@@ -46,7 +46,7 @@ const SiteFooter = () => {
 
 
           <div className={"space-y-7"}>
-            <img src={"/assets/CineMedLogo.svg"}/>
+            <img src={"/assets/CineMedLogo.png"} width={174} height={32}/>
             <p className={"text-primary-grey b3 w-[337px]"}>CineMed is a global healthcare solutions company committed to improving
               patient outcomes through innovative education and customer engagement.</p>
             <div className={"text-primary-grey flex space-x-[22px]"}>
