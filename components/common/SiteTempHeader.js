@@ -73,7 +73,7 @@ const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
                        </div>
                    </div>
                    {/*<a className={"b3"} href={"/aboutus"}>About us</a>*/}
-                   <a className={"b3"} href={"/contact"}>Contact us</a>
+                   <a className={"b3"} href={"/contact-us"}>Contact us</a>
                    {/*<a className={"b3"} href="/faq">FAQ</a>  ?filter=${filter}#fil */}
                    <a className={"b3"} href="/find-a-course?live=true#fil">Events</a>
                </div>
@@ -124,7 +124,7 @@ const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
                                 <a className={" linkForMenu text-primary-darkblue"} href={"/aboutus"}>About</a>
                             </li>
                             <li>
-                                <a className={" linkForMenu text-primary-darkblue"} href={"/contact"}>Contact us</a>
+                                <a className={" linkForMenu text-primary-darkblue"} href={"/contact-us"}>Contact us</a>
                             </li>
                             <li>
                                 <a className={" linkForMenu text-primary-darkblue"} href={"/faq"}>FAQ</a>
