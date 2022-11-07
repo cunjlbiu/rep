@@ -80,7 +80,7 @@ const SiteFooter = () => {
           {/*</div>*/}
 
           <div className={"text-primary-darkblue space-y-3"}>
-            <a href={"/contact"}><p className={"bttn1 hover:bg-white"}>Contact us</p></a>
+            <a href={"/contact-us"}><p className={"bttn1 hover:bg-white"}>Contact us</p></a>
             <p className={"b3 hover:bg-white"}>
               CineMed, Inc. 127 Main Street<br/>
               North Woodbury, CT 06798<br/>
@@ -108,7 +108,7 @@ const SiteFooter = () => {
                 <a className={"b2 pt-2 text-primary-darkblue"} href="/company">Company</a>
                 <a className={"b2 pt-2 text-primary-darkblue"} href="/aboutus">About us</a>
                 <a className={"b2 pt-2 text-primary-darkblue"} href="/faq">FAQ</a>
-                <a className={"b2 pt-2 text-primary-darkblue"} href="/contact">Contact us</a>
+                <a className={"b2 pt-2 text-primary-darkblue"} href="/contact-us">Contact us</a>
                 <a className={"b2 pt-2 text-primary-darkblue"} href="/create-course">Create a course</a>
                 <a className={"b2 pt-2 text-primary-darkblue"} href="/find-a-course">Find a course</a>
               </div>
