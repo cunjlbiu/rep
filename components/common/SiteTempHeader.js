@@ -120,15 +120,15 @@ const SiteTempHeader = ({ globalData, sitemapNode, page }) => {
                                     <div className={"linkForMenu text-primary-darkblue"}><a href={"/VeinGlobal"}>Vein Global</a></div>
                                 </div>
                             </li>
-                            <li>
-                                <a className={" linkForMenu text-primary-darkblue"} href={"/aboutus"}>About</a>
-                            </li>
+                            {/*<li>*/}
+                            {/*    <a className={" linkForMenu text-primary-darkblue"} href={"/aboutus"}>About</a>*/}
+                            {/*</li>*/}
                             <li>
                                 <a className={" linkForMenu text-primary-darkblue"} href={"/contact-us"}>Contact us</a>
                             </li>
-                            <li>
-                                <a className={" linkForMenu text-primary-darkblue"} href={"/faq"}>FAQ</a>
-                            </li>
+                            {/*<li>*/}
+                            {/*    <a className={" linkForMenu text-primary-darkblue"} href={"/faq"}>FAQ</a>*/}
+                            {/*</li>*/}
                         </ul>
                     </div>
 

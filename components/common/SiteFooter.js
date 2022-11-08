@@ -95,7 +95,7 @@ const SiteFooter = () => {
         <div className = {"lg:hidden md:flex md:w-full md:min-w-[335px] md:px-5"}>
           <div className = {"md:flex md:flex-col"}>
             <div className = {"md:flex md:flex-col md:mt-10"}>
-                <img className={"md:w-[134px]"} src={"/assets/CineMedLogo.svg"}/>
+                <img className={"md:w-[134px]"} src={"/assets/CineMedLogo.png"}/>
                 <p className = {"text-[12px] md:b3 md:text-primary-grey md:mt-3.5"}>
                     CineMed is a global healthcare solutions company committed to improving patient outcomes through innovative education and customer engagement.
                 </p>
@@ -106,8 +106,8 @@ const SiteFooter = () => {
               <div className={"md:flex md:flex-col md:w-6/12"}>
                 <a className={"bttn2 text-primary-darkblue"} href="#">The Cinemed</a>
                 <a className={"b2 pt-2 text-primary-darkblue"} href="/company">Company</a>
-                <a className={"b2 pt-2 text-primary-darkblue"} href="/aboutus">About us</a>
-                <a className={"b2 pt-2 text-primary-darkblue"} href="/faq">FAQ</a>
+                {/*<a className={"b2 pt-2 text-primary-darkblue"} href="/aboutus">About us</a>*/}
+                {/*<a className={"b2 pt-2 text-primary-darkblue"} href="/faq">FAQ</a>*/}
                 <a className={"b2 pt-2 text-primary-darkblue"} href="/contact-us">Contact us</a>
                 <a className={"b2 pt-2 text-primary-darkblue"} href="/create-course">Create a course</a>
                 <a className={"b2 pt-2 text-primary-darkblue"} href="/find-a-course">Find a course</a>
