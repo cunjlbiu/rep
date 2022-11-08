@@ -89,9 +89,9 @@ const Filtering = (filters, courses,ondemand, loc,type, spec,live)=>{
             if (!k.fields?.type) k.fields.type = ""
             if (!k.fields?.specialty) k.fields.specialty = ""
             if ((
-                    k.fields?.filter?.toLowerCase().includes(filters) || k.fields.name.toLowerCase().includes(filters)
-                    || k.fields.place.toLowerCase().includes(filters) || k.fields.type.toLowerCase().includes(filters)
-                    || k.fields.specialty.toLowerCase().includes(filters)
+                    k.fields?.filter?.toLowerCase().includes(filters.toLowerCase()) || k.fields.name.toLowerCase().includes(filters.toLowerCase())
+                    || k.fields.place.toLowerCase().includes(filters.toLowerCase()) || k.fields.type.toLowerCase().includes(filters.toLowerCase())
+                    || k.fields.specialty.toLowerCase().includes(filters.toLowerCase())
                 )
                 && (k.fields.place.includes(loc) || loc == "")&& (k.fields.type.includes(type) || type == "" )&& (k.fields.specialty.includes(spec) || spec == "")
                 && ( !ondemand || !!k.fields.onDemand )
