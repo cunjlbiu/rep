@@ -77,14 +77,23 @@ const CourseBlock = ({blockData, filters, cl, deleteAll, aorn, logo})=>{
     )
 }
 const Filtering = (filters, courses,ondemand, loc,type, spec,live)=>{
+    console.log("filters: ", filters)
+    console.log("ondemand: ", ondemand)
+    console.log("loc: ", loc)
+    console.log("type: ", type)
+    console.log("spec: ", spec)
     let filteredCourse = []
             for (let k of courses) {
             if (!k.fields?.place) k.fields.place = ""
             if (!k.fields?.filter) k.fields.filter= ""
             if (!k.fields?.type) k.fields.type = ""
             if (!k.fields?.specialty) k.fields.specialty = ""
-            if ((k.fields?.filter?.includes(filters) || k.fields.name.includes(filters) || k.fields.place.includes(filters))
-                && k.fields.place.includes(loc) && k.fields.type.includes(type) && k.fields.specialty.includes(spec)
+            if ((
+                    k.fields?.filter?.toLowerCase().includes(filters) || k.fields.name.toLowerCase().includes(filters)
+                    || k.fields.place.toLowerCase().includes(filters) || k.fields.type.toLowerCase().includes(filters)
+                    || k.fields.specialty.toLowerCase().includes(filters)
+                )
+                && (k.fields.place.includes(loc) || loc == "")&& (k.fields.type.includes(type) || type == "" )&& (k.fields.specialty.includes(spec) || spec == "")
                 && ( !ondemand || !!k.fields.onDemand )
                 && (k.fields.onDemand || new Date(k.fields.endDate)>DATE_NOW || new Date(k.fields.startDate)>DATE_NOW || k.fields.vg)
             )
