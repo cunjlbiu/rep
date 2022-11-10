@@ -278,6 +278,10 @@ const FindCourseOfferings = ({module, customData})=>{
         setFilter(window.sessionStorage.getItem('filter') ?? "")
     }
 
+    const inputEnterPress = (event) =>{
+        if(event.key === "Enter")
+            location.href = "#fil"
+    }
 
     useEffect(() => {getStorage()},[])
 
@@ -369,12 +373,16 @@ const FindCourseOfferings = ({module, customData})=>{
                                    className=" mdplus:block absolute md:hidden top-[21px] left-14 mdplus:w-2/5 lg:w-3/5 border-none outline-none"
                                    placeholder="Search by specialty, learning objective, or location."
                                    value={filter}
-                                   onChange={(e)=>setFilter(e.target.value)}/>
+                                   onChange={(e)=>setFilter(e.target.value)}
+                                   onKeyDown={inputEnterPress}
+                            />
                         <input type="text"
                                className=" mdplus:hidden absolute top-[21px] left-12 w-[50%] w-auto border-none outline-none"
                                placeholder="Search"
                                value={filter}
-                               onChange={(e)=>setFilter(e.target.value)}/>
+                               onChange={(e)=>setFilter(e.target.value)}
+                               onKeyDown={inputEnterPress}
+                        />
                             <div className={"absolute flex top-1/3 right-[28px] mdplus:right-[28%] b3"}>
                                 <Switch
                                     className={"mr-1"}
