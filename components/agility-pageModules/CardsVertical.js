@@ -14,7 +14,7 @@ const CardsVertical = ({module}) => {
 
     const Card = ({iconUrl, title, text, iconBg, cardBg, textClr, link}) => {
         return (
-            <div>
+            <div className={"mx-5 lg:mx-0"}>
                 <a href={link?.href} target={link?.target}>
                     <div className={"border-2 border-agility w-80 min-h-[170] card p-4 space-y-3 rounded-xl md:w-full md:h-full"}
                          style={{backgroundColor: cardBg, color: textClr}}>
@@ -32,9 +32,9 @@ const CardsVertical = ({module}) => {
 
     return (
         <div className={"max-w-full justify-between py-6 lg:py-24 "} style={{backgroundColor: fields.bgColor}}>
-            <div className="max-w-screen-xl my-8 mx-auto grid md:md:grid-cols-1 justify-center gap-x-3">
-                <div className={"grid grid-cols-1 md:grid-cols-1 justify-center md:order-2 order-last pt-[68px] col-start-8 "}>
-                    <div className={"space-y-8 md:hidden"}>
+            <div className="max-w-screen-xl my-8 mx-auto grid md:grid-cols-1 justify-center gap-x-3">
+                <div className={"lg:grid lg:grid-cols-1 md:grid-cols-1 justify-center md:order-2 order-last pt-[68px] lg:col-start-8 "}>
+                    <div className={"space-y-8"}>
                         {fields.cards.slice(0).reverse().map((card, index) => {
                                 return (
                                     <Card key={card.contentID.toString()}
@@ -50,7 +50,7 @@ const CardsVertical = ({module}) => {
                         })
                         }
                     </div>
-                    <div className={"hidden md:flex w-full overflow-x-scroll mdplus:mx-auto"}>
+                    <div className={"hidden w-full overflow-x-scroll mdplus:mx-auto"}>
 
                         {/*<Carousel>*/}
 
@@ -94,12 +94,12 @@ const CardsVertical = ({module}) => {
                     {/*</div>*/}
                 </div>
                 <div className={"space-y-7 mx-auto md:py-10 md:mx-5 col-start-1 place-self-center w-full"}>
-                    <div className={"w-[800px] h-[600px] rounded-xl ml-[-66px]"}>
-                        <img className={"rounded-xl object-cover"} src={fields?.img?.url}/>
+                    <div className={"lg:w-[800px] lg:h-[600px] rounded-xl lg:ml-[-66px]"}>
+                        <img className={"rounded-xl lg:object-cover"} src={fields?.img?.url}/>
                     </div>
-                    <h3 className={"md:text-primary-darkblue md:text-[40px] max-w-[700px]"}
+                    <h3 className={"md:text-primary-darkblue md:text-[40px] max-w-[700px] mx-auto md:mx-5"}
                         dangerouslySetInnerHTML={renderHTML(fields.title)}></h3>
-                    <div className={" md:text-[16px] b1 max-w-[700px] "} dangerouslySetInnerHTML={renderHTML(fields.text)}></div>
+                    <div className={" md:text-[16px] b1 max-w-[700px] md:mx-5 "} dangerouslySetInnerHTML={renderHTML(fields.text)}></div>
                     {listItems?.map((e, i) => {
                             if (e.length > 0)
                                 return (
@@ -114,7 +114,7 @@ const CardsVertical = ({module}) => {
                                 )
                         }
                     )}
-                    <a className={"flex bttn1 w-36 h-12 items-center bg-primary-blue rounded-full"}
+                    <a className={"flex bttn1 w-36 h-12 items-center bg-primary-blue rounded-full md:mx-5"}
                        href={fields?.button?.href}>
                         <p className={"mx-auto text-primary-white"}>{fields?.button?.text}</p>
                     </a>

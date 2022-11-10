@@ -33,7 +33,7 @@ const HomeHeading  = ({module}) => {
     };
     return(
         <div style={{backgroundColor: fields.bgColor}}>
-            <div className={"max-w-screen-xl md:mx-{20px} md:content-center flex mx-auto flex-row py-8 md:flex-col justify-between space-x-4 "}>
+            <div className={"max-w-screen-xl md:mx-{20px} md:content-center flex mx-auto flex-row py-8 md:flex-col justify-between lg:space-x-4 "}>
                 <div className={" max-w-[750px] md:w-full md:justify-center md:items-center self-center"}>
                     <div className={"md:flex md:justify-center"}>
                         <caption className={"c3 text-primary-blue md:mt-7 mdplus:mt-7 lg:mt-0 w-max md:text-[14px]"}>{fields.blueText}</caption>

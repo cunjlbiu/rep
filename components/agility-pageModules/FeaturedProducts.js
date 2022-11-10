@@ -71,7 +71,7 @@ const FeaturedProducts =({module})=>{
                                max: 464,
                                min: 0
                            },
-                           items: 1,
+                           items: 0.5,
 
                        },
                        tablet: {
@@ -79,7 +79,7 @@ const FeaturedProducts =({module})=>{
                                max: 1600,
                                min: 464
                            },
-                           items: 2,
+                           items: 1.3,
 
                        }
                    }}
@@ -105,7 +105,7 @@ const FeaturedProducts =({module})=>{
                    {fields?.products?.map(
                        product =>
 
-                           <div className={"h-[373px] max-w-[528px] rounded-xl hover:bg-soft-blue border-[1px] flex flex-col border-gray-200"}>
+                           <div className={"h-[373px] max-w-[528px] min-w-[233px] rounded-xl hover:bg-soft-blue border-[1px] flex flex-col border-gray-200"}>
                                <img className={"rounded-t-xl h-[289px] object-cover"} src={product.fields.image.url} height={289}/>
                                <div className={"flex justify-between my-auto space-x-3 items-baseline px-3"}>
                                    <div className={"c1_mobile"}>{product.fields.title}</div>
