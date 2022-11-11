@@ -67,7 +67,7 @@ const SiteFooter = () => {
 
           <div className={"text-primary-darkblue space-y-3"}>
             <p className={"bttn1 hover:bg-white"}>Education</p>
-            <div><a href={"/AORN"}><p className={"b3 hover:bg-white"}>AORN Library</p></a></div>
+            <div><a href={"/aorn"}><p className={"b3 hover:bg-white"}>AORN Library</p></a></div>
             <div><a href={"/ACS"}><p className={"b3 hover:bg-white"}>ACS Library</p></a></div>
             <div><a href={"/VeinGlobal"}><p className={"b3 hover:bg-white"}>Vein Global</p></a></div>
           </div>
@@ -114,7 +114,7 @@ const SiteFooter = () => {
               </div>
               <div className={"md:flex md:flex-col md:w-6/12 justify-start"}>
                 <a className={"bttn2 md:text-primary-darkblue"} href="">Education</a>
-                <a className={"b2 pt-2 text-primary-darkblue"} href="/AORN">AORN Library</a>
+                <a className={"b2 pt-2 text-primary-darkblue"} href="/aorn">AORN Library</a>
                 <a className={"b2 pt-2 text-primary-darkblue"} href="/ACS">ACS Library</a>
                 <a className={"b2 pt-2 text-primary-darkblue"} href="/VeinGlobal">Vein Global</a>
               </div>
