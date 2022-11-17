@@ -27,7 +27,7 @@ const CreateCourseForm =({module}) =>{
     //     value.subDisabled = true;
     // }
 
-    const [startDate, setStartDate] = useState(new Date());
+    const [startDate, setStartDate] = useState();
     const [endDate, setEndDate] = useState(null);
     const [reqSelectOne, setReqSelectOne] = useState('')
     const [reqSelectTwo, setReqSelectTwo] = useState('')

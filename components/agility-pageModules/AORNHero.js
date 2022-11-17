@@ -42,7 +42,7 @@ const AORNHero = ({module}) => {
             <div className={"lg:max-w-screen-xl mx-auto lg:flex lg:flex-row my-8 md:mx-5 md:mb-[30px]"}>
                 <div className={"lg:w-7/12"}>
                     {fields?.logo?.url ? <img src={fields.logo.url}/> : ""}
-                    <h1 className={"pr-6 lg:w-[751px] md:hidden"}>{fields.title}</h1>
+                    <h1 className={"pr-6 lg:w-[780px] md:hidden text-[69px]"}>{fields.title}</h1>
                     <h2 className={"lg:hidden mobile"}>{fields.title}</h2>
                     <p className={"b1 lg:w-8/12 pl-12 md:pl-4 border-secondary-green border-l-2 my-6"}>{fields.text}</p>
                 </div>
